@@ -1,130 +1,176 @@
 {
-  "brand_identity": {
-    "name": "Yashoda Total Solution",
-    "mission": "To provide accessible legal and financial assistance to common people, ensuring justice and financial security.",
-    "tone": "Trustworthy, Professional, Empathetic, Simple, Authoritative but Accessible",
-    "target_audience": "Common citizens, rural/semi-urban residents, individuals seeking claim assistance. Mobile-first users.",
-    "values": ["Transparency", "Speed", "Accessibility", "Result-Oriented"]
-  },
-  "design_system": {
-    "theme": "light",
-    "colors": {
-      "primary": "#0F7A4A",
-      "primary_foreground": "#FFFFFF",
-      "secondary": "#F39C12",
-      "secondary_foreground": "#FFFFFF",
-      "background": "#F5F7F9",
-      "surface": "#FFFFFF",
-      "text": {
-        "primary": "#1F2933",
-        "secondary": "#52606D",
-        "muted": "#9AA5B1"
-      },
-      "border": "#E4E7EB",
-      "success": "#0F7A4A",
-      "error": "#CB2431",
-      "warning": "#F39C12"
-    },
-    "typography": {
-      "font_family": {
-        "headings": "Manrope, sans-serif",
-        "body": "Noto Sans, Noto Sans Devanagari, sans-serif"
-      },
-      "scale": {
-        "h1": "text-4xl md:text-5xl font-bold tracking-tight leading-tight",
-        "h2": "text-3xl md:text-4xl font-bold tracking-tight",
-        "h3": "text-2xl font-semibold text-primary",
-        "body_lg": "text-lg leading-relaxed",
-        "body_base": "text-base leading-relaxed text-slate-700",
-        "button": "text-base font-semibold tracking-wide uppercase"
-      }
-    },
-    "spacing": {
-      "container_padding": "px-4 md:px-8 lg:px-12",
-      "section_gap": "py-16 md:py-24",
-      "card_padding": "p-6 md:p-8"
-    },
-    "shadows": {
-      "card": "shadow-sm hover:shadow-md transition-shadow duration-200",
-      "floating": "shadow-lg"
-    },
-    "border_radius": {
-      "card": "rounded-lg",
-      "button": "rounded-md",
-      "input": "rounded-md"
-    }
-  },
-  "visual_assets": {
-    "logo_url": "https://customer-assets.emergentagent.com/job_1d118af0-25cf-4c4f-95a3-4dceda4b57a9/artifacts/boa41pzj_YASHODA%20TOTAL%20SOLUTION%201%20%281%29.png",
-    "images": [
-      {
-        "category": "hero",
-        "url": "https://images.unsplash.com/photo-1681505531034-8d67054e07f6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHw0fHxoYW5kc2hha2UlMjBidXNpbmVzcyUyMGNsb3NlJTIwdXB8ZW58MHx8fHwxNzcyNzA1MzcwfDA&ixlib=rb-4.1.0&q=85",
-        "description": "Close up handshake over papers - Symbolizes agreement, settlement, and trust.",
-        "usage": "Home Page Hero or About Us Section"
-      },
-      {
-        "category": "beneficiary",
-        "url": "https://images.unsplash.com/photo-1766224241974-e6ddb60d2d4e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA0MTJ8MHwxfHNlYXJjaHwzfHxoYXBweSUyMGluZGlhbiUyMGZhbWlseSUyMHJ1cmFsJTIwaG9tZXxlbnwwfHx8fDE3NzI3MDUzNTZ8MA&ixlib=rb-4.1.0&q=85",
-        "description": "Happy Indian family in rural context.",
-        "usage": "Testimonials or 'Who We Help' section"
-      },
-      {
-        "category": "office_work",
-        "url": "https://images.unsplash.com/photo-1749545849681-37e7b302fdb6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHw0fHxsZWdhbCUyMGRvY3VtZW50cyUyMHBlbiUyMGNsZWFuJTIwZGVza3xlbnwwfHx8fDE3NzI3MDUzNTd8MA&ixlib=rb-4.1.0&q=85",
-        "description": "Clean desk with notebooks and pen.",
-        "usage": "Services or Contact Page background"
-      },
-      {
-        "category": "professional_trust",
-        "url": "https://images.unsplash.com/photo-1696861270495-7f35c35c3273?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwyfHxoYW5kc2hha2UlMjBidXNpbmVzcyUyMGNsb3NlJTIwdXB8ZW58MHx8fHwxNzcyNzA1MzcwfDA&ixlib=rb-4.1.0&q=85",
-        "description": "Professional handshake close up.",
-        "usage": "Alternate trust indicator"
-      }
+  "project_name": "Yashoda Total Solution",
+  "design_philosophy": {
+    "core_identity": "Modern Rural Trust",
+    "mission": "Bridge the gap between complex legal/financial services and the common man through a UI that feels both aspirational (Modern 3D) and safe (Grounded Earthy Tones).",
+    "visual_style": "Organic Professionalism. Combines the reliability of government/banking aesthetics with the engagement of modern fintech.",
+    "key_principles": [
+      "Trust through Clarity: No hidden interactions. Everything is explicit.",
+      "Aspirational Realism: Use high-quality 3D and photography to show the 'better future' the services provide.",
+      "Mobile-First Density: Big touch targets, clear text hierarchy for small screens.",
+      "Language Equality: English, Hindi, and Marathi must have equal visual weight."
     ]
   },
-  "components_strategy": {
-    "buttons": {
-      "primary": "bg-[#0F7A4A] hover:bg-[#0b5e38] text-white px-8 py-3 rounded-md font-semibold text-lg transition-colors shadow-sm",
-      "secondary": "bg-[#F39C12] hover:bg-[#d68910] text-white px-8 py-3 rounded-md font-semibold text-lg transition-colors shadow-sm",
-      "outline": "border-2 border-[#0F7A4A] text-[#0F7A4A] hover:bg-[#0F7A4A] hover:text-white px-6 py-2 rounded-md font-medium transition-colors"
+  "typography": {
+    "font_family": {
+      "heading": "Manrope, sans-serif",
+      "body": "Noto Sans, Noto Sans Devanagari, sans-serif",
+      "mono": "JetBrains Mono, monospace"
     },
-    "cards": {
-      "service_card": "bg-white p-8 rounded-lg shadow-sm hover:shadow-md border border-gray-100 flex flex-col items-start gap-4 transition-all duration-300",
-      "testimonial_card": "bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#F39C12]"
+    "scale": {
+      "h1": "text-4xl md:text-6xl font-bold tracking-tight leading-[1.1]",
+      "h2": "text-3xl md:text-5xl font-bold tracking-tight",
+      "h3": "text-2xl md:text-3xl font-semibold",
+      "p": "text-base md:text-lg leading-relaxed text-muted-foreground",
+      "caption": "text-sm text-muted-foreground uppercase tracking-widest"
     },
-    "navigation": {
-      "wrapper": "sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60",
-      "link": "text-[#1F2933] hover:text-[#0F7A4A] font-medium transition-colors text-base"
+    "rules": [
+      "Use 'Manrope' for all English Headings.",
+      "Use 'Noto Sans Devanagari' for all Hindi/Marathi text.",
+      "Headings > 32px must use 'tracking-tight'.",
+      "Body text must never be pure black (#000000). Use #1F2933."
+    ]
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "DEFAULT": "#0F7A4A",
+        "foreground": "#FFFFFF",
+        "light": "#159F61",
+        "dark": "#0A5734",
+        "50": "#E7F5EE",
+        "100": "#CFF0DE",
+        "900": "#052919"
+      },
+      "secondary": {
+        "DEFAULT": "#F39C12",
+        "foreground": "#1F2933",
+        "light": "#F7B547",
+        "dark": "#C87F0A",
+        "50": "#FEF5E3"
+      },
+      "background": {
+        "DEFAULT": "#F5F7F9",
+        "paper": "#FFFFFF",
+        "subtle": "#EBEFF2"
+      },
+      "text": {
+        "DEFAULT": "#1F2933",
+        "muted": "#52606D",
+        "inverted": "#FFFFFF"
+      },
+      "accent": {
+        "success": "#0F7A4A",
+        "warning": "#F39C12",
+        "error": "#DC2626"
+      }
     },
-    "forms": {
-      "input": "w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent bg-gray-50",
-      "label": "block text-sm font-medium text-gray-700 mb-1"
+    "gradients": {
+      "hero_overlay": "linear-gradient(180deg, rgba(15, 122, 74, 0.9) 0%, rgba(15, 122, 74, 0.4) 100%)",
+      "card_hover": "linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0))"
+    },
+    "usage_rules": [
+      "Primary Green (#0F7A4A) is for trust actions (Submit, Call, Confirm).",
+      "Secondary Orange (#F39C12) is for attention (Alerts, Important Notices, 'New').",
+      "Background must remain #F5F7F9 to reduce eye strain.",
+      "Do NOT use gradients for main backgrounds. Use solid colors or subtle noise textures."
+    ]
+  },
+  "layout_and_grid": {
+    "spacing_scale": {
+      "section_padding": "py-16 md:py-24 lg:py-32",
+      "container_padding": "px-4 md:px-8",
+      "element_gap": "gap-4 md:gap-8"
+    },
+    "grid_system": {
+      "bento_grid": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6",
+      "feature_grid": "grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+    },
+    "containers": {
+      "max_width": "max-w-7xl mx-auto",
+      "readable_width": "max-w-prose mx-auto"
     }
   },
-  "layout_rules": {
-    "grid_system": "Use simple grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",
-    "mobile_first": "Ensure all tap targets are at least 44px. Text should not be smaller than 16px on mobile.",
-    "alignment": "Left align text for readability. Center align headings only in 'Hero' or 'Section Features'."
+  "components": {
+    "button": {
+      "variants": {
+        "primary": "bg-[#0F7A4A] text-white hover:bg-[#0A5734] shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 rounded-full px-8 py-3 font-semibold",
+        "secondary": "bg-white text-[#0F7A4A] border-2 border-[#0F7A4A] hover:bg-[#E7F5EE] rounded-full px-8 py-3 font-semibold",
+        "outline": "bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-full px-6 py-2"
+      }
+    },
+    "card": {
+      "default": "bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-[0_12px_32px_rgba(15,122,74,0.15)] transition-all duration-300 overflow-hidden",
+      "interactive": "group relative bg-white rounded-2xl p-8 hover:bg-[#0F7A4A] hover:text-white transition-colors duration-300 border border-gray-100",
+      "glass": "bg-white/80 backdrop-blur-md border border-white/50 shadow-sm"
+    },
+    "inputs": {
+      "default": "bg-gray-50 border-gray-200 focus:border-[#0F7A4A] focus:ring-[#0F7A4A] rounded-xl h-12 px-4"
+    },
+    "navigation": {
+      "navbar": "fixed top-0 w-full z-50 bg-white/90 backdrop-blur-lg border-b border-gray-100",
+      "link": "text-[#1F2933] hover:text-[#0F7A4A] font-medium transition-colors"
+    }
   },
-  "multilingual_support": {
-    "strategy": "Use a context provider to manage 'lang' state (en, hi, mr). Ensure text content is loaded dynamically based on selection.",
-    "fonts": "Import 'Noto Sans Devanagari' from Google Fonts to ensure Hindi and Marathi render beautifully."
+  "visual_enhancers": {
+    "shadows": {
+      "soft": "0 2px 10px rgba(0,0,0,0.03)",
+      "medium": "0 8px 30px rgba(0,0,0,0.08)",
+      "floating": "0 20px 40px rgba(15,122,74,0.15)"
+    },
+    "borders": {
+      "subtle": "1px solid #E2E8F0",
+      "highlight": "1px solid #0F7A4A"
+    },
+    "textures": {
+      "noise": "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")"
+    },
+    "3d_effects": {
+      "usage": "Use CSS 3D Transforms for cards and Hero elements. Avoid heavy WebGL libraries if possible to maintain performance on low-end devices.",
+      "card_hover": "hover:rotate-y-6 hover:scale-105 perspective-1000",
+      "floating_icons": "animate-float (custom keyframe)"
+    }
   },
-  "instructions_to_main_agent": [
-    "STRICTLY NO GRADIENTS: Use solid colors as defined.",
-    "Target Audience is rural/semi-urban: Keep language simple and UI elements large and clear.",
-    "Trust is key: Use the handshake images and official-looking typography.",
-    "Mobile Responsiveness is priority #1.",
-    "Implement the 'Language Switcher' in the Navbar prominently.",
-    "Use Lucide-React icons for services (e.g., Gavel for Legal, Shield for Insurance, Banknote for Banking).",
-    "Ensure the contact form is very simple (Name, Phone, Issue). Phone number validation is important."
-  ],
+  "motion_and_interaction": {
+    "transitions": {
+      "default": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+      "bounce": "all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+    },
+    "micro_interactions": {
+      "button_click": "scale-95",
+      "nav_hover": "text-[#0F7A4A] underline-offset-4"
+    },
+    "scroll_effects": {
+      "library": "framer-motion",
+      "fade_up": "initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}"
+    }
+  },
+  "assets": {
+    "images": {
+      "hero_bg": "https://images.unsplash.com/photo-1614074768627-c4604eaa0ea7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwyfHxpbmRpYW4lMjB2aWxsYWdlJTIwaGFwcHklMjBmYW1pbHklMjBob21lfGVufDB8fHx8MTc3MjcwNTgyMnww&ixlib=rb-4.1.0&q=85",
+      "services_handshake": "https://images.unsplash.com/photo-1758599543152-a73184816eba?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTF8MHwxfHNlYXJjaHwzfHxidXNpbmVzcyUyMGhhbmRzaGFrZSUyMHByb2Zlc3Npb25hbCUyMG1lZXRpbmd8ZW58MHx8fHwxNzcyNzA1ODIyfDA&ixlib=rb-4.1.0&q=85",
+      "legal_signing": "https://images.unsplash.com/photo-1763729805496-b5dbf7f00c79?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njd8MHwxfHNlYXJjaHwxfHxsZWdhbCUyMGRvY3VtZW50cyUyMHNpZ25pbmclMjBwZW4lMjBwYXBlcnxlbnwwfHx8fDE3NzI3MDU4MjN8MA&ixlib=rb-4.1.0&q=85",
+      "agriculture_bg": "https://images.unsplash.com/photo-1714466630463-877cef3f8a28?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTF8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBmYXJtZXIlMjB0cmFjdG9yJTIwYWdyaWN1bHR1cmV8ZW58MHx8fHwxNzcyNzA1ODI0fDA&ixlib=rb-4.1.0&q=85",
+      "about_office": "https://images.unsplash.com/photo-1684151498268-c7ff7e7b702b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBvZmZpY2UlMjB0ZWFtJTIwbWVldGluZyUyMGluZGlhfGVufDB8fHx8MTc3MjcwNTgyNHww&ixlib=rb-4.1.0&q=85"
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "Stroke width 1.5px, size 24px usually. Use 'House', 'Scale', 'ShieldCheck', 'Handshake', 'Languages'."
+    }
+  },
+  "accessibility": {
+    "contrast_check": "Ensure all text on Green backgrounds is White. All text on Orange backgrounds must be Dark (#1F2933) or White (check APCA).",
+    "focus_states": "All interactive elements must have a visible ring-2 ring-offset-2 ring-[#F39C12] on focus-visible.",
+    "touch_targets": "Minimum 44x44px for all clickable areas."
+  },
   "universal_guidelines": [
-    "Do not use generic AI-style centered layouts. Use split screens or card grids.",
-    "Add 'data-testid' to all interactive elements.",
-    "Use 'sonner' for toast notifications.",
-    "Use 'lucide-react' for icons.",
-    "Keep CSS clean and use Tailwind utility classes."
+    "Do NOT use gradients for text.",
+    "Always check for missing images and provide a fallback color block.",
+    "Use 'framer-motion' for all animations.",
+    "Ensure the Language Switcher is always visible and accessible.",
+    "Every interaction needs micro-animations - hover states, transitions.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "Subtle grain textures, noise overlays, custom cursors.",
+    "All interactive elements MUST include data-testid attribute."
   ]
 }
