@@ -1,133 +1,266 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Shield, FileCheck, Banknote, Landmark, FileText, Users, CheckCircle, Phone, ArrowRight, Star } from 'lucide-react';
+import { Shield, FileCheck, Banknote, Landmark, FileText, Users, CheckCircle, Phone, ArrowRight, Star, Award, Clock, Lock, HeartHandshake, Target, TrendingUp } from 'lucide-react';
 
 const Home = () => {
   const { t } = useLanguage();
 
+  const fadeUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
+  };
+
+  const scaleIn = {
+    initial: { opacity: 0, scale: 0.9 },
+    whileInView: { opacity: 1, scale: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.5 }
+  };
+
   return (
     <div className="min-h-screen bg-[#F5F7F9]">
-      {/* Hero Section */}
-      <section className="relative bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      {/* Hero Section with 3D Effect */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white">
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <div className="text-left">
-              <h1 className="text-4xl md:text-5xl font-bold text-[#1F2933] leading-tight mb-6" data-testid="hero-headline">
+            <motion.div
+              {...fadeUp}
+              className="text-left space-y-6 z-10"
+            >
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="inline-block"
+              >
+                <span className="px-4 py-2 bg-[#F39C12] text-white rounded-full text-sm font-semibold uppercase tracking-wider shadow-lg">
+                  {t('nav_home')}
+                </span>
+              </motion.div>
+
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight" data-testid="hero-headline">
                 {t('hero_headline')}
               </h1>
-              <p className="text-lg text-[#52606D] leading-relaxed mb-8" data-testid="hero-subtext">
+              <p className="text-lg md:text-xl text-white/90 leading-relaxed" data-testid="hero-subtext">
                 {t('hero_subtext')}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/contact"
-                  data-testid="hero-btn-contact"
-                  className="inline-flex items-center justify-center bg-[#0F7A4A] hover:bg-[#0b5e38] text-white px-8 py-4 rounded-md font-semibold text-lg transition-colors shadow-md"
-                >
-                  {t('hero_btn_contact')}
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-                <a
-                  href="tel:+919876543210"
-                  data-testid="hero-btn-help"
-                  className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-8 py-4 rounded-md font-semibold text-lg transition-colors shadow-md"
-                >
-                  <Phone className="mr-2 h-5 w-5" />
-                  {t('hero_btn_help')}
-                </a>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link
+                    to="/contact"
+                    data-testid="hero-btn-contact"
+                    className="group inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl"
+                  >
+                    {t('hero_btn_contact')}
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <a
+                    href="tel:+919876543210"
+                    data-testid="hero-btn-help"
+                    className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl"
+                  >
+                    <Phone className="mr-2 h-5 w-5" />
+                    {t('hero_btn_help')}
+                  </a>
+                </motion.div>
               </div>
-            </div>
 
-            {/* Right Image */}
-            <div className="hidden lg:block">
-              <img
-                src="https://images.unsplash.com/photo-1681505531034-8d67054e07f6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHw0fHxoYW5kc2hha2UlMjBidXNpbmVzcyUyMGNsb3NlJTIwdXB8ZW58MHx8fHwxNzcyNzA1MzcwfDA&ixlib=rb-4.1.0&q=85"
-                alt="Trust and partnership"
-                className="rounded-lg shadow-lg w-full h-auto"
-              />
+              {/* Trust Badges */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-wrap gap-6 pt-8"
+              >
+                <div className="flex items-center space-x-2 text-white/80">
+                  <CheckCircle className="h-5 w-5 text-[#F39C12]" />
+                  <span className="text-sm font-medium">100% Confidential</span>
+                </div>
+                <div className="flex items-center space-x-2 text-white/80">
+                  <Shield className="h-5 w-5 text-[#F39C12]" />
+                  <span className="text-sm font-medium">Trusted Service</span>
+                </div>
+                <div className="flex items-center space-x-2 text-white/80">
+                  <Award className="h-5 w-5 text-[#F39C12]" />
+                  <span className="text-sm font-medium">Expert Team</span>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Image with 3D Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="hidden lg:block relative"
+            >
+              <div className="relative">
+                <div className="absolute -top-6 -right-6 w-72 h-72 bg-[#F39C12] rounded-3xl opacity-20 blur-3xl"></div>
+                <motion.div
+                  whileHover={{ rotateY: 5, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-2 shadow-2xl"
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1758599543152-a73184816eba?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTF8MHwxfHNlYXJjaHwzfHxidXNpbmVzcyUyMGhhbmRzaGFrZSUyMHByb2Zlc3Npb25hbCUyMG1lZXRpbmd8ZW58MHx8fHwxNzcyNzA1ODIyfDA&ixlib=rb-4.1.0&q=85"
+                    alt="Professional Service"
+                    className="rounded-2xl w-full h-auto shadow-2xl"
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Curved Bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
+      </section>
+
+      {/* Stats Section */}
+      <motion.section
+        {...fadeUp}
+        className="relative -mt-16 z-10"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {[
+                { number: '500+', label: 'Happy Clients', icon: Users },
+                { number: '95%', label: 'Success Rate', icon: TrendingUp },
+                { number: '24/7', label: 'Support', icon: Clock },
+                { number: '100%', label: 'Secure', icon: Lock },
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center"
+                >
+                  <stat.icon className="h-8 w-8 text-[#0F7A4A] mx-auto mb-3" />
+                  <div className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-1">{stat.number}</div>
+                  <div className="text-sm text-[#52606D]">{stat.label}</div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* About Section */}
+      {/* About Section with 3D Cards */}
       <section className="py-16 md:py-24 bg-[#F5F7F9]" data-testid="about-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
+              {t('nav_about')}
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">
               {t('about_title')}
             </h2>
             <p className="text-lg text-[#52606D] leading-relaxed max-w-3xl mx-auto">
               {t('about_desc')}
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Users, title: t('about_card1_title'), desc: t('about_card1_desc') },
-              { icon: CheckCircle, title: t('about_card2_title'), desc: t('about_card2_desc') },
-              { icon: Shield, title: t('about_card3_title'), desc: t('about_card3_desc') },
+              { icon: Users, title: t('about_card1_title'), desc: t('about_card1_desc'), color: 'bg-blue-50', iconColor: 'text-blue-600' },
+              { icon: Target, title: t('about_card2_title'), desc: t('about_card2_desc'), color: 'bg-green-50', iconColor: 'text-green-600' },
+              { icon: Clock, title: t('about_card3_title'), desc: t('about_card3_desc'), color: 'bg-orange-50', iconColor: 'text-orange-600' },
             ].map((item, index) => (
-              <div
+              <motion.div
                 key={index}
+                {...scaleIn}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -10, rotateY: 5 }}
                 data-testid={`about-card-${index + 1}`}
-                className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300"
+                className="group bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_32px_rgba(15,122,74,0.15)] transition-all duration-300 overflow-hidden"
+                style={{ transformStyle: 'preserve-3d' }}
               >
-                <item.icon className="h-12 w-12 text-[#0F7A4A] mb-4" />
-                <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
-                <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
-              </div>
+                <div className="p-8">
+                  <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <item.icon className={`h-8 w-8 ${item.iconColor}`} />
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
+                  <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
+                </div>
+                <div className="h-2 bg-gradient-to-r from-[#0F7A4A] to-[#159F61] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Problems Section */}
+      {/* Problems Section with Bento Grid */}
       <section className="py-16 md:py-24 bg-white" data-testid="problems-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">
               {t('problems_title')}
             </h2>
             <p className="text-lg text-[#F39C12] font-semibold">
               {t('problems_subtitle')}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { title: t('problem1_title'), desc: t('problem1_desc'), icon: Shield },
-              { title: t('problem2_title'), desc: t('problem2_desc'), icon: FileCheck },
-              { title: t('problem3_title'), desc: t('problem3_desc'), icon: Banknote },
-              { title: t('problem4_title'), desc: t('problem4_desc'), icon: Landmark },
+              { title: t('problem1_title'), desc: t('problem1_desc'), icon: Shield, gradient: 'from-red-500 to-orange-500' },
+              { title: t('problem2_title'), desc: t('problem2_desc'), icon: FileCheck, gradient: 'from-blue-500 to-cyan-500' },
+              { title: t('problem3_title'), desc: t('problem3_desc'), icon: Banknote, gradient: 'from-green-500 to-emerald-500' },
+              { title: t('problem4_title'), desc: t('problem4_desc'), icon: Landmark, gradient: 'from-purple-500 to-pink-500' },
             ].map((problem, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.02, y: -5 }}
                 data-testid={`problem-card-${index + 1}`}
-                className="bg-[#F5F7F9] p-8 rounded-lg border-l-4 border-[#F39C12] hover:shadow-md transition-shadow"
+                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 border-2 border-gray-100 hover:border-[#F39C12] transition-all duration-300 overflow-hidden"
               >
-                <problem.icon className="h-10 w-10 text-[#F39C12] mb-4" />
-                <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{problem.title}</h3>
-                <p className="text-base text-[#52606D] leading-relaxed">{problem.desc}</p>
-              </div>
+                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${problem.gradient} opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity`}></div>
+                <div className="relative z-10">
+                  <div className={`w-14 h-14 bg-gradient-to-br ${problem.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform duration-300`}>
+                    <problem.icon className="h-7 w-7 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{problem.title}</h3>
+                  <p className="text-base text-[#52606D] leading-relaxed">{problem.desc}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Overview Section */}
+      {/* Services Section with 3D Cards */}
       <section className="py-16 md:py-24 bg-[#F5F7F9]" data-testid="services-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
+              {t('nav_services')}
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">
               {t('services_title')}
             </h2>
             <p className="text-lg text-[#52606D] max-w-3xl mx-auto">
               {t('services_subtitle')}
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -138,77 +271,93 @@ const Home = () => {
               { icon: FileText, title: t('service5_title'), desc: t('service5_desc') },
               { icon: Users, title: t('service6_title'), desc: t('service6_desc') },
             ].map((service, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
                 data-testid={`service-card-${index + 1}`}
-                className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md border border-gray-100 flex flex-col items-start gap-4 transition-all duration-300"
+                className="group relative bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] transition-all duration-500 overflow-hidden"
+                style={{ transformStyle: 'preserve-3d' }}
               >
-                <service.icon className="h-12 w-12 text-[#0F7A4A]" />
-                <h3 className="text-xl font-semibold text-[#1F2933]">{service.title}</h3>
-                <p className="text-base text-[#52606D] leading-relaxed">{service.desc}</p>
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative p-8 z-10">
+                  <div className="w-14 h-14 bg-[#0F7A4A]/10 group-hover:bg-white/20 rounded-xl flex items-center justify-center mb-6 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                    <service.icon className="h-7 w-7 text-[#0F7A4A] group-hover:text-white transition-colors duration-500" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#1F2933] group-hover:text-white mb-3 transition-colors duration-500">{service.title}</h3>
+                  <p className="text-base text-[#52606D] group-hover:text-white/90 leading-relaxed transition-colors duration-500">{service.desc}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <motion.div {...fadeUp} className="text-center mt-12">
             <Link
               to="/services"
               data-testid="view-all-services-btn"
-              className="inline-flex items-center justify-center border-2 border-[#0F7A4A] text-[#0F7A4A] hover:bg-[#0F7A4A] hover:text-white px-8 py-3 rounded-md font-semibold text-lg transition-colors"
+              className="inline-flex items-center justify-center bg-[#0F7A4A] hover:bg-[#0A5734] text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
             >
               View All Services
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
+      {/* Why Choose Us Section with Animated Numbers */}
       <section className="py-16 md:py-24 bg-white" data-testid="why-choose-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">
               {t('why_title')}
             </h2>
             <p className="text-lg text-[#52606D] max-w-3xl mx-auto">
               {t('why_subtitle')}
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: t('why1_title'), desc: t('why1_desc') },
-              { title: t('why2_title'), desc: t('why2_desc') },
-              { title: t('why3_title'), desc: t('why3_desc') },
-              { title: t('why4_title'), desc: t('why4_desc') },
+              { title: t('why1_title'), desc: t('why1_desc'), icon: HeartHandshake },
+              { title: t('why2_title'), desc: t('why2_desc'), icon: Award },
+              { title: t('why3_title'), desc: t('why3_desc'), icon: Lock },
+              { title: t('why4_title'), desc: t('why4_desc'), icon: Target },
             ].map((item, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
                 data-testid={`why-card-${index + 1}`}
-                className="text-center p-6 rounded-lg bg-[#F5F7F9] border-2 border-transparent hover:border-[#0F7A4A] transition-all"
+                className="group text-center p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border-2 border-transparent hover:border-[#0F7A4A] transition-all duration-300 shadow-lg hover:shadow-2xl"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#0F7A4A] text-white rounded-full mb-4 text-2xl font-bold">
-                  {index + 1}
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] text-white rounded-2xl mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+                  <item.icon className="h-10 w-10" />
                 </div>
                 <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
                 <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]" data-testid="testimonials-section">
+      {/* Testimonials Section with 3D Cards */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-[#F5F7F9] to-white" data-testid="testimonials-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">
               {t('testimonials_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
               {t('testimonials_subtitle')}
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -216,48 +365,80 @@ const Home = () => {
               { text: t('testimonial2_text'), name: t('testimonial2_name'), location: t('testimonial2_location') },
               { text: t('testimonial3_text'), name: t('testimonial3_name'), location: t('testimonial3_location') },
             ].map((testimonial, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -8, rotateY: 5 }}
                 data-testid={`testimonial-card-${index + 1}`}
-                className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#F39C12]"
+                className="relative bg-white rounded-2xl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] transition-all duration-500"
+                style={{ transformStyle: 'preserve-3d' }}
               >
-                <div className="flex mb-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="h-5 w-5 text-[#F39C12] fill-current" />
-                  ))}
+                <div className="absolute top-4 left-4 text-6xl text-[#0F7A4A]/10 font-serif">&ldquo;</div>
+                <div className="relative z-10">
+                  <div className="flex mb-4 justify-center">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star key={star} className="h-5 w-5 text-[#F39C12] fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-base text-[#52606D] leading-relaxed mb-6 italic">
+                    {testimonial.text}
+                  </p>
+                  <div className="border-t-2 border-[#F39C12] pt-4">
+                    <p className="text-base font-semibold text-[#1F2933]">{testimonial.name}</p>
+                    <p className="text-sm text-[#9AA5B1] flex items-center justify-center mt-1">
+                      <span className="w-2 h-2 bg-[#F39C12] rounded-full mr-2"></span>
+                      {testimonial.location}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-base text-[#52606D] leading-relaxed mb-4 italic">
-                  "{testimonial.text}"
-                </p>
-                <div className="border-t border-gray-200 pt-4">
-                  <p className="text-base font-semibold text-[#1F2933]">{testimonial.name}</p>
-                  <p className="text-sm text-[#9AA5B1]">{testimonial.location}</p>
-                </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-16 md:py-24 bg-[#0F7A4A]" data-testid="cta-section">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {t('cta_title')}
-          </h2>
-          <p className="text-lg text-white/90 mb-8">
-            {t('cta_subtitle')}
-          </p>
-          <Link
-            to="/contact"
-            data-testid="cta-contact-btn"
-            className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-10 py-4 rounded-md font-semibold text-lg transition-colors shadow-lg"
-          >
-            {t('cta_btn')}
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+      {/* Final CTA Section with 3D Effect */}
+      <motion.section
+        {...fadeUp}
+        className="relative py-20 md:py-32 bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] overflow-hidden"
+        data-testid="cta-section"
+      >
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
         </div>
-      </section>
+
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white">
+              {t('cta_title')}
+            </h2>
+            <p className="text-lg md:text-xl text-white/90">
+              {t('cta_subtitle')}
+            </p>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link
+                to="/contact"
+                data-testid="cta-contact-btn"
+                className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
+              >
+                {t('cta_btn')}
+                <ArrowRight className="ml-2 h-6 w-6" />
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
     </div>
   );
 };
