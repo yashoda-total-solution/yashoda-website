@@ -1,0 +1,130 @@
+{
+  "brand_identity": {
+    "name": "Yashoda Total Solution",
+    "mission": "To provide accessible legal and financial assistance to common people, ensuring justice and financial security.",
+    "tone": "Trustworthy, Professional, Empathetic, Simple, Authoritative but Accessible",
+    "target_audience": "Common citizens, rural/semi-urban residents, individuals seeking claim assistance. Mobile-first users.",
+    "values": ["Transparency", "Speed", "Accessibility", "Result-Oriented"]
+  },
+  "design_system": {
+    "theme": "light",
+    "colors": {
+      "primary": "#0F7A4A",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#F39C12",
+      "secondary_foreground": "#FFFFFF",
+      "background": "#F5F7F9",
+      "surface": "#FFFFFF",
+      "text": {
+        "primary": "#1F2933",
+        "secondary": "#52606D",
+        "muted": "#9AA5B1"
+      },
+      "border": "#E4E7EB",
+      "success": "#0F7A4A",
+      "error": "#CB2431",
+      "warning": "#F39C12"
+    },
+    "typography": {
+      "font_family": {
+        "headings": "Manrope, sans-serif",
+        "body": "Noto Sans, Noto Sans Devanagari, sans-serif"
+      },
+      "scale": {
+        "h1": "text-4xl md:text-5xl font-bold tracking-tight leading-tight",
+        "h2": "text-3xl md:text-4xl font-bold tracking-tight",
+        "h3": "text-2xl font-semibold text-primary",
+        "body_lg": "text-lg leading-relaxed",
+        "body_base": "text-base leading-relaxed text-slate-700",
+        "button": "text-base font-semibold tracking-wide uppercase"
+      }
+    },
+    "spacing": {
+      "container_padding": "px-4 md:px-8 lg:px-12",
+      "section_gap": "py-16 md:py-24",
+      "card_padding": "p-6 md:p-8"
+    },
+    "shadows": {
+      "card": "shadow-sm hover:shadow-md transition-shadow duration-200",
+      "floating": "shadow-lg"
+    },
+    "border_radius": {
+      "card": "rounded-lg",
+      "button": "rounded-md",
+      "input": "rounded-md"
+    }
+  },
+  "visual_assets": {
+    "logo_url": "https://customer-assets.emergentagent.com/job_1d118af0-25cf-4c4f-95a3-4dceda4b57a9/artifacts/boa41pzj_YASHODA%20TOTAL%20SOLUTION%201%20%281%29.png",
+    "images": [
+      {
+        "category": "hero",
+        "url": "https://images.unsplash.com/photo-1681505531034-8d67054e07f6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHw0fHxoYW5kc2hha2UlMjBidXNpbmVzcyUyMGNsb3NlJTIwdXB8ZW58MHx8fHwxNzcyNzA1MzcwfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Close up handshake over papers - Symbolizes agreement, settlement, and trust.",
+        "usage": "Home Page Hero or About Us Section"
+      },
+      {
+        "category": "beneficiary",
+        "url": "https://images.unsplash.com/photo-1766224241974-e6ddb60d2d4e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA0MTJ8MHwxfHNlYXJjaHwzfHxoYXBweSUyMGluZGlhbiUyMGZhbWlseSUyMHJ1cmFsJTIwaG9tZXxlbnwwfHx8fDE3NzI3MDUzNTZ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Happy Indian family in rural context.",
+        "usage": "Testimonials or 'Who We Help' section"
+      },
+      {
+        "category": "office_work",
+        "url": "https://images.unsplash.com/photo-1749545849681-37e7b302fdb6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHw0fHxsZWdhbCUyMGRvY3VtZW50cyUyMHBlbiUyMGNsZWFuJTIwZGVza3xlbnwwfHx8fDE3NzI3MDUzNTd8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Clean desk with notebooks and pen.",
+        "usage": "Services or Contact Page background"
+      },
+      {
+        "category": "professional_trust",
+        "url": "https://images.unsplash.com/photo-1696861270495-7f35c35c3273?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwyfHxoYW5kc2hha2UlMjBidXNpbmVzcyUyMGNsb3NlJTIwdXB8ZW58MHx8fHwxNzcyNzA1MzcwfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Professional handshake close up.",
+        "usage": "Alternate trust indicator"
+      }
+    ]
+  },
+  "components_strategy": {
+    "buttons": {
+      "primary": "bg-[#0F7A4A] hover:bg-[#0b5e38] text-white px-8 py-3 rounded-md font-semibold text-lg transition-colors shadow-sm",
+      "secondary": "bg-[#F39C12] hover:bg-[#d68910] text-white px-8 py-3 rounded-md font-semibold text-lg transition-colors shadow-sm",
+      "outline": "border-2 border-[#0F7A4A] text-[#0F7A4A] hover:bg-[#0F7A4A] hover:text-white px-6 py-2 rounded-md font-medium transition-colors"
+    },
+    "cards": {
+      "service_card": "bg-white p-8 rounded-lg shadow-sm hover:shadow-md border border-gray-100 flex flex-col items-start gap-4 transition-all duration-300",
+      "testimonial_card": "bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#F39C12]"
+    },
+    "navigation": {
+      "wrapper": "sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60",
+      "link": "text-[#1F2933] hover:text-[#0F7A4A] font-medium transition-colors text-base"
+    },
+    "forms": {
+      "input": "w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent bg-gray-50",
+      "label": "block text-sm font-medium text-gray-700 mb-1"
+    }
+  },
+  "layout_rules": {
+    "grid_system": "Use simple grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",
+    "mobile_first": "Ensure all tap targets are at least 44px. Text should not be smaller than 16px on mobile.",
+    "alignment": "Left align text for readability. Center align headings only in 'Hero' or 'Section Features'."
+  },
+  "multilingual_support": {
+    "strategy": "Use a context provider to manage 'lang' state (en, hi, mr). Ensure text content is loaded dynamically based on selection.",
+    "fonts": "Import 'Noto Sans Devanagari' from Google Fonts to ensure Hindi and Marathi render beautifully."
+  },
+  "instructions_to_main_agent": [
+    "STRICTLY NO GRADIENTS: Use solid colors as defined.",
+    "Target Audience is rural/semi-urban: Keep language simple and UI elements large and clear.",
+    "Trust is key: Use the handshake images and official-looking typography.",
+    "Mobile Responsiveness is priority #1.",
+    "Implement the 'Language Switcher' in the Navbar prominently.",
+    "Use Lucide-React icons for services (e.g., Gavel for Legal, Shield for Insurance, Banknote for Banking).",
+    "Ensure the contact form is very simple (Name, Phone, Issue). Phone number validation is important."
+  ],
+  "universal_guidelines": [
+    "Do not use generic AI-style centered layouts. Use split screens or card grids.",
+    "Add 'data-testid' to all interactive elements.",
+    "Use 'sonner' for toast notifications.",
+    "Use 'lucide-react' for icons.",
+    "Keep CSS clean and use Tailwind utility classes."
+  ]
+}
