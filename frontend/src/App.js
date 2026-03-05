@@ -4,6 +4,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import About from './pages/About';
 import './App.css';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<div className="min-h-screen flex items-center justify-center"><h1 className="text-3xl">About Us Page - Coming Soon</h1></div>} />
+            <Route path="/about" element={<About />} />
             <Route path="/services" element={<div className="min-h-screen flex items-center justify-center"><h1 className="text-3xl">Services Page - Coming Soon</h1></div>} />
             <Route path="/gallery" element={<div className="min-h-screen flex items-center justify-center"><h1 className="text-3xl">Gallery Page - Coming Soon</h1></div>} />
             <Route path="/contact" element={<div className="min-h-screen flex items-center justify-center"><h1 className="text-3xl">Contact Us Page - Coming Soon</h1></div>} />
