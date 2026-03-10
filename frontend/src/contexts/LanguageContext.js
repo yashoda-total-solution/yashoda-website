@@ -130,6 +130,84 @@ export const translations = {
     about_commitment3_desc: 'You can trust our advice. We always give honest and correct guidance to solve your problems.',
     about_cta_title: 'Ready to Get Help?',
     about_cta_desc: 'Contact us today and let us solve your insurance and legal problems.',
+    
+    // Services Page
+    services_page_title: 'Our Services',
+    services_page_subtitle: 'Complete assistance for all your insurance and legal needs',
+    services_intro_title: 'How We Help You',
+    services_intro_desc: 'Many people face problems when their insurance claims get rejected or when they do not know how to handle legal processes. Yashoda Total Solution helps you understand the process and supports you in resolving such issues. We provide step-by-step guidance in simple language so that everyone can understand.',
+    
+    // Service 1
+    service_detail1_title: 'Insurance Claim Settlement Assistance',
+    service_detail1_desc: 'Sometimes insurance companies delay or reject claims due to documentation issues or misunderstandings. Many people do not know what documents are needed or how to submit them properly.',
+    service_detail1_help_title: 'How We Help You:',
+    service_detail1_help1: 'We review your insurance policy and claim details',
+    service_detail1_help2: 'We help you collect and organize all necessary documents',
+    service_detail1_help3: 'We guide you in submitting the claim properly',
+    service_detail1_help4: 'We follow up with the insurance company until you receive your money',
+    
+    // Service 2
+    service_detail2_title: 'Insurance Dispute Resolution',
+    service_detail2_desc: 'When insurance companies reject claims or create disputes, customers often do not know what to do next. The rejection can be confusing and stressful.',
+    service_detail2_help_title: 'How We Help You:',
+    service_detail2_help1: 'We analyze why your claim was rejected',
+    service_detail2_help2: 'We check if the rejection is correct or wrong',
+    service_detail2_help3: 'We help you file complaints with the insurance company',
+    service_detail2_help4: 'We guide you through the dispute resolution process',
+    
+    // Service 3
+    service_detail3_title: 'Pradhan Mantri Suraksha Bima Yojana Assistance',
+    service_detail3_desc: 'Many people are enrolled in this government insurance scheme but do not know how to claim benefits. The scheme provides financial support in case of accidental death or disability, but the claim process can be confusing.',
+    service_detail3_help_title: 'How We Help You:',
+    service_detail3_help1: 'We explain the scheme benefits in simple language',
+    service_detail3_help2: 'We check if you are eligible to claim',
+    service_detail3_help3: 'We help you fill the claim forms correctly',
+    service_detail3_help4: 'We assist in submitting documents to the bank or insurance company',
+    
+    // Service 4
+    service_detail4_title: 'State Chief Minister Insurance Scheme Assistance',
+    service_detail4_desc: 'Some states provide insurance schemes for citizens. These schemes offer health insurance or accident coverage, but many people do not know how to use these benefits.',
+    service_detail4_help_title: 'How We Help You:',
+    service_detail4_help1: 'We explain which state schemes are available for you',
+    service_detail4_help2: 'We help you understand the coverage and benefits',
+    service_detail4_help3: 'We assist with registration if you are not enrolled',
+    service_detail4_help4: 'We support you with documentation and claim procedures',
+    
+    // Service 5
+    service_detail5_title: 'Banking and ATM Card Insurance Claim Support',
+    service_detail5_desc: 'Some bank accounts and ATM cards provide accidental insurance coverage. Many customers do not know about this insurance or how to claim it when needed.',
+    service_detail5_help_title: 'How We Help You:',
+    service_detail5_help1: 'We check if your bank account or card has insurance coverage',
+    service_detail5_help2: 'We explain what situations are covered',
+    service_detail5_help3: 'We help you prepare the claim documents',
+    service_detail5_help4: 'We assist in submitting the claim to your bank',
+    
+    // Service 6
+    service_detail6_title: 'Legal Notice Drafting and Processing Services',
+    service_detail6_desc: 'In certain disputes, a legal notice may be required to formally communicate your complaint. This is an important legal step that must be done properly.',
+    service_detail6_help_title: 'How We Help You:',
+    service_detail6_help1: 'We help you understand if a legal notice is needed',
+    service_detail6_help2: 'We prepare the legal notice in proper format',
+    service_detail6_help3: 'We ensure all legal requirements are met',
+    service_detail6_help4: 'We guide you through sending the notice properly',
+    
+    // Why Services Help
+    services_benefits_title: 'Why Our Services Help You',
+    services_benefits_subtitle: 'We make difficult processes simple and easy',
+    services_benefit1_title: 'Professional Guidance',
+    services_benefit1_desc: 'Our experienced team guides you through every step of the process.',
+    services_benefit2_title: 'Clear Understanding',
+    services_benefit2_desc: 'We explain everything in simple language that you can easily understand.',
+    services_benefit3_title: 'Proper Documentation',
+    services_benefit3_desc: 'We help you prepare all documents correctly so there are no mistakes.',
+    services_benefit4_title: 'Step by Step Assistance',
+    services_benefit4_desc: 'We support you from start to finish until your problem is solved.',
+    services_benefit5_title: 'Confidential Handling',
+    services_benefit5_desc: 'Your personal information is completely safe and private with us.',
+    
+    // Services CTA
+    services_cta_title: 'Need Help with Insurance or Legal Issues?',
+    services_cta_desc: 'If you are facing problems with insurance claims or legal matters, Yashoda Total Solution is here to guide you. Contact us today for assistance.',
   },
   hi: {
     // Navbar
