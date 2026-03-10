@@ -54,6 +54,20 @@ class ReviewCreate(BaseModel):
     rating: int = Field(ge=1, le=5)
     review_message: str
 
+class Contact(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    phone: str
+    message: str
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class ContactCreate(BaseModel):
+    name: str
+    phone: str
+    message: str
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
@@ -106,6 +120,18 @@ async def get_reviews():
             review['created_at'] = datetime.fromisoformat(review['created_at'])
     
     return reviews
+
+@api_router.post("/contacts", response_model=Contact)
+async def create_contact(input: ContactCreate):
+    contact_dict = input.model_dump()
+    contact_obj = Contact(**contact_dict)
+    
+    # Convert to dict and serialize datetime to ISO string for MongoDB
+    doc = contact_obj.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    
+    _ = await db.contacts.insert_one(doc)
+    return contact_obj
 
 # Include the router in the main app
 app.include_router(api_router)
