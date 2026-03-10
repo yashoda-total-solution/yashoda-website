@@ -37,6 +37,23 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+class Review(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    customer_name: str
+    city: str
+    rating: int = Field(ge=1, le=5)  # Rating between 1 and 5
+    review_message: str
+    approved: bool = False
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class ReviewCreate(BaseModel):
+    customer_name: str
+    city: str
+    rating: int = Field(ge=1, le=5)
+    review_message: str
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
@@ -65,6 +82,30 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+@api_router.post("/reviews", response_model=Review)
+async def create_review(input: ReviewCreate):
+    review_dict = input.model_dump()
+    review_obj = Review(**review_dict)
+    
+    # Convert to dict and serialize datetime to ISO string for MongoDB
+    doc = review_obj.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    
+    _ = await db.reviews.insert_one(doc)
+    return review_obj
+
+@api_router.get("/reviews", response_model=List[Review])
+async def get_reviews():
+    # Get only approved reviews, exclude MongoDB's _id field
+    reviews = await db.reviews.find({"approved": True}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    
+    # Convert ISO string timestamps back to datetime objects
+    for review in reviews:
+        if isinstance(review['created_at'], str):
+            review['created_at'] = datetime.fromisoformat(review['created_at'])
+    
+    return reviews
 
 # Include the router in the main app
 app.include_router(api_router)
