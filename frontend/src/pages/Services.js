@@ -54,10 +54,10 @@ const Services = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12 text-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              How We Help You
+              {t('services_intro_title')}
             </h2>
             <p className="text-lg text-[#52606D] leading-relaxed max-w-4xl mx-auto">
-              Many people face problems when their insurance claims get rejected or when they do not know how to handle legal processes. Yashoda Total Solution helps you understand the process and supports you in resolving such issues. We provide step-by-step guidance in simple language so that everyone can understand.
+              {t('services_intro_desc')}
             </p>
           </motion.div>
         </div>
@@ -68,10 +68,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">
-              Our Detailed Services
+              {t('services_detail_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Complete support for all insurance and legal matters
+              {t('services_detail_subtitle')}
             </p>
           </motion.div>
 
@@ -113,20 +113,20 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">
-              Why Our Services Help You
+              {t('services_benefits_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              We make difficult processes simple and easy
+              {t('services_benefits_subtitle')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {icon: Users, title: 'Professional Guidance', desc: 'Our experienced team guides you through every step of the process.', color: 'bg-blue-50', iconBg: 'bg-blue-600'},
-              {icon: Target, title: 'Clear Understanding', desc: 'We explain everything in simple language that you can easily understand.', color: 'bg-green-50', iconBg: 'bg-green-600'},
-              {icon: FileCheck, title: 'Proper Documentation', desc: 'We help you prepare all documents correctly so there are no mistakes.', color: 'bg-orange-50', iconBg: 'bg-orange-600'},
-              {icon: CheckCircle, title: 'Step by Step Assistance', desc: 'We support you from start to finish until your problem is solved.', color: 'bg-purple-50', iconBg: 'bg-purple-600'},
-              {icon: Lock, title: 'Confidential Handling', desc: 'Your personal information is completely safe and private with us.', color: 'bg-red-50', iconBg: 'bg-red-600'},
+              {icon: Users, title: t('services_benefit1_title'), desc: t('services_benefit1_desc'), color: 'bg-blue-50', iconBg: 'bg-blue-600'},
+              {icon: Target, title: t('services_benefit2_title'), desc: t('services_benefit2_desc'), color: 'bg-green-50', iconBg: 'bg-green-600'},
+              {icon: FileCheck, title: t('services_benefit3_title'), desc: t('services_benefit3_desc'), color: 'bg-orange-50', iconBg: 'bg-orange-600'},
+              {icon: CheckCircle, title: t('services_benefit4_title'), desc: t('services_benefit4_desc'), color: 'bg-purple-50', iconBg: 'bg-purple-600'},
+              {icon: Lock, title: t('services_benefit5_title'), desc: t('services_benefit5_desc'), color: 'bg-red-50', iconBg: 'bg-red-600'},
             ].map((benefit, index) => (
               <motion.div
                 key={index}
@@ -163,10 +163,10 @@ const Services = () => {
             className="space-y-8"
           >
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Need Help with Insurance or Legal Issues?
+              {t('services_cta_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90">
-              If you are facing problems with insurance claims or legal matters, Yashoda Total Solution is here to guide you. Contact us today for assistance.
+              {t('services_cta_desc')}
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}

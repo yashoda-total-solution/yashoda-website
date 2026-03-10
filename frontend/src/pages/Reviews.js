@@ -81,10 +81,10 @@ const Reviews = () => {
               {t('nav_reviews')}
             </span>
             <h1 className="text-4xl md:text-6xl font-bold mt-6 mb-4" data-testid="reviews-hero-title">
-              Submit Your Review
+              {t('reviews_page_title')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
-              Share your experience and help others make informed decisions
+              {t('reviews_page_subtitle')}
             </p>
           </motion.div>
         </div>
@@ -102,10 +102,10 @@ const Reviews = () => {
             >
               <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-                  Share Your Feedback
+                  {t('reviews_form_title')}
                 </h2>
                 <p className="text-lg text-[#52606D]">
-                  We value your opinion. Please share your experience with Yashoda Total Solution.
+                  {t('reviews_form_subtitle')}
                 </p>
               </div>
 
@@ -114,7 +114,7 @@ const Reviews = () => {
                 <div className="relative">
                   <label className="block text-sm font-semibold text-[#1F2933] mb-2">
                     <User className="inline h-5 w-5 mr-2 text-[#0F7A4A]" />
-                    Your Name *
+                    {t('reviews_name_label')} *
                   </label>
                   <input
                     type="text"
@@ -124,7 +124,7 @@ const Reviews = () => {
                     required
                     data-testid="review-name-input"
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-[#0F7A4A] focus:outline-none transition-colors text-base"
-                    placeholder="Enter your full name"
+                    placeholder={t('reviews_name_placeholder')}
                   />
                 </div>
 
@@ -132,7 +132,7 @@ const Reviews = () => {
                 <div className="relative">
                   <label className="block text-sm font-semibold text-[#1F2933] mb-2">
                     <MapPin className="inline h-5 w-5 mr-2 text-[#0F7A4A]" />
-                    Your City *
+                    {t('reviews_city_label')} *
                   </label>
                   <input
                     type="text"
@@ -142,7 +142,7 @@ const Reviews = () => {
                     required
                     data-testid="review-city-input"
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-[#0F7A4A] focus:outline-none transition-colors text-base"
-                    placeholder="Enter your city"
+                    placeholder={t('reviews_city_placeholder')}
                   />
                 </div>
 
@@ -150,7 +150,7 @@ const Reviews = () => {
                 <div className="relative">
                   <label className="block text-sm font-semibold text-[#1F2933] mb-3">
                     <Star className="inline h-5 w-5 mr-2 text-[#0F7A4A]" />
-                    Your Rating *
+                    {t('reviews_rating_label')} *
                   </label>
                   <div className="flex items-center space-x-2">
                     {[1, 2, 3, 4, 5].map((star) => (
@@ -186,7 +186,7 @@ const Reviews = () => {
                 <div className="relative">
                   <label className="block text-sm font-semibold text-[#1F2933] mb-2">
                     <MessageSquare className="inline h-5 w-5 mr-2 text-[#0F7A4A]" />
-                    Your Review *
+                    {t('reviews_message_label')} *
                   </label>
                   <textarea
                     name="review_message"
@@ -196,7 +196,7 @@ const Reviews = () => {
                     rows="6"
                     data-testid="review-message-input"
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-[#0F7A4A] focus:outline-none transition-colors text-base resize-none"
-                    placeholder="Share your experience with us..."
+                    placeholder={t('reviews_message_placeholder')}
                   ></textarea>
                 </div>
 
@@ -210,11 +210,11 @@ const Reviews = () => {
                   className="w-full bg-gradient-to-r from-[#0F7A4A] to-[#159F61] hover:from-[#0A5734] hover:to-[#0F7A4A] text-white px-8 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   {loading ? (
-                    <span>Submitting...</span>
+                    <span>{t('reviews_submitting')}</span>
                   ) : (
                     <>
                       <Send className="h-6 w-6 mr-2" />
-                      Submit Review
+                      {t('reviews_submit_btn')}
                     </>
                   )}
                 </motion.button>
@@ -238,10 +238,10 @@ const Reviews = () => {
               </motion.div>
               
               <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-                Thank You for Your Feedback!
+                {t('reviews_success_title')}
               </h2>
               <p className="text-lg text-[#52606D] mb-8">
-                Your review will be published after approval. We appreciate you taking the time to share your experience.
+                {t('reviews_success_message')}
               </p>
               
               <motion.button
@@ -250,7 +250,7 @@ const Reviews = () => {
                 onClick={() => setSubmitted(false)}
                 className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg"
               >
-                Submit Another Review
+                {t('reviews_another_btn')}
               </motion.button>
             </motion.div>
           )}
@@ -262,23 +262,23 @@ const Reviews = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              Why Your Review Matters
+              {t('reviews_why_title')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               {[
                 {
-                  title: 'Helps Others',
-                  desc: 'Your honest feedback helps others make informed decisions about our services.',
+                  title: t('reviews_why1_title'),
+                  desc: t('reviews_why1_desc'),
                   icon: '👥'
                 },
                 {
-                  title: 'Improves Service',
-                  desc: 'We use your feedback to continuously improve and provide better service.',
+                  title: t('reviews_why2_title'),
+                  desc: t('reviews_why2_desc'),
                   icon: '📈'
                 },
                 {
-                  title: 'Builds Trust',
-                  desc: 'Authentic reviews build trust and transparency in our community.',
+                  title: t('reviews_why3_title'),
+                  desc: t('reviews_why3_desc'),
                   icon: '🤝'
                 }
               ].map((item, index) => (
