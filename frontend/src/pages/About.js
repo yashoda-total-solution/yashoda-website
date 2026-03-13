@@ -160,189 +160,398 @@ const About = () => {
     },
   ];
 
+  const fadeUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
+  };
+
+  const scaleIn = {
+    initial: { opacity: 0, scale: 0.9 },
+    whileInView: { opacity: 1, scale: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.5 }
+  };
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero - Compact */}
-      <section className="bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-2xl md:text-4xl font-bold mb-2">{txt.title}</h1>
-          <p className="text-sm md:text-base opacity-90">{txt.hero_subtitle}</p>
+    <div className="min-h-screen bg-[#F5F7F9]">
+      {/* Hero Section with 3D Effect */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="px-4 py-2 bg-[#F39C12] text-white rounded-full text-sm font-semibold uppercase tracking-wider shadow-lg">
+              About Us
+            </span>
+            <h1 className="text-4xl md:text-6xl font-bold mt-6 mb-4">{txt.title}</h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">{txt.hero_subtitle}</p>
+          </motion.div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
+      </section>
+
+      {/* About Us Section with Image */}
+      <section className="relative -mt-16 z-10 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            {...fadeUp}
+            className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-14 h-14 bg-[#0F7A4A]/10 rounded-2xl flex items-center justify-center">
+                    <Shield className="h-7 w-7 text-[#0F7A4A]" />
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933]">About Us</h2>
+                </div>
+                <div className="space-y-4 text-base text-[#52606D] leading-relaxed">
+                  <p>{txt.about_intro}</p>
+                  <p>{txt.about_p2}</p>
+                </div>
+              </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="hidden lg:block"
+              >
+                <img
+                  src="https://customer-assets.emergentagent.com/job_1f2a625c-d95e-4402-90c8-36a45eafc6d8/artifacts/02wr7udq_image.png"
+                  alt="Insurance Services"
+                  className="w-full h-auto rounded-2xl"
+                />
+              </motion.div>
+            </div>
+            <div className="space-y-4 text-base text-[#52606D] leading-relaxed mt-6">
+              <p>{txt.about_p3}</p>
+              <p>{txt.about_p4}</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* About Us - Compact */}
-      <section className="py-8 md:py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center gap-3 mb-4">
-            <Shield className="h-8 w-8 text-[#0F7A4A]" />
-            <h2 className="text-xl md:text-2xl font-bold text-[#1F2933]">About Us</h2>
-          </div>
-          <div className="space-y-3 text-sm md:text-base text-[#52606D] leading-relaxed">
-            <p>{txt.about_intro}</p>
-            <p>{txt.about_p2}</p>
-            <p>{txt.about_p3}</p>
-            <p>{txt.about_p4}</p>
-          </div>
-        </div>
-      </section>
+      {/* What We Do Section with 3D Cards */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
+              What We Do
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">{txt.whatwedo_title}</h2>
+            <p className="text-lg text-[#52606D] max-w-3xl mx-auto">{txt.whatwedo_intro}</p>
+          </motion.div>
 
-      {/* What We Do - Clean List */}
-      <section className="py-8 md:py-12 bg-[#F5F7F9]">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center gap-3 mb-4">
-            <FileCheck className="h-8 w-8 text-[#0F7A4A]" />
-            <h2 className="text-xl md:text-2xl font-bold text-[#1F2933]">{txt.whatwedo_title}</h2>
-          </div>
-          <p className="text-sm md:text-base text-[#52606D] mb-4">{txt.whatwedo_intro}</p>
-          <div className="grid md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {txt.whatwedo_items.map((item, i) => (
-              <div key={i} className="flex items-start gap-2 bg-white p-3 rounded-lg">
-                <CheckCircle className="h-5 w-5 text-[#0F7A4A] flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-[#52606D]">{item}</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-sm md:text-base text-[#52606D] mt-4">{txt.whatwedo_outro}</p>
-        </div>
-      </section>
-
-      {/* Features - Compact Grid */}
-      <section className="py-8 md:py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center gap-3 mb-3">
-            <Target className="h-8 w-8 text-[#F39C12]" />
-            <h2 className="text-xl md:text-2xl font-bold text-[#1F2933]">{txt.features_title}</h2>
-          </div>
-          <p className="text-sm md:text-base text-[#52606D] mb-3">{txt.features_intro}</p>
-          <p className="text-sm md:text-base font-semibold text-[#1F2933] mb-4">{txt.features_subtitle}</p>
-          <div className="grid md:grid-cols-2 gap-3">
-            {txt.features.map((feature, i) => (
-              <div key={i} className="flex items-start gap-2 bg-[#F5F7F9] p-3 rounded-lg">
-                <div className="w-5 h-5 bg-[#0F7A4A] rounded flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-white text-xs font-bold">{i + 1}</span>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 border-2 border-gray-100 hover:border-[#0F7A4A] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_32px_rgba(15,122,74,0.15)]"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-[#0F7A4A] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+                    <CheckCircle className="h-6 w-6 text-white" />
+                  </div>
+                  <p className="text-base text-[#52606D] leading-relaxed pt-2">{item}</p>
                 </div>
-                <span className="text-sm text-[#52606D]">{feature}</span>
-              </div>
+              </motion.div>
             ))}
+          </div>
+
+          <motion.div {...fadeUp} className="mt-8">
+            <p className="text-lg text-center text-[#52606D] leading-relaxed max-w-4xl mx-auto bg-[#F5F7F9] p-6 rounded-2xl">
+              {txt.whatwedo_outro}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section with Vector Image */}
+      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <span className="px-4 py-2 bg-[#F39C12]/10 text-[#F39C12] rounded-full text-sm font-semibold uppercase tracking-wider">
+              Our Features
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">{txt.features_title}</h2>
+            <p className="text-lg text-[#52606D] max-w-3xl mx-auto">{txt.features_intro}</p>
+            <p className="text-lg font-semibold text-[#1F2933] mt-4">{txt.features_subtitle}</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {txt.features.map((feature, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_32px_rgba(15,122,74,0.15)] transition-all duration-300"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-lg flex items-center justify-center flex-shrink-0 shadow-md">
+                      <span className="text-white text-sm font-bold">{i + 1}</span>
+                    </div>
+                    <p className="text-base text-[#52606D] leading-relaxed">{feature}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="hidden lg:block"
+            >
+              <img
+                src="https://customer-assets.emergentagent.com/job_1f2a625c-d95e-4402-90c8-36a45eafc6d8/artifacts/50aezzhw_image.png"
+                alt="Our Features"
+                className="w-full h-auto rounded-2xl"
+              />
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Strategy - Compact */}
-      <section className="py-8 md:py-12 bg-[#F5F7F9]">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center gap-3 mb-3">
-            <TrendingUp className="h-8 w-8 text-[#0F7A4A]" />
-            <h2 className="text-xl md:text-2xl font-bold text-[#1F2933]">{txt.strategy_title}</h2>
-          </div>
-          <p className="text-sm md:text-base text-[#52606D] mb-4">{txt.strategy_intro}</p>
-          <div className="space-y-2">
+      {/* Strategy Section with 3D Cards */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
+              Strategy
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">{txt.strategy_title}</h2>
+            <p className="text-lg text-[#52606D] max-w-3xl mx-auto">{txt.strategy_intro}</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {txt.strategy_items.map((item, i) => (
-              <div key={i} className="flex items-start gap-2 bg-white p-3 rounded-lg border-l-4 border-[#0F7A4A]">
-                <span className="w-6 h-6 bg-[#0F7A4A] text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
-                  {i + 1}
-                </span>
-                <span className="text-sm text-[#52606D]">{item}</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-sm md:text-base text-[#52606D] mt-4">{txt.strategy_outro}</p>
-        </div>
-      </section>
-
-      {/* Approach - Compact Grid */}
-      <section className="py-8 md:py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center gap-3 mb-4">
-            <HeartHandshake className="h-8 w-8 text-[#0F7A4A]" />
-            <h2 className="text-xl md:text-2xl font-bold text-[#1F2933]">{txt.approach_title}</h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-            {txt.approach_items.map((item, i) => (
-              <div key={i} className="bg-gradient-to-br from-[#0F7A4A] to-[#159F61] text-white p-4 rounded-lg">
-                <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle className="h-5 w-5" />
-                  <span className="text-lg font-bold opacity-40">{i + 1}</span>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="relative bg-white rounded-2xl p-6 border-2 border-[#0F7A4A]/20 hover:border-[#0F7A4A] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_32px_rgba(15,122,74,0.15)]"
+              >
+                <div className="absolute top-4 right-4 w-12 h-12 bg-[#0F7A4A]/10 rounded-full flex items-center justify-center">
+                  <span className="text-xl font-bold text-[#0F7A4A]">{i + 1}</span>
                 </div>
-                <p className="text-sm">{item}</p>
-              </div>
+                <div className="pr-12">
+                  <TrendingUp className="h-8 w-8 text-[#0F7A4A] mb-4" />
+                  <p className="text-base text-[#52606D] leading-relaxed">{item}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div {...fadeUp} className="mt-12">
+            <div className="bg-gradient-to-br from-[#0F7A4A] to-[#159F61] text-white p-8 rounded-2xl shadow-xl text-center">
+              <Clock className="h-12 w-12 mx-auto mb-4" />
+              <p className="text-lg leading-relaxed">{txt.strategy_outro}</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Approach Section with 3D Cards */}
+      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
+              Our Approach
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">{txt.approach_title}</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {txt.approach_items.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-gradient-to-br from-[#0F7A4A] to-[#159F61] text-white rounded-2xl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.3)] transition-all duration-500"
+                style={{ transformStyle: 'preserve-3d' }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                    <CheckCircle className="h-6 w-6" />
+                  </div>
+                  <span className="text-2xl font-bold opacity-40">{i + 1}</span>
+                </div>
+                <p className="text-base leading-relaxed">{item}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Commitment - Compact */}
-      <section className="py-8 md:py-12 bg-[#F5F7F9]">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <h2 className="text-xl md:text-2xl font-bold text-[#1F2933] mb-3">{txt.commitment_title}</h2>
-          <p className="text-sm md:text-base text-[#52606D] leading-relaxed">{txt.commitment_text}</p>
+      {/* Commitment Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            {...fadeUp}
+            className="relative bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] rounded-3xl overflow-hidden shadow-2xl"
+          >
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
+            </div>
+            <div className="relative z-10 p-12 text-center text-white">
+              <Award className="h-16 w-16 mx-auto mb-6" />
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">{txt.commitment_title}</h2>
+              <p className="text-lg leading-relaxed max-w-4xl mx-auto">{txt.commitment_text}</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Team - Compact */}
-      <section className="py-8 md:py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-xl md:text-2xl font-bold text-[#1F2933] text-center mb-6">{txt.team_title}</h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            {teamMembers.map((member) => {
+      {/* Team Section with 3D Cards */}
+      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
+              Our Team
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4">{txt.team_title}</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => {
               const Icon = member.icon;
               return (
-                <div key={member.key} className="bg-white rounded-lg overflow-hidden shadow-md flex flex-col">
-                  <img src={member.image} alt={member.name || member.title} className="w-full h-48 object-cover" />
-                  <div className="p-4 flex flex-col flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Icon className="h-5 w-5" style={{ color: member.color }} />
-                      <h3 className="font-bold text-[#1F2933]">{member.title}</h3>
+                <motion.div
+                  key={member.key}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="group bg-white rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] transition-all duration-500"
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  <div className="relative overflow-hidden">
+                    <motion.img
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                      src={member.image}
+                      alt={member.name || member.title}
+                      className="w-full h-64 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: `${member.color}20` }}>
+                        <Icon className="h-6 w-6" style={{ color: member.color }} />
+                      </div>
+                      <h3 className="text-xl font-bold text-[#1F2933]">{member.title}</h3>
                     </div>
-                    <div className="min-h-[28px] mb-3">
-                      {member.name && <p className="text-sm font-semibold" style={{ color: member.color }}>{member.name}</p>}
-                    </div>
-                    <button 
-                      onClick={() => setActiveProfile(member)} 
-                      className="mt-auto w-full py-2 px-4 rounded-lg font-semibold text-sm text-white transition-all hover:opacity-90 flex items-center justify-center gap-2"
+                    {member.name && (
+                      <p className="text-base font-semibold mb-4" style={{ color: member.color }}>
+                        {member.name}
+                      </p>
+                    )}
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setActiveProfile(member)}
+                      className="w-full py-3 px-4 rounded-xl font-semibold text-base text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                       style={{ backgroundColor: member.color }}
                     >
-                      <Eye className="h-4 w-4" />
+                      <Eye className="h-5 w-5" />
                       {txt.view_profile}
-                    </button>
+                    </motion.button>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Modal */}
+      {/* Modal with Enhanced Design */}
       <AnimatePresence>
         {activeProfile && (
-          <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={() => setActiveProfile(null)}>
-            <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} onClick={e => e.stopPropagation()} className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    {React.createElement(activeProfile.icon, { className: 'h-6 w-6', style: { color: activeProfile.color } })}
-                    <h3 className="text-xl font-bold">{activeProfile.title}</h3>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setActiveProfile(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              onClick={e => e.stopPropagation()}
+              className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            >
+              <div className="p-8">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${activeProfile.color}20` }}>
+                      {React.createElement(activeProfile.icon, { className: 'h-6 w-6', style: { color: activeProfile.color } })}
+                    </div>
+                    <h3 className="text-2xl font-bold text-[#1F2933]">{activeProfile.title}</h3>
                   </div>
-                  <button onClick={() => setActiveProfile(null)} className="text-gray-500 hover:text-gray-700">
-                    <X className="h-5 w-5" />
-                  </button>
+                  <motion.button
+                    whileHover={{ scale: 1.1, rotate: 90 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setActiveProfile(null)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <X className="h-6 w-6" />
+                  </motion.button>
                 </div>
-                {activeProfile.name && <p className="font-semibold mb-4" style={{ color: activeProfile.color }}>{activeProfile.name}</p>}
-                {activeProfile.descriptions.map((desc, i) => (
-                  <p key={i} className="text-sm text-[#52606D] mb-3">{desc}</p>
-                ))}
-                {activeProfile.highlightType === 'quote' ? (
-                  <blockquote className="border-l-4 border-[#F39C12] pl-4 italic text-sm font-medium mt-4">"{activeProfile.highlight}"</blockquote>
-                ) : (
-                  <p className="text-sm font-semibold mt-4" style={{ color: activeProfile.color }}>{activeProfile.highlight}</p>
+                {activeProfile.name && (
+                  <p className="text-lg font-semibold mb-6" style={{ color: activeProfile.color }}>
+                    {activeProfile.name}
+                  </p>
                 )}
-                <button onClick={() => setActiveProfile(null)} className="mt-6 w-full py-2 rounded-lg text-white font-semibold" style={{ backgroundColor: activeProfile.color }}>
+                <div className="space-y-4">
+                  {activeProfile.descriptions.map((desc, i) => (
+                    <p key={i} className="text-base text-[#52606D] leading-relaxed">{desc}</p>
+                  ))}
+                </div>
+                {activeProfile.highlightType === 'quote' ? (
+                  <blockquote className="border-l-4 border-[#F39C12] pl-6 py-4 italic text-base font-medium mt-6 bg-[#F39C12]/5 rounded-r-xl">
+                    "{activeProfile.highlight}"
+                  </blockquote>
+                ) : (
+                  <p className="text-base font-semibold mt-6 p-4 rounded-xl" style={{ color: activeProfile.color, backgroundColor: `${activeProfile.color}10` }}>
+                    {activeProfile.highlight}
+                  </p>
+                )}
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setActiveProfile(null)}
+                  className="mt-8 w-full py-4 rounded-xl text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  style={{ backgroundColor: activeProfile.color }}
+                >
                   {txt.close}
-                </button>
+                </motion.button>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
