@@ -223,100 +223,181 @@ const About = () => {
         <div className="absolute bottom-0 left-0 right-0 h-12 bg-white" style={{ clipPath: 'ellipse(70% 100% at 50% 100%)' }} />
       </section>
 
-      {/* Main About Section - Flowing Design */}
-      <section className="relative py-12 md:py-20">
+      {/* Main About Section - Infographic Style */}
+      <section className="relative py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Vector Illustration */}
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="order-2 lg:order-1">
-              <img src="https://static.prod-images.emergentagent.com/jobs/718385f4-09ea-441f-8141-0b3025908384/images/60b49d6feac43a6f61cc851b2b2fd6a08ef5f5be6af5242c2e99f9be79fd0523.png" alt="Insurance Consultation" className="w-full h-auto" />
-            </motion.div>
+          {/* Central Visual Diagram */}
+          <motion.div {...fadeUp} className="mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Founded Block */}
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+                <div className="relative inline-block">
+                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-full flex items-center justify-center mb-4">
+                    <Shield className="h-12 w-12 text-white" />
+                  </div>
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-[#F39C12] text-white px-3 py-1 rounded-full text-xs font-bold">2025</div>
+                </div>
+                <h3 className="font-bold text-[#1F2933] mt-4 mb-2">Established</h3>
+                <p className="text-sm text-[#52606D]">Professional Service Provider</p>
+              </motion.div>
 
-            {/* Text Content - Clean & Minimal */}
-            <motion.div {...fadeUp} className="order-1 lg:order-2 space-y-5">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-1 h-12 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12] rounded-full" />
-                <h2 className="text-2xl md:text-3xl font-bold text-[#1F2933]">Who We Are</h2>
-              </div>
-              <p className="text-[#52606D] leading-relaxed">{txt.desc1}</p>
-              <p className="text-[#52606D] leading-relaxed">{txt.desc2}</p>
-            </motion.div>
-          </div>
+              {/* Services Block */}
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-center">
+                <div className="w-24 h-24 mx-auto bg-gradient-to-br from-[#F39C12] to-[#E67E22] rounded-full flex items-center justify-center mb-4">
+                  <FileCheck className="h-12 w-12 text-white" />
+                </div>
+                <h3 className="font-bold text-[#1F2933] mb-2">Insurance Claims</h3>
+                <p className="text-sm text-[#52606D]">Settlement & Dispute Resolution</p>
+              </motion.div>
 
-          {/* Additional Content Below */}
-          <motion.div {...fadeUp} className="mt-12 space-y-4 text-[#52606D] leading-relaxed">
-            <p>{txt.desc3}</p>
-            <p>{txt.desc4}</p>
+              {/* Support Block */}
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-center">
+                <div className="w-24 h-24 mx-auto bg-gradient-to-br from-[#3B82F6] to-[#2563EB] rounded-full flex items-center justify-center mb-4">
+                  <HeartHandshake className="h-12 w-12 text-white" />
+                </div>
+                <h3 className="font-bold text-[#1F2933] mb-2">Legal Support</h3>
+                <p className="text-sm text-[#52606D]">Documentation & Coordination</p>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Flow Diagram */}
+          <motion.div {...fadeUp} className="relative">
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#0F7A4A] to-[#0F7A4A]" />
+              <h2 className="text-xl md:text-2xl font-bold text-[#1F2933] whitespace-nowrap">Our Role</h2>
+              <div className="flex-1 h-px bg-gradient-to-l from-transparent via-[#0F7A4A] to-[#0F7A4A]" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              {[
+                { icon: Users, title: "Clients", color: "#0F7A4A" },
+                { icon: ArrowRight, title: "We Bridge", color: "#F39C12" },
+                { icon: Shield, title: "Insurance Cos.", color: "#3B82F6" },
+                { icon: Target, title: "Resolution", color: "#10B981" }
+              ].map((item, index) => (
+                <motion.div key={index} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="relative">
+                  <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <item.icon className="h-10 w-10 mx-auto mb-3" style={{ color: item.color }} />
+                    <p className="font-semibold text-[#1F2933]">{item.title}</p>
+                  </div>
+                  {index < 3 && (
+                    <div className="hidden md:block absolute top-1/2 -right-2 transform translate-x-1/2 -translate-y-1/2 z-10">
+                      <ArrowRight className="h-6 w-6 text-[#F39C12]" />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* What We Do Section - Icon List Style */}
-      <section className="py-12 md:py-20 bg-[#F5F7F9]">
+      {/* What We Do Section - Visual Diagram */}
+      <section className="py-12 md:py-16 bg-[#F5F7F9]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-10">
-            <h2 className="text-2xl md:text-4xl font-bold text-[#1F2933] mb-2" data-testid="about-whatwedo-title">{txt.whatwedo_title}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1F2933] mb-2" data-testid="about-whatwedo-title">{txt.whatwedo_title}</h2>
             <div className="w-16 h-1 bg-[#F39C12] mx-auto rounded-full" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
-            {txt.whatwedo_items.map((item, index) => (
-              <motion.div key={index} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.05 }} className="flex items-center space-x-3 py-2">
-                <CheckCircle className="h-5 w-5 text-[#0F7A4A] flex-shrink-0" />
-                <span className="text-[#52606D]">{item}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Features - Pictograph Style */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Content */}
-            <motion.div {...fadeUp}>
-              <h2 className="text-2xl md:text-4xl font-bold text-[#1F2933] mb-6">{txt.features_title}</h2>
-              <div className="grid grid-cols-2 gap-4">
-                {txt.features.map((title, index) => {
-                  const Icon = featureIcons[index];
-                  return (
-                    <motion.div key={index} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.05 }} className="flex items-center gap-3">
-                      <Icon className="h-6 w-6 text-[#0F7A4A] flex-shrink-0" />
-                      <span className="text-sm text-[#52606D]">{title}</span>
-                    </motion.div>
-                  );
-                })}
+          {/* Circular Services Diagram */}
+          <div className="relative max-w-4xl mx-auto">
+            {/* Center Hub */}
+            <motion.div initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+              <div className="w-32 h-32 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-full flex items-center justify-center shadow-2xl">
+                <div className="text-center">
+                  <Shield className="h-10 w-10 text-white mx-auto mb-1" />
+                  <p className="text-white font-bold text-xs">Services</p>
+                </div>
               </div>
             </motion.div>
 
-            {/* Vector Illustration */}
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              <img src="https://static.prod-images.emergentagent.com/jobs/718385f4-09ea-441f-8141-0b3025908384/images/3bd4d75b003e0b56e2c6164a76b4e60fab04b824296b81fc6ce4b11d41f6e754.png" alt="Legal Support" className="w-full h-auto" />
-            </motion.div>
+            {/* Service Nodes */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-16 pb-16">
+              {[
+                { icon: FileCheck, text: "Insurance Claims", color: "#0F7A4A" },
+                { icon: Users, text: "Dispute Support", color: "#F39C12" },
+                { icon: Target, text: "Policy Management", color: "#3B82F6" },
+                { icon: Shield, text: "Consumer Disputes", color: "#10B981" },
+                { icon: Lock, text: "Documentation", color: "#F97316" },
+                { icon: HeartHandshake, text: "Coordination", color: "#8B5CF6" }
+              ].map((service, index) => (
+                <motion.div key={index} initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 + index * 0.1 }} className="relative">
+                  <div className="bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all text-center border-2 border-gray-100">
+                    <div className="w-12 h-12 mx-auto mb-2 rounded-full flex items-center justify-center" style={{ backgroundColor: `${service.color}15` }}>
+                      <service.icon className="h-6 w-6" style={{ color: service.color }} />
+                    </div>
+                    <p className="text-xs font-medium text-[#52606D]">{service.text}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Our Approach - Timeline Style */}
-      <section className="py-12 md:py-20 bg-[#F5F7F9]">
+      {/* Our Features - Infographic Grid */}
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-10">
-            <h2 className="text-2xl md:text-4xl font-bold text-[#1F2933] mb-2">{txt.approach_title}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1F2933] mb-2">{txt.features_title}</h2>
             <div className="w-16 h-1 bg-[#0F7A4A] mx-auto rounded-full" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {txt.approach_items.map((item, index) => (
-              <motion.div key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="relative">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#0F7A4A] to-[#159F61] flex items-center justify-center text-white font-bold shadow-lg">
-                    {index + 1}
+          {/* Visual Feature Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {txt.features.map((title, index) => {
+              const Icon = featureIcons[index];
+              const colors = ['#0F7A4A', '#F39C12', '#3B82F6', '#F97316', '#10B981', '#8B5CF6', '#EC4899', '#06B6D4'];
+              return (
+                <motion.div key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.05 }} className="text-center group">
+                  <motion.div whileHover={{ scale: 1.1, rotate: 5 }} className="relative inline-block mb-3">
+                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center transition-all" style={{ backgroundColor: `${colors[index]}15` }}>
+                      <Icon className="h-10 w-10" style={{ color: colors[index] }} />
+                    </div>
+                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-full flex items-center justify-center text-white text-xs font-bold">
+                      {index + 1}
+                    </div>
+                  </motion.div>
+                  <p className="text-sm font-semibold text-[#1F2933] leading-tight">{title}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Approach - Process Flow Diagram */}
+      <section className="py-12 md:py-16 bg-[#F5F7F9]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1F2933] mb-2">{txt.approach_title}</h2>
+            <div className="w-16 h-1 bg-[#0F7A4A] mx-auto rounded-full" />
+          </motion.div>
+
+          {/* Vertical Flow Process */}
+          <div className="max-w-3xl mx-auto relative">
+            {/* Vertical Line */}
+            <div className="absolute left-8 md:left-12 top-0 bottom-0 w-1 bg-gradient-to-b from-[#0F7A4A] via-[#F39C12] to-[#0F7A4A]" />
+
+            <div className="space-y-8">
+              {txt.approach_items.map((item, index) => (
+                <motion.div key={index} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="relative flex items-start gap-6">
+                  {/* Number Badge */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#0F7A4A] to-[#159F61] flex items-center justify-center shadow-lg">
+                      <span className="text-white font-bold text-xl md:text-2xl">{index + 1}</span>
+                    </div>
                   </div>
-                  <p className="text-[#52606D] leading-relaxed pt-1">{item}</p>
-                </div>
-              </motion.div>
-            ))}
+
+                  {/* Content Card */}
+                  <div className="flex-1 bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-shadow">
+                    <p className="text-[#52606D] leading-relaxed">{item}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
