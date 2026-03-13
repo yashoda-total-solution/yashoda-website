@@ -332,100 +332,188 @@ const About = () => {
         </div>
       </section>
 
-      {/* About Us - WITH VECTOR */}
-      <section className="py-16">
+      {/* About Us - Pictographic Style */}
+      <section className="py-16 bg-gradient-to-b from-white to-[#F5F7F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeUp}>
-              <img src={VECTOR_IMAGES.consultation} alt="Consultation" className="w-full rounded-2xl" />
+          <motion.div {...fadeUp} className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">About Us</h2>
+            <p className="text-lg text-[#52606D] max-w-5xl mx-auto leading-relaxed">
+              {txt.about_intro}
+            </p>
+          </motion.div>
+
+          {/* Central Pictographic Layout */}
+          <div className="relative mt-16">
+            {/* Center Image */}
+            <motion.div initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="max-w-md mx-auto mb-16">
+              <img src={VECTOR_IMAGES.consultation} alt="Consultation" className="w-full" />
             </motion.div>
-            <motion.div {...fadeUp}>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#1F2933] mb-6">About Us</h2>
-              <div className="space-y-4 text-[#52606D] leading-relaxed">
-                <p>{txt.about_intro}</p>
-                <p>{txt.about_p2}</p>
-              </div>
-            </motion.div>
+
+            {/* Info Boxes Around */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { icon: Shield, title: "Established 2025", desc: "Professional service organization" },
+                { icon: FileCheck, title: "Insurance Claims", desc: "Claim assistance & dispute resolution" },
+                { icon: HeartHandshake, title: "Legal Support", desc: "Documentation & coordination" },
+                { icon: Target, title: "Result-Oriented", desc: "Transparent & structured services" }
+              ].map((item, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white rounded-2xl p-6 shadow-lg border-2 border-[#0F7A4A]/20">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-xl flex items-center justify-center mb-4 mx-auto">
+                    <item.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-[#1F2933] text-center mb-2">{item.title}</h3>
+                  <p className="text-sm text-[#52606D] text-center">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
-          <motion.div {...fadeUp} className="mt-8 space-y-4 text-[#52606D] leading-relaxed">
+
+          {/* Additional Text */}
+          <motion.div {...fadeUp} className="mt-12 max-w-5xl mx-auto space-y-4 text-[#52606D] leading-relaxed">
             <p>{txt.about_p3}</p>
             <p>{txt.about_p4}</p>
           </motion.div>
         </div>
       </section>
 
-      {/* What We Do - WITH VECTOR */}
-      <section className="py-16 bg-[#F5F7F9]">
+      {/* What We Do - Pictographic Style */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeUp} className="order-2 lg:order-1">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#1F2933] mb-6">{txt.whatwedo_title}</h2>
-              <p className="text-[#52606D] mb-6">{txt.whatwedo_intro}</p>
-              <ul className="space-y-3">
-                {txt.whatwedo_items.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="text-[#0F7A4A] mt-1">•</span>
-                    <span className="text-[#52606D]">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-[#52606D] mt-6">{txt.whatwedo_outro}</p>
-            </motion.div>
-            <motion.div {...fadeUp} className="order-1 lg:order-2">
-              <img src={VECTOR_IMAGES.professionals} alt="Professionals" className="w-full rounded-2xl" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features - WITH VECTOR */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeUp}>
-              <img src={VECTOR_IMAGES.working} alt="Working" className="w-full rounded-2xl" />
-            </motion.div>
-            <motion.div {...fadeUp}>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#1F2933] mb-4">{txt.features_title}</h2>
-              <p className="text-[#52606D] mb-4">{txt.features_intro}</p>
-              <p className="text-[#1F2933] font-semibold mb-4">{txt.features_subtitle}</p>
-              <ul className="space-y-3">
-                {txt.features.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="text-[#F39C12] mt-1">•</span>
-                    <span className="text-[#52606D]">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Strategy & Approach */}
-      <section className="py-16 bg-[#F5F7F9]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1F2933] mb-4">{txt.strategy_title}</h2>
-            <p className="text-[#52606D] mb-6">{txt.strategy_intro}</p>
-            <ul className="space-y-3">
-              {txt.strategy_items.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="text-[#0F7A4A] mt-1">•</span>
-                  <span className="text-[#52606D]">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="text-[#52606D] mt-6">{txt.strategy_outro}</p>
+          <motion.div {...fadeUp} className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">{txt.whatwedo_title}</h2>
+            <p className="text-lg text-[#52606D] max-w-4xl mx-auto">{txt.whatwedo_intro}</p>
           </motion.div>
 
+          {/* Central Layout with Professional Image and Service Boxes */}
+          <div className="relative max-w-6xl mx-auto mt-12">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
+              {/* Left Services */}
+              <div className="space-y-6 lg:w-1/3">
+                {txt.whatwedo_items.slice(0, 3).map((item, i) => (
+                  <motion.div key={i} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-gradient-to-r from-[#F5F7F9] to-white rounded-xl p-5 shadow-md border-l-4 border-[#0F7A4A]">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 bg-[#0F7A4A] rounded-lg flex items-center justify-center flex-shrink-0">
+                        <FileCheck className="h-5 w-5 text-white" />
+                      </div>
+                      <p className="text-sm text-[#52606D] font-medium">{item}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Center Image */}
+              <motion.div initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} className="lg:w-1/3">
+                <img src={VECTOR_IMAGES.professionals} alt="Professionals" className="w-full max-w-sm mx-auto" />
+              </motion.div>
+
+              {/* Right Services */}
+              <div className="space-y-6 lg:w-1/3">
+                {txt.whatwedo_items.slice(3, 7).map((item, i) => (
+                  <motion.div key={i} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-gradient-to-l from-[#F5F7F9] to-white rounded-xl p-5 shadow-md border-r-4 border-[#F39C12]">
+                    <div className="flex items-start gap-3">
+                      <p className="text-sm text-[#52606D] font-medium flex-1">{item}</p>
+                      <div className="w-8 h-8 bg-[#F39C12] rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Target className="h-5 w-5 text-white" />
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <motion.div {...fadeUp} className="mt-8 text-center">
+              <p className="text-[#52606D] text-lg max-w-4xl mx-auto">{txt.whatwedo_outro}</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features - Pictographic Style like Reference */}
+      <section className="py-16 bg-gradient-to-b from-[#F5F7F9] to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">{txt.features_title}</h2>
+            <p className="text-lg text-[#52606D] max-w-5xl mx-auto leading-relaxed mb-4">
+              {txt.features_intro}
+            </p>
+            <p className="text-lg font-semibold text-[#1F2933]">{txt.features_subtitle}</p>
+          </motion.div>
+
+          {/* Pictographic Layout - Central Image with Feature Boxes */}
+          <div className="relative max-w-6xl mx-auto mt-12">
+            {/* Center Professional Image */}
+            <motion.div initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} className="max-w-sm mx-auto mb-12 lg:mb-0 lg:absolute lg:left-1/2 lg:top-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 z-10">
+              <img src={VECTOR_IMAGES.working} alt="Working Professional" className="w-full" />
+            </motion.div>
+
+            {/* Feature Boxes Around */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-x-[500px] lg:gap-y-8">
+              {/* Left Side - First 4 */}
+              {txt.features.slice(0, 4).map((feature, i) => (
+                <motion.div key={i} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white rounded-2xl p-6 shadow-lg border-2 border-[#3B82F6]/20 hover:border-[#3B82F6]/50 transition-all">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#3B82F6] to-[#2563EB] rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Users className="h-7 w-7 text-white" />
+                    </div>
+                    <p className="text-[#1F2933] font-semibold">{feature}</p>
+                  </div>
+                </motion.div>
+              ))}
+              
+              {/* Right Side - Last 4 */}
+              {txt.features.slice(4, 8).map((feature, i) => (
+                <motion.div key={i + 4} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white rounded-2xl p-6 shadow-lg border-2 border-[#F39C12]/20 hover:border-[#F39C12]/50 transition-all">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#F39C12] to-[#E67E22] rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Shield className="h-7 w-7 text-white" />
+                    </div>
+                    <p className="text-[#1F2933] font-semibold">{feature}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Strategy & Approach - Combined Pictographic */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Strategy Section */}
+          <motion.div {...fadeUp} className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] text-center mb-4">{txt.strategy_title}</h2>
+            <p className="text-lg text-[#52606D] text-center max-w-4xl mx-auto mb-8">{txt.strategy_intro}</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {txt.strategy_items.map((item, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-gradient-to-br from-[#F5F7F9] to-white rounded-xl p-6 shadow-md border-t-4 border-[#0F7A4A]">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-[#0F7A4A] rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">
+                      {i + 1}
+                    </div>
+                    <p className="text-[#52606D]">{item}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            <motion.p {...fadeUp} className="text-lg text-[#52606D] text-center max-w-4xl mx-auto mt-8">
+              {txt.strategy_outro}
+            </motion.p>
+          </motion.div>
+
+          {/* Approach Section - Icon Grid */}
           <motion.div {...fadeUp}>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1F2933] mb-6">{txt.approach_title}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] text-center mb-10">{txt.approach_title}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {txt.approach_items.map((item, i) => (
-                <div key={i} className="bg-white p-5 rounded-xl shadow-sm">
-                  <p className="text-[#52606D]">{item}</p>
-                </div>
+                <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-gradient-to-br from-[#0F7A4A] to-[#159F61] text-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all">
+                  <div className="flex items-center gap-3 mb-2">
+                    <HeartHandshake className="h-8 w-8" />
+                    <div className="text-4xl font-bold opacity-20">{i + 1}</div>
+                  </div>
+                  <p className="text-sm leading-relaxed">{item}</p>
+                </motion.div>
               ))}
             </div>
           </motion.div>
