@@ -229,47 +229,94 @@ const About = () => {
       {/* Main About Section */}
       <section className="relative -mt-16 z-10 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">{txt.title}</h2>
-            <div className="space-y-4 text-lg text-[#52606D] leading-relaxed">
-              <p>{txt.desc1}</p>
-              <p>{txt.desc2}</p>
-              <p>{txt.desc3}</p>
-              <p>{txt.desc4}</p>
-            </div>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Text Content */}
+            <motion.div {...fadeUp} className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
+              <div className="inline-block p-3 bg-[#0F7A4A]/10 rounded-2xl mb-4">
+                <Shield className="h-12 w-12 text-[#0F7A4A]" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">{txt.title}</h2>
+              <div className="space-y-4 text-base text-[#52606D] leading-relaxed">
+                <motion.p initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>{txt.desc1}</motion.p>
+                <motion.p initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>{txt.desc2}</motion.p>
+                <motion.p initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>{txt.desc3}</motion.p>
+                <motion.p initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>{txt.desc4}</motion.p>
+              </div>
+            </motion.div>
+
+            {/* Illustration Side */}
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative">
+              <div className="relative">
+                <div className="absolute -top-6 -left-6 w-32 h-32 bg-[#F39C12]/20 rounded-full blur-3xl" />
+                <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-[#0F7A4A]/20 rounded-full blur-3xl" />
+                <img src="https://images.unsplash.com/photo-1640323240640-ee731d18dcb1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBpbnN1cmFuY2UlMjBzZXJ2aWNlJTIwaWxsdXN0cmF0aW9ufGVufDB8fHx8MTc3MzQwNzg2NXww&ixlib=rb-4.1.0&q=85" alt="Professional Service" className="relative rounded-3xl shadow-2xl" />
+              </div>
+              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 3, repeat: Infinity }} className="absolute -bottom-4 -right-4 bg-[#F39C12] text-white p-6 rounded-2xl shadow-xl">
+                <Award className="h-8 w-8 mb-2" />
+                <p className="font-bold text-2xl">2025</p>
+                <p className="text-sm">Established</p>
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* What We Do Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4" data-testid="about-whatwedo-title">{txt.whatwedo_title}</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {txt.whatwedo_items.map((item, index) => (
-              <motion.div key={index} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="flex items-start space-x-3 bg-[#F5F7F9] p-4 rounded-xl">
-                <CheckCircle className="h-6 w-6 text-[#0F7A4A] flex-shrink-0 mt-1" />
-                <span className="text-base text-[#52606D]">{item}</span>
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#0F7A4A]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Image Side */}
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="order-2 lg:order-1">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A4A] to-[#F39C12] rounded-3xl blur-xl opacity-20" />
+                <img src="https://images.unsplash.com/photo-1565351167686-7a19c5114965?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwzfHxidXNpbmVzcyUyMHRlYW13b3JrJTIwY29sbGFib3JhdGlvbiUyMGlsbHVzdHJhdGlvbnxlbnwwfHx8fDE3NzM0MDc4NjR8MA&ixlib=rb-4.1.0&q=85" alt="Team Collaboration" className="relative rounded-3xl shadow-2xl" />
+                <motion.div animate={{ rotate: [0, 5, 0] }} transition={{ duration: 4, repeat: Infinity }} className="absolute -top-6 -left-6 bg-white p-4 rounded-2xl shadow-xl">
+                  <FileCheck className="h-10 w-10 text-[#0F7A4A]" />
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Content Side */}
+            <div className="order-1 lg:order-2">
+              <motion.div {...fadeUp} className="mb-8">
+                <span className="inline-block px-4 py-2 bg-[#F39C12]/10 text-[#F39C12] rounded-full text-sm font-semibold mb-4">OUR SERVICES</span>
+                <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4" data-testid="about-whatwedo-title">{txt.whatwedo_title}</h2>
               </motion.div>
-            ))}
+              <div className="space-y-4">
+                {txt.whatwedo_items.map((item, index) => (
+                  <motion.div key={index} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }} whileHover={{ x: 5 }} className="flex items-start space-x-3 bg-gradient-to-r from-[#F5F7F9] to-white p-5 rounded-xl border-l-4 border-[#0F7A4A] shadow-sm hover:shadow-md transition-all">
+                    <div className="flex-shrink-0 w-8 h-8 bg-[#0F7A4A] rounded-lg flex items-center justify-center">
+                      <CheckCircle className="h-5 w-5 text-white" />
+                    </div>
+                    <span className="text-base text-[#52606D] font-medium">{item}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Our Features */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-12">
+      <section className="py-16 md:py-24 bg-[#F5F7F9] relative overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F39C12]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold mb-4">WHY CHOOSE US</span>
             <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">{txt.features_title}</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#0F7A4A] to-[#F39C12] mx-auto rounded-full" />
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {txt.features.map((title, index) => {
               const Icon = featureIcons[index];
+              const colors = ['#0F7A4A', '#F39C12', '#3B82F6', '#F97316'];
+              const bgColors = ['bg-[#0F7A4A]/10', 'bg-[#F39C12]/10', 'bg-blue-50', 'bg-orange-50'];
               return (
-                <motion.div key={index} {...fadeUp} transition={{ delay: index * 0.1 }} whileHover={{ y: -8 }} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all">
-                  <Icon className="h-10 w-10 text-[#0F7A4A] mb-4" />
+                <motion.div key={index} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }} whileHover={{ y: -12, scale: 1.02 }} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all group">
+                  <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.6 }} className={`w-16 h-16 ${bgColors[index % 4]} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                    <Icon className="h-8 w-8" style={{ color: colors[index % 4] }} />
+                  </motion.div>
                   <h3 className="text-base font-semibold text-[#1F2933]">{title}</h3>
                 </motion.div>
               );
@@ -279,16 +326,29 @@ const About = () => {
       </section>
 
       {/* Our Approach */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-12">
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-10 w-20 h-20 border-4 border-[#0F7A4A] rounded-full" />
+          <div className="absolute bottom-20 right-10 w-32 h-32 border-4 border-[#F39C12] rounded-full" />
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-[#0F7A4A] rotate-45" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-[#F39C12]/10 text-[#F39C12] rounded-full text-sm font-semibold mb-4">OUR METHODOLOGY</span>
             <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">{txt.approach_title}</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#F39C12] to-[#0F7A4A] mx-auto rounded-full" />
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {txt.approach_items.map((item, index) => (
-              <motion.div key={index} {...fadeUp} transition={{ delay: index * 0.1 }} className="bg-gradient-to-br from-[#0F7A4A] to-[#159F61] text-white p-6 rounded-2xl shadow-lg">
-                <CheckCircle className="h-8 w-8 mb-3" />
-                <p className="text-base font-medium">{item}</p>
+              <motion.div key={index} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} whileHover={{ scale: 1.05 }} className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity" />
+                <div className="relative bg-gradient-to-br from-[#0F7A4A] to-[#159F61] text-white p-8 rounded-2xl shadow-lg">
+                  <div className="bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                    <CheckCircle className="h-6 w-6" />
+                  </div>
+                  <p className="text-base font-medium leading-relaxed">{item}</p>
+                  <div className="absolute top-4 right-4 text-6xl font-bold text-white/10">{index + 1}</div>
+                </div>
               </motion.div>
             ))}
           </div>
