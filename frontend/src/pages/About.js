@@ -287,16 +287,23 @@ const About = () => {
             {teamMembers.map((member) => {
               const Icon = member.icon;
               return (
-                <div key={member.key} className="bg-white rounded-lg overflow-hidden shadow-md">
+                <div key={member.key} className="bg-white rounded-lg overflow-hidden shadow-md flex flex-col">
                   <img src={member.image} alt={member.name || member.title} className="w-full h-48 object-cover" />
-                  <div className="p-4">
+                  <div className="p-4 flex flex-col flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <Icon className="h-5 w-5" style={{ color: member.color }} />
                       <h3 className="font-bold text-[#1F2933]">{member.title}</h3>
                     </div>
-                    {member.name && <p className="text-sm font-semibold mb-2" style={{ color: member.color }}>{member.name}</p>}
-                    <button onClick={() => setActiveProfile(member)} className="text-sm font-semibold flex items-center gap-1 hover:underline" style={{ color: member.color }}>
-                      <Eye className="h-4 w-4" />{txt.view_profile}
+                    <div className="min-h-[28px] mb-3">
+                      {member.name && <p className="text-sm font-semibold" style={{ color: member.color }}>{member.name}</p>}
+                    </div>
+                    <button 
+                      onClick={() => setActiveProfile(member)} 
+                      className="mt-auto w-full py-2 px-4 rounded-lg font-semibold text-sm text-white transition-all hover:opacity-90 flex items-center justify-center gap-2"
+                      style={{ backgroundColor: member.color }}
+                    >
+                      <Eye className="h-4 w-4" />
+                      {txt.view_profile}
                     </button>
                   </div>
                 </div>
