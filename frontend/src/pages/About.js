@@ -311,16 +311,15 @@ const About = () => {
         {activeProfile && (
           <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={() => setActiveProfile(null)}>
             <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} onClick={e => e.stopPropagation()} className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="relative">
-                <img src={activeProfile.image} alt={activeProfile.name || activeProfile.title} className="w-full h-40 object-cover" />
-                <button onClick={() => setActiveProfile(null)} className="absolute top-2 right-2 bg-white rounded-full p-2">
-                  <X className="h-5 w-5" />
-                </button>
-              </div>
               <div className="p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  {React.createElement(activeProfile.icon, { className: 'h-6 w-6', style: { color: activeProfile.color } })}
-                  <h3 className="text-xl font-bold">{activeProfile.title}</h3>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    {React.createElement(activeProfile.icon, { className: 'h-6 w-6', style: { color: activeProfile.color } })}
+                    <h3 className="text-xl font-bold">{activeProfile.title}</h3>
+                  </div>
+                  <button onClick={() => setActiveProfile(null)} className="text-gray-500 hover:text-gray-700">
+                    <X className="h-5 w-5" />
+                  </button>
                 </div>
                 {activeProfile.name && <p className="font-semibold mb-4" style={{ color: activeProfile.color }}>{activeProfile.name}</p>}
                 {activeProfile.descriptions.map((desc, i) => (
