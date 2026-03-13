@@ -8,6 +8,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Reviews from './pages/Reviews';
 import Contact from './pages/Contact';
+import Gallery from './pages/Gallery';
 import './App.css';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/gallery" element={<div className="min-h-screen flex items-center justify-center"><h1 className="text-3xl">Gallery Page - Coming Soon</h1></div>} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/reviews" element={<Reviews />} />
           </Routes>
