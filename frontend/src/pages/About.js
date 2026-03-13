@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { 
   Users, Target, Shield, Award, Clock, CheckCircle, 
-  FileCheck, Lock, HeartHandshake, TrendingUp, ArrowRight 
+  FileCheck, Lock, HeartHandshake, TrendingUp, ArrowRight, X, Eye
 } from 'lucide-react';
 
 const TEAM_IMAGES = {
@@ -59,6 +59,8 @@ const pageText = {
     cta_title: "Ready to Get Help?",
     cta_desc: "Contact us today and let us solve your insurance and legal problems.",
     cta_btn: "Contact Us",
+    view_profile: "View Profile",
+    close: "Close",
   },
   hi: {
     title: "यशोदा टोटल सॉल्यूशन के बारे में",
@@ -105,6 +107,8 @@ const pageText = {
     cta_title: "मदद लेने के लिए तैयार हैं?",
     cta_desc: "आज ही हमसे संपर्क करें और हमें अपनी बीमा और कानूनी समस्याओं को हल करने दें।",
     cta_btn: "संपर्क करें",
+    view_profile: "प्रोफ़ाइल देखें",
+    close: "बंद करें",
   },
   mr: {
     title: "यशोदा टोटल सॉल्यूशन बद्दल",
@@ -151,6 +155,8 @@ const pageText = {
     cta_title: "मदत घेण्यास तयार आहात?",
     cta_desc: "आजच आमच्याशी संपर्क साधा आणि आम्हाला तुमच्या विमा आणि कायदेशीर समस्या सोडवू द्या.",
     cta_btn: "संपर्क करा",
+    view_profile: "प्रोफाइल पहा",
+    close: "बंद करा",
   }
 };
 
@@ -159,6 +165,43 @@ const featureIcons = [Users, Shield, TrendingUp, Clock, Lock, Target, FileCheck,
 const About = () => {
   const { language } = useLanguage();
   const txt = pageText[language];
+  const [activeProfile, setActiveProfile] = useState(null);
+
+  const teamMembers = [
+    {
+      key: 'md',
+      image: TEAM_IMAGES.md,
+      title: txt.md_title,
+      name: txt.md_name,
+      icon: Award,
+      color: '#0F7A4A',
+      descriptions: [txt.md_desc1, txt.md_desc2],
+      highlight: txt.md_quote,
+      highlightType: 'quote',
+    },
+    {
+      key: 'sales',
+      image: TEAM_IMAGES.sales,
+      title: txt.sales_title,
+      name: null,
+      icon: Users,
+      color: '#3B82F6',
+      descriptions: [txt.sales_desc1, txt.sales_desc2],
+      highlight: txt.sales_motto,
+      highlightType: 'motto',
+    },
+    {
+      key: 'legal',
+      image: TEAM_IMAGES.legal,
+      title: txt.legal_title,
+      name: null,
+      icon: Shield,
+      color: '#F97316',
+      descriptions: [txt.legal_desc1, txt.legal_desc2],
+      highlight: txt.legal_motto,
+      highlightType: 'motto',
+    },
+  ];
 
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -259,83 +302,126 @@ const About = () => {
             <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4" data-testid="about-team-title">{txt.team_title}</h2>
           </motion.div>
 
-          <div className="space-y-8">
-            {/* Managing Director */}
-            <motion.div {...fadeUp} className="bg-white rounded-3xl shadow-lg p-8 md:p-12">
-              <div className="flex flex-col md:flex-row gap-8">
-                <div className="flex-shrink-0">
-                  <img
-                    src={TEAM_IMAGES.md}
-                    alt={txt.md_name}
-                    data-testid="md-profile-image"
-                    className="w-48 h-48 md:w-56 md:h-56 rounded-2xl object-cover shadow-lg mx-auto md:mx-0"
-                  />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <Award className="h-8 w-8 text-[#0F7A4A]" />
-                    <div>
-                      <h3 className="text-2xl font-bold text-[#1F2933]">{txt.md_title}</h3>
-                      <p className="text-lg font-semibold text-[#0F7A4A]">{txt.md_name}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => {
+              const Icon = member.icon;
+              return (
+                <motion.div
+                  key={member.key}
+                  {...fadeUp}
+                  transition={{ delay: index * 0.15 }}
+                  whileHover={{ y: -8 }}
+                  className="bg-white rounded-3xl shadow-lg overflow-hidden group"
+                  data-testid={`team-card-${member.key}`}
+                >
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={member.image}
+                      alt={member.name || member.title}
+                      data-testid={`${member.key}-profile-image`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 text-center">
+                    <div className="flex items-center justify-center space-x-2 mb-2">
+                      <Icon className="h-6 w-6" style={{ color: member.color }} />
+                      <h3 className="text-xl font-bold text-[#1F2933]">{member.title}</h3>
                     </div>
+                    {member.name && (
+                      <p className="text-base font-semibold mb-4" style={{ color: member.color }}>{member.name}</p>
+                    )}
+                    {!member.name && <div className="mb-4" />}
+                    <button
+                      onClick={() => setActiveProfile(member)}
+                      data-testid={`view-profile-${member.key}`}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm text-white transition-all duration-300 hover:shadow-lg hover:scale-105"
+                      style={{ backgroundColor: member.color }}
+                    >
+                      <Eye className="h-4 w-4" />
+                      {txt.view_profile}
+                    </button>
                   </div>
-                  <p className="text-base text-[#52606D] leading-relaxed mb-4">{txt.md_desc1}</p>
-                  <p className="text-base text-[#52606D] leading-relaxed mb-4">{txt.md_desc2}</p>
-                  <blockquote className="border-l-4 border-[#F39C12] pl-4 italic text-lg text-[#1F2933] font-medium">
-                    "{txt.md_quote}"
-                  </blockquote>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Sales Team */}
-            <motion.div {...fadeUp} className="bg-gradient-to-br from-blue-50 to-white rounded-3xl shadow-lg p-8 md:p-12 border-2 border-blue-100">
-              <div className="flex flex-col gap-8">
-                <div className="w-full overflow-hidden rounded-2xl shadow-lg">
-                  <img
-                    src={TEAM_IMAGES.sales}
-                    alt={txt.sales_title}
-                    data-testid="sales-team-image"
-                    className="w-full h-48 md:h-64 object-cover"
-                  />
-                </div>
-                <div>
-                  <div className="flex items-center space-x-3 mb-4">
-                    <Users className="h-8 w-8 text-blue-500" />
-                    <h3 className="text-2xl font-bold text-[#1F2933]">{txt.sales_title}</h3>
-                  </div>
-                  <p className="text-base text-[#52606D] leading-relaxed mb-4">{txt.sales_desc1}</p>
-                  <p className="text-base text-[#52606D] leading-relaxed mb-4">{txt.sales_desc2}</p>
-                  <p className="text-base font-semibold text-blue-600">{txt.sales_motto}</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Legal Team */}
-            <motion.div {...fadeUp} className="bg-gradient-to-br from-orange-50 to-white rounded-3xl shadow-lg p-8 md:p-12 border-2 border-orange-100">
-              <div className="flex flex-col gap-8">
-                <div className="w-full overflow-hidden rounded-2xl shadow-lg">
-                  <img
-                    src={TEAM_IMAGES.legal}
-                    alt={txt.legal_title}
-                    data-testid="legal-team-image"
-                    className="w-full h-48 md:h-64 object-cover"
-                  />
-                </div>
-                <div>
-                  <div className="flex items-center space-x-3 mb-4">
-                    <Shield className="h-8 w-8 text-orange-500" />
-                    <h3 className="text-2xl font-bold text-[#1F2933]">{txt.legal_title}</h3>
-                  </div>
-                  <p className="text-base text-[#52606D] leading-relaxed mb-4">{txt.legal_desc1}</p>
-                  <p className="text-base text-[#52606D] leading-relaxed mb-4">{txt.legal_desc2}</p>
-                  <p className="text-base font-semibold text-orange-600">{txt.legal_motto}</p>
-                </div>
-              </div>
-            </motion.div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* Profile Popup Modal */}
+      <AnimatePresence>
+        {activeProfile && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setActiveProfile(null)}
+            data-testid="profile-modal-overlay"
+          >
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0, y: 30 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.85, opacity: 0, y: 30 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              onClick={e => e.stopPropagation()}
+              className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              data-testid="profile-modal"
+            >
+              <div className="relative">
+                <div className="h-48 md:h-56 overflow-hidden rounded-t-3xl">
+                  <img
+                    src={activeProfile.image}
+                    alt={activeProfile.name || activeProfile.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <button
+                  onClick={() => setActiveProfile(null)}
+                  data-testid="profile-modal-close"
+                  className="absolute top-4 right-4 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all"
+                >
+                  <X className="h-5 w-5 text-[#1F2933]" />
+                </button>
+              </div>
+
+              <div className="p-8">
+                <div className="flex items-center space-x-3 mb-2">
+                  {React.createElement(activeProfile.icon, { className: 'h-7 w-7', style: { color: activeProfile.color } })}
+                  <h3 className="text-2xl font-bold text-[#1F2933]">{activeProfile.title}</h3>
+                </div>
+                {activeProfile.name && (
+                  <p className="text-lg font-semibold mb-5" style={{ color: activeProfile.color }}>{activeProfile.name}</p>
+                )}
+                {!activeProfile.name && <div className="mb-5" />}
+
+                {activeProfile.descriptions.map((desc, i) => (
+                  <p key={i} className="text-base text-[#52606D] leading-relaxed mb-4">{desc}</p>
+                ))}
+
+                {activeProfile.highlightType === 'quote' ? (
+                  <blockquote className="border-l-4 border-[#F39C12] pl-4 italic text-lg text-[#1F2933] font-medium mt-4">
+                    "{activeProfile.highlight}"
+                  </blockquote>
+                ) : (
+                  <p className="text-base font-semibold mt-4" style={{ color: activeProfile.color }}>
+                    {activeProfile.highlight}
+                  </p>
+                )}
+
+                <button
+                  onClick={() => setActiveProfile(null)}
+                  data-testid="profile-modal-close-btn"
+                  className="mt-8 w-full py-3 rounded-full font-semibold text-white transition-all duration-300 hover:shadow-lg"
+                  style={{ backgroundColor: activeProfile.color }}
+                >
+                  {txt.close}
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* CTA Section */}
       <motion.section {...fadeUp} className="relative py-20 md:py-32 bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] overflow-hidden">

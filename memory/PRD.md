@@ -49,6 +49,7 @@ Common people, small-town/village customers who may not be highly educated. Lang
 ## What's Been Implemented (as of March 2026)
 - All 6 pages fully built and functional
 - Team profile images (AI-generated) for MD, Sales Team, Legal Team on About page
+- **Team section redesigned**: Uniform card layout with "View Profile" popup modals for each member
 - Gallery page with category filters, lightbox, trilingual support
 - Full multilingual support (EN/HI/MR) across all pages
 - Review and Contact form submission with MongoDB persistence
