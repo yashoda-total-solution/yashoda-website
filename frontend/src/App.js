@@ -17,6 +17,7 @@ import PMSBY from './pages/services/PMSBY';
 import PMJJBY from './pages/services/PMJJBY';
 import StateCMScheme from './pages/services/StateCMScheme';
 import BankingAtmInsurance from './pages/services/BankingAtmInsurance';
+import PFAccidentalInsurance from './pages/services/PFAccidentalInsurance';
 import './App.css';
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
             <Route path="/pmjjby" element={<PMJJBY />} />
             <Route path="/state-cm-scheme" element={<StateCMScheme />} />
             <Route path="/banking-atm-insurance" element={<BankingAtmInsurance />} />
-            <Route path="/pf-accidental-insurance" element={<Home />} />
+            <Route path="/pf-accidental-insurance" element={<PFAccidentalInsurance />} />
             <Route path="/legal-notice" element={<Home />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
