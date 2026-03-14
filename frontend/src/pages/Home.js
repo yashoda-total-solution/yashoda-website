@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Shield, FileCheck, Banknote, Landmark, FileText, Users, CheckCircle, Phone, ArrowRight, Star, Award, Clock, Lock, HeartHandshake, Target, TrendingUp, Zap, Eye } from 'lucide-react';
+import { Shield, FileCheck, Banknote, Landmark, FileText, Users, CheckCircle, Phone, ArrowRight, Star, Award, Clock, Lock, HeartHandshake, Target, TrendingUp, Zap, Eye, ChevronDown } from 'lucide-react';
 
 const Home = () => {
   const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   const heroImages = [
     "https://images.unsplash.com/photo-1739298061766-e2751d92e9db?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBoYW5kc2hha2UlMjBvZmZpY2UlMjB0ZWFtd29ya3xlbnwwfHx8fDE3NzM0NTkyNTB8MA&ixlib=rb-4.1.0&q=85",
@@ -21,6 +22,20 @@ const Home = () => {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  const serviceLinks = [
+    { path: '/mis-selling', label: t('service_mis_selling') },
+    { path: '/claim-rejection', label: t('service_claim_rejection') },
+    { path: '/claim-delay', label: t('service_claim_delay') },
+    { path: '/claim-short-settled', label: t('service_claim_short_settled') },
+    { path: '/health-reimbursement', label: t('service_health_reimbursement') },
+    { path: '/pmsby', label: t('service_pmsby') },
+    { path: '/pmjjby', label: t('service_pmjjby') },
+    { path: '/state-cm-scheme', label: t('service_state_cm_scheme') },
+    { path: '/banking-atm-insurance', label: t('service_banking_atm') },
+    { path: '/pf-accidental-insurance', label: t('service_pf_accidental') },
+    { path: '/legal-notice', label: t('service_legal_notice') },
+  ];
 
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -80,15 +95,42 @@ const Home = () => {
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <a
-                    href="tel:+919876543210"
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
+                  <button
+                    onClick={() => setIsServicesOpen(!isServicesOpen)}
                     data-testid="hero-btn-help"
                     className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl"
                   >
-                    <Phone className="mr-2 h-5 w-5" />
-                    {t('hero_btn_help')}
-                  </a>
+                    <Shield className="mr-2 h-5 w-5" />
+                    Explore Services
+                    <ChevronDown className={`ml-2 h-5 w-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {/* Services Dropdown */}
+                  <AnimatePresence>
+                    {isServicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-2xl shadow-2xl z-50 max-h-[400px] overflow-y-auto"
+                      >
+                        <div className="p-2">
+                          {serviceLinks.map((service, index) => (
+                            <Link
+                              key={service.path}
+                              to={service.path}
+                              onClick={() => setIsServicesOpen(false)}
+                              className="block px-4 py-3 rounded-lg text-sm font-medium text-[#1F2933] hover:bg-[#0F7A4A] hover:text-white transition-all"
+                            >
+                              {service.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               </div>
 
