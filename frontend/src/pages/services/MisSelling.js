@@ -32,8 +32,6 @@ const MisSelling = () => {
             <div className="flex items-center space-x-2 mb-6">
               <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
               <span className="text-white/60">/</span>
-              <Link to="/services" className="text-white/80 hover:text-white text-sm">Services</Link>
-              <span className="text-white/60">/</span>
               <span className="text-white text-sm">Mis-selling of Insurance Policy</span>
             </div>
             

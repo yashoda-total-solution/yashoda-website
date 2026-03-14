@@ -5,7 +5,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
-import Services from './pages/Services';
 import Reviews from './pages/Reviews';
 import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
@@ -21,18 +20,17 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/services/mis-selling" element={<MisSelling />} />
-            <Route path="/services/claim-rejection" element={<Services />} />
-            <Route path="/services/claim-delay" element={<Services />} />
-            <Route path="/services/claim-short-settled" element={<Services />} />
-            <Route path="/services/health-reimbursement" element={<Services />} />
-            <Route path="/services/pmsby" element={<Services />} />
-            <Route path="/services/pmjjby" element={<Services />} />
-            <Route path="/services/state-cm-scheme" element={<Services />} />
-            <Route path="/services/banking-atm-insurance" element={<Services />} />
-            <Route path="/services/pf-accidental-insurance" element={<Services />} />
-            <Route path="/services/legal-notice" element={<Services />} />
+            <Route path="/mis-selling" element={<MisSelling />} />
+            <Route path="/claim-rejection" element={<Home />} />
+            <Route path="/claim-delay" element={<Home />} />
+            <Route path="/claim-short-settled" element={<Home />} />
+            <Route path="/health-reimbursement" element={<Home />} />
+            <Route path="/pmsby" element={<Home />} />
+            <Route path="/pmjjby" element={<Home />} />
+            <Route path="/state-cm-scheme" element={<Home />} />
+            <Route path="/banking-atm-insurance" element={<Home />} />
+            <Route path="/pf-accidental-insurance" element={<Home />} />
+            <Route path="/legal-notice" element={<Home />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/reviews" element={<Reviews />} />

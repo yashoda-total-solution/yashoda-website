@@ -19,17 +19,17 @@ const Navbar = () => {
   ];
 
   const serviceLinks = [
-    { path: '/services/mis-selling', label: t('service_mis_selling') },
-    { path: '/services/claim-rejection', label: t('service_claim_rejection') },
-    { path: '/services/claim-delay', label: t('service_claim_delay') },
-    { path: '/services/claim-short-settled', label: t('service_claim_short_settled') },
-    { path: '/services/health-reimbursement', label: t('service_health_reimbursement') },
-    { path: '/services/pmsby', label: t('service_pmsby') },
-    { path: '/services/pmjjby', label: t('service_pmjjby') },
-    { path: '/services/state-cm-scheme', label: t('service_state_cm_scheme') },
-    { path: '/services/banking-atm-insurance', label: t('service_banking_atm') },
-    { path: '/services/pf-accidental-insurance', label: t('service_pf_accidental') },
-    { path: '/services/legal-notice', label: t('service_legal_notice') },
+    { path: '/mis-selling', label: t('service_mis_selling') },
+    { path: '/claim-rejection', label: t('service_claim_rejection') },
+    { path: '/claim-delay', label: t('service_claim_delay') },
+    { path: '/claim-short-settled', label: t('service_claim_short_settled') },
+    { path: '/health-reimbursement', label: t('service_health_reimbursement') },
+    { path: '/pmsby', label: t('service_pmsby') },
+    { path: '/pmjjby', label: t('service_pmjjby') },
+    { path: '/state-cm-scheme', label: t('service_state_cm_scheme') },
+    { path: '/banking-atm-insurance', label: t('service_banking_atm') },
+    { path: '/pf-accidental-insurance', label: t('service_pf_accidental') },
+    { path: '/legal-notice', label: t('service_legal_notice') },
   ];
 
   const languages = [
@@ -78,7 +78,7 @@ const Navbar = () => {
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 data-testid="nav-services-dropdown"
                 className={`flex items-center space-x-1 text-base font-medium transition-colors ${
-                  location.pathname.startsWith('/services')
+                  serviceLinks.some(link => location.pathname === link.path)
                     ? 'text-[#0F7A4A] font-semibold'
                     : 'text-[#1F2933] hover:text-[#0F7A4A]'
                 }`}
