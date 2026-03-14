@@ -397,37 +397,28 @@ const ClaimDelay = () => {
             ))}
           </div>
 
-          {/* Claim Timeline Framework */}
-          <motion.div {...fadeUp} className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
-            <h3 className="text-2xl font-bold text-[#1F2933] mb-8 text-center">Claim Timeline Framework</h3>
-            <div className="flex flex-col space-y-4">
-              {[
-                { label: 'Incident Occurs', icon: AlertCircle },
-                { label: 'Claim Filed', icon: FileText },
-                { label: 'Document Verification', icon: Search },
-                { label: 'Claim Assessment', icon: Clock },
-                { label: 'Settlement Decision', icon: CheckCircle },
-              ].map((item, index) => (
-                <React.Fragment key={index}>
-                  <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center space-x-4 bg-gradient-to-r from-[#F5F7F9] to-white rounded-xl px-6 py-5 hover:shadow-lg transition-all duration-300"
-                  >
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-xl flex items-center justify-center flex-shrink-0">
-                      <item.icon className="h-7 w-7 text-white" />
-                    </div>
-                    <h4 className="text-lg font-bold text-[#1F2933]">{item.label}</h4>
-                  </motion.div>
-                  {index < 4 && (
-                    <div className="h-8 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12] ml-7"></div>
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { label: 'Type of Claim', icon: FileText },
+              { label: 'Complexity', icon: AlertCircle },
+              { label: 'Documentation', icon: Search },
+              { label: 'Verification', icon: CheckCircle },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 shadow-md text-center"
+              >
+                <div className="w-12 h-12 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <item.icon className="h-6 w-6 text-white" />
+                </div>
+                <h4 className="text-base font-semibold text-[#1F2933]">{item.label}</h4>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
