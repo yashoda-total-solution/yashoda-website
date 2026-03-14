@@ -15,6 +15,7 @@ import ClaimShortSettled from './pages/services/ClaimShortSettled';
 import HealthReimbursement from './pages/services/HealthReimbursement';
 import PMSBY from './pages/services/PMSBY';
 import PMJJBY from './pages/services/PMJJBY';
+import StateCMScheme from './pages/services/StateCMScheme';
 import './App.css';
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
             <Route path="/health-reimbursement" element={<HealthReimbursement />} />
             <Route path="/pmsby" element={<PMSBY />} />
             <Route path="/pmjjby" element={<PMJJBY />} />
-            <Route path="/state-cm-scheme" element={<Home />} />
+            <Route path="/state-cm-scheme" element={<StateCMScheme />} />
             <Route path="/banking-atm-insurance" element={<Home />} />
             <Route path="/pf-accidental-insurance" element={<Home />} />
             <Route path="/legal-notice" element={<Home />} />
