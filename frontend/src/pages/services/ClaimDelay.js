@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Clock, FileText, AlertCircle, CheckCircle, Shield, 
-  ArrowRight, HelpCircle, Users, Phone, Search,
-  Zap, Target, TrendingUp, Hourglass, RefreshCw
+  ArrowRight, HelpCircle, Users, Phone, Hourglass, Search
 } from 'lucide-react';
 
 const ClaimDelay = () => {
@@ -45,12 +44,8 @@ const ClaimDelay = () => {
               </h1>
             </div>
             
-            <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-4">
-              Understanding why insurance claims sometimes take longer than expected and how policyholders can better understand the process.
-            </p>
-            
-            <p className="text-base md:text-lg text-white/80 leading-relaxed">
-              Insurance claim processing delays can create stress and uncertainty for policyholders. When a claim takes longer than expected, customers may feel confused about the status of their claim or unsure about what steps they should take next. Delays may occur due to documentation verification, internal investigations, policy conditions, or administrative procedures followed by insurance companies.
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+              Understanding why insurance claims sometimes take longer than expected and how policyholders can better understand the process. Delays may occur due to documentation verification, internal investigations, policy conditions, or administrative procedures followed by insurance companies.
             </p>
           </motion.div>
         </div>
@@ -58,7 +53,7 @@ const ClaimDelay = () => {
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
       </section>
 
-      {/* Service Overview */}
+      {/* What is Claim Delay Section */}
       <section className="relative -mt-16 z-10 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -66,7 +61,7 @@ const ClaimDelay = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              Service Overview
+              Understanding Claim Processing Delays
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
@@ -76,106 +71,65 @@ const ClaimDelay = () => {
                 Sometimes, claims may take longer than expected to process. These delays may happen due to multiple reasons such as <strong>additional document requests, internal review procedures, or clarification requirements related to the policy.</strong>
               </p>
               <p className="leading-relaxed mb-4">
-                For policyholders, this waiting period can be frustrating and uncertain, especially when they are relying on the claim settlement to cover financial expenses related to accidents, medical treatment, or other insured events.
+                For policyholders, this waiting period can be frustrating and uncertain, especially when relying on the claim settlement to cover financial expenses related to accidents, medical treatment, or other insured events.
               </p>
-              <p className="leading-relaxed">
-                <strong>Yashoda Total Solutions</strong> assists clients by helping them understand the claim process, ensuring proper documentation is available, and guiding them through the necessary steps that may help move their claims forward more efficiently.
+              <p className="leading-relaxed mb-4">
+                Common causes of delays include:
               </p>
-            </div>
-
-            {/* Claim Processing Stages Diagram */}
-            <div className="mt-12 bg-gradient-to-br from-[#F5F7F9] to-white rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-[#1F2933] mb-8 text-center">Insurance Claim Processing Stages</h3>
-              <div className="flex flex-col items-center space-y-4">
-                {[
-                  { label: 'Policy Purchased', icon: Shield },
-                  { label: 'Incident Occurs', icon: AlertCircle },
-                  { label: 'Claim Submitted', icon: FileText },
-                  { label: 'Document Verification', icon: Search },
-                  { label: 'Claim Evaluation', icon: Clock },
-                  { label: 'Claim Settlement Decision', icon: CheckCircle },
-                ].map((step, index) => (
-                  <React.Fragment key={index}>
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center space-x-4 bg-white rounded-xl px-6 py-4 shadow-md w-full max-w-md"
-                    >
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                        index === 5 ? 'bg-green-100' : 'bg-[#0F7A4A]/10'
-                      }`}>
-                        <step.icon className={`h-6 w-6 ${index === 5 ? 'text-green-600' : 'text-[#0F7A4A]'}`} />
-                      </div>
-                      <span className="text-base font-semibold text-[#1F2933]">{step.label}</span>
-                    </motion.div>
-                    {index < 5 && (
-                      <div className="h-8 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
-                    )}
-                  </React.Fragment>
-                ))}
-              </div>
+              <ul className="space-y-3 ml-6">
+                <li>• Incomplete claim documents</li>
+                <li>• Additional verification or investigation by the insurance company</li>
+                <li>• Hospital or service provider documentation delays</li>
+                <li>• High volume of claims being processed</li>
+                <li>• Policy conditions requiring additional evaluation</li>
+                <li>• Communication gaps between involved parties</li>
+              </ul>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Common Reasons for Delays */}
+      {/* What Happens Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common Reasons for Claim Processing Delays
+              What Happens During Claim Review
             </h2>
             <p className="text-lg text-[#52606D]">
-              Understanding these factors can help policyholders better manage their expectations
+              Understanding the review process that may cause delays
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: FileText,
-                title: 'Incomplete Documents',
-                desc: 'Missing or incomplete claim documentation requiring additional submissions',
-                color: 'bg-orange-50',
-                iconBg: 'bg-orange-600'
-              },
-              {
                 icon: Search,
-                title: 'Additional Investigation',
-                desc: 'Insurance company conducting verification or investigation procedures',
+                title: 'Document Verification',
+                desc: 'Insurance company verifies all submitted documents and supporting evidence.',
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
-                icon: Hourglass,
-                title: 'Hospital Documentation',
-                desc: 'Delays from service providers in submitting required medical reports',
+                icon: FileText,
+                title: 'Medical Review',
+                desc: 'Detailed review of medical reports, accident details, or treatment records.',
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
-                icon: RefreshCw,
-                title: 'High Claim Volume',
-                desc: 'Large number of claims being processed by the insurance company',
+                icon: Shield,
+                title: 'Policy Check',
+                desc: 'Confirmation of policy eligibility conditions and coverage terms.',
                 color: 'bg-teal-50',
                 iconBg: 'bg-teal-600'
               },
               {
-                icon: Shield,
-                title: 'Policy Evaluation',
-                desc: 'Policy conditions requiring additional review and assessment',
-                color: 'bg-red-50',
-                iconBg: 'bg-red-600'
-              },
-              {
                 icon: AlertCircle,
-                title: 'Communication Gaps',
-                desc: 'Delays due to communication issues between involved parties',
-                color: 'bg-pink-50',
-                iconBg: 'bg-pink-600'
+                title: 'Additional Info',
+                desc: 'Request for supplementary documents if initial submission is incomplete.',
+                color: 'bg-orange-50',
+                iconBg: 'bg-orange-600'
               },
             ].map((item, index) => (
               <motion.div
@@ -194,272 +148,42 @@ const ClaimDelay = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* Factors Diagram */}
-          <motion.div {...fadeUp} className="mt-16 bg-gradient-to-br from-[#F5F7F9] to-white rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-[#1F2933] mb-8 text-center">Factors Causing Claim Delays</h3>
-            <div className="flex flex-col items-center space-y-4">
-              {[
-                'Incomplete Documents',
-                'Additional Investigation',
-                'Verification Process',
-                'Policy Condition Review',
-                'Administrative Processing'
-              ].map((factor, index) => (
-                <React.Fragment key={index}>
-                  <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-white rounded-xl px-8 py-4 shadow-md w-full max-w-lg text-center"
-                  >
-                    <span className="text-lg font-semibold text-[#1F2933]">{factor}</span>
-                  </motion.div>
-                  {index < 4 && (
-                    <div className="h-6 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 
-      {/* What Happens During Claim Review */}
+      {/* Why Choose Us Section */}
       <section className="py-16 md:py-24 bg-[#F5F7F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              What Happens During Claim Review
-            </h2>
-            <p className="text-lg text-[#52606D] max-w-3xl mx-auto">
-              Once a claim is submitted, the insurance company typically begins a detailed review process. These procedures help the insurance company determine whether the claim meets the policy requirements.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {[
-              {
-                title: 'Document Verification',
-                desc: 'Review and validation of all submitted documents',
-                icon: FileText
-              },
-              {
-                title: 'Medical/Accident Review',
-                desc: 'Examination of medical reports or accident details',
-                icon: Search
-              },
-              {
-                title: 'Policy Eligibility Check',
-                desc: 'Verification of policy terms and coverage conditions',
-                icon: Shield
-              },
-              {
-                title: 'Additional Information',
-                desc: 'Request for supplementary documents if needed',
-                icon: AlertCircle
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-lg"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-xl flex items-center justify-center flex-shrink-0">
-                    <item.icon className="h-7 w-7 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-[#1F2933] mb-2">{item.title}</h3>
-                    <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Claim Review Process Diagram */}
-          <motion.div {...fadeUp} className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-[#1F2933] mb-8 text-center">Claim Review Process</h3>
-            <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
-              {[
-                'Claim Submitted',
-                'Documents Reviewed',
-                'Verification of Details',
-                'Additional Info Requested',
-                'Final Decision'
-              ].map((step, index) => (
-                <React.Fragment key={index}>
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                      {index + 1}
-                    </div>
-                    <p className="mt-3 text-sm font-medium text-[#1F2933] text-center max-w-[120px]">{step}</p>
-                  </div>
-                  {index < 4 && (
-                    <ArrowRight className="hidden md:block h-6 w-6 text-[#0F7A4A]" />
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Example Scenarios */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Example Scenarios
+              Why Choose Yashoda Total Solution?
             </h2>
             <p className="text-lg text-[#52606D]">
-              Situations where insurance claims may experience delays
+              Expert assistance for claim processing guidance
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: 'Example 1 – Hospital Documentation Delay',
-                desc: 'A patient submits a health insurance claim after receiving hospital treatment. However, the claim remains pending because the insurance company is waiting for additional medical reports from the hospital.',
-              },
-              {
-                title: 'Example 2 – Accident Investigation',
-                desc: 'A motor accident claim takes longer to process because the insurance company conducts an investigation to verify the accident details before approving the claim.',
-              },
-              {
-                title: 'Example 3 – Missing Supporting Documents',
-                desc: 'A claim is delayed because certain documents such as discharge summaries, invoices, or identification proofs were not submitted initially.',
-              },
-              {
-                title: 'Example 4 – Policy Condition Review',
-                desc: 'An insurance company takes additional time to review the claim because it needs to verify whether the event falls within the policy coverage conditions.',
-              },
-            ].map((scenario, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-br from-[#F5F7F9] to-white rounded-2xl p-8 shadow-lg border border-gray-200"
-              >
-                <div className="flex items-start space-x-4 mb-4">
-                  <div className="w-10 h-10 bg-[#F39C12] text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">
-                    {index + 1}
-                  </div>
-                  <h3 className="text-xl font-bold text-[#1F2933]">{scenario.title}</h3>
-                </div>
-                <p className="text-base text-[#52606D] leading-relaxed">{scenario.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Understanding Claim Timelines */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Understanding Claim Timelines
-            </h2>
-            <p className="text-lg text-[#52606D] max-w-3xl mx-auto">
-              Insurance policies usually specify certain timelines for claim processing. However, the actual duration may vary depending on several factors.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {[
-              { label: 'Type of Claim', icon: FileText },
-              { label: 'Complexity of Situation', icon: AlertCircle },
-              { label: 'Documentation Requirements', icon: Search },
-              { label: 'Verification Procedures', icon: CheckCircle },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-lg text-center"
-              >
-                <div className="w-14 h-14 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="text-base font-semibold text-[#1F2933]">{item.label}</h3>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { label: 'Type of Claim', icon: FileText },
-              { label: 'Complexity', icon: AlertCircle },
-              { label: 'Documentation', icon: Search },
-              { label: 'Verification', icon: CheckCircle },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-md text-center"
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <item.icon className="h-6 w-6 text-white" />
-                </div>
-                <h4 className="text-base font-semibold text-[#1F2933]">{item.label}</h4>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Yashoda Total Solution */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Yashoda Total Solution
-            </h2>
-            <p className="text-lg text-[#52606D]">
-              Professional assistance for insurance claim processing and guidance
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 icon: Users,
-                title: 'Experienced & Professional Team',
+                title: 'Expert Team',
                 desc: 'Qualified professionals with industry knowledge and operational expertise.'
               },
               {
-                icon: Zap,
-                title: 'Quick & Transparent Processing',
-                desc: 'Systematic workflows supported by clear communication and monitoring.'
+                icon: FileText,
+                title: 'Documentation Help',
+                desc: 'Ensure all required documents are properly prepared and submitted.'
               },
               {
-                icon: Target,
-                title: 'Customer-First Approach',
-                desc: 'Every case handled with attention, empathy, and ethical responsibility.'
+                icon: Clock,
+                title: 'Status Tracking',
+                desc: 'Regular follow-ups to track claim progress and timely updates.'
               },
               {
-                icon: TrendingUp,
-                title: 'Technology-Driven Monitoring',
-                desc: 'Advanced tracking systems ensure accountability and regular updates.'
-              },
-              {
-                icon: Shield,
-                title: 'Trusted Service Partner',
-                desc: 'Focused on long-term relationships built on trust, reliability, and service excellence.'
+                icon: CheckCircle,
+                title: 'High Success Rate',
+                desc: 'Successfully helped numerous clients navigate the claim process efficiently.'
               },
             ].map((item, index) => (
               <motion.div
@@ -469,13 +193,159 @@ const ClaimDelay = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="bg-gradient-to-br from-[#F5F7F9] to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-2xl flex items-center justify-center mb-6">
                   <item.icon className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-[#1F2933] mb-3">{item.title}</h3>
-                <p className="text-sm text-[#52606D] leading-relaxed">{item.desc}</p>
+                <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
+                <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Flow Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+              Our 5-Step Claim Assistance Process
+            </h2>
+            <p className="text-lg text-[#52606D]">
+              Helping you navigate claim delays effectively
+            </p>
+          </motion.div>
+
+          <div className="relative">
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
+
+            <div className="space-y-12">
+              {[
+                {
+                  step: '1',
+                  title: 'Documentation Review',
+                  desc: 'We review your claim documents and ensure all required paperwork is complete and accurate.'
+                },
+                {
+                  step: '2',
+                  title: 'Status Tracking',
+                  desc: 'We help you track claim status and understand where your claim is in the review process.'
+                },
+                {
+                  step: '3',
+                  title: 'Follow-Up Assistance',
+                  desc: 'Regular follow-ups with the insurance company to expedite the claim processing.'
+                },
+                {
+                  step: '4',
+                  title: 'Additional Documentation',
+                  desc: 'If additional documents are requested, we help you gather and submit them promptly.'
+                },
+                {
+                  step: '5',
+                  title: 'Resolution Support',
+                  desc: 'We guide you through the entire process until your claim is successfully settled.'
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`relative grid md:grid-cols-2 gap-8 items-center ${
+                    index % 2 === 0 ? 'md:text-right' : 'md:flex-row-reverse'
+                  }`}
+                >
+                  <div className={index % 2 === 0 ? 'md:pr-12' : 'md:col-start-2 md:pl-12'}>
+                    <div className="bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] text-white rounded-2xl p-8 shadow-xl">
+                      <div className="flex items-center space-x-4 mb-4">
+                        <div className="w-12 h-12 bg-[#F39C12] rounded-full flex items-center justify-center font-bold text-xl">
+                          {item.step}
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-bold flex-1">{item.title}</h3>
+                      </div>
+                      <p className="text-base text-white/90 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+
+                  <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#F39C12] rounded-full border-4 border-white shadow-lg z-10"></div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Example Scenarios Section */}
+      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+              Real-Life Delay Examples
+            </h2>
+            <p className="text-lg text-[#52606D]">
+              Common situations where claims experience delays
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: 'Example 1 – Hospital Documentation Delay',
+                problem: 'A patient submits a health insurance claim after hospital treatment.',
+                reality: 'The claim remains pending because the insurance company is waiting for additional medical reports from the hospital.',
+                solution: 'We coordinated with the hospital to expedite report submission and the claim was processed within 2 weeks.'
+              },
+              {
+                title: 'Example 2 – Accident Investigation',
+                problem: 'A motor accident claim takes longer to process than expected.',
+                reality: 'The insurance company conducts an investigation to verify accident details before approving the claim.',
+                solution: 'We provided all supporting evidence and followed up regularly; claim was settled in 45 days.'
+              },
+              {
+                title: 'Example 3 – Missing Supporting Documents',
+                problem: 'A claim is delayed due to incomplete documentation.',
+                reality: 'Certain documents like discharge summaries and invoices were not submitted initially.',
+                solution: 'We helped gather all missing documents and resubmitted; claim approved within 10 days.'
+              },
+              {
+                title: 'Example 4 – Policy Condition Review',
+                problem: 'An insurance company takes additional time to review the claim.',
+                reality: 'The insurer needed to verify whether the event falls within policy coverage conditions.',
+                solution: 'We provided policy clarifications and supporting documents; claim processed successfully.'
+              },
+            ].map((scenario, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 shadow-lg"
+              >
+                <h3 className="text-xl font-bold text-[#1F2933] mb-4 flex items-center">
+                  <span className="w-8 h-8 bg-[#F39C12] text-white rounded-full flex items-center justify-center mr-3 text-sm font-bold">
+                    {index + 1}
+                  </span>
+                  {scenario.title}
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">⏱️ Problem:</h4>
+                    <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-blue-600 mb-2">📋 Reality:</h4>
+                    <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -483,14 +353,14 @@ const ClaimDelay = () => {
       </section>
 
       {/* FAQs Section */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about insurance claim processing delays
+              Common questions about claim processing delays
             </p>
           </motion.div>
 
@@ -498,19 +368,19 @@ const ClaimDelay = () => {
             {[
               {
                 q: 'Why do insurance claims sometimes take longer than expected?',
-                a: 'Claim processing may require document verification, investigation, and policy evaluation, which can extend the processing time depending on the complexity and completeness of documentation.'
+                a: 'Claim processing may require document verification, investigation, and policy evaluation, which can extend the processing time depending on complexity.'
               },
               {
                 q: 'How long does claim processing usually take?',
-                a: 'The timeline varies depending on the type of claim, required documentation, and policy conditions. Some claims may be processed within days, while others may take weeks if additional verification is needed.'
+                a: 'The timeline varies depending on the type of claim, required documentation, and policy conditions. Some claims are processed within days, while others may take weeks.'
               },
               {
                 q: 'What should policyholders do if their claim is delayed?',
-                a: 'Reviewing the claim status, ensuring that all required documents are submitted, and understanding the claim process can help clarify the situation. Following up with the insurance company for updates is also recommended.'
+                a: 'Review the claim status, ensure all required documents are submitted, and follow up with the insurance company for updates on the processing timeline.'
               },
               {
                 q: 'Can claim delays happen even if documents are submitted?',
-                a: 'Yes. Sometimes insurance companies conduct additional verification, investigation, or policy review before approving the claim, which may extend the processing time.'
+                a: 'Yes. Sometimes insurance companies conduct additional verification, investigation, or policy review before approving the claim.'
               },
             ].map((faq, index) => (
               <motion.div
@@ -519,7 +389,7 @@ const ClaimDelay = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
+                className="bg-[#F5F7F9] rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
@@ -556,10 +426,10 @@ const ClaimDelay = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Experiencing Delays in Your Insurance Claim Process?
+              Experiencing Delays in Your Claim Process?
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding the claim procedure and documentation requirements can help policyholders navigate the situation more effectively. Contact Yashoda Total Solution to learn more about insurance claim and dispute assistance services.
+              Understanding the claim procedure and documentation requirements can help policyholders navigate the situation more effectively. Contact Yashoda Total Solution for claim processing assistance.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -567,7 +437,7 @@ const ClaimDelay = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Contact Us
+                  Get Free Consultation
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>

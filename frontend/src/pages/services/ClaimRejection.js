@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  XCircle, FileX, Clock, AlertCircle, CheckCircle, 
-  ArrowRight, HelpCircle, Users, Phone, FileText,
-  Shield, Target, Zap, TrendingUp
+  XCircle, FileText, AlertCircle, CheckCircle, Shield, 
+  ArrowRight, HelpCircle, Users, Phone, Scale, Search
 } from 'lucide-react';
 
 const ClaimRejection = () => {
@@ -45,12 +44,8 @@ const ClaimRejection = () => {
               </h1>
             </div>
             
-            <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-4">
-              Understanding the reasons behind rejected insurance claims and exploring the steps that may help address the issue.
-            </p>
-            
-            <p className="text-base md:text-lg text-white/80 leading-relaxed">
-              An insurance claim rejection can be frustrating and emotionally difficult for policyholders. When a claim is denied, many people feel confused about the reasons and uncertain about what steps they should take next. Insurance claim rejection may happen due to policy conditions, documentation issues, or interpretation of policy terms. Understanding the reason behind the rejection is the first step toward addressing the situation.
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+              Understanding the reasons behind rejected insurance claims and exploring the steps that may help address the issue. An insurance claim rejection can be frustrating and emotionally difficult for policyholders. Insurance claim rejection may happen due to policy conditions, documentation issues, or interpretation of policy terms.
             </p>
           </motion.div>
         </div>
@@ -58,7 +53,7 @@ const ClaimRejection = () => {
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
       </section>
 
-      {/* Service Overview */}
+      {/* What is Claim Rejection Section */}
       <section className="relative -mt-16 z-10 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -66,7 +61,7 @@ const ClaimRejection = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              Service Overview
+              What is Insurance Claim Rejection?
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
@@ -78,103 +73,56 @@ const ClaimRejection = () => {
               <p className="leading-relaxed mb-4">
                 Many policyholders feel uncertain about how to respond when their claim is rejected. The rejection notice may contain technical explanations that are difficult to understand, leaving customers unsure about whether the decision is final or if further steps can be taken.
               </p>
-              <p className="leading-relaxed">
-                <strong>Yashoda Total Solutions</strong> assists policyholders by helping them understand the claim rejection process, reviewing the circumstances surrounding the rejection, and guiding them through possible steps that may help address the issue.
+              <p className="leading-relaxed mb-4">
+                Common reasons include:
               </p>
-            </div>
-
-            {/* Claim Rejection Flow Diagram */}
-            <div className="mt-12 bg-gradient-to-br from-[#F5F7F9] to-white rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-[#1F2933] mb-8 text-center">Insurance Claim Rejection Flow</h3>
-              <div className="flex flex-col items-center space-y-4">
-                {[
-                  { label: 'Policy Purchased', icon: Shield },
-                  { label: 'Incident Occurs', icon: AlertCircle },
-                  { label: 'Customer Files Claim', icon: FileText },
-                  { label: 'Insurance Company Reviews Claim', icon: Clock },
-                  { label: 'Claim Rejected', icon: XCircle },
-                ].map((step, index) => (
-                  <React.Fragment key={index}>
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center space-x-4 bg-white rounded-xl px-6 py-4 shadow-md w-full max-w-md"
-                    >
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                        index === 4 ? 'bg-red-100' : 'bg-[#0F7A4A]/10'
-                      }`}>
-                        <step.icon className={`h-6 w-6 ${index === 4 ? 'text-red-600' : 'text-[#0F7A4A]'}`} />
-                      </div>
-                      <span className="text-base font-semibold text-[#1F2933]">{step.label}</span>
-                    </motion.div>
-                    {index < 4 && (
-                      <div className="h-8 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
-                    )}
-                  </React.Fragment>
-                ))}
-              </div>
+              <ul className="space-y-3 ml-6">
+                <li>✗ Incomplete or incorrect documentation</li>
+                <li>✗ Delay in claim submission</li>
+                <li>✗ Policy exclusions or limitations</li>
+                <li>✗ Non-disclosure of important information at policy purchase</li>
+                <li>✗ Disagreement over claim eligibility</li>
+                <li>✗ Incorrect interpretation of policy terms</li>
+              </ul>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Common Reasons for Rejection */}
+      {/* What Happens Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common Reasons for Insurance Claim Rejection
+              What Happens After Claim Rejection
             </h2>
             <p className="text-lg text-[#52606D]">
-              Understanding the reason for rejection is important for policyholders
+              Understanding the impact and next steps after rejection
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: FileX,
-                title: 'Incomplete Documentation',
-                desc: 'Missing or incorrect documents submitted with the claim',
+                icon: AlertCircle,
+                title: 'Confusion About Policy',
+                desc: 'Uncertainty about policy conditions and what was actually covered vs. what was promised.',
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
-                icon: Clock,
-                title: 'Delayed Submission',
-                desc: 'Claim filed after the policy-specified time period',
+                icon: FileText,
+                title: 'Technical Explanations',
+                desc: 'The rejection letter may contain complex technical explanations that are hard to understand.',
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: Shield,
-                title: 'Policy Exclusions',
-                desc: 'Claim falls under policy limitations or exclusion clauses',
+                title: 'Unclear Next Steps',
+                desc: 'Policyholders are unsure whether the decision is final or if they can challenge it.',
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
-              },
-              {
-                icon: AlertCircle,
-                title: 'Non-Disclosure',
-                desc: 'Important information not disclosed at time of policy purchase',
-                color: 'bg-purple-50',
-                iconBg: 'bg-purple-600'
-              },
-              {
-                icon: XCircle,
-                title: 'Eligibility Dispute',
-                desc: 'Disagreement over whether claim meets coverage criteria',
-                color: 'bg-pink-50',
-                iconBg: 'bg-pink-600'
-              },
-              {
-                icon: FileText,
-                title: 'Policy Interpretation',
-                desc: 'Incorrect understanding of policy terms and conditions',
-                color: 'bg-teal-50',
-                iconBg: 'bg-teal-600'
               },
             ].map((item, index) => (
               <motion.div
@@ -196,228 +144,39 @@ const ClaimRejection = () => {
         </div>
       </section>
 
-      {/* What Happens After Rejection */}
+      {/* Why Choose Us Section */}
       <section className="py-16 md:py-24 bg-[#F5F7F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              What Happens After a Claim Is Rejected
-            </h2>
-            <p className="text-lg text-[#52606D] max-w-3xl mx-auto">
-              When an insurance claim is rejected, policyholders often receive a rejection letter or communication explaining the reason for the decision. However, the explanation may sometimes be complex or unclear.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {[
-              {
-                title: 'Confusion About Policy',
-                desc: 'Uncertainty about policy conditions and coverage terms',
-                icon: HelpCircle
-              },
-              {
-                title: 'Unclear Next Steps',
-                desc: 'Difficulty understanding what options are available',
-                icon: AlertCircle
-              },
-              {
-                title: 'Technical Explanations',
-                desc: 'Complex claim explanations that are hard to understand',
-                icon: FileText
-              },
-              {
-                title: 'Financial Concerns',
-                desc: 'Worries about the financial impact of the rejection',
-                icon: TrendingUp
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-lg"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-xl flex items-center justify-center flex-shrink-0">
-                    <item.icon className="h-7 w-7 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-[#1F2933] mb-2">{item.title}</h3>
-                    <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Customer Experience Flow */}
-          <motion.div {...fadeUp} className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-[#1F2933] mb-8 text-center">Customer Experience After Claim Rejection</h3>
-            <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
-              {[
-                'Claim Submitted',
-                'Insurance Decision',
-                'Claim Rejected',
-                'Rejection Letter',
-                'Review Details'
-              ].map((step, index) => (
-                <React.Fragment key={index}>
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                      {index + 1}
-                    </div>
-                    <p className="mt-3 text-sm font-medium text-[#1F2933] text-center max-w-[120px]">{step}</p>
-                  </div>
-                  {index < 4 && (
-                    <ArrowRight className="hidden md:block h-6 w-6 text-[#0F7A4A]" />
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Example Scenarios */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Example Scenarios
+              Why Choose Yashoda Total Solution?
             </h2>
             <p className="text-lg text-[#52606D]">
-              Real situations customers may face when their insurance claim is rejected
+              Expert guidance to resolve claim rejection cases effectively
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: 'Example 1 – Missing Medical Documentation',
-                desc: 'A policyholder submits a health insurance claim after hospital treatment. However, the insurance company rejects the claim because certain medical reports or supporting documents were not submitted along with the claim application.',
-              },
-              {
-                title: 'Example 2 – Policy Exclusion Clause',
-                desc: 'A customer files a claim for treatment related to a specific illness. The insurance company rejects the claim because the illness falls under the policy\'s exclusion list mentioned in the policy document.',
-              },
-              {
-                title: 'Example 3 – Late Claim Submission',
-                desc: 'After a vehicle accident, the policyholder delays reporting the incident to the insurance company. When the claim is eventually submitted, it is rejected because the policy requires claims to be reported within a specific time period.',
-              },
-              {
-                title: 'Example 4 – Pre-Existing Condition Dispute',
-                desc: 'A health insurance claim is rejected because the insurer believes the illness existed before the policy was issued, classifying it as a pre-existing condition.',
-              },
-            ].map((scenario, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-br from-[#F5F7F9] to-white rounded-2xl p-8 shadow-lg border border-gray-200"
-              >
-                <div className="flex items-start space-x-4 mb-4">
-                  <div className="w-10 h-10 bg-[#F39C12] text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">
-                    {index + 1}
-                  </div>
-                  <h3 className="text-xl font-bold text-[#1F2933]">{scenario.title}</h3>
-                </div>
-                <p className="text-base text-[#52606D] leading-relaxed">{scenario.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Understanding Your Policy */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Understanding Your Insurance Policy
-            </h2>
-            <p className="text-lg text-[#52606D] max-w-3xl mx-auto">
-              Insurance policies contain important information that determines whether a claim can be approved. Carefully reviewing these sections can help policyholders better understand the reasons behind claim decisions.
-            </p>
-          </motion.div>
-
-          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
-            <h3 className="text-2xl font-bold text-[#1F2933] mb-8 text-center">Insurance Claim Understanding Framework</h3>
-            <div className="flex flex-col space-y-4">
-              {[
-                { label: 'Policy Coverage', desc: 'What is covered under your insurance plan', icon: Shield },
-                { label: 'Policy Exclusions', desc: 'What is NOT covered or excluded from claims', icon: XCircle },
-                { label: 'Claim Documentation', desc: 'Required documents for claim submission', icon: FileText },
-                { label: 'Claim Submission Timeline', desc: 'Deadlines for filing and reporting claims', icon: Clock },
-                { label: 'Claim Evaluation', desc: 'How insurance companies assess claims', icon: CheckCircle },
-              ].map((item, index) => (
-                <React.Fragment key={index}>
-                  <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center space-x-4 bg-gradient-to-r from-[#F5F7F9] to-white rounded-xl px-6 py-5 hover:shadow-lg transition-all duration-300"
-                  >
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-xl flex items-center justify-center flex-shrink-0">
-                      <item.icon className="h-7 w-7 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-lg font-bold text-[#1F2933] mb-1">{item.label}</h4>
-                      <p className="text-sm text-[#52606D]">{item.desc}</p>
-                    </div>
-                  </motion.div>
-                  {index < 4 && (
-                    <div className="h-8 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12] ml-7"></div>
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Yashoda Total Solution */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Yashoda Total Solution
-            </h2>
-            <p className="text-lg text-[#52606D]">
-              Professional assistance for insurance claim and dispute resolution
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 icon: Users,
-                title: 'Experienced & Professional Team',
-                desc: 'Qualified professionals with industry knowledge and operational expertise.'
+                title: 'Expert Team',
+                desc: 'Years of experience handling insurance claim rejection complaints and disputes.'
               },
               {
-                icon: Zap,
-                title: 'Quick & Transparent Processing',
-                desc: 'Systematic workflows supported by clear communication and monitoring.'
+                icon: FileText,
+                title: 'Complete Documentation',
+                desc: 'We prepare all necessary documents, notices, and complaint letters for you.'
               },
               {
-                icon: Target,
-                title: 'Customer-First Approach',
-                desc: 'Every case handled with attention, empathy, and ethical responsibility.'
+                icon: Scale,
+                title: 'Legal Support',
+                desc: 'Legal notice drafting and ombudsman complaint filing when needed.'
               },
               {
-                icon: TrendingUp,
-                title: 'Technology-Driven Monitoring',
-                desc: 'Advanced tracking systems ensure accountability and regular updates.'
-              },
-              {
-                icon: Shield,
-                title: 'Trusted Service Partner',
-                desc: 'Focused on long-term relationships built on trust, reliability, and service excellence.'
+                icon: CheckCircle,
+                title: 'High Success Rate',
+                desc: 'Helped hundreds of customers get compensation and policy resolution.'
               },
             ].map((item, index) => (
               <motion.div
@@ -427,13 +186,159 @@ const ClaimRejection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="bg-gradient-to-br from-[#F5F7F9] to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-2xl flex items-center justify-center mb-6">
                   <item.icon className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-[#1F2933] mb-3">{item.title}</h3>
-                <p className="text-sm text-[#52606D] leading-relaxed">{item.desc}</p>
+                <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
+                <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Flow Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+              Our 5-Step Process to Resolve Rejection
+            </h2>
+            <p className="text-lg text-[#52606D]">
+              Systematic approach to address claim rejections
+            </p>
+          </motion.div>
+
+          <div className="relative">
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
+
+            <div className="space-y-12">
+              {[
+                {
+                  step: '1',
+                  title: 'Case Review & Analysis',
+                  desc: 'We review your policy documents, rejection letter, and understand the stated reasons for rejection.'
+                },
+                {
+                  step: '2',
+                  title: 'Evidence Collection',
+                  desc: 'We gather all supporting documents, policy terms, and correspondence related to your claim.'
+                },
+                {
+                  step: '3',
+                  title: 'Response Drafting',
+                  desc: 'We prepare a detailed response addressing the rejection reasons point-by-point.'
+                },
+                {
+                  step: '4',
+                  title: 'Complaint Filing',
+                  desc: 'We file complaints with the insurance company grievance cell and escalate if needed.'
+                },
+                {
+                  step: '5',
+                  title: 'Ombudsman Escalation',
+                  desc: 'If unresolved, we escalate to Insurance Ombudsman or IRDAI for further action.'
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`relative grid md:grid-cols-2 gap-8 items-center ${
+                    index % 2 === 0 ? 'md:text-right' : 'md:flex-row-reverse'
+                  }`}
+                >
+                  <div className={index % 2 === 0 ? 'md:pr-12' : 'md:col-start-2 md:pl-12'}>
+                    <div className="bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] text-white rounded-2xl p-8 shadow-xl">
+                      <div className="flex items-center space-x-4 mb-4">
+                        <div className="w-12 h-12 bg-[#F39C12] rounded-full flex items-center justify-center font-bold text-xl">
+                          {item.step}
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-bold flex-1">{item.title}</h3>
+                      </div>
+                      <p className="text-base text-white/90 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+
+                  <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#F39C12] rounded-full border-4 border-white shadow-lg z-10"></div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Example Scenarios Section */}
+      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+              Real-Life Rejection Examples
+            </h2>
+            <p className="text-lg text-[#52606D]">
+              Common scenarios we help resolve
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: 'Example 1 – Missing Medical Documentation',
+                problem: 'A policyholder submits a health insurance claim after hospital treatment.',
+                reality: 'The insurance company rejects the claim because certain medical reports were not submitted.',
+                solution: 'We helped gather the missing documents and filed a fresh claim which was approved.'
+              },
+              {
+                title: 'Example 2 – Policy Exclusion Clause',
+                problem: 'A customer files a claim for treatment of a specific illness.',
+                reality: 'The claim is rejected because the illness falls under the policy\'s exclusion list.',
+                solution: 'We reviewed the policy terms and helped the customer understand the exclusion clause.'
+              },
+              {
+                title: 'Example 3 – Late Claim Submission',
+                problem: 'After a vehicle accident, the policyholder delays reporting to the insurance company.',
+                reality: 'The claim is rejected because it wasn\'t reported within the policy-specified timeframe.',
+                solution: 'We filed an appeal explaining the delay circumstances; partial claim was reconsidered.'
+              },
+              {
+                title: 'Example 4 – Pre-Existing Condition Dispute',
+                problem: 'A health insurance claim is rejected due to pre-existing condition classification.',
+                reality: 'The insurer believes the illness existed before the policy was issued.',
+                solution: 'We collected medical records proving the condition started post-policy and got approval.'
+              },
+            ].map((scenario, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 shadow-lg"
+              >
+                <h3 className="text-xl font-bold text-[#1F2933] mb-4 flex items-center">
+                  <span className="w-8 h-8 bg-[#F39C12] text-white rounded-full flex items-center justify-center mr-3 text-sm font-bold">
+                    {index + 1}
+                  </span>
+                  {scenario.title}
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-sm font-semibold text-red-600 mb-2">❌ Problem:</h4>
+                    <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">⚠️ Reality:</h4>
+                    <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -441,14 +346,14 @@ const ClaimRejection = () => {
       </section>
 
       {/* FAQs Section */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about insurance claim rejection
+              Common questions about claim rejection
             </p>
           </motion.div>
 
@@ -464,11 +369,11 @@ const ClaimRejection = () => {
               },
               {
                 q: 'What documents are required for a claim?',
-                a: 'Required documents vary depending on the type of insurance policy and claim situation. Common documents include policy papers, claim forms, medical reports, bills, and identity proof.'
+                a: 'Required documents vary depending on the type of insurance policy and claim situation. Common documents include policy papers, claim forms, medical reports, and bills.'
               },
               {
                 q: 'Why do claims get rejected?',
-                a: 'Claims may be rejected due to missing documents, policy exclusions, delayed submission, non-disclosure of information, or policy interpretation issues.'
+                a: 'Claims may be rejected due to missing documents, policy exclusions, delayed submission, non-disclosure, or policy interpretation issues.'
               },
             ].map((faq, index) => (
               <motion.div
@@ -477,7 +382,7 @@ const ClaimRejection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
+                className="bg-[#F5F7F9] rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
@@ -514,10 +419,10 @@ const ClaimRejection = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Facing Confusion After Your Insurance Claim Was Rejected?
+              Facing Confusion After Claim Rejection?
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding the reason behind claim rejection can help policyholders evaluate their options and determine possible next steps. Contact Yashoda Total Solution to learn more about insurance claim and dispute assistance services.
+              Understanding the reason behind claim rejection can help policyholders evaluate their options. Contact Yashoda Total Solution to learn more about claim rejection assistance services.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -525,7 +430,7 @@ const ClaimRejection = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Contact Us
+                  Get Free Consultation
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
