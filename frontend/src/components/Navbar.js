@@ -75,6 +75,7 @@ const Navbar = () => {
               onMouseLeave={() => setIsServicesOpen(false)}
             >
               <button
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
                 data-testid="nav-services-dropdown"
                 className={`flex items-center space-x-1 text-base font-medium transition-colors ${
                   location.pathname.startsWith('/services')
@@ -87,22 +88,24 @@ const Navbar = () => {
               </button>
 
               {isServicesOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[600px] bg-white border border-gray-200 rounded-lg shadow-2xl z-50">
-                  <div className="grid grid-cols-2 gap-1 p-4">
-                    {serviceLinks.map((service, index) => (
-                      <Link
-                        key={service.path}
-                        to={service.path}
-                        data-testid={`service-link-${index + 1}`}
-                        className={`px-4 py-3 rounded-md text-sm font-medium transition-all ${
-                          location.pathname === service.path
-                            ? 'bg-[#0F7A4A] text-white'
-                            : 'text-[#1F2933] hover:bg-[#F5F7F9] hover:text-[#0F7A4A]'
-                        }`}
-                      >
-                        {service.label}
-                      </Link>
-                    ))}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[600px] z-50">
+                  <div className="bg-white border border-gray-200 rounded-lg shadow-2xl">
+                    <div className="grid grid-cols-2 gap-1 p-4">
+                      {serviceLinks.map((service, index) => (
+                        <Link
+                          key={service.path}
+                          to={service.path}
+                          data-testid={`service-link-${index + 1}`}
+                          className={`px-4 py-3 rounded-md text-sm font-medium transition-all ${
+                            location.pathname === service.path
+                              ? 'bg-[#0F7A4A] text-white'
+                              : 'text-[#1F2933] hover:bg-[#F5F7F9] hover:text-[#0F7A4A]'
+                          }`}
+                        >
+                          {service.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
