@@ -11,6 +11,7 @@ import Gallery from './pages/Gallery';
 import MisSelling from './pages/services/MisSelling';
 import ClaimRejection from './pages/services/ClaimRejection';
 import ClaimDelay from './pages/services/ClaimDelay';
+import ClaimShortSettled from './pages/services/ClaimShortSettled';
 import './App.css';
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
             <Route path="/mis-selling" element={<MisSelling />} />
             <Route path="/claim-rejection" element={<ClaimRejection />} />
             <Route path="/claim-delay" element={<ClaimDelay />} />
-            <Route path="/claim-short-settled" element={<Home />} />
+            <Route path="/claim-short-settled" element={<ClaimShortSettled />} />
             <Route path="/health-reimbursement" element={<Home />} />
             <Route path="/pmsby" element={<Home />} />
             <Route path="/pmjjby" element={<Home />} />
