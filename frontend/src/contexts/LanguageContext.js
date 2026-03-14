@@ -20,6 +20,19 @@ export const translations = {
     nav_contact: 'Contact Us',
     nav_reviews: 'Reviews',
     
+    // Service Names (Mega Menu)
+    service_mis_selling: 'Mis-selling of Insurance Policy',
+    service_claim_rejection: 'Insurance Claim Rejection',
+    service_claim_delay: 'Delay in Claim Process',
+    service_claim_short_settled: 'Claim Short-Settled',
+    service_health_reimbursement: 'Health Claim Reimbursement',
+    service_pmsby: 'Pradhan Mantri Suraksha Bima Yojana (PMSBY)',
+    service_pmjjby: 'Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)',
+    service_state_cm_scheme: 'State Chief Minister Insurance Scheme',
+    service_banking_atm: 'Banking & ATM Card Insurance Claim',
+    service_pf_accidental: 'PF Accidental Insurance Claim',
+    service_legal_notice: 'Legal Notice Drafting & Processing',
+    
     // Hero Section
     hero_headline: 'Need Help with Insurance Claim or Legal Problem?',
     hero_subtext: 'Yashoda Total Solution helps common people solve insurance claims, disputes, and legal problems. We provide step-by-step guidance in simple language.',
@@ -269,6 +282,19 @@ export const translations = {
     nav_contact: 'संपर्क करें',
     nav_reviews: 'समीक्षाएं',
     
+    // Service Names (Mega Menu)
+    service_mis_selling: 'बीमा पॉलिसी की मिस-सेलिंग',
+    service_claim_rejection: 'बीमा क्लेम अस्वीकृति',
+    service_claim_delay: 'क्लेम प्रक्रिया में देरी',
+    service_claim_short_settled: 'क्लेम शॉर्ट-सेटल्ड',
+    service_health_reimbursement: 'हेल्थ क्लेम रिइम्बर्समेंट',
+    service_pmsby: 'प्रधानमंत्री सुरक्षा बीमा योजना (PMSBY)',
+    service_pmjjby: 'प्रधानमंत्री जीवन ज्योति बीमा योजना (PMJJBY)',
+    service_state_cm_scheme: 'राज्य मुख्यमंत्री बीमा योजना सहायता',
+    service_banking_atm: 'बैंकिंग और ATM कार्ड बीमा क्लेम',
+    service_pf_accidental: 'PF दुर्घटना बीमा क्लेम सहायता',
+    service_legal_notice: 'कानूनी नोटिस ड्राफ्टिंग और प्रोसेसिंग',
+    
     // Hero Section
     hero_headline: 'बीमा क्लेम या कानूनी समस्या में मदद चाहिए?',
     hero_subtext: 'यशोदा टोटल सॉल्यूशन आम लोगों को बीमा क्लेम, विवाद और कानूनी समस्याओं को सुलझाने में मदद करता है। हम सरल भाषा में स्टेप बाय स्टेप गाइडेंस देते हैं।',
@@ -459,6 +485,19 @@ export const translations = {
     nav_gallery: 'गॅलरी',
     nav_contact: 'संपर्क',
     nav_reviews: 'प्रतिक्रिया',
+    
+    // Service Names (Mega Menu)
+    service_mis_selling: 'विमा पॉलिसीची मिस-सेलिंग',
+    service_claim_rejection: 'विमा क्लेम नाकारणे',
+    service_claim_delay: 'क्लेम प्रक्रियेत विलंब',
+    service_claim_short_settled: 'क्लेम शॉर्ट-सेटल्ड',
+    service_health_reimbursement: 'आरोग्य क्लेम परतावा',
+    service_pmsby: 'प्रधानमंत्री सुरक्षा विमा योजना (PMSBY)',
+    service_pmjjby: 'प्रधानमंत्री जीवन ज्योती विमा योजना (PMJJBY)',
+    service_state_cm_scheme: 'राज्य मुख्यमंत्री विमा योजना सहाय्य',
+    service_banking_atm: 'बँकिंग आणि ATM कार्ड विमा क्लेम',
+    service_pf_accidental: 'PF अपघात विमा क्लेम सहाय्य',
+    service_legal_notice: 'कायदेशीर नोटीस ड्राफ्टिंग आणि प्रोसेसिंग',
     
     // Hero Section
     hero_headline: 'विमा क्लेम किंवा कायदेशीर समस्येत मदत हवी?',

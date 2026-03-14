@@ -9,6 +9,7 @@ import Services from './pages/Services';
 import Reviews from './pages/Reviews';
 import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
+import MisSelling from './pages/services/MisSelling';
 import './App.css';
 
 function App() {
@@ -21,6 +22,17 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/mis-selling" element={<MisSelling />} />
+            <Route path="/services/claim-rejection" element={<Services />} />
+            <Route path="/services/claim-delay" element={<Services />} />
+            <Route path="/services/claim-short-settled" element={<Services />} />
+            <Route path="/services/health-reimbursement" element={<Services />} />
+            <Route path="/services/pmsby" element={<Services />} />
+            <Route path="/services/pmjjby" element={<Services />} />
+            <Route path="/services/state-cm-scheme" element={<Services />} />
+            <Route path="/services/banking-atm-insurance" element={<Services />} />
+            <Route path="/services/pf-accidental-insurance" element={<Services />} />
+            <Route path="/services/legal-notice" element={<Services />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/reviews" element={<Reviews />} />

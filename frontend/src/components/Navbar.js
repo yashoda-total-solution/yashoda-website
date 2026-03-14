@@ -1,21 +1,35 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
 
   const navLinks = [
     { path: '/', label: t('nav_home') },
     { path: '/about', label: t('nav_about') },
-    { path: '/services', label: t('nav_services') },
     { path: '/gallery', label: t('nav_gallery') },
     { path: '/contact', label: t('nav_contact') },
     { path: '/reviews', label: t('nav_reviews') },
+  ];
+
+  const serviceLinks = [
+    { path: '/services/mis-selling', label: t('service_mis_selling') },
+    { path: '/services/claim-rejection', label: t('service_claim_rejection') },
+    { path: '/services/claim-delay', label: t('service_claim_delay') },
+    { path: '/services/claim-short-settled', label: t('service_claim_short_settled') },
+    { path: '/services/health-reimbursement', label: t('service_health_reimbursement') },
+    { path: '/services/pmsby', label: t('service_pmsby') },
+    { path: '/services/pmjjby', label: t('service_pmjjby') },
+    { path: '/services/state-cm-scheme', label: t('service_state_cm_scheme') },
+    { path: '/services/banking-atm-insurance', label: t('service_banking_atm') },
+    { path: '/services/pf-accidental-insurance', label: t('service_pf_accidental') },
+    { path: '/services/legal-notice', label: t('service_legal_notice') },
   ];
 
   const languages = [
@@ -55,6 +69,46 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+
+            {/* Services Mega Menu */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseLeave={() => setIsServicesOpen(false)}
+            >
+              <button
+                data-testid="nav-services-dropdown"
+                className={`flex items-center space-x-1 text-base font-medium transition-colors ${
+                  location.pathname.startsWith('/services')
+                    ? 'text-[#0F7A4A] font-semibold'
+                    : 'text-[#1F2933] hover:text-[#0F7A4A]'
+                }`}
+              >
+                <span>{t('nav_services')}</span>
+                <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {isServicesOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[600px] bg-white border border-gray-200 rounded-lg shadow-2xl z-50">
+                  <div className="grid grid-cols-2 gap-1 p-4">
+                    {serviceLinks.map((service, index) => (
+                      <Link
+                        key={service.path}
+                        to={service.path}
+                        data-testid={`service-link-${index + 1}`}
+                        className={`px-4 py-3 rounded-md text-sm font-medium transition-all ${
+                          location.pathname === service.path
+                            ? 'bg-[#0F7A4A] text-white'
+                            : 'text-[#1F2933] hover:bg-[#F5F7F9] hover:text-[#0F7A4A]'
+                        }`}
+                      >
+                        {service.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Language Switcher */}
             <div className="relative">
@@ -121,6 +175,41 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+
+            {/* Mobile Services Dropdown */}
+            <div>
+              <button
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
+                data-testid="mobile-services-dropdown"
+                className="flex items-center justify-between w-full px-4 py-3 rounded-md text-base font-medium text-[#1F2933] hover:bg-gray-50"
+              >
+                <span>{t('nav_services')}</span>
+                <ChevronDown className={`h-5 w-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isServicesOpen && (
+                <div className="mt-2 pl-4 space-y-2">
+                  {serviceLinks.map((service, index) => (
+                    <Link
+                      key={service.path}
+                      to={service.path}
+                      onClick={() => {
+                        setIsServicesOpen(false);
+                        setIsMenuOpen(false);
+                      }}
+                      data-testid={`mobile-service-link-${index + 1}`}
+                      className={`block px-4 py-2 rounded-md text-sm font-medium ${
+                        location.pathname === service.path
+                          ? 'bg-[#0F7A4A] text-white'
+                          : 'text-[#52606D] hover:bg-gray-50'
+                      }`}
+                    >
+                      {service.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Mobile Language Switcher */}
             <div className="pt-3 border-t border-gray-200">
