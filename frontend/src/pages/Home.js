@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Shield, FileCheck, Banknote, Landmark, FileText, Users, CheckCircle, Phone, ArrowRight, Star, Award, Clock, Lock, HeartHandshake, Target, TrendingUp } from 'lucide-react';
+import { Shield, FileCheck, Banknote, Landmark, FileText, Users, CheckCircle, Phone, ArrowRight, Star, Award, Clock, Lock, HeartHandshake, Target, TrendingUp, Zap, Eye } from 'lucide-react';
 
 const Home = () => {
   const { t } = useLanguage();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const heroImages = [
+    "https://images.unsplash.com/photo-1739298061766-e2751d92e9db?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBoYW5kc2hha2UlMjBvZmZpY2UlMjB0ZWFtd29ya3xlbnwwfHx8fDE3NzM0NTkyNTB8MA&ixlib=rb-4.1.0&q=85",
+    "https://images.unsplash.com/photo-1758599543129-5269a8f29e68?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBoYW5kc2hha2UlMjBvZmZpY2UlMjB0ZWFtd29ya3xlbnwwfHx8fDE3NzM0NTkyNTB8MA&ixlib=rb-4.1.0&q=85",
+    "https://images.unsplash.com/photo-1758518731290-a9eb64660ead?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBoYW5kc2hha2UlMjBvZmZpY2UlMjB0ZWFtd29ya3xlbnwwfHx8fDE3NzM0NTkyNTB8MA&ixlib=rb-4.1.0&q=85",
+    "https://images.unsplash.com/photo-1758518729240-7162d07427b8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBoYW5kc2hha2UlMjBvZmZpY2UlMjB0ZWFtd29ya3xlbnwwfHx8fDE3NzM0NTkyNTB8MA&ixlib=rb-4.1.0&q=85"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
@@ -49,10 +64,10 @@ const Home = () => {
               </motion.div>
 
               <h1 className="text-4xl md:text-6xl font-bold leading-tight" data-testid="hero-headline">
-                {t('hero_headline')}
+                Helping Policyholders take control of their insurance and resolve issues quickly
               </h1>
               <p className="text-lg md:text-xl text-white/90 leading-relaxed" data-testid="hero-subtext">
-                {t('hero_subtext')}
+                Yashoda Total Solutions (Service Provider) assists individuals with insurance claims, disputes, and legal matters; to this end, it provides clear, step-by-step guidance in simple language, enabling clients to easily understand the entire process.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -99,7 +114,7 @@ const Home = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right Image with 3D Card */}
+            {/* Right Image Carousel with 3D Card */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -111,14 +126,32 @@ const Home = () => {
                 <motion.div
                   whileHover={{ rotateY: 5, scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-2 shadow-2xl"
+                  className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-2 shadow-2xl overflow-hidden"
                   style={{ transformStyle: 'preserve-3d' }}
                 >
-                  <img
-                    src="https://images.unsplash.com/photo-1758599543152-a73184816eba?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTF8MHwxfHNlYXJjaHwzfHxidXNpbmVzcyUyMGhhbmRzaGFrZSUyMHByb2Zlc3Npb25hbCUyMG1lZXRpbmd8ZW58MHx8fHwxNzcyNzA1ODIyfDA&ixlib=rb-4.1.0&q=85"
-                    alt="Professional Service"
-                    className="rounded-2xl w-full h-auto shadow-2xl"
-                  />
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentImageIndex}
+                      src={heroImages[currentImageIndex]}
+                      alt="Professional Service"
+                      className="rounded-2xl w-full h-auto shadow-2xl"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                  </AnimatePresence>
+                  {/* Image indicators */}
+                  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                    {heroImages.map((_, index) => (
+                      <div
+                        key={index}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === currentImageIndex ? 'bg-[#F39C12] w-6' : 'bg-white/50'
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </motion.div>
               </div>
             </motion.div>
@@ -247,84 +280,45 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Section with 3D Cards */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]" data-testid="services-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
-              {t('nav_services')}
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">
-              {t('services_title')}
-            </h2>
-            <p className="text-lg text-[#52606D] max-w-3xl mx-auto">
-              {t('services_subtitle')}
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { icon: FileCheck, title: t('service1_title'), desc: t('service1_desc') },
-              { icon: Shield, title: t('service2_title'), desc: t('service2_desc') },
-              { icon: Banknote, title: t('service3_title'), desc: t('service3_desc') },
-              { icon: Landmark, title: t('service4_title'), desc: t('service4_desc') },
-              { icon: FileText, title: t('service5_title'), desc: t('service5_desc') },
-              { icon: Users, title: t('service6_title'), desc: t('service6_desc') },
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                data-testid={`service-card-${index + 1}`}
-                className="group relative bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] transition-all duration-500 overflow-hidden"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative p-8 z-10">
-                  <div className="w-14 h-14 bg-[#0F7A4A]/10 group-hover:bg-white/20 rounded-xl flex items-center justify-center mb-6 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
-                    <service.icon className="h-7 w-7 text-[#0F7A4A] group-hover:text-white transition-colors duration-500" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-[#1F2933] group-hover:text-white mb-3 transition-colors duration-500">{service.title}</h3>
-                  <p className="text-base text-[#52606D] group-hover:text-white/90 leading-relaxed transition-colors duration-500">{service.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div {...fadeUp} className="text-center mt-12">
-            <Link
-              to="/services"
-              data-testid="view-all-services-btn"
-              className="inline-flex items-center justify-center bg-[#0F7A4A] hover:bg-[#0A5734] text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
-            >
-              View All Services
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Why Choose Us Section with Animated Numbers */}
       <section className="py-16 md:py-24 bg-white" data-testid="why-choose-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">
-              {t('why_title')}
+              Why Choose Yashoda Total Solution?
             </h2>
             <p className="text-lg text-[#52606D] max-w-3xl mx-auto">
-              {t('why_subtitle')}
+              We deliver professional, transparent, and customer-focused service excellence
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: t('why1_title'), desc: t('why1_desc'), icon: HeartHandshake },
-              { title: t('why2_title'), desc: t('why2_desc'), icon: Award },
-              { title: t('why3_title'), desc: t('why3_desc'), icon: Lock },
-              { title: t('why4_title'), desc: t('why4_desc'), icon: Target },
+              { 
+                title: 'Experienced & Professional Team', 
+                desc: 'Qualified professionals with industry knowledge and operational expertise.', 
+                icon: Award 
+              },
+              { 
+                title: 'Quick & Transparent Processing', 
+                desc: 'Systematic workflows supported by clear communication and monitoring.', 
+                icon: Zap 
+              },
+              { 
+                title: 'Customer-First Approach', 
+                desc: 'Every case handled with attention, empathy, and ethical responsibility.', 
+                icon: HeartHandshake 
+              },
+              { 
+                title: 'Technology-Driven Monitoring', 
+                desc: 'Advanced tracking systems ensure accountability and regular updates.', 
+                icon: Eye 
+              },
+              { 
+                title: 'Trusted Service Partner', 
+                desc: 'Focused on long-term relationships built on trust, reliability, and service excellence.', 
+                icon: Shield 
+              },
             ].map((item, index) => (
               <motion.div
                 key={index}
