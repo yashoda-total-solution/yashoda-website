@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
 import MisSelling from './pages/services/MisSelling';
 import ClaimRejection from './pages/services/ClaimRejection';
+import ClaimDelay from './pages/services/ClaimDelay';
 import './App.css';
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/mis-selling" element={<MisSelling />} />
             <Route path="/claim-rejection" element={<ClaimRejection />} />
-            <Route path="/claim-delay" element={<Home />} />
+            <Route path="/claim-delay" element={<ClaimDelay />} />
             <Route path="/claim-short-settled" element={<Home />} />
             <Route path="/health-reimbursement" element={<Home />} />
             <Route path="/pmsby" element={<Home />} />
