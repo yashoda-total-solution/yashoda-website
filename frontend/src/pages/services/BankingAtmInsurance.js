@@ -73,32 +73,18 @@ const BankingAtmInsurance = () => {
               <p className="leading-relaxed mb-4">
                 When an eligible incident occurs, beneficiaries may find it difficult to determine whether the insurance benefit applies and what documents are required to submit a claim.
               </p>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed mb-4">
                 <strong>Yashoda Total Solutions</strong> assists clients in understanding the eligibility criteria, preparing the required documents, and guiding them through the claim submission process to help them access the benefits available under bank-linked insurance policies.
               </p>
-            </div>
-
-            {/* ATM Card Insurance Claim Process Diagram */}
-            <div className="mt-8 bg-gradient-to-br from-[#0F7A4A]/5 to-[#F39C12]/5 rounded-2xl p-6">
-              <h3 className="text-xl font-semibold text-[#1F2933] mb-4 text-center">ATM Card Insurance Claim Process</h3>
-              <div className="flex flex-col items-center space-y-3">
-                {[
-                  'ATM Card Issued by Bank',
-                  'Insurance Coverage Linked to Card',
-                  'Accidental Incident Occurs',
-                  'Beneficiary Submits Claim',
-                  'Claim Verification and Processing'
-                ].map((step, index) => (
-                  <React.Fragment key={index}>
-                    <div className="w-full max-w-md bg-white rounded-xl p-4 text-center shadow-md">
-                      <p className="text-sm font-medium text-[#1F2933]">{step}</p>
-                    </div>
-                    {index < 4 && (
-                      <ArrowRight className="h-5 w-5 text-[#0F7A4A] transform rotate-90" />
-                    )}
-                  </React.Fragment>
-                ))}
-              </div>
+              <p className="leading-relaxed mb-4">
+                <strong>Typical ATM Card Insurance Claim Process:</strong>
+              </p>
+              <ul className="space-y-3 ml-6">
+                <li>• ATM Card Issued by Bank → Insurance Coverage Linked to Card</li>
+                <li>• Accidental Incident Occurs</li>
+                <li>• Beneficiary Submits Claim</li>
+                <li>• Claim Verification and Processing</li>
+              </ul>
             </div>
           </motion.div>
         </div>
@@ -192,32 +178,19 @@ const BankingAtmInsurance = () => {
                 <p className="leading-relaxed mb-4">
                   At that point, beneficiaries must understand the claim process and gather the required documents to submit the claim application.
                 </p>
-                <p className="leading-relaxed">
+                <p className="leading-relaxed mb-4">
                   The bank and insurance provider typically review the submitted documents to verify eligibility and confirm whether the claim meets the policy conditions.
                 </p>
-              </div>
-
-              {/* ATM Card Insurance Claim Review Process Diagram */}
-              <div className="mt-8 bg-gradient-to-br from-[#0F7A4A]/5 to-[#F39C12]/5 rounded-2xl p-6">
-                <h3 className="text-xl font-semibold text-[#1F2933] mb-4 text-center">ATM Card Insurance Claim Review Process</h3>
-                <div className="flex flex-col items-center space-y-3">
-                  {[
-                    'Eligible Incident Occurs',
-                    'Beneficiary Learns About ATM Card Insurance',
-                    'Claim Application Prepared',
-                    'Documents Submitted',
-                    'Claim Verification and Decision'
-                  ].map((step, index) => (
-                    <React.Fragment key={index}>
-                      <div className="w-full max-w-md bg-white rounded-xl p-4 text-center shadow-md">
-                        <p className="text-sm font-medium text-[#1F2933]">{step}</p>
-                      </div>
-                      {index < 4 && (
-                        <ArrowRight className="h-5 w-5 text-[#0F7A4A] transform rotate-90" />
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
+                <p className="leading-relaxed mb-4">
+                  <strong>Claim Review Process:</strong>
+                </p>
+                <ul className="space-y-3 ml-6">
+                  <li>• Eligible Incident Occurs</li>
+                  <li>• Beneficiary Learns About ATM Card Insurance</li>
+                  <li>• Claim Application Prepared</li>
+                  <li>• Documents Submitted</li>
+                  <li>• Claim Verification and Decision</li>
+                </ul>
               </div>
             </div>
           </motion.div>
@@ -303,32 +276,13 @@ const BankingAtmInsurance = () => {
                 ))}
               </div>
 
-              <p className="text-base text-[#52606D] leading-relaxed">
+              <p className="text-base text-[#52606D] leading-relaxed mb-4">
                 Understanding these documentation requirements helps beneficiaries prepare the claim application correctly.
               </p>
 
-              {/* Documentation Framework Diagram */}
-              <div className="mt-8 bg-gradient-to-br from-[#0F7A4A]/5 to-[#F39C12]/5 rounded-2xl p-6">
-                <h3 className="text-xl font-semibold text-[#1F2933] mb-4 text-center">ATM Card Insurance Documentation Framework</h3>
-                <div className="flex flex-col items-center space-y-3">
-                  {[
-                    'Cardholder Verification',
-                    'Incident Documentation',
-                    'Claim Application Form',
-                    'Bank Account Verification',
-                    'Claim Evaluation'
-                  ].map((step, index) => (
-                    <React.Fragment key={index}>
-                      <div className="w-full max-w-md bg-white rounded-xl p-4 text-center shadow-md">
-                        <p className="text-sm font-medium text-[#1F2933]">{step}</p>
-                      </div>
-                      {index < 4 && (
-                        <ArrowRight className="h-5 w-5 text-[#0F7A4A] transform rotate-90" />
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
+              <p className="text-base text-[#52606D] leading-relaxed">
+                <strong>Documentation Framework:</strong> Cardholder Verification → Incident Documentation → Claim Application Form → Bank Account Verification → Claim Evaluation
+              </p>
             </div>
           </motion.div>
         </div>
