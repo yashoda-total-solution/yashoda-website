@@ -1,0 +1,483 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { 
+  CreditCard, FileText, AlertCircle, Shield, CheckCircle, 
+  ArrowRight, HelpCircle, Users, Phone, Target, TrendingUp 
+} from 'lucide-react';
+
+const BankingAtmInsurance = () => {
+  const fadeUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#F5F7F9]">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl"
+          >
+            <div className="flex items-center space-x-2 mb-6">
+              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <span className="text-white/60">/</span>
+              <span className="text-white text-sm">Banking & ATM Card Insurance Claim Support</span>
+            </div>
+            
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-16 h-16 bg-[#F39C12] rounded-2xl flex items-center justify-center">
+                <CreditCard className="h-8 w-8 text-white" />
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+                Banking & ATM Card Insurance Claim Support
+              </h1>
+            </div>
+            
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+              Understanding insurance benefits linked to bank accounts and ATM cards and how beneficiaries can navigate the claim process. Many banks provide insurance coverage linked to ATM or debit cards, offering financial protection in case of accidental death, disability, or other eligible incidents.
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
+      </section>
+
+      {/* Service Overview Section */}
+      <section className="relative -mt-16 z-10 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            {...fadeUp}
+            className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
+              Service Overview
+            </h2>
+            <div className="prose prose-lg max-w-none text-[#52606D]">
+              <p className="leading-relaxed mb-4">
+                Many banks offer insurance coverage linked to debit cards or ATM cards as part of their banking services. These policies may provide financial protection to cardholders or their beneficiaries in case of accidental death, disability, or other covered situations.
+              </p>
+              <p className="leading-relaxed mb-4">
+                However, many customers remain unaware that such insurance coverage exists or do not understand the claim process involved.
+              </p>
+              <p className="leading-relaxed mb-4">
+                When an eligible incident occurs, beneficiaries may find it difficult to determine whether the insurance benefit applies and what documents are required to submit a claim.
+              </p>
+              <p className="leading-relaxed">
+                <strong>Yashoda Total Solutions</strong> assists clients in understanding the eligibility criteria, preparing the required documents, and guiding them through the claim submission process to help them access the benefits available under bank-linked insurance policies.
+              </p>
+            </div>
+
+            {/* ATM Card Insurance Claim Process Diagram */}
+            <div className="mt-8 bg-gradient-to-br from-[#0F7A4A]/5 to-[#F39C12]/5 rounded-2xl p-6">
+              <h3 className="text-xl font-semibold text-[#1F2933] mb-4 text-center">ATM Card Insurance Claim Process</h3>
+              <div className="flex flex-col items-center space-y-3">
+                {[
+                  'ATM Card Issued by Bank',
+                  'Insurance Coverage Linked to Card',
+                  'Accidental Incident Occurs',
+                  'Beneficiary Submits Claim',
+                  'Claim Verification and Processing'
+                ].map((step, index) => (
+                  <React.Fragment key={index}>
+                    <div className="w-full max-w-md bg-white rounded-xl p-4 text-center shadow-md">
+                      <p className="text-sm font-medium text-[#1F2933]">{step}</p>
+                    </div>
+                    {index < 4 && (
+                      <ArrowRight className="h-5 w-5 text-[#0F7A4A] transform rotate-90" />
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Common Challenges Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+              Common ATM Card Insurance Claim Challenges
+            </h2>
+            <p className="text-lg text-[#52606D]">
+              Beneficiaries may face several challenges when attempting to claim benefits
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: AlertCircle,
+                title: 'Lack of Awareness',
+                desc: 'Beneficiaries are unaware that the ATM card included insurance coverage.',
+                color: 'bg-red-50',
+                iconBg: 'bg-red-600'
+              },
+              {
+                icon: HelpCircle,
+                title: 'Eligibility Confusion',
+                desc: 'Confusion about eligibility conditions for insurance claims.',
+                color: 'bg-orange-50',
+                iconBg: 'bg-orange-600'
+              },
+              {
+                icon: FileText,
+                title: 'Missing Documentation',
+                desc: 'Difficulty collecting the required documents.',
+                color: 'bg-blue-50',
+                iconBg: 'bg-blue-600'
+              },
+              {
+                icon: Target,
+                title: 'Claim Process Uncertainty',
+                desc: 'Uncertainty about the claim submission process.',
+                color: 'bg-purple-50',
+                iconBg: 'bg-purple-600'
+              },
+              {
+                icon: TrendingUp,
+                title: 'Verification Delays',
+                desc: 'Delays caused by incomplete or incorrect documentation.',
+                color: 'bg-green-50',
+                iconBg: 'bg-green-600'
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`${item.color} rounded-2xl p-8`}
+              >
+                <div className={`w-16 h-16 ${item.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}>
+                  <item.icon className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
+                <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What Actually Happens Section */}
+      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp}>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-8 text-center">
+              What Actually Happens in ATM Card Insurance Claim Cases
+            </h2>
+            
+            <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
+              <div className="prose prose-lg max-w-none text-[#52606D]">
+                <p className="leading-relaxed mb-4">
+                  In many situations, cardholders are automatically enrolled in insurance coverage when they receive an ATM or debit card from their bank.
+                </p>
+                <p className="leading-relaxed mb-4">
+                  However, customers often remain unaware of this coverage until an eligible incident occurs. When such an event happens, beneficiaries may later discover that the cardholder was entitled to insurance benefits.
+                </p>
+                <p className="leading-relaxed mb-4">
+                  At that point, beneficiaries must understand the claim process and gather the required documents to submit the claim application.
+                </p>
+                <p className="leading-relaxed">
+                  The bank and insurance provider typically review the submitted documents to verify eligibility and confirm whether the claim meets the policy conditions.
+                </p>
+              </div>
+
+              {/* ATM Card Insurance Claim Review Process Diagram */}
+              <div className="mt-8 bg-gradient-to-br from-[#0F7A4A]/5 to-[#F39C12]/5 rounded-2xl p-6">
+                <h3 className="text-xl font-semibold text-[#1F2933] mb-4 text-center">ATM Card Insurance Claim Review Process</h3>
+                <div className="flex flex-col items-center space-y-3">
+                  {[
+                    'Eligible Incident Occurs',
+                    'Beneficiary Learns About ATM Card Insurance',
+                    'Claim Application Prepared',
+                    'Documents Submitted',
+                    'Claim Verification and Decision'
+                  ].map((step, index) => (
+                    <React.Fragment key={index}>
+                      <div className="w-full max-w-md bg-white rounded-xl p-4 text-center shadow-md">
+                        <p className="text-sm font-medium text-[#1F2933]">{step}</p>
+                      </div>
+                      {index < 4 && (
+                        <ArrowRight className="h-5 w-5 text-[#0F7A4A] transform rotate-90" />
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Example Scenarios Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+              Example Scenarios
+            </h2>
+            <p className="text-lg text-[#52606D]">
+              Real-world situations where ATM card insurance claims arise
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: 'Example 1 – Family Unaware of ATM Card Insurance',
+                desc: 'A bank customer holds an active ATM card that includes accidental insurance coverage. After an unfortunate accident, the family later learns that the cardholder was eligible for insurance benefits linked to the ATM card.',
+                color: 'from-blue-50 to-cyan-50'
+              },
+              {
+                title: 'Example 2 – Eligibility Requirement Confusion',
+                desc: 'A beneficiary attempts to file a claim but learns that certain eligibility conditions must be met, such as recent ATM card usage or active account status.',
+                color: 'from-purple-50 to-pink-50'
+              },
+              {
+                title: 'Example 3 – Documentation Challenges',
+                desc: 'A family member tries to submit a claim but struggles to collect the necessary documents required by the bank and insurance provider.',
+                color: 'from-orange-50 to-red-50'
+              },
+              {
+                title: 'Example 4 – Claim Procedure Uncertainty',
+                desc: 'A beneficiary approaches the bank to claim the insurance benefit but is unsure about the correct process and documentation required to submit the claim.',
+                color: 'from-green-50 to-emerald-50'
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`bg-gradient-to-br ${item.color} rounded-2xl p-8 border-2 border-white shadow-lg`}
+              >
+                <h3 className="text-xl font-semibold text-[#1F2933] mb-4">{item.title}</h3>
+                <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Documentation Requirements Section */}
+      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp}>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-8 text-center">
+              Understanding ATM Card Insurance Claim Requirements
+            </h2>
+            
+            <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
+              <p className="text-lg text-[#52606D] leading-relaxed mb-6">
+                ATM card insurance claims typically require certain documents and information to verify eligibility and process the claim.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {[
+                  'Proof of the eligible incident',
+                  'Identity and bank account details',
+                  'ATM or debit card information',
+                  'Claim application forms',
+                  'Verification of insurance coverage linked to the card'
+                ].map((requirement, index) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <CheckCircle className="h-6 w-6 text-[#0F7A4A] flex-shrink-0 mt-1" />
+                    <p className="text-base text-[#52606D]">{requirement}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-base text-[#52606D] leading-relaxed">
+                Understanding these documentation requirements helps beneficiaries prepare the claim application correctly.
+              </p>
+
+              {/* Documentation Framework Diagram */}
+              <div className="mt-8 bg-gradient-to-br from-[#0F7A4A]/5 to-[#F39C12]/5 rounded-2xl p-6">
+                <h3 className="text-xl font-semibold text-[#1F2933] mb-4 text-center">ATM Card Insurance Documentation Framework</h3>
+                <div className="flex flex-col items-center space-y-3">
+                  {[
+                    'Cardholder Verification',
+                    'Incident Documentation',
+                    'Claim Application Form',
+                    'Bank Account Verification',
+                    'Claim Evaluation'
+                  ].map((step, index) => (
+                    <React.Fragment key={index}>
+                      <div className="w-full max-w-md bg-white rounded-xl p-4 text-center shadow-md">
+                        <p className="text-sm font-medium text-[#1F2933]">{step}</p>
+                      </div>
+                      {index < 4 && (
+                        <ArrowRight className="h-5 w-5 text-[#0F7A4A] transform rotate-90" />
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+              Why Yashoda Total Solution?
+            </h2>
+            <p className="text-lg text-[#52606D]">
+              Trusted support for banking and ATM card insurance claims
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Users,
+                title: 'Experienced & Professional Team',
+                desc: 'Qualified professionals with industry knowledge and operational expertise.'
+              },
+              {
+                icon: TrendingUp,
+                title: 'Quick & Transparent Processing',
+                desc: 'Systematic workflows supported by clear communication and monitoring.'
+              },
+              {
+                icon: Shield,
+                title: 'Customer-First Approach',
+                desc: 'Every case handled with attention, empathy, and ethical responsibility.'
+              },
+              {
+                icon: Target,
+                title: 'Technology-Driven Monitoring',
+                desc: 'Advanced tracking systems ensure accountability and regular updates.'
+              },
+              {
+                icon: CheckCircle,
+                title: 'Trusted Service Partner',
+                desc: 'Focused on long-term relationships built on trust, reliability, and service excellence.'
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-2xl flex items-center justify-center mb-6">
+                  <item.icon className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
+                <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+              Frequently Asked Questions
+            </h2>
+          </motion.div>
+
+          <div className="space-y-6">
+            {[
+              {
+                question: 'What is ATM card insurance coverage?',
+                answer: 'Some banks provide insurance benefits linked to ATM or debit cards for certain eligible incidents.'
+              },
+              {
+                question: 'Who can claim ATM card insurance benefits?',
+                answer: 'Beneficiaries of the cardholder may be eligible to claim benefits depending on the policy conditions.'
+              },
+              {
+                question: 'How can someone know if their ATM card includes insurance coverage?',
+                answer: 'The bank or the card issuing institution can confirm whether insurance coverage is linked to the ATM card.'
+              },
+              {
+                question: 'What documents are required for ATM card insurance claims?',
+                answer: 'Required documents may include identity verification, incident documentation, and claim forms.'
+              },
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 shadow-lg"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-10 h-10 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-xl flex items-center justify-center">
+                      <HelpCircle className="h-5 w-5 text-white" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-[#1F2933] mb-3">{faq.question}</h3>
+                    <p className="text-base text-[#52606D] leading-relaxed">{faq.answer}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Need Help Understanding ATM Card Insurance Claim Procedures?
+            </h2>
+            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
+              Understanding eligibility conditions and documentation requirements can help beneficiaries navigate the claim process more confidently.
+            </p>
+            <p className="text-lg text-white/90 mb-8">
+              Contact Yashoda Total Solution to learn more about assistance with banking and ATM card insurance claim support.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center space-x-2 bg-[#F39C12] hover:bg-[#E67E22] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+            >
+              <Phone className="h-5 w-5" />
+              <span>Contact Us Now</span>
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default BankingAtmInsurance;
