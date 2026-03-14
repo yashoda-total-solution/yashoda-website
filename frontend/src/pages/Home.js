@@ -95,11 +95,11 @@ const Home = () => {
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative z-[100]">
                   <button
                     onClick={() => setIsServicesOpen(!isServicesOpen)}
                     data-testid="hero-btn-help"
-                    className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl"
+                    className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl relative z-[100]"
                   >
                     <Shield className="mr-2 h-5 w-5" />
                     Explore Services
@@ -114,7 +114,7 @@ const Home = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-2xl shadow-2xl z-50 max-h-[400px] overflow-y-auto"
+                        className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-2xl shadow-2xl z-[100] max-h-[400px] overflow-y-auto"
                       >
                         <div className="p-2">
                           {serviceLinks.map((service, index) => (
