@@ -12,6 +12,7 @@ import MisSelling from './pages/services/MisSelling';
 import ClaimRejection from './pages/services/ClaimRejection';
 import ClaimDelay from './pages/services/ClaimDelay';
 import ClaimShortSettled from './pages/services/ClaimShortSettled';
+import HealthReimbursement from './pages/services/HealthReimbursement';
 import './App.css';
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
             <Route path="/claim-rejection" element={<ClaimRejection />} />
             <Route path="/claim-delay" element={<ClaimDelay />} />
             <Route path="/claim-short-settled" element={<ClaimShortSettled />} />
-            <Route path="/health-reimbursement" element={<Home />} />
+            <Route path="/health-reimbursement" element={<HealthReimbursement />} />
             <Route path="/pmsby" element={<Home />} />
             <Route path="/pmjjby" element={<Home />} />
             <Route path="/state-cm-scheme" element={<Home />} />
