@@ -63,7 +63,7 @@ const Home = () => {
                 </span>
               </motion.div>
 
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight" data-testid="hero-headline">
+              <h1 className="text-3xl md:text-4xl font-bold leading-tight" data-testid="hero-headline">
                 Helping Policyholders take control of their insurance and resolve issues quickly
               </h1>
               <p className="text-lg md:text-xl text-white/90 leading-relaxed" data-testid="hero-subtext">
