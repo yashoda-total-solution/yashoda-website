@@ -13,6 +13,7 @@ import ClaimRejection from './pages/services/ClaimRejection';
 import ClaimDelay from './pages/services/ClaimDelay';
 import ClaimShortSettled from './pages/services/ClaimShortSettled';
 import HealthReimbursement from './pages/services/HealthReimbursement';
+import PMSBY from './pages/services/PMSBY';
 import PMJJBY from './pages/services/PMJJBY';
 import './App.css';
 
