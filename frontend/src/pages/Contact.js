@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Phone, Mail, MapPin, Send, CheckCircle, User, MessageSquare, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle, User, MessageSquare, MessageCircle, Globe, Building2, Users, Network } from 'lucide-react';
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -160,6 +160,151 @@ const Contact = () => {
             </motion.div>
           </div>
         </div>
+      </section>
+
+      {/* OUR NETWORK Section - Unique Design */}
+      <section className="py-20 md:py-28 bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] relative overflow-hidden">
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <motion.div
+            {...fadeUp}
+            className="text-center mb-16"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 100 }}
+              className="inline-flex items-center justify-center w-20 h-20 bg-[#F39C12] rounded-full mb-6"
+            >
+              <Globe className="h-10 w-10 text-white" />
+            </motion.div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              OUR NETWORK
+            </h2>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-white/95 leading-relaxed mb-4">
+                Yashoda Total Solution is expanding its operational presence across <span className="font-bold text-[#F39C12]">PAN India</span> through regional offices, franchise partners, and service pickup centers to ensure accessibility of services nationwide.
+              </p>
+              <p className="text-base md:text-lg text-white/90 leading-relaxed">
+                Our growing network aims to deliver professional assistance across multiple states with structured service delivery supported by trained sales and support teams.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Network Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                icon: Building2,
+                title: 'Regional Offices',
+                description: 'Strategically located offices across major cities for direct service delivery',
+                gradient: 'from-blue-500 to-blue-600'
+              },
+              {
+                icon: Network,
+                title: 'Franchise Partners',
+                description: 'Expanding reach through trusted franchise network in tier 2 & 3 cities',
+                gradient: 'from-purple-500 to-purple-600'
+              },
+              {
+                icon: MapPin,
+                title: 'Service Centers',
+                description: 'Convenient pickup centers for document submission and query resolution',
+                gradient: 'from-orange-500 to-orange-600'
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-white rounded-2xl opacity-10 group-hover:opacity-15 transition-opacity"></div>
+                <div className="relative bg-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-8 h-full hover:border-white/40 transition-all duration-300">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-xl mb-6 shadow-lg`}>
+                    <item.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+                  <p className="text-base text-white/85 leading-relaxed">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Network Stats */}
+          <motion.div
+            {...fadeUp}
+            className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 md:p-12"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              {[
+                {
+                  icon: Globe,
+                  number: 'PAN India',
+                  label: 'Nationwide Coverage'
+                },
+                {
+                  icon: Users,
+                  number: 'Growing',
+                  label: 'Trained Sales & Support Teams'
+                },
+                {
+                  icon: Building2,
+                  number: 'Multiple',
+                  label: 'States & Cities'
+                }
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex flex-col items-center"
+                >
+                  <div className="w-16 h-16 bg-[#F39C12] rounded-full flex items-center justify-center mb-4">
+                    <stat.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-base md:text-lg text-white/90 font-medium">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* CTA Banner */}
+          <motion.div
+            {...fadeUp}
+            className="mt-12 text-center"
+          >
+            <div className="inline-flex items-center space-x-3 bg-[#F39C12] px-8 py-4 rounded-full">
+              <Network className="h-6 w-6 text-white" />
+              <span className="text-lg font-semibold text-white">
+                Join Our Expanding Network of Service Excellence
+              </span>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-[#F39C12] rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full opacity-5 blur-3xl"></div>
       </section>
 
       {/* Contact Form Section */}
