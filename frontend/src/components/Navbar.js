@@ -55,20 +55,18 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                data-testid={`nav-link-${link.path.slice(1) || 'home'}`}
-                className={`text-base font-medium transition-colors ${
-                  isActive(link.path)
-                    ? 'text-[#0F7A4A] font-semibold'
-                    : 'text-[#1F2933] hover:text-[#0F7A4A]'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {/* Home Link */}
+            <Link
+              to="/"
+              data-testid="nav-link-home"
+              className={`text-base font-medium transition-colors ${
+                isActive('/')
+                  ? 'text-[#0F7A4A] font-semibold'
+                  : 'text-[#1F2933] hover:text-[#0F7A4A]'
+              }`}
+            >
+              {t('nav_home')}
+            </Link>
 
             {/* Services Mega Menu */}
             <div 
@@ -109,6 +107,22 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+
+            {/* Other Links */}
+            {navLinks.slice(1).map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                data-testid={`nav-link-${link.path.slice(1) || 'home'}`}
+                className={`text-base font-medium transition-colors ${
+                  isActive(link.path)
+                    ? 'text-[#0F7A4A] font-semibold'
+                    : 'text-[#1F2933] hover:text-[#0F7A4A]'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
 
             {/* Language Switcher */}
             <div className="relative">
@@ -160,21 +174,19 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden border-t border-gray-200 bg-white" data-testid="mobile-menu">
           <div className="px-4 py-4 space-y-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsMenuOpen(false)}
-                data-testid={`mobile-nav-link-${link.path.slice(1) || 'home'}`}
-                className={`block px-4 py-3 rounded-md text-base font-medium ${
-                  isActive(link.path)
-                    ? 'bg-[#0F7A4A] text-white'
-                    : 'text-[#1F2933] hover:bg-gray-50'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {/* Home Link */}
+            <Link
+              to="/"
+              onClick={() => setIsMenuOpen(false)}
+              data-testid="mobile-nav-link-home"
+              className={`block px-4 py-3 rounded-md text-base font-medium ${
+                isActive('/')
+                  ? 'bg-[#0F7A4A] text-white'
+                  : 'text-[#1F2933] hover:bg-gray-50'
+              }`}
+            >
+              {t('nav_home')}
+            </Link>
 
             {/* Mobile Services Dropdown */}
             <div>
@@ -210,6 +222,23 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+
+            {/* Other Links */}
+            {navLinks.slice(1).map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setIsMenuOpen(false)}
+                data-testid={`mobile-nav-link-${link.path.slice(1) || 'home'}`}
+                className={`block px-4 py-3 rounded-md text-base font-medium ${
+                  isActive(link.path)
+                    ? 'bg-[#0F7A4A] text-white'
+                    : 'text-[#1F2933] hover:bg-gray-50'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
 
             {/* Mobile Language Switcher */}
             <div className="pt-3 border-t border-gray-200">
