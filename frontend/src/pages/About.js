@@ -436,6 +436,10 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => {
               const Icon = member.icon;
+              // Swap title and name for Managing Director
+              const displayTitle = member.key === 'md' ? member.name : member.title;
+              const displaySubtitle = member.key === 'md' ? `(${member.title})` : member.name;
+              
               return (
                 <motion.div
                   key={member.key}
@@ -444,7 +448,7 @@ const About = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -10, scale: 1.02 }}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] transition-all duration-500"
+                  className="group bg-white rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] transition-all duration-500 flex flex-col"
                   style={{ transformStyle: 'preserve-3d' }}
                 >
                   <div className="relative overflow-hidden">
@@ -457,28 +461,30 @@ const About = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: `${member.color}20` }}>
-                        <Icon className="h-6 w-6" style={{ color: member.color }} />
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex flex-col items-center text-center mb-4">
+                      <div className="w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-4" style={{ backgroundColor: `${member.color}20` }}>
+                        <Icon className="h-8 w-8" style={{ color: member.color }} />
                       </div>
-                      <h3 className="text-xl font-bold text-[#1F2933]">{member.title}</h3>
+                      <h3 className="text-2xl font-bold text-[#1F2933] mb-2">{displayTitle}</h3>
+                      {displaySubtitle && (
+                        <p className="text-lg font-medium text-[#52606D]">
+                          {displaySubtitle}
+                        </p>
+                      )}
                     </div>
-                    {member.name && (
-                      <p className="text-base font-semibold mb-4" style={{ color: member.color }}>
-                        {member.name}
-                      </p>
-                    )}
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setActiveProfile(member)}
-                      className="w-full py-3 px-4 rounded-xl font-semibold text-base text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-                      style={{ backgroundColor: member.color }}
-                    >
-                      <Eye className="h-5 w-5" />
-                      {txt.view_profile}
-                    </motion.button>
+                    <div className="mt-auto">
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setActiveProfile(member)}
+                        className="w-full py-3 px-4 rounded-xl font-semibold text-base text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                        style={{ backgroundColor: member.color }}
+                      >
+                        <Eye className="h-5 w-5" />
+                        {txt.view_profile}
+                      </motion.button>
+                    </div>
                   </div>
                 </motion.div>
               );
