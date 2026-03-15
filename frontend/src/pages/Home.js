@@ -52,24 +52,13 @@ const Home = () => {
               {...fadeUp}
               className="text-left space-y-6 z-10"
             >
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="inline-block"
-              >
-                <span className="px-4 py-2 bg-[#F39C12] text-white rounded-full text-sm font-semibold uppercase tracking-wider shadow-lg">
-                  {t('nav_home')}
-                </span>
-              </motion.div>
-
               <h1 className="text-3xl md:text-4xl font-bold leading-tight" data-testid="hero-headline">
-                Helping Policyholders take control of their insurance and resolve issues quickly
+                Helping Policyholders take control of their insurance and resolve issues quickly.
               </h1>
               <p className="text-lg md:text-xl text-white/90 leading-relaxed" data-testid="hero-subtext">
                 Yashoda Total Solutions (Service Provider) assists individuals with insurance claims, disputes, and legal matters; to this end, it provides clear, step-by-step guidance in simple language, enabling clients to easily understand the entire process.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="pt-4">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     to="/contact"
@@ -79,16 +68,6 @@ const Home = () => {
                     {t('hero_btn_contact')}
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <a
-                    href="tel:+919021022851"
-                    data-testid="hero-btn-phone"
-                    className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl"
-                  >
-                    <Phone className="mr-2 h-5 w-5" />
-                    Call Now
-                  </a>
                 </motion.div>
               </div>
 
@@ -203,10 +182,7 @@ const Home = () => {
       <section className="py-16 md:py-24 bg-[#F5F7F9]" data-testid="about-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
-              {t('nav_about')}
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">
               {t('about_title')}
             </h2>
             <p className="text-lg text-[#52606D] leading-relaxed max-w-3xl mx-auto">
