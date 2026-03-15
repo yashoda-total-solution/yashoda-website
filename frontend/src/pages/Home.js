@@ -7,7 +7,6 @@ import { Shield, FileCheck, Banknote, Landmark, FileText, Users, CheckCircle, Ph
 const Home = () => {
   const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
 
   const heroImages = [
     "https://images.unsplash.com/photo-1739298061766-e2751d92e9db?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBoYW5kc2hha2UlMjBvZmZpY2UlMjB0ZWFtd29ya3xlbnwwfHx8fDE3NzM0NTkyNTB8MA&ixlib=rb-4.1.0&q=85",
@@ -18,7 +17,6 @@ const Home = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDirection(1);
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
     }, 2000);
     return () => clearInterval(interval);
@@ -131,22 +129,20 @@ const Home = () => {
                   className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-2 shadow-2xl overflow-hidden"
                   style={{ transformStyle: 'preserve-3d' }}
                 >
-                  <div className="relative overflow-hidden">
-                    <AnimatePresence initial={false} custom={direction}>
+                  <div className="relative overflow-hidden" style={{ minHeight: '400px' }}>
+                    <AnimatePresence initial={false} mode="popLayout">
                       <motion.img
                         key={currentImageIndex}
                         src={heroImages[currentImageIndex]}
                         alt="Professional Service"
-                        className="rounded-2xl w-full h-auto shadow-2xl"
-                        custom={direction}
-                        initial={{ x: direction > 0 ? 1000 : -1000, opacity: 0 }}
+                        className="rounded-2xl w-full h-auto shadow-2xl absolute top-0 left-0"
+                        initial={{ x: 300, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: direction > 0 ? -1000 : 1000, opacity: 0 }}
+                        exit={{ x: -300, opacity: 0 }}
                         transition={{
                           x: { type: "spring", stiffness: 300, damping: 30 },
                           opacity: { duration: 0.2 }
                         }}
-                        style={{ position: currentImageIndex === 0 ? 'relative' : 'absolute', top: 0, left: 0, right: 0 }}
                       />
                     </AnimatePresence>
                   </div>
