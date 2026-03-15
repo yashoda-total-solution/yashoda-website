@@ -188,10 +188,7 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="px-4 py-2 bg-[#F39C12] text-white rounded-full text-sm font-semibold uppercase tracking-wider shadow-lg">
-              About Us
-            </span>
-            <h1 className="text-4xl md:text-6xl font-bold mt-6 mb-4">{txt.title}</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">{txt.title}</h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">{txt.hero_subtitle}</p>
           </motion.div>
         </div>
@@ -243,10 +240,7 @@ const About = () => {
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
-              What We Do
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">{txt.whatwedo_title}</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">{txt.whatwedo_title}</h2>
             <p className="text-lg text-[#52606D] max-w-3xl mx-auto">{txt.whatwedo_intro}</p>
           </motion.div>
 
@@ -283,10 +277,7 @@ const About = () => {
       <section className="py-16 md:py-24 bg-[#F5F7F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <span className="px-4 py-2 bg-[#F39C12]/10 text-[#F39C12] rounded-full text-sm font-semibold uppercase tracking-wider">
-              Our Features
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">{txt.features_title}</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">{txt.features_title}</h2>
             <p className="text-lg text-[#52606D] max-w-3xl mx-auto">{txt.features_intro}</p>
             <p className="text-lg font-semibold text-[#1F2933] mt-4">{txt.features_subtitle}</p>
           </motion.div>
@@ -331,10 +322,7 @@ const About = () => {
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
-              Strategy
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">{txt.strategy_title}</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">{txt.strategy_title}</h2>
             <p className="text-lg text-[#52606D] max-w-3xl mx-auto">{txt.strategy_intro}</p>
           </motion.div>
 
@@ -373,10 +361,7 @@ const About = () => {
       <section className="py-16 md:py-24 bg-[#F5F7F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
-              Our Approach
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4 mb-4">{txt.approach_title}</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933]">{txt.approach_title}</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -427,10 +412,7 @@ const About = () => {
       <section className="py-16 md:py-24 bg-[#F5F7F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <span className="px-4 py-2 bg-[#0F7A4A]/10 text-[#0F7A4A] rounded-full text-sm font-semibold uppercase tracking-wider">
-              Our Team
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mt-4">{txt.team_title}</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933]">{txt.team_title}</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
