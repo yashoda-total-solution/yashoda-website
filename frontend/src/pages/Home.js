@@ -129,13 +129,13 @@ const Home = () => {
                   className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-2 shadow-2xl overflow-hidden"
                   style={{ transformStyle: 'preserve-3d' }}
                 >
-                  <div className="relative overflow-hidden" style={{ minHeight: '400px' }}>
+                  <div className="relative overflow-hidden rounded-2xl" style={{ height: '400px' }}>
                     <AnimatePresence initial={false} mode="popLayout">
                       <motion.img
                         key={currentImageIndex}
                         src={heroImages[currentImageIndex]}
                         alt="Professional Service"
-                        className="rounded-2xl w-full h-auto shadow-2xl absolute top-0 left-0"
+                        className="absolute top-0 left-0 w-full h-full object-cover rounded-2xl shadow-2xl"
                         initial={{ x: 300, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         exit={{ x: -300, opacity: 0 }}
@@ -145,17 +145,18 @@ const Home = () => {
                         }}
                       />
                     </AnimatePresence>
-                  </div>
-                  {/* Image indicators */}
-                  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-                    {heroImages.map((_, index) => (
-                      <div
-                        key={index}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          index === currentImageIndex ? 'bg-[#F39C12] w-6' : 'bg-white/50'
-                        }`}
-                      />
-                    ))}
+                    
+                    {/* Image indicators - positioned over the image */}
+                    <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                      {heroImages.map((_, index) => (
+                        <div
+                          key={index}
+                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            index === currentImageIndex ? 'bg-[#F39C12] w-6' : 'bg-white/50'
+                          }`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
               </div>
