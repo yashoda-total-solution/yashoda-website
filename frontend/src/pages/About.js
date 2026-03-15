@@ -129,7 +129,8 @@ const About = () => {
       key: 'md',
       image: TEAM_IMAGES.md,
       title: txt.md_title,
-      name: txt.md_name,
+      name: txt.md_name, // Keep for card display
+      popupName: null, // Don't show name in popup
       icon: Award,
       color: '#0F7A4A',
       descriptions: [txt.md_desc1, txt.md_desc2],
@@ -145,7 +146,7 @@ const About = () => {
       color: '#3B82F6',
       descriptions: [txt.sales_desc1, txt.sales_desc2, txt.sales_desc3],
       highlight: txt.sales_motto,
-      highlightType: 'motto',
+      highlightType: 'quote',
     },
     {
       key: 'legal',
@@ -156,7 +157,7 @@ const About = () => {
       color: '#F97316',
       descriptions: [txt.legal_desc1, txt.legal_desc2],
       highlight: txt.legal_motto,
-      highlightType: 'motto',
+      highlightType: 'quote',
     },
   ];
 
@@ -509,9 +510,9 @@ const About = () => {
                     <X className="h-6 w-6" />
                   </motion.button>
                 </div>
-                {activeProfile.name && (
+                {(activeProfile.popupName !== undefined ? activeProfile.popupName : activeProfile.name) && (
                   <p className="text-lg font-semibold mb-6" style={{ color: activeProfile.color }}>
-                    {activeProfile.name}
+                    {activeProfile.popupName !== undefined ? activeProfile.popupName : activeProfile.name}
                   </p>
                 )}
                 <div className="space-y-4">
@@ -520,7 +521,7 @@ const About = () => {
                   ))}
                 </div>
                 {activeProfile.highlightType === 'quote' ? (
-                  <blockquote className="border-l-4 border-[#F39C12] pl-6 py-4 italic text-base font-medium mt-6 bg-[#F39C12]/5 rounded-r-xl">
+                  <blockquote className="border-l-4 border-[#F39C12] pl-6 py-4 italic text-base font-bold mt-6 bg-[#F39C12]/5 rounded-r-xl">
                     "{activeProfile.highlight}"
                   </blockquote>
                 ) : (
