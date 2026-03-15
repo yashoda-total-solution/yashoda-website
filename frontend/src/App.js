@@ -8,6 +8,9 @@ import About from './pages/About';
 import Reviews from './pages/Reviews';
 import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
+import FAQs from './pages/FAQs';
+import Partner from './pages/Partner';
+import Login from './pages/Login';
 import MisSelling from './pages/services/MisSelling';
 import ClaimRejection from './pages/services/ClaimRejection';
 import ClaimDelay from './pages/services/ClaimDelay';
@@ -41,9 +44,12 @@ function App() {
             <Route path="/banking-atm-insurance" element={<BankingAtmInsurance />} />
             <Route path="/pf-accidental-insurance" element={<PFAccidentalInsurance />} />
             <Route path="/legal-notice" element={<LegalNotice />} />
-            <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/faqs" element={<FAQs />} />
+            <Route path="/partner" element={<Partner />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route path="/reviews" element={<Reviews />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
           <Footer />
         </div>

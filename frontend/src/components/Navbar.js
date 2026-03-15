@@ -13,9 +13,13 @@ const Navbar = () => {
   const navLinks = [
     { path: '/', label: t('nav_home') },
     { path: '/about', label: t('nav_about') },
-    { path: '/gallery', label: t('nav_gallery') },
+    // Services will be handled separately as dropdown
     { path: '/contact', label: t('nav_contact') },
+    { path: '/faqs', label: 'FAQs' },
+    { path: '/partner', label: 'Partner with us' },
+    { path: '/gallery', label: t('nav_gallery') },
     { path: '/reviews', label: t('nav_reviews') },
+    { path: '/login', label: 'Login' },
   ];
 
   const serviceLinks = [
@@ -68,64 +72,78 @@ const Navbar = () => {
               {t('nav_home')}
             </Link>
 
-            {/* Services Mega Menu */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
-            >
-              <button
-                onClick={() => setIsServicesOpen(!isServicesOpen)}
-                data-testid="nav-services-dropdown"
-                className={`flex items-center space-x-1 text-base font-medium transition-colors ${
-                  serviceLinks.some(link => location.pathname === link.path)
-                    ? 'text-[#0F7A4A] font-semibold'
-                    : 'text-[#1F2933] hover:text-[#0F7A4A]'
-                }`}
-              >
-                <span>{t('nav_services')}</span>
-                <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
-              </button>
+            {/* Other Links - Insert Services dropdown in the correct position */}
+            {navLinks.slice(1).map((link, index) => {
+              // Insert Services dropdown after About Us (index 0)
+              if (index === 1) {
+                return (
+                  <React.Fragment key="services-group">
+                    {/* Services Mega Menu */}
+                    <div 
+                      className="relative"
+                      onMouseEnter={() => setIsServicesOpen(true)}
+                      onMouseLeave={() => setIsServicesOpen(false)}
+                    >
+                      <button
+                        onClick={() => setIsServicesOpen(!isServicesOpen)}
+                        data-testid="nav-services-dropdown"
+                        className="flex items-center space-x-1 text-base font-medium transition-colors text-[#1F2933] hover:text-[#0F7A4A]"
+                      >
+                        <span>Services</span>
+                        <ChevronDown className="h-4 w-4" />
+                      </button>
 
-              {isServicesOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[600px] z-50">
-                  <div className="bg-white border border-gray-200 rounded-lg shadow-2xl">
-                    <div className="grid grid-cols-2 gap-1 p-4">
-                      {serviceLinks.map((service, index) => (
-                        <Link
-                          key={service.path}
-                          to={service.path}
-                          data-testid={`service-link-${index + 1}`}
-                          className={`px-4 py-3 rounded-md text-sm font-medium transition-all ${
-                            location.pathname === service.path
-                              ? 'bg-[#0F7A4A] text-white'
-                              : 'text-[#1F2933] hover:bg-[#F5F7F9] hover:text-[#0F7A4A]'
-                          }`}
-                        >
-                          {service.label}
-                        </Link>
-                      ))}
+                      {isServicesOpen && (
+                        <div className="absolute left-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-xl z-50">
+                          <div className="p-4">
+                            <div className="grid grid-cols-1 gap-2">
+                              {serviceLinks.map((service) => (
+                                <Link
+                                  key={service.path}
+                                  to={service.path}
+                                  onClick={() => setIsServicesOpen(false)}
+                                  className="block px-4 py-2 rounded-lg text-sm font-medium text-[#1F2933] hover:bg-[#0F7A4A] hover:text-white transition-all"
+                                >
+                                  {service.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Other Links */}
-            {navLinks.slice(1).map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                data-testid={`nav-link-${link.path.slice(1) || 'home'}`}
-                className={`text-base font-medium transition-colors ${
-                  isActive(link.path)
-                    ? 'text-[#0F7A4A] font-semibold'
-                    : 'text-[#1F2933] hover:text-[#0F7A4A]'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+                    
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      data-testid={`nav-link-${link.path.slice(1) || 'home'}`}
+                      className={`text-base font-medium transition-colors ${
+                        isActive(link.path)
+                          ? 'text-[#0F7A4A] font-semibold'
+                          : 'text-[#1F2933] hover:text-[#0F7A4A]'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </React.Fragment>
+                );
+              }
+              
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  data-testid={`nav-link-${link.path.slice(1) || 'home'}`}
+                  className={`text-base font-medium transition-colors ${
+                    isActive(link.path)
+                      ? 'text-[#0F7A4A] font-semibold'
+                      : 'text-[#1F2933] hover:text-[#0F7A4A]'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
 
             {/* Language Switcher */}
             <div className="relative">
