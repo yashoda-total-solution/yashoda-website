@@ -77,10 +77,7 @@ const Reviews = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="px-4 py-2 bg-[#F39C12] text-white rounded-full text-sm font-semibold uppercase tracking-wider shadow-lg">
-              {t('nav_reviews')}
-            </span>
-            <h1 className="text-4xl md:text-6xl font-bold mt-6 mb-4" data-testid="reviews-hero-title">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4" data-testid="reviews-hero-title">
               {t('reviews_page_title')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">

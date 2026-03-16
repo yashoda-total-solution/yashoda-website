@@ -82,10 +82,7 @@ const Gallery = () => {
       <section className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="px-4 py-2 bg-[#F39C12] text-white rounded-full text-sm font-semibold uppercase tracking-wider shadow-lg">
-              {txt.title}
-            </span>
-            <h1 className="text-4xl md:text-6xl font-bold mt-6 mb-4" data-testid="gallery-hero-title">{txt.title}</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4" data-testid="gallery-hero-title">{txt.title}</h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">{txt.subtitle}</p>
           </motion.div>
         </div>
