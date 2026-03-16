@@ -34,7 +34,7 @@ export const translations = {
     service_pf_accidental: 'PF Accidental Insurance Claim',
     service_legal_consultation: 'Legal Consultation',
     service_legal_drafting: 'Legal Drafting & Verification Support',
-    service_consumer_cases: 'Consumer Cases',
+    service_consumer_cases: 'Consumer Protection Support',
     service_civil_cases: 'Civil Cases',
     service_cheque_bounce: 'Cheque Bounce Cases',
     
@@ -301,7 +301,7 @@ export const translations = {
     service_pf_accidental: 'PF दुर्घटना बीमा क्लेम सहायता',
     service_legal_consultation: 'कानूनी परामर्श',
     service_legal_drafting: 'कानूनी ड्राफ्टिंग और सत्यापन सहायता',
-    service_consumer_cases: 'उपभोक्ता मामले',
+    service_consumer_cases: 'उपभोक्ता संरक्षण सहायता',
     service_civil_cases: 'दीवानी मामले',
     service_cheque_bounce: 'चेक बाउंस मामले',
     
@@ -510,7 +510,7 @@ export const translations = {
     service_pf_accidental: 'PF अपघात विमा क्लेम सहाय्य',
     service_legal_consultation: 'कायदेशीर सल्ला',
     service_legal_drafting: 'कायदेशीर ड्राफ्टिंग आणि सत्यापन सहाय्य',
-    service_consumer_cases: 'ग्राहक प्रकरणे',
+    service_consumer_cases: 'ग्राहक संरक्षण सहाय्य',
     service_civil_cases: 'दिवाणी प्रकरणे',
     service_cheque_bounce: 'चेक बाउंस प्रकरणे',
     
