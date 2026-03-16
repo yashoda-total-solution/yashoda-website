@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Phone, Mail, MapPin, Send, CheckCircle, User, MessageSquare, MessageCircle, Globe, Building2, Users, Network } from 'lucide-react';
-import InteractiveIndiaMap from '../components/InteractiveIndiaMap';
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -201,10 +200,6 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Interactive India Map */}
-          <div className="mb-16">
-            <InteractiveIndiaMap />
-          </div>
 
           {/* Network Stats */}
           <motion.div
