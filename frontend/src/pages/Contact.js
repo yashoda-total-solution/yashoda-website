@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useNavigate } from 'react-router-dom';
 import { Phone, Mail, MapPin, Send, CheckCircle, User, MessageSquare, MessageCircle, Globe, Building2, Users, Network } from 'lucide-react';
 
 const Contact = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -74,10 +76,7 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="px-4 py-2 bg-[#F39C12] text-white rounded-full text-sm font-semibold uppercase tracking-wider shadow-lg">
-              {t('nav_contact')}
-            </span>
-            <h1 className="text-4xl md:text-6xl font-bold mt-6 mb-4" data-testid="contact-hero-title">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4" data-testid="contact-hero-title">
               {t('contact_page_title')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
@@ -92,60 +91,11 @@ const Contact = () => {
       {/* Contact Information Cards */}
       <section className="relative -mt-16 z-10 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              {t('contact_info_title')}
-            </h2>
-            <p className="text-lg text-[#52606D]">
-              {t('contact_info_subtitle')}
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Phone Card */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Office Address Card - First */}
             <motion.div
               {...fadeUp}
               transition={{ delay: 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 transition-all duration-300"
-              data-testid="contact-phone-card"
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                <Phone className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-[#1F2933] mb-3 text-center">{t('contact_phone_title')}</h3>
-              <a 
-                href={`tel:${t('contact_phone_number')}`}
-                className="block text-lg text-[#0F7A4A] font-semibold text-center hover:underline"
-              >
-                {t('contact_phone_number')}
-              </a>
-            </motion.div>
-
-            {/* Email Card */}
-            <motion.div
-              {...fadeUp}
-              transition={{ delay: 0.2 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 transition-all duration-300"
-              data-testid="contact-email-card"
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-[#F39C12] to-[#f7b547] rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                <Mail className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-[#1F2933] mb-3 text-center">{t('contact_email_title')}</h3>
-              <a 
-                href={`mailto:${t('contact_email_address')}`}
-                className="block text-base text-[#0F7A4A] font-semibold text-center hover:underline break-all"
-              >
-                {t('contact_email_address')}
-              </a>
-            </motion.div>
-
-            {/* Address Card */}
-            <motion.div
-              {...fadeUp}
-              transition={{ delay: 0.3 }}
               whileHover={{ y: -8, scale: 1.02 }}
               className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 transition-all duration-300"
               data-testid="contact-address-card"
@@ -153,10 +103,77 @@ const Contact = () => {
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
                 <MapPin className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-[#1F2933] mb-3 text-center">{t('contact_address_title')}</h3>
-              <p className="text-base text-[#52606D] text-center">
-                {t('contact_address_text')}
+              <h3 className="text-xl font-semibold text-[#1F2933] mb-3 text-center">Office Address</h3>
+              <p className="text-sm text-[#52606D] text-center leading-relaxed">
+                2 B-70, Floor No:2, PHOENIX PARAGON PLAZA, LBS Road, KURLA WEST, Mumbai, Maharashtra, 400070
               </p>
+            </motion.div>
+
+            {/* Google Map Embedded Card - Second */}
+            <motion.div
+              {...fadeUp}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 transition-all duration-300 overflow-hidden"
+              data-testid="contact-map-card"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                <MapPin className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#1F2933] mb-4 text-center">Location Map</h3>
+              <div className="relative w-full h-48 rounded-xl overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.8267890542363!2d72.87862931490195!3d19.073956887091787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8dcf85fffff%3A0xd8c4e1e3e3e3e3e3!2sPhoenix%20Paragon%20Plaza!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Office Location"
+                  className="rounded-xl"
+                ></iframe>
+              </div>
+            </motion.div>
+
+            {/* Phone Card - Third */}
+            <motion.div
+              {...fadeUp}
+              transition={{ delay: 0.3 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 transition-all duration-300"
+              data-testid="contact-phone-card"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                <Phone className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#1F2933] mb-3 text-center">Phone Number</h3>
+              <a 
+                href="tel:+919649647790"
+                className="block text-lg text-[#0F7A4A] font-semibold text-center hover:underline"
+              >
+                +91 9649647790
+              </a>
+            </motion.div>
+
+            {/* Email Card - Fourth */}
+            <motion.div
+              {...fadeUp}
+              transition={{ delay: 0.4 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 transition-all duration-300"
+              data-testid="contact-email-card"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-[#F39C12] to-[#f7b547] rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                <Mail className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#1F2933] mb-3 text-center">Email Address</h3>
+              <a 
+                href="mailto:info@yashodatotalsolution.com"
+                className="block text-sm text-[#0F7A4A] font-semibold text-center hover:underline break-all"
+              >
+                info@yashodatotalsolution.com
+              </a>
             </motion.div>
           </div>
         </div>
@@ -246,17 +263,20 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* CTA Banner */}
+          {/* CTA Banner - Clickable Button */}
           <motion.div
             {...fadeUp}
             className="mt-12 text-center"
           >
-            <div className="inline-flex items-center space-x-3 bg-[#F39C12] px-8 py-4 rounded-full">
+            <button
+              onClick={() => navigate('/partner-with-us')}
+              className="inline-flex items-center space-x-3 bg-[#F39C12] px-8 py-4 rounded-full hover:bg-[#e08e0b] transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
+            >
               <Network className="h-6 w-6 text-white" />
               <span className="text-lg font-semibold text-white">
                 Join Our Expanding Network of Service Excellence
               </span>
-            </div>
+            </button>
           </motion.div>
         </div>
 
