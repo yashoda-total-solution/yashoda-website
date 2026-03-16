@@ -74,24 +74,36 @@ const Partner = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Become Our Partner
             </h1>
-            <p className="text-xl md:text-2xl font-semibold text-[#F39C12] mb-4">
+            <p className="text-xl md:text-2xl font-semibold text-[#F39C12]">
               Grow with Yashoda Total Solution
             </p>
-            <div className="max-w-3xl mx-auto space-y-4">
-              <p className="text-base md:text-lg text-white/95 leading-relaxed">
-                Yashoda Total Solutions is growing across <span className="font-bold">Pan India</span> and is looking for freelancers, franchise partners, insurance professionals, and corporates to join our expanding network.
-              </p>
-              <p className="text-base md:text-lg text-white/90 leading-relaxed">
-                As a partner, you will receive expert support and the opportunity to assist policyholders in resolving insurance issues effectively.
-              </p>
-              <p className="text-lg md:text-xl font-semibold text-white mt-6">
-                Join Yashoda Total Solutions and grow with a purpose.
-              </p>
-            </div>
           </motion.div>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
+      </section>
+
+      {/* About Partnership Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6 text-center"
+          >
+            <p className="text-lg md:text-xl text-[#1F2933] leading-relaxed">
+              Yashoda Total Solutions is growing across <span className="font-bold text-[#0F7A4A]">Pan India</span> and is looking for freelancers, franchise partners, insurance professionals, and corporates to join our expanding network.
+            </p>
+            <p className="text-lg md:text-xl text-[#52606D] leading-relaxed">
+              As a partner, you will receive expert support and the opportunity to assist policyholders in resolving insurance issues effectively.
+            </p>
+            <p className="text-xl md:text-2xl font-bold text-[#0F7A4A]">
+              Join Yashoda Total Solutions and grow with a purpose.
+            </p>
+          </motion.div>
+        </div>
       </section>
 
       {/* Why Partner With Us */}
