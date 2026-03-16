@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Phone, Mail, MapPin, Send, CheckCircle, User, MessageSquare, MessageCircle, Globe, Building2, Users, Network } from 'lucide-react';
+import InteractiveIndiaMap from '../components/InteractiveIndiaMap';
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -200,47 +201,9 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Network Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                icon: Building2,
-                title: 'Regional Offices',
-                description: 'Strategically located offices across major cities for direct service delivery',
-                gradient: 'from-blue-500 to-blue-600'
-              },
-              {
-                icon: Network,
-                title: 'Franchise Partners',
-                description: 'Expanding reach through trusted franchise network in tier 2 & 3 cities',
-                gradient: 'from-purple-500 to-purple-600'
-              },
-              {
-                icon: MapPin,
-                title: 'Service Centers',
-                description: 'Convenient pickup centers for document submission and query resolution',
-                gradient: 'from-orange-500 to-orange-600'
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-white rounded-2xl opacity-10 group-hover:opacity-15 transition-opacity"></div>
-                <div className="relative bg-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-8 h-full hover:border-white/40 transition-all duration-300">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-xl mb-6 shadow-lg`}>
-                    <item.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
-                  <p className="text-base text-white/85 leading-relaxed">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
+          {/* Interactive India Map */}
+          <div className="mb-16">
+            <InteractiveIndiaMap />
           </div>
 
           {/* Network Stats */}
