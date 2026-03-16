@@ -160,139 +160,8 @@ const LegalDrafting = () => {
         </div>
       </section>
 
-      {/* What Actually Happens Section */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp}>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-8 text-center">
-              What Actually Happens During Legal Drafting and Verification
-            </h2>
-            
-            <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
-              <div className="prose prose-lg max-w-none text-[#52606D]">
-                <p className="leading-relaxed mb-4">
-                  During the drafting or verification process, the client provides details about the document they require or the document they wish to review.
-                </p>
-                <p className="leading-relaxed mb-4">
-                  The information and relevant facts are carefully examined to understand the purpose of the document and the relationship between the parties involved.
-                </p>
-                <p className="leading-relaxed mb-4">
-                  The document is then structured in a clear format with appropriate legal terminology, ensuring that the terms and conditions are properly defined.
-                </p>
-                <p className="leading-relaxed mb-4">
-                  When verifying an existing document, the language and clauses are reviewed to identify any ambiguities or missing elements that may affect the legal validity or clarity of the document.
-                </p>
-                <p className="leading-relaxed mb-4">
-                  This process helps ensure that the document accurately reflects the intended agreement or communication.
-                </p>
-                <p className="leading-relaxed mb-4">
-                  <strong>Document Review and Verification Process:</strong>
-                </p>
-                <ul className="space-y-3 ml-6">
-                  <li>• Client Shares Document or Requirement</li>
-                  <li>• Document Content Reviewed</li>
-                  <li>• Legal Terms and Clauses Checked</li>
-                  <li>• Corrections and Clarifications Added</li>
-                  <li>• Final Document Prepared</li>
-                </ul>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Example Scenarios Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Example Scenarios
-            </h2>
-            <p className="text-lg text-[#52606D]">
-              Real-world situations where legal drafting and verification are needed
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: 'Example 1 – Business Agreement Drafting',
-                desc: 'Two business partners plan to start a joint venture and require a written agreement outlining their roles, financial contributions, and responsibilities.',
-                color: 'from-blue-50 to-cyan-50'
-              },
-              {
-                title: 'Example 2 – Property Rental Agreement',
-                desc: 'A property owner wants to create a rental agreement that clearly defines the terms of rent, duration of tenancy, and responsibilities of both parties.',
-                color: 'from-purple-50 to-pink-50'
-              },
-              {
-                title: 'Example 3 – Legal Notice Reply',
-                desc: 'An individual receives a legal notice and needs to prepare a structured response explaining their position and addressing the claims mentioned in the notice.',
-                color: 'from-orange-50 to-red-50'
-              },
-              {
-                title: 'Example 4 – Document Verification Before Signing',
-                desc: 'A person is asked to sign a contract and wants to ensure that the terms and conditions are clearly written and legally appropriate before signing.',
-                color: 'from-green-50 to-emerald-50'
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className={`bg-gradient-to-br ${item.color} rounded-2xl p-8 border-2 border-white shadow-lg`}
-              >
-                <h3 className="text-xl font-semibold text-[#1F2933] mb-4">{item.title}</h3>
-                <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Documentation Requirements Section */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp}>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-8 text-center">
-              Understanding Legal Drafting Requirements
-            </h2>
-            
-            <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
-              <p className="text-lg text-[#52606D] leading-relaxed mb-6">
-                Preparing or verifying a legal document typically requires certain information related to the purpose and parties involved in the document.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {[
-                  'Details of the parties involved in the agreement',
-                  'Description of the transaction or relationship',
-                  'Terms and conditions agreed between parties',
-                  'Supporting documents or records related to the matter'
-                ].map((requirement, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <CheckCircle className="h-6 w-6 text-[#0F7A4A] flex-shrink-0 mt-1" />
-                    <p className="text-base text-[#52606D]">{requirement}</p>
-                  </div>
-                ))}
-              </div>
-
-              <p className="text-base text-[#52606D] leading-relaxed mb-4">
-                Providing clear and accurate information helps ensure that the document reflects the intended terms properly.
-              </p>
-
-              <p className="text-base text-[#52606D] leading-relaxed">
-                <strong>Legal Document Preparation Framework:</strong> Party Details → Agreement Terms → Supporting Information → Legal Structure → Final Document Preparation
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Why Choose Us Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-[#F5F7F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
@@ -303,7 +172,7 @@ const LegalDrafting = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 icon: Users,
@@ -321,11 +190,6 @@ const LegalDrafting = () => {
                 desc: 'Every case handled with attention, empathy, and ethical responsibility.'
               },
               {
-                icon: Gavel,
-                title: 'Technology-Driven Monitoring',
-                desc: 'Advanced tracking systems ensure accountability and regular updates.'
-              },
-              {
                 icon: CheckCircle,
                 title: 'Trusted Service Partner',
                 desc: 'Focused on long-term relationships built on trust, reliability, and service excellence.'
@@ -338,7 +202,7 @@ const LegalDrafting = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-2xl flex items-center justify-center mb-6">
                   <item.icon className="h-8 w-8 text-white" />
@@ -351,51 +215,146 @@ const LegalDrafting = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Process Flow Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              Our 5-Step Document Drafting Process
             </h2>
+            <p className="text-lg text-[#52606D]">
+              Simple, transparent, and effective approach
+            </p>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="relative">
+            {/* Vertical Line for Desktop */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
+
+            <div className="space-y-12">
+              {[
+                {
+                  step: '1',
+                  title: 'Requirement Understanding',
+                  desc: 'We discuss your needs, understand the purpose of the document, and gather all relevant information about the parties involved.'
+                },
+                {
+                  step: '2',
+                  title: 'Information & Evidence Collection',
+                  desc: 'We collect all necessary details, supporting documents, and facts required to draft or verify the legal document.'
+                },
+                {
+                  step: '3',
+                  title: 'Document Drafting or Review',
+                  desc: 'We prepare a structured draft with clear legal terms or thoroughly review existing documents for clarity and completeness.'
+                },
+                {
+                  step: '4',
+                  title: 'Legal Structure Verification',
+                  desc: 'We verify that all legal terms, clauses, and conditions are properly defined and aligned with requirements.'
+                },
+                {
+                  step: '5',
+                  title: 'Final Document Delivery',
+                  desc: 'We provide the final verified document with explanations of key terms and answer any questions you may have.'
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`relative grid md:grid-cols-2 gap-8 items-center ${
+                    index % 2 === 0 ? 'md:text-right' : 'md:flex-row-reverse'
+                  }`}
+                >
+                  <div className={index % 2 === 0 ? 'md:pr-12' : 'md:col-start-2 md:pl-12'}>
+                    <div className="bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] text-white rounded-2xl p-8 shadow-xl">
+                      <div className="flex items-center space-x-4 mb-4">
+                        <div className="w-12 h-12 bg-[#F39C12] rounded-full flex items-center justify-center font-bold text-xl">
+                          {item.step}
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-bold flex-1">{item.title}</h3>
+                      </div>
+                      <p className="text-base text-white/90 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+
+                  {/* Center Circle */}
+                  <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#F39C12] rounded-full border-4 border-white shadow-lg z-10"></div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Example Scenarios Section */}
+      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+              Real-Life Drafting & Verification Examples
+            </h2>
+            <p className="text-lg text-[#52606D]">
+              These are common scenarios we help with
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                question: 'What is legal drafting?',
-                answer: 'Legal drafting is the preparation of written legal documents such as agreements, notices, or contracts.'
+                title: 'Case 1: Business Agreement Drafting',
+                problem: 'Two business partners plan to start a joint venture and require a written agreement outlining their roles, financial contributions, and responsibilities.',
+                reality: 'Without clear documentation, disagreements about roles and profit-sharing could arise later, causing business conflicts.',
+                solution: 'We drafted a comprehensive partnership agreement defining each partner\'s duties, capital contributions, profit distribution, and exit terms.'
               },
               {
-                question: 'Why is document verification important?',
-                answer: 'Verification helps identify unclear clauses, missing information, or potential legal risks before the document is used.'
+                title: 'Case 2: Property Rental Agreement',
+                problem: 'A property owner wants to create a rental agreement that clearly defines the terms of rent, duration of tenancy, and responsibilities of both parties.',
+                reality: 'Many rental disputes arise from unclear terms regarding maintenance, rent increases, and notice periods.',
+                solution: 'We prepared a detailed rental agreement covering rent payment terms, maintenance responsibilities, security deposit, and termination clauses.'
               },
               {
-                question: 'Who may need legal drafting services?',
-                answer: 'Individuals, business owners, property owners, and organizations may require drafting support for various legal documents.'
+                title: 'Case 3: Legal Notice Reply',
+                problem: 'An individual receives a legal notice and needs to prepare a structured response explaining their position and addressing the claims mentioned in the notice.',
+                reality: 'The legal notice contained allegations that needed a point-by-point response with supporting facts and legal references.',
+                solution: 'We drafted a comprehensive reply notice addressing each allegation, providing factual clarifications and reserving legal rights.'
               },
               {
-                question: 'Can existing documents be reviewed before signing?',
-                answer: 'Yes, documents can be reviewed and verified to ensure the terms are clear and appropriate.'
+                title: 'Case 4: Document Verification Before Signing',
+                problem: 'A person is asked to sign a contract and wants to ensure that the terms and conditions are clearly written and legally appropriate before signing.',
+                reality: 'The contract contained ambiguous clauses regarding payment terms, liability limitations, and termination conditions.',
+                solution: 'We reviewed the contract, highlighted problematic clauses, suggested modifications, and helped negotiate better terms.'
               },
-            ].map((faq, index) => (
+            ].map((scenario, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 shadow-lg"
               >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-xl flex items-center justify-center">
-                      <HelpCircle className="h-5 w-5 text-white" />
-                    </div>
+                <h3 className="text-xl font-bold text-[#1F2933] mb-4 flex items-center">
+                  <span className="w-8 h-8 bg-[#F39C12] text-white rounded-full flex items-center justify-center mr-3 text-sm font-bold">
+                    {index + 1}
+                  </span>
+                  {scenario.title}
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-sm font-semibold text-red-600 mb-2">❌ Problem:</h4>
+                    <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-[#1F2933] mb-3">{faq.question}</h3>
-                    <p className="text-base text-[#52606D] leading-relaxed">{faq.answer}</p>
+                  <div>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">⚠️ Reality:</h4>
+                    <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
               </motion.div>
@@ -404,35 +363,108 @@ const LegalDrafting = () => {
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Need Help Preparing or Verifying an Important Legal Document?
+      {/* FAQ Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+              Frequently Asked Questions
             </h2>
-            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
-              Understanding the structure and legal wording of documents can help avoid confusion and reduce the chances of disputes.
+            <p className="text-lg text-[#52606D]">
+              Common questions about legal drafting and verification
             </p>
-            <p className="text-lg text-white/90 mb-8">
-              Contact Yashoda Total Solution to learn more about legal drafting and document verification support.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center space-x-2 bg-[#F39C12] hover:bg-[#E67E22] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
-            >
-              <Phone className="h-5 w-5" />
-              <span>Contact Us Now</span>
-              <ArrowRight className="h-5 w-5" />
-            </Link>
           </motion.div>
+
+          <div className="space-y-6">
+            {[
+              {
+                q: 'What is legal drafting?',
+                a: 'Legal drafting is the preparation of written legal documents such as agreements, notices, or contracts.'
+              },
+              {
+                q: 'Why is document verification important?',
+                a: 'Verification helps identify unclear clauses, missing information, or potential legal risks before the document is used.'
+              },
+              {
+                q: 'Who may need legal drafting services?',
+                a: 'Individuals, business owners, property owners, and organizations may require drafting support for various legal documents.'
+              },
+              {
+                q: 'Can existing documents be reviewed before signing?',
+                a: 'Yes, documents can be reviewed and verified to ensure the terms are clear and appropriate.'
+              },
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-[#F5F7F9] rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-10 h-10 bg-[#0F7A4A] rounded-full flex items-center justify-center">
+                      <HelpCircle className="h-6 w-6 text-white" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-[#1F2933] mb-2">{faq.q}</h3>
+                    <p className="text-base text-[#52606D] leading-relaxed">{faq.a}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* CTA Section */}
+      <motion.section
+        {...fadeUp}
+        className="relative py-20 md:py-32 bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] overflow-hidden"
+      >
+        <div className="absolute inset-0 opacity-10"></div>
+
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <div className="w-20 h-20 bg-[#F39C12] rounded-full flex items-center justify-center mx-auto mb-6">
+              <Phone className="h-10 w-10 text-white" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-white">
+              Need Help with Document Drafting or Verification?
+            </h2>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+              Understanding the structure and legal wording of documents can help avoid confusion and reduce the chances of disputes. Contact us today for professional drafting support.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
+                >
+                  Get Free Consultation
+                  <ArrowRight className="ml-2 h-6 w-6" />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <a
+                  href="tel:+919021022851"
+                  className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
+                >
+                  <Phone className="mr-2 h-6 w-6" />
+                  Call Now
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
     </div>
   );
 };
