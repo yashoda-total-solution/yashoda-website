@@ -1,221 +1,434 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, X, Phone, Navigation } from 'lucide-react';
+import { X, Phone } from 'lucide-react';
 
 const InteractiveIndiaMap = () => {
-  const [selectedState, setSelectedState] = useState(null);
-  const [hoveredState, setHoveredState] = useState(null);
+  const [hoveredPin, setHoveredPin] = useState(null);
 
-  // Branch data structure
-  const branches = {
-    Maharashtra: {
-      color: '#0F7A4A',
-      offices: [
-        {
-          city: 'Nashik',
-          name: 'Nashik Head Office',
-          address: 'College Road, Nashik, Maharashtra',
-          phone: '+91 9876543210'
-        },
-        {
-          city: 'Mumbai',
-          name: 'Mumbai Branch Office',
-          address: 'Andheri East, Mumbai, Maharashtra',
-          phone: '+91 9876543211'
-        }
-      ]
+  // Branch data structure with city coordinates
+  const branches = [
+    {
+      id: 1,
+      city: 'Nashik',
+      state: 'Maharashtra',
+      name: 'Nashik Head Office',
+      address: 'College Road, Nashik, Maharashtra',
+      phone: '+91 9876543210',
+      x: 400,
+      y: 540
     },
-    Gujarat: {
-      color: '#F39C12',
-      offices: [
-        {
-          city: 'Ahmedabad',
-          name: 'Ahmedabad Office',
-          address: 'SG Highway, Ahmedabad, Gujarat',
-          phone: '+91 9876543212'
-        }
-      ]
+    {
+      id: 2,
+      city: 'Mumbai',
+      state: 'Maharashtra',
+      name: 'Mumbai Branch Office',
+      address: 'Andheri East, Mumbai, Maharashtra',
+      phone: '+91 9876543211',
+      x: 360,
+      y: 570
     },
-    'Madhya Pradesh': {
-      color: '#2563EB',
-      offices: [
-        {
-          city: 'Bhopal',
-          name: 'Bhopal Office',
-          address: 'New Market Area, Bhopal, Madhya Pradesh',
-          phone: '+91 9876543213'
-        }
-      ]
+    {
+      id: 3,
+      city: 'Ahmedabad',
+      state: 'Gujarat',
+      name: 'Ahmedabad Office',
+      address: 'SG Highway, Ahmedabad, Gujarat',
+      phone: '+91 9876543212',
+      x: 315,
+      y: 490
+    },
+    {
+      id: 4,
+      city: 'Bhopal',
+      state: 'Madhya Pradesh',
+      name: 'Bhopal Office',
+      address: 'New Market Area, Bhopal, Madhya Pradesh',
+      phone: '+91 9876543213',
+      x: 425,
+      y: 485
     }
+  ];
+
+  // State fill colors based on branch presence
+  const stateColors = {
+    'Maharashtra': '#0F7A4A',
+    'Gujarat': '#F39C12',
+    'Madhya Pradesh': '#2563EB'
   };
 
-  const stateNames = Object.keys(branches);
-
-  // Simple India map SVG with major states
-  const indiaMapPaths = {
-    'Jammu and Kashmir': 'M200,20 L220,25 L230,40 L225,55 L210,60 L195,50 Z',
-    'Himachal Pradesh': 'M220,55 L240,60 L245,70 L235,75 L225,70 Z',
-    'Punjab': 'M210,60 L225,70 L230,80 L215,85 L205,75 Z',
-    'Uttarakhand': 'M245,70 L260,72 L265,82 L255,87 L245,80 Z',
-    'Haryana': 'M215,85 L230,90 L235,100 L220,105 L210,95 Z',
-    'Delhi': 'M225,92 L230,95 L228,100 L223,98 Z',
-    'Rajasthan': 'M170,95 L210,95 L220,105 L225,130 L210,150 L180,155 L165,135 L160,110 Z',
-    'Uttar Pradesh': 'M235,100 L285,105 L295,120 L290,145 L270,155 L250,150 L235,135 L230,115 Z',
-    'Bihar': 'M290,145 L320,148 L325,160 L315,168 L295,165 L285,155 Z',
-    'Sikkim': 'M330,110 L338,112 L340,120 L335,125 L328,120 Z',
-    'Arunachal Pradesh': 'M360,95 L395,100 L405,115 L400,130 L380,135 L365,125 L355,110 Z',
-    'Nagaland': 'M380,135 L395,138 L398,148 L390,155 L378,150 Z',
-    'Manipur': 'M390,155 L398,158 L400,168 L393,173 L385,168 Z',
-    'Mizoram': 'M385,168 L393,173 L395,183 L388,188 L380,183 Z',
-    'Tripura': 'M365,165 L375,168 L378,178 L370,183 L362,178 Z',
-    'Meghalaya': 'M350,150 L365,153 L368,163 L358,168 L348,163 Z',
-    'Assam': 'M325,130 L365,135 L375,145 L368,163 L350,165 L330,158 L320,145 Z',
-    'West Bengal': 'M315,168 L340,172 L345,190 L340,210 L325,215 L310,205 L305,185 Z',
-    'Jharkhand': 'M285,165 L310,170 L315,185 L305,198 L285,195 L275,180 Z',
-    'Odisha': 'M285,195 L310,205 L320,225 L315,245 L295,250 L275,240 L270,220 Z',
-    'Chhattisgarh': 'M250,180 L285,185 L290,210 L280,235 L260,240 L245,225 L240,200 Z',
-    'Madhya Pradesh': 'M180,155 L250,150 L260,170 L265,195 L255,220 L230,230 L195,225 L175,205 L170,180 Z',
-    'Gujarat': 'M115,165 L165,160 L175,185 L180,210 L170,235 L150,250 L125,245 L105,225 L95,195 L100,175 Z',
-    'Maharashtra': 'M150,250 L210,245 L230,260 L235,285 L225,310 L200,325 L170,320 L145,300 L135,275 Z',
-    'Goa': 'M135,310 L148,315 L150,328 L142,333 L133,328 Z',
-    'Karnataka': 'M145,330 L200,335 L210,360 L205,390 L185,405 L160,400 L140,380 L135,355 Z',
-    'Andhra Pradesh': 'M225,310 L265,315 L275,340 L270,370 L250,385 L225,380 L210,355 Z',
-    'Telangana': 'M225,285 L255,288 L265,305 L258,325 L240,330 L225,315 Z',
-    'Tamil Nadu': 'M185,405 L225,400 L235,420 L235,450 L220,470 L195,475 L170,465 L160,440 L165,420 Z',
-    'Kerala': 'M160,400 L175,410 L180,435 L178,465 L168,475 L155,470 L148,445 L150,420 Z',
-    'Andaman and Nicobar': 'M380,380 L388,385 L390,410 L385,425 L377,420 L375,395 Z'
-  };
-
-  const handleStateClick = (stateName) => {
-    if (stateNames.includes(stateName)) {
-      setSelectedState(stateName);
-    }
-  };
-
-  const handleClosePopup = () => {
-    setSelectedState(null);
+  const handlePinClick = (branchId) => {
+    setHoveredPin(hoveredPin === branchId ? null : branchId);
   };
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto">
+    <div className="relative w-full max-w-6xl mx-auto">
       {/* Map Container with Glass Effect */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-12 shadow-2xl"
+        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-12 shadow-2xl relative"
       >
         <svg
-          viewBox="0 0 500 500"
-          className="w-full h-auto"
-          style={{ maxHeight: '600px' }}
+          viewBox="0 0 800 900"
+          className="w-full h-auto mx-auto"
+          style={{ maxHeight: '750px' }}
         >
-          {/* Render all states */}
-          {Object.entries(indiaMapPaths).map(([stateName, pathData]) => {
-            const isHighlighted = stateNames.includes(stateName);
-            const isHovered = hoveredState === stateName;
-            const stateColor = isHighlighted
-              ? branches[stateName].color
-              : '#D1D5DB';
+          {/* India Map - Proper Outline Style with Continuous Boundaries */}
+          <g id="india-map-outline">
             
-            return (
-              <motion.path
-                key={stateName}
-                d={pathData}
-                fill={stateColor}
-                stroke="#ffffff"
-                strokeWidth="1.5"
-                initial={{ opacity: 0.7 }}
-                whileHover={{
-                  opacity: 1,
-                  scale: isHighlighted ? 1.03 : 1,
-                  filter: 'brightness(1.1)'
+            {/* Jammu & Kashmir + Ladakh (North) */}
+            <path
+              d="M 340,50 L 380,45 L 420,55 L 450,75 L 465,100 L 470,125 L 465,145 L 450,160 L 420,170 L 395,175 L 370,170 L 350,155 L 335,135 L 328,110 L 330,80 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Punjab + Haryana + Delhi (Northwest) */}
+            <path
+              d="M 350,155 L 370,170 L 395,175 L 410,185 L 420,200 L 425,220 L 420,235 L 405,245 L 385,250 L 365,248 L 350,240 L 340,225 L 338,205 L 342,185 L 345,170 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Himachal Pradesh + Uttarakhand (North Central) */}
+            <path
+              d="M 395,175 L 420,170 L 445,180 L 465,195 L 475,215 L 475,235 L 465,250 L 445,260 L 425,265 L 405,260 L 390,250 L 385,235 L 390,215 L 395,195 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Uttar Pradesh (North Central) */}
+            <path
+              d="M 385,250 L 425,265 L 465,270 L 505,275 L 540,285 L 560,300 L 565,320 L 560,345 L 545,365 L 520,375 L 485,380 L 450,375 L 425,365 L 405,350 L 395,330 L 390,305 L 390,280 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Rajasthan (West) */}
+            <path
+              d="M 250,220 L 295,210 L 340,225 L 365,248 L 375,275 L 380,305 L 375,335 L 360,365 L 335,385 L 305,395 L 270,395 L 240,385 L 220,365 L 210,340 L 208,310 L 215,280 L 230,250 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Gujarat (West Coast) */}
+            <path
+              d="M 210,340 L 240,385 L 260,425 L 275,465 L 280,500 L 275,530 L 260,555 L 235,565 L 205,560 L 180,540 L 165,515 L 155,485 L 155,455 L 165,425 L 185,395 L 200,370 Z"
+              fill={stateColors['Gujarat'] || '#E5E7EB'}
+              stroke="#9CA3AF"
+              strokeWidth="2"
+              opacity="0.9"
+            />
+            
+            {/* Madhya Pradesh (Central) */}
+            <path
+              d="M 335,385 L 380,375 L 425,380 L 470,390 L 505,405 L 530,425 L 540,450 L 535,480 L 520,510 L 490,530 L 455,540 L 420,540 L 385,530 L 355,515 L 335,495 L 325,470 L 325,440 L 328,410 Z"
+              fill={stateColors['Madhya Pradesh'] || '#E5E7EB'}
+              stroke="#9CA3AF"
+              strokeWidth="2"
+              opacity="0.9"
+            />
+            
+            {/* Bihar (Northeast) */}
+            <path
+              d="M 545,365 L 580,370 L 615,380 L 640,395 L 655,415 L 658,440 L 650,465 L 630,480 L 605,490 L 575,492 L 550,485 L 530,470 L 525,450 L 530,425 L 540,400 L 545,380 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* West Bengal (East) */}
+            <path
+              d="M 605,490 L 630,485 L 650,495 L 665,515 L 670,540 L 665,565 L 650,585 L 625,595 L 600,600 L 575,595 L 560,580 L 555,560 L 560,535 L 575,515 L 590,500 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Assam + Northeast States (Far East) */}
+            <path
+              d="M 650,465 L 680,470 L 715,480 L 740,495 L 755,515 L 760,540 L 755,565 L 740,585 L 715,595 L 685,598 L 660,590 L 650,570 L 648,545 L 650,515 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Chhattisgarh (Central East) */}
+            <path
+              d="M 490,530 L 520,540 L 545,555 L 560,575 L 565,600 L 560,625 L 545,645 L 520,655 L 490,660 L 465,655 L 450,640 L 445,620 L 448,595 L 460,570 L 475,550 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Jharkhand (East Central) */}
+            <path
+              d="M 550,485 L 575,492 L 600,505 L 615,525 L 620,550 L 615,575 L 600,590 L 575,595 L 555,590 L 540,575 L 535,555 L 538,530 L 545,510 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Odisha (East Coast) */}
+            <path
+              d="M 560,625 L 580,635 L 600,650 L 610,675 L 612,705 L 605,730 L 585,750 L 560,760 L 535,758 L 515,745 L 505,720 L 505,690 L 515,665 L 535,645 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Maharashtra (West Central) */}
+            <path
+              d="M 260,555 L 305,565 L 355,580 L 395,600 L 425,625 L 445,655 L 455,690 L 450,720 L 435,745 L 410,760 L 375,768 L 340,765 L 305,750 L 275,725 L 255,695 L 245,665 L 245,630 L 250,595 Z"
+              fill={stateColors['Maharashtra'] || '#E5E7EB'}
+              stroke="#9CA3AF"
+              strokeWidth="2"
+              opacity="0.9"
+            />
+            
+            {/* Telangana (South Central) */}
+            <path
+              d="M 445,655 L 470,665 L 490,680 L 500,705 L 500,730 L 490,750 L 470,760 L 450,762 L 430,755 L 420,735 L 420,710 L 428,685 L 438,670 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Andhra Pradesh (Southeast) */}
+            <path
+              d="M 450,720 L 470,760 L 490,790 L 500,820 L 495,850 L 480,875 L 455,890 L 425,895 L 400,888 L 385,870 L 380,845 L 385,815 L 400,785 L 420,760 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Karnataka (Southwest) */}
+            <path
+              d="M 305,750 L 340,765 L 375,780 L 400,805 L 410,835 L 408,870 L 395,905 L 370,930 L 335,945 L 300,948 L 270,935 L 250,910 L 240,880 L 240,845 L 250,815 L 270,785 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Goa (West Coast) */}
+            <path
+              d="M 245,695 L 260,705 L 270,720 L 272,738 L 265,752 L 252,758 L 240,752 L 235,738 L 237,720 L 242,708 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Kerala (Southwest Coast) */}
+            <path
+              d="M 240,880 L 255,895 L 268,920 L 275,950 L 275,980 L 268,1010 L 252,1030 L 230,1040 L 210,1038 L 195,1020 L 188,995 L 188,965 L 195,935 L 210,910 L 225,890 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+            
+            {/* Tamil Nadu (Southeast) */}
+            <path
+              d="M 300,948 L 335,955 L 370,968 L 395,990 L 408,1020 L 410,1050 L 400,1080 L 380,1105 L 350,1120 L 315,1125 L 280,1115 L 255,1095 L 240,1065 L 240,1030 L 250,1000 L 270,970 Z"
+              fill="#E5E7EB"
+              stroke="#9CA3AF"
+              strokeWidth="1.5"
+              opacity="0.9"
+            />
+          </g>
+
+          {/* Location Pins - Red Google Maps Style */}
+          {branches.map((branch) => (
+            <motion.g
+              key={branch.id}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{
+                delay: 0.5 + branch.id * 0.15,
+                type: 'spring',
+                stiffness: 260,
+                damping: 12
+              }}
+              style={{ cursor: 'pointer' }}
+              onMouseEnter={() => setHoveredPin(branch.id)}
+              onMouseLeave={() => setHoveredPin(null)}
+              onClick={() => handlePinClick(branch.id)}
+            >
+              {/* Pulsing Circle Background */}
+              <motion.circle
+                cx={branch.x}
+                cy={branch.y}
+                r="16"
+                fill="#EF4444"
+                opacity="0.15"
+                animate={{
+                  scale: [1, 1.6, 1],
+                  opacity: [0.15, 0, 0.15]
                 }}
-                transition={{ duration: 0.2 }}
-                style={{
-                  cursor: isHighlighted ? 'pointer' : 'default',
-                  filter: isHovered ? 'brightness(1.2)' : 'brightness(1)'
-                }}
-                onMouseEnter={() => setHoveredState(stateName)}
-                onMouseLeave={() => setHoveredState(null)}
-                onClick={() => handleStateClick(stateName)}
-              />
-            );
-          })}
-
-          {/* Location Pins for Highlighted States */}
-          {stateNames.map((stateName) => {
-            // Approximate center coordinates for highlighted states
-            const pinPositions = {
-              'Maharashtra': { x: 185, y: 290 },
-              'Gujarat': { x: 140, y: 210 },
-              'Madhya Pradesh': { x: 220, y: 200 }
-            };
-
-            const position = pinPositions[stateName];
-            if (!position) return null;
-
-            return (
-              <motion.g
-                key={`pin-${stateName}`}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
                 transition={{
-                  delay: 0.5,
-                  type: 'spring',
-                  stiffness: 200,
-                  damping: 10
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut'
                 }}
-                onClick={() => handleStateClick(stateName)}
-                style={{ cursor: 'pointer' }}
+              />
+              
+              {/* Red Location Pin - Google Maps Style */}
+              <motion.g
+                whileHover={{ scale: 1.2, y: -4 }}
+                animate={hoveredPin === branch.id ? { y: [0, -6, 0] } : { y: [0, -3, 0] }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: 'easeInOut'
+                }}
               >
-                {/* Pulsing Circle Animation */}
-                <motion.circle
-                  cx={position.x}
-                  cy={position.y}
-                  r="8"
-                  fill={branches[stateName].color}
-                  opacity="0.3"
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.3, 0, 0.3]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut'
-                  }}
+                {/* Pin Shadow */}
+                <ellipse
+                  cx={branch.x}
+                  cy={branch.y + 26}
+                  rx="10"
+                  ry="3.5"
+                  fill="#000000"
+                  opacity="0.25"
                 />
                 
-                {/* Pin Icon */}
-                <motion.g
-                  whileHover={{ scale: 1.2, y: -2 }}
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut'
-                  }}
-                >
-                  <circle
-                    cx={position.x}
-                    cy={position.y}
-                    r="6"
-                    fill="#ffffff"
-                    stroke={branches[stateName].color}
-                    strokeWidth="2"
-                  />
-                  <circle
-                    cx={position.x}
-                    cy={position.y}
-                    r="3"
-                    fill={branches[stateName].color}
-                  />
-                </motion.g>
+                {/* Pin Body - Red Teardrop Shape */}
+                <path
+                  d={`M ${branch.x},${branch.y} 
+                      C ${branch.x - 13},${branch.y - 6} ${branch.x - 15},${branch.y - 18} ${branch.x},${branch.y - 24}
+                      C ${branch.x + 15},${branch.y - 18} ${branch.x + 13},${branch.y - 6} ${branch.x},${branch.y}
+                      Z`}
+                  fill="#EF4444"
+                  stroke="#DC2626"
+                  strokeWidth="2"
+                  filter="drop-shadow(0 3px 6px rgba(0,0,0,0.35))"
+                />
+                
+                {/* Pin Highlight Shine */}
+                <ellipse
+                  cx={branch.x - 4}
+                  cy={branch.y - 18}
+                  rx="4"
+                  ry="5"
+                  fill="#FCA5A5"
+                  opacity="0.7"
+                />
+                
+                {/* Inner White Circle */}
+                <circle
+                  cx={branch.x}
+                  cy={branch.y - 12}
+                  r="5"
+                  fill="white"
+                />
               </motion.g>
-            );
-          })}
+
+              {/* Tooltip on Hover/Click */}
+              <AnimatePresence>
+                {hoveredPin === branch.id && (
+                  <motion.g
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 12 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    {/* Tooltip Background */}
+                    <rect
+                      x={branch.x - 120}
+                      y={branch.y - 120}
+                      width="240"
+                      height="95"
+                      rx="12"
+                      fill="white"
+                      stroke="#D1D5DB"
+                      strokeWidth="2.5"
+                      filter="drop-shadow(0 6px 16px rgba(0,0,0,0.2))"
+                    />
+                    
+                    {/* Tooltip Arrow */}
+                    <path
+                      d={`M ${branch.x - 10},${branch.y - 25} L ${branch.x},${branch.y - 12} L ${branch.x + 10},${branch.y - 25} Z`}
+                      fill="white"
+                      stroke="#D1D5DB"
+                      strokeWidth="2.5"
+                    />
+                    
+                    {/* Branch Name */}
+                    <text
+                      x={branch.x}
+                      y={branch.y - 88}
+                      textAnchor="middle"
+                      className="text-base font-bold"
+                      fill="#111827"
+                      style={{ fontSize: '15px', fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                    >
+                      {branch.name}
+                    </text>
+                    
+                    {/* Address Line 1 */}
+                    <text
+                      x={branch.x}
+                      y={branch.y - 68}
+                      textAnchor="middle"
+                      className="text-sm"
+                      fill="#6B7280"
+                      style={{ fontSize: '11px', fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                    >
+                      {branch.address.length > 50 
+                        ? branch.address.substring(0, 47) + '...' 
+                        : branch.address}
+                    </text>
+                    
+                    {/* City */}
+                    <text
+                      x={branch.x}
+                      y={branch.y - 52}
+                      textAnchor="middle"
+                      className="text-sm"
+                      fill="#6B7280"
+                      style={{ fontSize: '11px', fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                    >
+                      {branch.city}, {branch.state}
+                    </text>
+                    
+                    {/* Phone */}
+                    <text
+                      x={branch.x}
+                      y={branch.y - 32}
+                      textAnchor="middle"
+                      className="text-sm font-semibold"
+                      fill="#EF4444"
+                      style={{ fontSize: '13px', fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                    >
+                      📞 {branch.phone}
+                    </text>
+                  </motion.g>
+                )}
+              </AnimatePresence>
+            </motion.g>
+          ))}
         </svg>
 
         {/* Map Legend */}
@@ -223,123 +436,25 @@ const InteractiveIndiaMap = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-8 flex flex-wrap justify-center gap-4"
+          transition={{ delay: 0.4 }}
+          className="mt-10 flex flex-wrap justify-center gap-5"
         >
-          {stateNames.map((stateName) => (
+          {['Maharashtra', 'Gujarat', 'Madhya Pradesh'].map((stateName) => (
             <div
               key={stateName}
-              className="flex items-center space-x-2 bg-white/20 px-4 py-2 rounded-full cursor-pointer hover:bg-white/30 transition-all"
-              onClick={() => handleStateClick(stateName)}
+              className="flex items-center space-x-3 bg-white/20 px-5 py-3 rounded-full backdrop-blur-sm"
             >
               <div
-                className="w-4 h-4 rounded-full"
-                style={{ backgroundColor: branches[stateName].color }}
+                className="w-5 h-5 rounded-full shadow-md"
+                style={{ backgroundColor: stateColors[stateName] }}
               />
-              <span className="text-white text-sm font-medium">
+              <span className="text-white text-base font-semibold">
                 {stateName}
               </span>
             </div>
           ))}
         </motion.div>
       </motion.div>
-
-      {/* Popup Modal */}
-      <AnimatePresence>
-        {selectedState && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-              onClick={handleClosePopup}
-            />
-
-            {/* Popup Content */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 50 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 50 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-lg mx-4"
-            >
-              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-                {/* Header */}
-                <div
-                  className="px-6 py-5 text-white relative overflow-hidden"
-                  style={{ backgroundColor: branches[selectedState].color }}
-                >
-                  <div className="absolute inset-0 opacity-20">
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-                        backgroundSize: '20px 20px'
-                      }}
-                    />
-                  </div>
-                  <div className="relative flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <Navigation className="h-6 w-6" />
-                      <h3 className="text-2xl font-bold">{selectedState}</h3>
-                    </div>
-                    <button
-                      onClick={handleClosePopup}
-                      className="p-2 hover:bg-white/20 rounded-full transition-colors"
-                    >
-                      <X className="h-6 w-6" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Office List */}
-                <div className="p-6 max-h-96 overflow-y-auto">
-                  {branches[selectedState].offices.map((office, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="mb-6 last:mb-0 pb-6 last:pb-0 border-b last:border-b-0 border-gray-200"
-                    >
-                      <div className="flex items-start space-x-4">
-                        <div
-                          className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
-                          style={{ backgroundColor: `${branches[selectedState].color}15` }}
-                        >
-                          <MapPin
-                            className="h-6 w-6"
-                            style={{ color: branches[selectedState].color }}
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="text-lg font-bold text-gray-900 mb-1">
-                            {office.name}
-                          </h4>
-                          <p className="text-sm text-gray-600 mb-2 flex items-start">
-                            <MapPin className="h-4 w-4 mr-1 mt-0.5 flex-shrink-0 text-gray-400" />
-                            {office.address}
-                          </p>
-                          <a
-                            href={`tel:${office.phone}`}
-                            className="text-sm font-semibold flex items-center hover:underline"
-                            style={{ color: branches[selectedState].color }}
-                          >
-                            <Phone className="h-4 w-4 mr-1" />
-                            {office.phone}
-                          </a>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
