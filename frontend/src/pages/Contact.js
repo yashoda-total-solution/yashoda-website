@@ -201,7 +201,7 @@ const Contact = () => {
             </h2>
             <div className="max-w-3xl mx-auto">
               <p className="text-lg md:text-xl text-white/95 leading-relaxed mb-4">
-                Yashoda Total Solution is expanding its operational presence across <span className="font-bold text-[#F39C12]">PAN India</span> through regional offices, franchise partners, and service pickup centers to ensure accessibility of services nationwide.
+                Yashoda Total Solution is expanding its operational presence across <span className="font-bold text-[#F39C12]">PAN India</span> through growing service network to ensure accessibility of services nationwide.
               </p>
               <p className="text-base md:text-lg text-white/90 leading-relaxed">
                 Our growing network aims to deliver professional assistance across multiple states with structured service delivery supported by trained sales and support teams.
@@ -261,7 +261,7 @@ const Contact = () => {
             className="mt-12 text-center"
           >
             <button
-              onClick={() => navigate('/partner-with-us')}
+              onClick={() => navigate('/partner')}
               className="inline-flex items-center space-x-3 bg-[#F39C12] px-8 py-4 rounded-full hover:bg-[#e08e0b] transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
             >
               <Network className="h-6 w-6 text-white" />
