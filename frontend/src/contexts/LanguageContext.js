@@ -35,7 +35,7 @@ export const translations = {
     service_legal_consultation: 'Legal Consultation',
     service_legal_drafting: 'Legal Drafting & Verification Support',
     service_consumer_cases: 'Consumer Protection Support',
-    service_civil_cases: 'Civil Cases',
+    service_civil_cases: 'Civil Dispute Support',
     service_cheque_bounce: 'Cheque Bounce Cases',
     
     // Hero Section
@@ -302,7 +302,7 @@ export const translations = {
     service_legal_consultation: 'कानूनी परामर्श',
     service_legal_drafting: 'कानूनी ड्राफ्टिंग और सत्यापन सहायता',
     service_consumer_cases: 'उपभोक्ता संरक्षण सहायता',
-    service_civil_cases: 'दीवानी मामले',
+    service_civil_cases: 'दीवानी विवाद सहायता',
     service_cheque_bounce: 'चेक बाउंस मामले',
     
     // Hero Section
@@ -511,7 +511,7 @@ export const translations = {
     service_legal_consultation: 'कायदेशीर सल्ला',
     service_legal_drafting: 'कायदेशीर ड्राफ्टिंग आणि सत्यापन सहाय्य',
     service_consumer_cases: 'ग्राहक संरक्षण सहाय्य',
-    service_civil_cases: 'दिवाणी प्रकरणे',
+    service_civil_cases: 'दिवाणी वाद सहाय्य',
     service_cheque_bounce: 'चेक बाउंस प्रकरणे',
     
     // Hero Section
