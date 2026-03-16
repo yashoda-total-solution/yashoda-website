@@ -33,7 +33,7 @@ const ClaimShortSettled = () => {
             <div className="flex items-center space-x-2 mb-6">
               <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">Claim Short-Settled</span>
+              <span className="text-white text-sm">Partial Claim Settlement</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -41,12 +41,12 @@ const ClaimShortSettled = () => {
                 <MinusCircle className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Claim Short-Settled Assistance
+                Partial Claim Settlement Assistance
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding situations where insurance claims are approved but settled for a lower amount than expected. Sometimes insurance companies approve a claim but pay only a portion of the total claimed amount. This situation is known as a short settlement or partial claim settlement. Understanding the reasons behind the reduced claim amount is important for evaluating the situation and determining possible next steps.
+              Understanding situations where insurance claims are approved but settled for a lower amount than expected. Sometimes insurance companies approve a claim but pay only a portion of the total claimed amount. This situation is known as a partial claim settlement or partial claim settlement. Understanding the reasons behind the reduced claim amount is important for evaluating the situation and determining possible next steps.
             </p>
           </motion.div>
         </div>
@@ -66,7 +66,7 @@ const ClaimShortSettled = () => {
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
-                A short settlement occurs when an insurance company approves a claim but pays only part of the total claimed amount.
+                A partial claim settlement occurs when an insurance company approves a claim but pays only part of the total claimed amount.
               </p>
               <p className="leading-relaxed mb-4">
                 This can happen when certain expenses fall outside the policy coverage or when <strong>policy limits and deductions apply.</strong>
@@ -87,7 +87,7 @@ const ClaimShortSettled = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common Signs of Short Claim Settlement
+              Common Signs of Partial Claim Settlement
             </h2>
             <p className="text-lg text-[#52606D]">
               Policyholders may notice certain signs when a claim has been settled for less than expected
@@ -163,7 +163,7 @@ const ClaimShortSettled = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              What Actually Happens in Short Settlement Cases
+              What Actually Happens in Partial Claim Settlement Cases
             </h2>
             <p className="text-lg text-[#52606D] max-w-3xl mx-auto">
               When a claim is submitted, the insurance company reviews the documents and evaluates the expenses according to policy conditions
@@ -286,7 +286,7 @@ const ClaimShortSettled = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life Short Settlement Examples
+              Real-Life Partial Claim Settlement Examples
             </h2>
             <p className="text-lg text-[#52606D]">
               Common scenarios where claims are settled for reduced amounts
@@ -438,7 +438,7 @@ const ClaimShortSettled = () => {
               {
                 icon: CheckCircle,
                 title: 'Proven Results',
-                desc: 'Successfully helped numerous clients understand and resolve short settlements'
+                desc: 'Successfully helped numerous clients understand and resolve partial claim settlements'
               },
             ].map((item, index) => (
               <motion.div
@@ -469,7 +469,7 @@ const ClaimShortSettled = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about short claim settlements
+              Common questions about partial claim settlements
             </p>
           </motion.div>
 
