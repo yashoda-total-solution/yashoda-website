@@ -101,14 +101,15 @@ const Navbar = () => {
                       <button
                         onClick={() => setIsServicesOpen(!isServicesOpen)}
                         data-testid="nav-services-dropdown"
-                        className="flex items-center space-x-1 text-base font-medium transition-colors text-[#1F2933] hover:text-[#0F7A4A] pb-2"
+                        className="flex items-center space-x-1 text-base font-medium transition-colors text-[#1F2933] hover:text-[#0F7A4A]"
                       >
                         <span>Services</span>
                         <ChevronDown className="h-4 w-4" />
                       </button>
 
                       {isServicesOpen && (
-                        <div className="absolute left-0 top-full w-80 bg-white border border-gray-200 rounded-lg shadow-xl z-50">
+                        <div className="absolute left-0 top-full pt-2 w-80 z-50">
+                          <div className="bg-white border border-gray-200 rounded-lg shadow-xl">
                           <div className="p-4">
                             <div className="grid grid-cols-1 gap-2">
                               {mainServices.map((service, index) => {
@@ -130,7 +131,8 @@ const Navbar = () => {
                                       
                                       {/* Nested Insurance Dropdown */}
                                       {isInsuranceOpen && (
-                                        <div className="absolute left-full top-0 -ml-1 w-80 bg-white border border-gray-200 rounded-lg shadow-xl z-50">
+                                        <div className="absolute left-full top-0 pl-2 z-50">
+                                          <div className="bg-white border border-gray-200 rounded-lg shadow-xl w-80">
                                           <div className="p-4">
                                             <div className="grid grid-cols-1 gap-2">
                                               {insuranceServices.map((insuranceService) => (
@@ -147,6 +149,7 @@ const Navbar = () => {
                                                 </Link>
                                               ))}
                                             </div>
+                                          </div>
                                           </div>
                                         </div>
                                       )}
@@ -166,6 +169,7 @@ const Navbar = () => {
                                 );
                               })}
                             </div>
+                          </div>
                           </div>
                         </div>
                       )}
