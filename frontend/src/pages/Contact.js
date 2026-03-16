@@ -88,40 +88,72 @@ const Contact = () => {
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
       </section>
 
-      {/* Contact Information Cards */}
-      <section className="relative -mt-16 z-10 pb-16">
+      {/* Contact Information Cards - Compact Design */}
+      <section className="py-16 bg-[#F5F7F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Office Address Card - First */}
+          {/* Main Contact Info Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            {/* Left Column - Office Details */}
             <motion.div
               {...fadeUp}
-              transition={{ delay: 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 transition-all duration-300"
-              data-testid="contact-address-card"
+              className="bg-white rounded-xl shadow-lg p-6"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                <MapPin className="h-8 w-8 text-white" />
+              <div className="flex items-start space-x-4 mb-4 pb-4 border-b border-gray-100">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                  <MapPin className="h-6 w-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-[#1F2933] mb-2">Office Address</h3>
+                  <p className="text-sm text-[#52606D] leading-relaxed">
+                    2 B-70, Floor No:2, PHOENIX PARAGON PLAZA, LBS Road, KURLA WEST, Mumbai, Maharashtra, 400070
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-[#1F2933] mb-3 text-center">Office Address</h3>
-              <p className="text-sm text-[#52606D] text-center leading-relaxed">
-                2 B-70, Floor No:2, PHOENIX PARAGON PLAZA, LBS Road, KURLA WEST, Mumbai, Maharashtra, 400070
-              </p>
+
+              <div className="flex items-center space-x-4 mb-4 pb-4 border-b border-gray-100">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-lg flex items-center justify-center">
+                  <Phone className="h-6 w-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-[#1F2933] mb-1">Phone Number</h3>
+                  <a 
+                    href="tel:+919649647790"
+                    className="text-base text-[#0F7A4A] font-semibold hover:underline"
+                  >
+                    +91 9649647790
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#F39C12] to-[#f7b547] rounded-lg flex items-center justify-center">
+                  <Mail className="h-6 w-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-[#1F2933] mb-1">Email Address</h3>
+                  <a 
+                    href="mailto:info@yashodatotalsolution.com"
+                    className="text-sm text-[#0F7A4A] font-semibold hover:underline break-all"
+                  >
+                    info@yashodatotalsolution.com
+                  </a>
+                </div>
+              </div>
             </motion.div>
 
-            {/* Google Map Embedded Card - Second */}
+            {/* Right Column - Google Map */}
             <motion.div
               {...fadeUp}
               transition={{ delay: 0.2 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 transition-all duration-300 overflow-hidden"
-              data-testid="contact-map-card"
+              className="bg-white rounded-xl shadow-lg p-6"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                <MapPin className="h-8 w-8 text-white" />
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg flex items-center justify-center">
+                  <MapPin className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-[#1F2933]">Location Map</h3>
               </div>
-              <h3 className="text-xl font-semibold text-[#1F2933] mb-4 text-center">Location Map</h3>
-              <div className="relative w-full h-48 rounded-xl overflow-hidden">
+              <div className="relative w-full h-64 rounded-lg overflow-hidden">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.8267890542363!2d72.87862931490195!3d19.073956887091787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8dcf85fffff%3A0xd8c4e1e3e3e3e3e3!2sPhoenix%20Paragon%20Plaza!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
                   width="100%"
@@ -131,49 +163,9 @@ const Contact = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Office Location"
-                  className="rounded-xl"
+                  className="rounded-lg"
                 ></iframe>
               </div>
-            </motion.div>
-
-            {/* Phone Card - Third */}
-            <motion.div
-              {...fadeUp}
-              transition={{ delay: 0.3 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 transition-all duration-300"
-              data-testid="contact-phone-card"
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                <Phone className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-[#1F2933] mb-3 text-center">Phone Number</h3>
-              <a 
-                href="tel:+919649647790"
-                className="block text-lg text-[#0F7A4A] font-semibold text-center hover:underline"
-              >
-                +91 9649647790
-              </a>
-            </motion.div>
-
-            {/* Email Card - Fourth */}
-            <motion.div
-              {...fadeUp}
-              transition={{ delay: 0.4 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 transition-all duration-300"
-              data-testid="contact-email-card"
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-[#F39C12] to-[#f7b547] rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                <Mail className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-[#1F2933] mb-3 text-center">Email Address</h3>
-              <a 
-                href="mailto:info@yashodatotalsolution.com"
-                className="block text-sm text-[#0F7A4A] font-semibold text-center hover:underline break-all"
-              >
-                info@yashodatotalsolution.com
-              </a>
             </motion.div>
           </div>
         </div>
