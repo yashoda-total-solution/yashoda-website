@@ -74,18 +74,7 @@ const galleryText = {
 const Gallery = () => {
   const { language } = useLanguage();
   const txt = galleryText[language];
-  const [activeFilter, setActiveFilter] = useState('all');
   const [lightboxImage, setLightboxImage] = useState(null);
-
-  const filters = [
-    { key: 'all', label: txt.all },
-    { key: 'team', label: txt.team },
-    { key: 'office', label: txt.office },
-    { key: 'work', label: txt.work },
-    { key: 'success', label: txt.success },
-  ];
-
-  const filtered = activeFilter === 'all' ? GALLERY_IMAGES : GALLERY_IMAGES.filter(img => img.category === activeFilter);
 
   return (
     <div className="min-h-screen bg-[#F5F7F9]">
@@ -103,34 +92,12 @@ const Gallery = () => {
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }} />
       </section>
 
-      {/* Filters */}
-      <section className="relative -mt-8 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-3" data-testid="gallery-filters">
-            {filters.map(f => (
-              <button
-                key={f.key}
-                onClick={() => setActiveFilter(f.key)}
-                data-testid={`gallery-filter-${f.key}`}
-                className={`px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 shadow-md ${
-                  activeFilter === f.key
-                    ? 'bg-[#0F7A4A] text-white shadow-lg scale-105'
-                    : 'bg-white text-[#52606D] hover:bg-[#0F7A4A] hover:text-white'
-                }`}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Gallery Grid */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence mode="popLayout">
-              {filtered.map((img, index) => (
+              {GALLERY_IMAGES.map((img, index) => (
                 <motion.div
                   key={img.src}
                   layout
@@ -138,7 +105,7 @@ const Gallery = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white"
+                  className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white hover:shadow-xl transition-shadow duration-300"
                   onClick={() => setLightboxImage(img)}
                   data-testid={`gallery-image-${index}`}
                 >
@@ -150,11 +117,9 @@ const Gallery = () => {
                       loading="lazy"
                     />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div className="p-5 w-full flex items-center justify-between">
-                      <p className="text-white font-medium text-base">{img.caption[language]}</p>
-                      <ZoomIn className="h-6 w-6 text-white/80" />
-                    </div>
+                  {/* Zoom icon overlay on hover */}
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <ZoomIn className="h-12 w-12 text-white" />
                   </div>
                 </motion.div>
               ))}
@@ -193,7 +158,6 @@ const Gallery = () => {
                 alt={lightboxImage.caption[language]}
                 className="w-full max-h-[80vh] object-contain rounded-lg"
               />
-              <p className="text-center text-white text-lg mt-4 font-medium">{lightboxImage.caption[language]}</p>
             </motion.div>
           </motion.div>
         )}
