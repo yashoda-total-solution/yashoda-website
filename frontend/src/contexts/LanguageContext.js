@@ -21,6 +21,7 @@ export const translations = {
     nav_reviews: 'Reviews',
     
     // Service Names (Mega Menu)
+    service_insurance_dispute: 'Insurance Dispute Resolution',
     service_mis_selling: 'Mis-selling of Insurance Policy',
     service_claim_rejection: 'Insurance Claim Rejection',
     service_claim_delay: 'Delay in Claim Process',
@@ -31,7 +32,11 @@ export const translations = {
     service_state_cm_scheme: 'State Chief Minister Insurance Scheme',
     service_banking_atm: 'Banking & ATM Card Insurance Claim',
     service_pf_accidental: 'PF Accidental Insurance Claim',
-    service_legal_notice: 'Legal Notice Drafting & Processing',
+    service_legal_consultation: 'Legal Consultation',
+    service_legal_drafting: 'Legal Drafting',
+    service_consumer_cases: 'Consumer Cases',
+    service_civil_cases: 'Civil Cases',
+    service_cheque_bounce: 'Cheque Bounce Cases',
     
     // Hero Section
     hero_headline: 'Need Help with Insurance Claim or Legal Problem?',
@@ -283,6 +288,7 @@ export const translations = {
     nav_reviews: 'समीक्षाएं',
     
     // Service Names (Mega Menu)
+    service_insurance_dispute: 'बीमा विवाद समाधान',
     service_mis_selling: 'बीमा पॉलिसी की मिस-सेलिंग',
     service_claim_rejection: 'बीमा क्लेम अस्वीकृति',
     service_claim_delay: 'क्लेम प्रक्रिया में देरी',
@@ -293,7 +299,11 @@ export const translations = {
     service_state_cm_scheme: 'राज्य मुख्यमंत्री बीमा योजना सहायता',
     service_banking_atm: 'बैंकिंग और ATM कार्ड बीमा क्लेम',
     service_pf_accidental: 'PF दुर्घटना बीमा क्लेम सहायता',
-    service_legal_notice: 'कानूनी नोटिस ड्राफ्टिंग और प्रोसेसिंग',
+    service_legal_consultation: 'कानूनी परामर्श',
+    service_legal_drafting: 'कानूनी ड्राफ्टिंग',
+    service_consumer_cases: 'उपभोक्ता मामले',
+    service_civil_cases: 'दीवानी मामले',
+    service_cheque_bounce: 'चेक बाउंस मामले',
     
     // Hero Section
     hero_headline: 'बीमा क्लेम या कानूनी समस्या में मदद चाहिए?',
@@ -487,6 +497,7 @@ export const translations = {
     nav_reviews: 'प्रतिक्रिया',
     
     // Service Names (Mega Menu)
+    service_insurance_dispute: 'विमा वाद निराकरण',
     service_mis_selling: 'विमा पॉलिसीची मिस-सेलिंग',
     service_claim_rejection: 'विमा क्लेम नाकारणे',
     service_claim_delay: 'क्लेम प्रक्रियेत विलंब',
@@ -497,7 +508,11 @@ export const translations = {
     service_state_cm_scheme: 'राज्य मुख्यमंत्री विमा योजना सहाय्य',
     service_banking_atm: 'बँकिंग आणि ATM कार्ड विमा क्लेम',
     service_pf_accidental: 'PF अपघात विमा क्लेम सहाय्य',
-    service_legal_notice: 'कायदेशीर नोटीस ड्राफ्टिंग आणि प्रोसेसिंग',
+    service_legal_consultation: 'कायदेशीर सल्ला',
+    service_legal_drafting: 'कायदेशीर ड्राफ्टिंग',
+    service_consumer_cases: 'ग्राहक प्रकरणे',
+    service_civil_cases: 'दिवाणी प्रकरणे',
+    service_cheque_bounce: 'चेक बाउंस प्रकरणे',
     
     // Hero Section
     hero_headline: 'विमा क्लेम किंवा कायदेशीर समस्येत मदत हवी?',

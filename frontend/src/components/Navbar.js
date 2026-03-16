@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isInsuranceOpen, setIsInsuranceOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
 
@@ -22,7 +23,8 @@ const Navbar = () => {
     { path: '/login', label: 'Login' },
   ];
 
-  const serviceLinks = [
+  // Insurance Dispute Resolution (nested services)
+  const insuranceServices = [
     { path: '/mis-selling', label: t('service_mis_selling') },
     { path: '/claim-rejection', label: t('service_claim_rejection') },
     { path: '/claim-delay', label: t('service_claim_delay') },
@@ -33,7 +35,16 @@ const Navbar = () => {
     { path: '/state-cm-scheme', label: t('service_state_cm_scheme') },
     { path: '/banking-atm-insurance', label: t('service_banking_atm') },
     { path: '/pf-accidental-insurance', label: t('service_pf_accidental') },
-    { path: '/legal-notice', label: t('service_legal_notice') },
+  ];
+
+  // Main service categories
+  const mainServices = [
+    { label: t('service_insurance_dispute'), hasNested: true },
+    { path: '/legal-consultation', label: t('service_legal_consultation') },
+    { path: '/legal-drafting', label: t('service_legal_drafting') },
+    { path: '/consumer-cases', label: t('service_consumer_cases') },
+    { path: '/civil-cases', label: t('service_civil_cases') },
+    { path: '/cheque-bounce-cases', label: t('service_cheque_bounce') },
   ];
 
   const languages = [
@@ -78,11 +89,14 @@ const Navbar = () => {
               if (index === 1) {
                 return (
                   <React.Fragment key="services-group">
-                    {/* Services Mega Menu */}
+                    {/* Services Mega Menu with Two Levels */}
                     <div 
                       className="relative"
                       onMouseEnter={() => setIsServicesOpen(true)}
-                      onMouseLeave={() => setIsServicesOpen(false)}
+                      onMouseLeave={() => {
+                        setIsServicesOpen(false);
+                        setIsInsuranceOpen(false);
+                      }}
                     >
                       <button
                         onClick={() => setIsServicesOpen(!isServicesOpen)}
@@ -97,16 +111,60 @@ const Navbar = () => {
                         <div className="absolute left-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-xl z-50">
                           <div className="p-4">
                             <div className="grid grid-cols-1 gap-2">
-                              {serviceLinks.map((service) => (
-                                <Link
-                                  key={service.path}
-                                  to={service.path}
-                                  onClick={() => setIsServicesOpen(false)}
-                                  className="block px-4 py-2 rounded-lg text-sm font-medium text-[#1F2933] hover:bg-[#0F7A4A] hover:text-white transition-all"
-                                >
-                                  {service.label}
-                                </Link>
-                              ))}
+                              {mainServices.map((service, index) => {
+                                if (service.hasNested) {
+                                  return (
+                                    <div 
+                                      key={index}
+                                      className="relative"
+                                      onMouseEnter={() => setIsInsuranceOpen(true)}
+                                      onMouseLeave={() => setIsInsuranceOpen(false)}
+                                    >
+                                      <button
+                                        onClick={() => setIsInsuranceOpen(!isInsuranceOpen)}
+                                        className="w-full flex items-center justify-between px-4 py-2 rounded-lg text-sm font-medium text-[#1F2933] hover:bg-[#0F7A4A] hover:text-white transition-all"
+                                      >
+                                        <span>{service.label}</span>
+                                        <ChevronRight className="h-4 w-4" />
+                                      </button>
+                                      
+                                      {/* Nested Insurance Dropdown */}
+                                      {isInsuranceOpen && (
+                                        <div className="absolute left-full top-0 ml-2 w-80 bg-white border border-gray-200 rounded-lg shadow-xl z-50">
+                                          <div className="p-4">
+                                            <div className="grid grid-cols-1 gap-2">
+                                              {insuranceServices.map((insuranceService) => (
+                                                <Link
+                                                  key={insuranceService.path}
+                                                  to={insuranceService.path}
+                                                  onClick={() => {
+                                                    setIsServicesOpen(false);
+                                                    setIsInsuranceOpen(false);
+                                                  }}
+                                                  className="block px-4 py-2 rounded-lg text-sm font-medium text-[#1F2933] hover:bg-[#0F7A4A] hover:text-white transition-all"
+                                                >
+                                                  {insuranceService.label}
+                                                </Link>
+                                              ))}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      )}
+                                    </div>
+                                  );
+                                }
+                                
+                                return (
+                                  <Link
+                                    key={service.path}
+                                    to={service.path}
+                                    onClick={() => setIsServicesOpen(false)}
+                                    className="block px-4 py-2 rounded-lg text-sm font-medium text-[#1F2933] hover:bg-[#0F7A4A] hover:text-white transition-all"
+                                  >
+                                    {service.label}
+                                  </Link>
+                                );
+                              })}
                             </div>
                           </div>
                         </div>
@@ -222,7 +280,43 @@ const Navbar = () => {
               
               {isServicesOpen && (
                 <div className="mt-2 pl-4 space-y-2">
-                  {serviceLinks.map((service, index) => (
+                  {/* Insurance Dispute Resolution with nested dropdown */}
+                  <div>
+                    <button
+                      onClick={() => setIsInsuranceOpen(!isInsuranceOpen)}
+                      className="flex items-center justify-between w-full px-4 py-2 rounded-md text-sm font-medium text-[#52606D] hover:bg-gray-50"
+                    >
+                      <span>{t('service_insurance_dispute')}</span>
+                      <ChevronDown className={`h-4 w-4 transition-transform ${isInsuranceOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    {isInsuranceOpen && (
+                      <div className="mt-2 pl-4 space-y-2">
+                        {insuranceServices.map((service, index) => (
+                          <Link
+                            key={service.path}
+                            to={service.path}
+                            onClick={() => {
+                              setIsInsuranceOpen(false);
+                              setIsServicesOpen(false);
+                              setIsMenuOpen(false);
+                            }}
+                            data-testid={`mobile-insurance-service-link-${index + 1}`}
+                            className={`block px-4 py-2 rounded-md text-sm font-medium ${
+                              location.pathname === service.path
+                                ? 'bg-[#0F7A4A] text-white'
+                                : 'text-[#52606D] hover:bg-gray-50'
+                            }`}
+                          >
+                            {service.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Other main service categories */}
+                  {mainServices.slice(1).map((service, index) => (
                     <Link
                       key={service.path}
                       to={service.path}
@@ -230,7 +324,7 @@ const Navbar = () => {
                         setIsServicesOpen(false);
                         setIsMenuOpen(false);
                       }}
-                      data-testid={`mobile-service-link-${index + 1}`}
+                      data-testid={`mobile-service-link-${index + 2}`}
                       className={`block px-4 py-2 rounded-md text-sm font-medium ${
                         location.pathname === service.path
                           ? 'bg-[#0F7A4A] text-white'

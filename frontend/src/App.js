@@ -21,7 +21,11 @@ import PMJJBY from './pages/services/PMJJBY';
 import StateCMScheme from './pages/services/StateCMScheme';
 import BankingAtmInsurance from './pages/services/BankingAtmInsurance';
 import PFAccidentalInsurance from './pages/services/PFAccidentalInsurance';
-import LegalNotice from './pages/services/LegalNotice';
+import LegalConsultation from './pages/services/LegalConsultation';
+import LegalDrafting from './pages/services/LegalDrafting';
+import ConsumerCases from './pages/services/ConsumerCases';
+import CivilCases from './pages/services/CivilCases';
+import ChequeBounceCases from './pages/services/ChequeBounceCases';
 import './App.css';
 
 function App() {
@@ -43,7 +47,11 @@ function App() {
             <Route path="/state-cm-scheme" element={<StateCMScheme />} />
             <Route path="/banking-atm-insurance" element={<BankingAtmInsurance />} />
             <Route path="/pf-accidental-insurance" element={<PFAccidentalInsurance />} />
-            <Route path="/legal-notice" element={<LegalNotice />} />
+            <Route path="/legal-consultation" element={<LegalConsultation />} />
+            <Route path="/legal-drafting" element={<LegalDrafting />} />
+            <Route path="/consumer-cases" element={<ConsumerCases />} />
+            <Route path="/civil-cases" element={<CivilCases />} />
+            <Route path="/cheque-bounce-cases" element={<ChequeBounceCases />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/partner" element={<Partner />} />
