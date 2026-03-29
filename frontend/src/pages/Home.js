@@ -72,6 +72,13 @@ const TestimonialCard = ({ review, index }) => {
   );
 };
 
+const heroImages = [
+    "/home1.webp",
+    "/home2.webp",
+    "/home3.webp",
+    "/home4.webp"
+  ];
+
 // ── Home ──────────────────────────────────────────────────────────────────────
 const Home = () => {
   const { t } = useLanguage();
@@ -84,12 +91,7 @@ const Home = () => {
   const [reviewsLoading, setReviewsLoading] = useState(true);
   const [reviewPage, setReviewPage] = useState(0);
 
-  const heroImages = [
-    "/home1.webp",
-    "/home2.webp",
-    "/home3.webp",
-    "/home4.webp"
-  ];
+  
   
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
