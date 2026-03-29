@@ -85,16 +85,23 @@ const Home = () => {
   const [reviewPage, setReviewPage] = useState(0);
 
   const heroImages = [
-    "https://images.unsplash.com/photo-1739298061766-e2751d92e9db?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBoYW5kc2hha2UlMjBvZmZpY2UlMjB0ZWFtd29ya3xlbnwwfHx8fDE3NzM0NTkyNTB8MA&ixlib=rb-4.1.0&q=85",
-    "https://images.unsplash.com/photo-1758599543129-5269a8f29e68?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBoYW5kc2hha2UlMjBvZmZpY2UlMjB0ZWFtd29ya3xlbnwwfHx8fDE3NzM0NTkyNTB8MA&ixlib=rb-4.1.0&q=85",
-    "https://images.unsplash.com/photo-1758518731290-a9eb64660ead?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBoYW5kc2hha2UlMjBvZmZpY2UlMjB0ZWFtd29ya3xlbnwwfHx8fDE3NzM0NTkyNTB8MA&ixlib=rb-4.1.0&q=85",
-    "https://images.unsplash.com/photo-1758518729240-7162d07427b8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBoYW5kc2hha2UlMjBvZmZpY2UlMjB0ZWFtd29ya3xlbnwwfHx8fDE3NzM0NTkyNTB8MA&ixlib=rb-4.1.0&q=85"
+    "/home1.webp",
+    "/home2.webp",
+    "/home3.webp",
+    "/home4.webp"
   ];
+
+  useEffect(() => {
+    heroImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 2000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
@@ -444,8 +451,8 @@ const Home = () => {
                         key={i}
                         onClick={() => setReviewPage(i)}
                         className={`rounded-full transition-all duration-300 ${i === reviewPage
-                            ? 'bg-[#0F7A4A] w-6 h-3'
-                            : 'bg-gray-300 hover:bg-[#0F7A4A]/40 w-3 h-3'
+                          ? 'bg-[#0F7A4A] w-6 h-3'
+                          : 'bg-gray-300 hover:bg-[#0F7A4A]/40 w-3 h-3'
                           }`}
                       />
                     ))}
