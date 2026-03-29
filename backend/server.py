@@ -28,7 +28,7 @@ app.add_middleware(
 )
 
 # ── ENV CONFIG ───────────────────────────────────────────────
-DB_PATH = os.getenv("DB_PATH")
+DB_PATH = os.getenv("DB_PATH", "app.db")
 ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
