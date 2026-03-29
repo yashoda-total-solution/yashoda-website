@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   Heart, FileText, AlertCircle, CheckCircle, Shield, 
   ArrowRight, HelpCircle, Users, Phone, CreditCard, DollarSign
 } from 'lucide-react';
 
 const HealthReimbursement = () => {
+  const { t } = useLanguage();
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +32,9 @@ const HealthReimbursement = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('health_claim_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">Health Claim Reimbursement</span>
+              <span className="text-white text-sm">{t('health_claim_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +42,12 @@ const HealthReimbursement = () => {
                 <Heart className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Health Claim Reimbursement Assistance
+                {t('health_claim_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding the reimbursement claim process and how policyholders can manage medical claim submissions effectively. Health insurance reimbursement claims occur when policyholders pay their medical expenses first and later submit the bills to the insurance company for repayment.
+              {t('health_claim_description')}
             </p>
           </motion.div>
         </div>
@@ -61,27 +63,27 @@ const HealthReimbursement = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              What is Health Claim Reimbursement?
+              {t('what_health_claim_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
-                Health claim reimbursement is a process in which the policyholder pays the medical expenses at the hospital and later submits the claim to the insurance company to receive reimbursement of the eligible amount.
+                {t('what_health_claim_description')}
               </p>
               <p className="leading-relaxed mb-4">
-                Unlike cashless hospitalization, <strong>reimbursement claims require policyholders to submit detailed documentation</strong> such as hospital bills, medical reports, prescriptions, and discharge summaries.
+                {t('what_health_claim_description1')} <strong>{t('what_health_claim_description2')}</strong> {t('what_health_claim_description3')}
               </p>
               <p className="leading-relaxed mb-4">
-                Many customers face difficulties during this process because the documentation requirements may be complex and the claim review process can take time.
+                {t('what_health_claim_description4')}
               </p>
               <p className="leading-relaxed mb-4">
-                Common requirements include:
+                {t('what_health_claim_common_reasons')}
               </p>
               <ul className="space-y-3 ml-6">
-                <li>• Hospital bills and invoices</li>
-                <li>• Discharge summary and medical reports</li>
-                <li>• Medical prescriptions</li>
-                <li>• Completed claim form</li>
-                <li>• Identity proof and policy details</li>
+                <li>{t('what_health_claim_common_reasons1')}</li>
+                <li>{t('what_health_claim_common_reasons2')}</li>
+                <li>{t('what_health_claim_common_reasons3')}</li>
+                <li>{t('what_health_claim_common_reasons4')}</li>
+                <li>{t('what_health_claim_common_reasons5')}</li>
               </ul>
             </div>
           </motion.div>
@@ -93,10 +95,10 @@ const HealthReimbursement = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common Reimbursement Claim Challenges
+              {t('common_challenges_health_claim_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Issues policyholders may face during reimbursement claims
+              {t('common_challenges_health_claim_description')}
             </p>
           </motion.div>
 
@@ -104,43 +106,43 @@ const HealthReimbursement = () => {
             {[
               {
                 icon: FileText,
-                title: 'Missing Documents',
-                desc: 'Confusion about which documents are required for successful claim submission',
+                title: t('common_challenges_health_claim_item1'),
+                desc: t('common_challenges_health_claim_desc1'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: AlertCircle,
-                title: 'Incorrect Claim Form',
-                desc: 'Incomplete or incorrectly filled claim forms causing processing delays',
+                title: t('common_challenges_health_claim_item2'),
+                desc: t('common_challenges_health_claim_desc2'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: Shield,
-                title: 'Coverage Confusion',
-                desc: 'Uncertainty about which expenses are covered under the policy',
+                title: t('common_challenges_health_claim_item3'),
+                desc: t('common_challenges_health_claim_desc3'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: CheckCircle,
-                title: 'Verification Delays',
-                desc: 'Extended processing time due to document verification procedures',
+                title: t('common_challenges_health_claim_item4'),
+                desc: t('common_challenges_health_claim_desc4'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: Heart,
-                title: 'Incomplete Medical Records',
-                desc: 'Missing medical reports or discharge summaries from the hospital',
+                title: t('common_challenges_health_claim_item5'),
+                desc: t('common_challenges_health_claim_desc5'),
                 color: 'bg-teal-50',
                 iconBg: 'bg-teal-600'
               },
               {
                 icon: DollarSign,
-                title: 'Reimbursement Amount',
-                desc: 'Difference between claimed amount and approved reimbursement',
+                title: t('common_challenges_health_claim_item6'),
+                desc: t('common_challenges_health_claim_desc6'),
                 color: 'bg-pink-50',
                 iconBg: 'bg-pink-600'
               },
@@ -169,10 +171,10 @@ const HealthReimbursement = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              What Happens in Reimbursement Cases
+              {t('what_happens_after_health_claim_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Understanding the reimbursement claim review process
+              {t('what_happens_after_health_claim_description')}
             </p>
           </motion.div>
 
@@ -180,22 +182,22 @@ const HealthReimbursement = () => {
             {[
               {
                 icon: CreditCard,
-                title: 'Patient Pays First',
-                desc: 'Policyholder pays all medical expenses directly to the hospital at the time of treatment.',
+                title: t('what_happens_health_claim_item1'),
+                desc: t('what_happens_health_claim_desc1'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: FileText,
-                title: 'Document Collection',
-                desc: 'All relevant bills, reports, and discharge summaries are collected after treatment.',
+                title: t('what_happens_health_claim_item2'),
+                desc: t('what_happens_health_claim_desc2'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: CheckCircle,
-                title: 'Insurance Review',
-                desc: 'Insurance company verifies documents and checks policy eligibility before processing.',
+                title: t('what_happens_health_claim_item3'),
+                desc: t('what_happens_health_claim_desc3'),
                 color: 'bg-green-50',
                 iconBg: 'bg-green-600'
               },
@@ -224,10 +226,10 @@ const HealthReimbursement = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Choose Yashoda Total Solution?
+              {t('why_choose_health_claim_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Expert assistance for reimbursement claim guidance
+              {t('why_choose_health_claim_description')}
             </p>
           </motion.div>
 
@@ -235,23 +237,23 @@ const HealthReimbursement = () => {
             {[
               {
                 icon: Users,
-                title: 'Expert Team',
-                desc: 'Qualified professionals with industry knowledge and operational expertise.'
+                title: t('why_choose_health_claim_item1'),
+                desc: t('why_choose_health_claim_desc1')
               },
               {
                 icon: FileText,
-                title: 'Document Assistance',
-                desc: 'Help with organizing and preparing all required claim documents.'
+                title: t('why_choose_health_claim_item2'),
+                desc: t('why_choose_health_claim_desc2')
               },
               {
                 icon: CheckCircle,
-                title: 'Claim Review',
-                desc: 'Thorough review of documents before submission to avoid rejections.'
+                title: t('why_choose_health_claim_item3'),
+                desc: t('why_choose_health_claim_desc3')
               },
               {
                 icon: Shield,
-                title: 'Proven Results',
-                desc: 'Successfully helped numerous clients with reimbursement claims.'
+                title: t('why_choose_health_claim_item4'),
+                desc: t('why_choose_health_claim_desc4')
               },
             ].map((item, index) => (
               <motion.div
@@ -279,10 +281,10 @@ const HealthReimbursement = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Our 5-Step Reimbursement Assistance Process
+              {t('process_flow_health_claim_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Simple and systematic guidance for your claim
+              {t('process_flow_health_claim_description')}
             </p>
           </motion.div>
 
@@ -293,28 +295,28 @@ const HealthReimbursement = () => {
               {[
                 {
                   step: '1',
-                  title: 'Document Checklist',
-                  desc: 'We provide a complete checklist of all documents required for your reimbursement claim.'
+                  title: t('process_flow_health_claim_item1'),
+                  desc: t('process_flow_health_claim_desc1')
                 },
                 {
                   step: '2',
-                  title: 'Document Review',
-                  desc: 'We review all your medical bills, reports, and discharge summaries for completeness.'
+                  title: t('process_flow_health_claim_item2'),
+                  desc: t('process_flow_health_claim_desc2')
                 },
                 {
                   step: '3',
-                  title: 'Claim Form Assistance',
-                  desc: 'We help you fill out the claim form correctly with all necessary policy details.'
+                  title: t('process_flow_health_claim_item3'),
+                  desc: t('process_flow_health_claim_desc3')
                 },
                 {
                   step: '4',
-                  title: 'Submission Support',
-                  desc: 'We guide you on how to submit the claim properly to your insurance company.'
+                  title: t('process_flow_health_claim_item4'),
+                  desc: t('process_flow_health_claim_desc4')
                 },
                 {
                   step: '5',
-                  title: 'Follow-Up & Tracking',
-                  desc: 'We help track your claim status and follow up until reimbursement is processed.'
+                  title: t('process_flow_health_claim_item5'),
+                  desc: t('process_flow_health_claim_desc5')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -352,38 +354,38 @@ const HealthReimbursement = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life Reimbursement Examples
+              {t('ex_scenario_health_claim_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common scenarios we help resolve
+              {t('ex_scenario_health_claim_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Example 1 – Emergency Hospitalization',
-                problem: 'A patient is admitted to a hospital that does not provide cashless insurance services.',
-                reality: 'The patient pays the full hospital bill upfront and needs to claim reimbursement later.',
-                solution: 'We helped organize all documents and submit a complete claim; reimbursement received in 3 weeks.'
+                title: t('ex_scenario_health_claim_example1_title'),
+                problem: t('ex_scenario_health_claim_example1_problem'),
+                reality: t('ex_scenario_health_claim_example1_reality'),
+                solution: t('ex_scenario_health_claim_example1_solution')
               },
               {
-                title: 'Example 2 – Missing Medical Documents',
-                problem: 'A policyholder submits a reimbursement claim but forgets to attach the discharge summary.',
-                reality: 'The insurance company delays the claim until the missing document is provided.',
-                solution: 'We identified the missing document, obtained it from the hospital, and resubmitted successfully.'
+                title: t('ex_scenario_health_claim_example2_title'),
+                problem: t('ex_scenario_health_claim_example2_problem'),
+                reality: t('ex_scenario_health_claim_example2_reality'),
+                solution: t('ex_scenario_health_claim_example2_solution')
               },
               {
-                title: 'Example 3 – Treatment Outside Network Hospital',
-                problem: 'A patient receives treatment at a hospital not part of the insurer\'s network.',
-                reality: 'Since cashless treatment is not available, the patient pays and later files for reimbursement.',
-                solution: 'We assisted with complete documentation; claim approved within policy limits.'
+                title: t('ex_scenario_health_claim_example3_title'),
+                problem: t('ex_scenario_health_claim_example3_problem'),
+                reality: t('ex_scenario_health_claim_example3_reality'),
+                solution: t('ex_scenario_health_claim_example3_solution')
               },
               {
-                title: 'Example 4 – Incorrect Claim Form',
-                problem: 'A reimbursement claim is submitted with incorrect policy details.',
-                reality: 'This causes delays in claim processing until the corrected form is submitted.',
-                solution: 'We helped correct the form details and expedited the resubmission; claim processed smoothly.'
+                title: t('ex_scenario_health_claim_example4_title'),
+                problem: t('ex_scenario_health_claim_example4_problem'),
+                reality: t('ex_scenario_health_claim_example4_reality'),
+                solution: t('ex_scenario_health_claim_example4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -402,15 +404,15 @@ const HealthReimbursement = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">❌ Problem:</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_health_claim_example_head1')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-blue-600 mb-2">⚠️ Reality:</h4>
+                    <h4 className="text-sm font-semibold text-blue-600 mb-2">{t('ex_scenario_health_claim_example_head2')}:</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_health_claim_example_head3')}:</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -425,30 +427,30 @@ const HealthReimbursement = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_health_claim_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about reimbursement claims
+              {t('faq_health_claim_description')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'What is a health insurance reimbursement claim?',
-                a: 'A reimbursement claim is filed when the policyholder pays medical expenses first and later submits the bills to the insurance company for repayment of eligible amounts.'
+                q: t('faq_health_claim_q1'),
+                a: t('faq_health_claim_a1')
               },
               {
-                q: 'What documents are required for reimbursement claims?',
-                a: 'Typical documents include hospital bills, discharge summary, medical reports, prescriptions, completed claim forms, identity proof, and policy details.'
+                q: t('faq_health_claim_q2'),
+                a: t('faq_health_claim_a2')
               },
               {
-                q: 'Why do reimbursement claims sometimes take time to process?',
-                a: 'Claims may take time due to document verification, policy eligibility checks, and review of medical treatment details against policy terms.'
+                q: t('faq_health_claim_q3'),
+                a: t('faq_health_claim_a3')
               },
               {
-                q: 'Can reimbursement claims be submitted after hospital discharge?',
-                a: 'Yes, reimbursement claims are usually submitted after treatment once all required documents like bills and discharge summaries are available.'
+                q: t('faq_health_claim_q4'),
+                a: t('faq_health_claim_a4')
               },
             ].map((faq, index) => (
               <motion.div
@@ -494,10 +496,10 @@ const HealthReimbursement = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Facing Confusion About Your Reimbursement Claim?
+              {t('cta_health_claim_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding the documentation and claim process can help policyholders navigate reimbursement procedures more confidently. Contact Yashoda Total Solution for expert assistance.
+              {t('cta_health_claim_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -505,17 +507,17 @@ const HealthReimbursement = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('cta_health_claim_description2')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('cta_health_claim_button')}
                 </a>
               </motion.div>
             </div>

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Handshake, Users, TrendingUp, Award, Send, MapPin, Phone, Mail, Briefcase, FileText } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+
 
 const Partner = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     mobile: '',
@@ -23,28 +26,28 @@ const Partner = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+    const res = await fetch(`${backendUrl}/api/partner`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (res.ok) {
       setSubmitStatus('success');
-      setIsSubmitting(false);
-      
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setFormData({
-          name: '',
-          mobile: '',
-          location: '',
-          email: '',
-          partnerType: '',
-          additionalInfo: ''
-        });
-        setSubmitStatus(null);
-      }, 3000);
-    }, 1500);
-  };
+    }
+
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-[#F5F7F9]">
@@ -72,10 +75,10 @@ const Partner = () => {
               <Handshake className="h-10 w-10 text-white" />
             </motion.div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Become Our Partner
+              {t('partner_title')}
             </h1>
             <p className="text-xl md:text-2xl font-semibold text-[#F39C12]">
-              Grow with Yashoda Total Solution
+              {t('partner_subtitle')}
             </p>
           </motion.div>
         </div>
@@ -94,13 +97,13 @@ const Partner = () => {
             className="space-y-6 text-center"
           >
             <p className="text-lg md:text-xl text-[#1F2933] leading-relaxed">
-              Yashoda Total Solutions is growing across <span className="font-bold text-[#0F7A4A]">Pan India</span> and is looking for freelancers, franchise partners, insurance professionals, and corporates to join our expanding network.
+              {t('about_partner_desc1')} <span className="font-bold text-[#0F7A4A]">{t('about_partner_desc2')}</span> {t('about_partner_desc3')}
             </p>
             <p className="text-lg md:text-xl text-[#52606D] leading-relaxed">
-              As a partner, you will receive expert support and the opportunity to assist policyholders in resolving insurance issues effectively.
+              {t('about_partner_desc4')}
             </p>
             <p className="text-xl md:text-2xl font-bold text-[#0F7A4A]">
-              Join Yashoda Total Solutions and grow with a purpose.
+              {t('about_partner_desc5')}
             </p>
           </motion.div>
         </div>
@@ -117,10 +120,10 @@ const Partner = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Partner With Us?
+              {t('why_partner_title')}
             </h2>
             <p className="text-lg text-[#52606D] max-w-2xl mx-auto">
-              Join a network that values growth, support, and making a difference
+              {t('why_partner_desc')}
             </p>
           </motion.div>
 
@@ -128,20 +131,20 @@ const Partner = () => {
             {[
               {
                 icon: Users,
-                title: "Growing Network",
-                description: "Be part of a rapidly expanding Pan India network of professionals",
+                title: t('why_partner_benefit1'),
+                description: t('why_partner_benefit1_desc'),
                 color: "from-[#0F7A4A] to-[#159F61]"
               },
               {
                 icon: Award,
-                title: "Expert Support",
-                description: "Receive comprehensive training and ongoing expert guidance",
+                title: t('why_partner_benefit2'),
+                description: t('why_partner_benefit2_desc'),
                 color: "from-[#F39C12] to-[#f7b547]"
               },
               {
                 icon: TrendingUp,
-                title: "Growth Opportunity",
-                description: "Unlock new revenue streams while helping policyholders",
+                title: t('why_partner_benefit3'),
+                description: t('why_partner_benefit3_desc'),
                 color: "from-blue-500 to-cyan-500"
               }
             ].map((benefit, index) => (
@@ -180,10 +183,10 @@ const Partner = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Register as a Partner
+              {t('partner_form_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Fill out the form below and we'll get back to you shortly
+              {t('partner_form_subtitle')}
             </p>
           </motion.div>
 
@@ -200,7 +203,7 @@ const Partner = () => {
               <div>
                 <label htmlFor="name" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
                   <Briefcase className="h-4 w-4 mr-2 text-[#0F7A4A]" />
-                  Full Name *
+                  {t('partner_name_label')}
                 </label>
                 <input
                   type="text"
@@ -210,7 +213,7 @@ const Partner = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200"
-                  placeholder="Enter your full name"
+                  placeholder={t('partner_name_label_placeholder')}
                 />
               </div>
 
@@ -218,7 +221,7 @@ const Partner = () => {
               <div>
                 <label htmlFor="mobile" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
                   <Phone className="h-4 w-4 mr-2 text-[#0F7A4A]" />
-                  Mobile Number *
+                  {t('partner_mobile_label')}
                 </label>
                 <input
                   type="tel"
@@ -229,7 +232,7 @@ const Partner = () => {
                   required
                   pattern="[0-9]{10}"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200"
-                  placeholder="10-digit mobile number"
+                  placeholder={t('partner_mobile_label_placeholder')}
                 />
               </div>
 
@@ -237,7 +240,7 @@ const Partner = () => {
               <div>
                 <label htmlFor="location" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
                   <MapPin className="h-4 w-4 mr-2 text-[#0F7A4A]" />
-                  Location *
+                  {t('partner_location_label')}
                 </label>
                 <input
                   type="text"
@@ -247,7 +250,7 @@ const Partner = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200"
-                  placeholder="City, State"
+                  placeholder={t('partner_location_label_placeholder')}
                 />
               </div>
 
@@ -255,7 +258,7 @@ const Partner = () => {
               <div>
                 <label htmlFor="email" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
                   <Mail className="h-4 w-4 mr-2 text-[#0F7A4A]" />
-                  Email Address *
+                  {t('partner_email_label')}
                 </label>
                 <input
                   type="email"
@@ -265,7 +268,7 @@ const Partner = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200"
-                  placeholder="your.email@example.com"
+                  placeholder={t('partner_email_label_placeholder')}
                 />
               </div>
             </div>
@@ -274,7 +277,7 @@ const Partner = () => {
             <div className="mb-6">
               <label htmlFor="partnerType" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
                 <Users className="h-4 w-4 mr-2 text-[#0F7A4A]" />
-                Partner Type *
+                {t('partner_type_label')}
               </label>
               <select
                 id="partnerType"
@@ -284,10 +287,10 @@ const Partner = () => {
                 required
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200"
               >
-                <option value="">Select Partner Type</option>
-                <option value="Freelancer">Freelancer</option>
-                <option value="Franchise">Franchise</option>
-                <option value="Advocate">Advocate</option>
+                <option value="">{t('partner_type_label_placeholder')}</option>
+                <option value="Freelancer">{t('partner_type_label_option1')}</option>
+                <option value="Franchise">{t('partner_type_label_option2')}</option>
+                <option value="Advocate">{t('partner_type_label_option3')}</option>
               </select>
             </div>
 
@@ -295,7 +298,7 @@ const Partner = () => {
             <div className="mb-8">
               <label htmlFor="additionalInfo" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
                 <FileText className="h-4 w-4 mr-2 text-[#0F7A4A]" />
-                Additional Information (About Yourself)
+                {t('partner_additional_info_label')}
               </label>
               <textarea
                 id="additionalInfo"
@@ -304,7 +307,7 @@ const Partner = () => {
                 onChange={handleChange}
                 rows="5"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200 resize-none"
-                placeholder="Tell us about your experience, expertise, or any other relevant information..."
+                placeholder={t('partner_additional_info_label_placeholder')}
               ></textarea>
             </div>
 
@@ -318,12 +321,12 @@ const Partner = () => {
                 {isSubmitting ? (
                   <>
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                    <span>Submitting...</span>
+                    <span>{t('partner_submitting')}</span>
                   </>
                 ) : (
                   <>
                     <Send className="h-5 w-5" />
-                    <span>Submit Application</span>
+                    <span>{t('partner_submit_button')}</span>
                   </>
                 )}
               </button>
@@ -335,8 +338,8 @@ const Partner = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg"
                 >
-                  <p className="font-semibold">✓ Application Submitted Successfully!</p>
-                  <p className="text-sm mt-1">We'll get back to you shortly.</p>
+                  <p className="font-semibold">{t('partner_submit_success')}</p>
+                  <p className="text-sm mt-1">{t('partner_submit_success_desc')}</p>
                 </motion.div>
               )}
             </div>

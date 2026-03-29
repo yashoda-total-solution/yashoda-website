@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   AlertTriangle, FileText, Scale, Shield, CheckCircle, 
   ArrowRight, HelpCircle, Users, Phone 
 } from 'lucide-react';
 
 const MisSelling = () => {
+  const { t } = useLanguage();
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +32,9 @@ const MisSelling = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('mis_selling_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">Mis-selling of Insurance Policy</span>
+              <span className="text-white text-sm">{t('mis_selling_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +42,12 @@ const MisSelling = () => {
                 <AlertTriangle className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Mis-selling of Insurance Policy
+                {t('mis_selling_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Were you sold an insurance policy that doesn't match what was promised? Insurance mis-selling is when agents or banks mislead customers about policy features, benefits, or terms. We help you get justice and compensation.
+              {t('mis_selling_description')}
             </p>
           </motion.div>
         </div>
@@ -61,22 +63,22 @@ const MisSelling = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              What is Insurance Mis-Selling?
+              {t('mis_selling_what_is')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
-                Insurance mis-selling occurs when insurance agents, banks, or financial institutions sell insurance policies by providing <strong>false information, hiding important terms, or making misleading promises</strong> to customers.
+                {t('mis_selling_what_is_description')}
               </p>
               <p className="leading-relaxed mb-4">
-                Common examples include:
+                {t('Common examples include:')}
               </p>
               <ul className="space-y-3 ml-6">
-                <li>✗ Selling ULIP (Unit Linked Insurance Plan) as a Fixed Deposit</li>
-                <li>✗ Hiding policy charges, surrender charges, or lock-in periods</li>
-                <li>✗ Promising guaranteed high returns when returns are market-linked</li>
-                <li>✗ Not explaining policy exclusions or claim rejection conditions</li>
-                <li>✗ Selling policies without proper customer consent or signature</li>
-                <li>✗ Selling insurance products while opening bank accounts without disclosure</li>
+                <li>{t('mis_selling_example_1')}</li>
+                <li>{t('mis_selling_example_2')}</li>
+                <li>{t('mis_selling_example_3')}</li>
+                <li>{t('mis_selling_example_4')}</li>
+                <li>{t('mis_selling_example_5')}</li>
+                <li>{t('mis_selling_example_6')}</li>
               </ul>
             </div>
           </motion.div>
@@ -88,10 +90,10 @@ const MisSelling = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              What Happens in Mis-Selling Cases?
+              {t('mis_selling_what_happens')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Understanding the impact of insurance mis-selling on your finances
+              {t('mis_selling_what_happens_description')}
             </p>
           </motion.div>
 
@@ -99,22 +101,22 @@ const MisSelling = () => {
             {[
               {
                 icon: AlertTriangle,
-                title: 'Financial Loss',
-                desc: 'You may lose money due to surrender charges, low returns, or policies that don\'t meet your needs.',
+                title: t('mis_selling_what_happens_1_title'),
+                desc: t('mis_selling_what_happens_1_description'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: FileText,
-                title: 'Wrong Coverage',
-                desc: 'The policy may not provide the insurance coverage or benefits you were promised.',
+                title: t('mis_selling_what_happens_2_title'),
+                desc: t('mis_selling_what_happens_2_description'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: Shield,
-                title: 'Trust Broken',
-                desc: 'Your trust in the insurance agent or bank is broken, causing emotional distress.',
+                title: t('mis_selling_what_happens_3_title'),
+                desc: t('mis_selling_what_happens_3_description'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
@@ -143,10 +145,10 @@ const MisSelling = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Choose Yashoda Total Solution?
+              {t('mis_selling_why_choose_us')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Expert guidance to resolve mis-selling cases effectively
+              {t('mis_selling_why_choose_us_description')}
             </p>
           </motion.div>
 
@@ -154,23 +156,23 @@ const MisSelling = () => {
             {[
               {
                 icon: Users,
-                title: 'Expert Team',
-                desc: 'We have years of experience in handling insurance mis-selling complaints.'
+                title: t('mis_selling_why_choose_us_1_title'),
+                desc: t('mis_selling_why_choose_us_1_description')
               },
               {
                 icon: FileText,
-                title: 'Complete Documentation',
-                desc: 'We prepare all necessary documents, notices, and complaint letters.'
+                title: t('mis_selling_why_choose_us_2_title'),
+                desc: t('mis_selling_why_choose_us_2_description')
               },
               {
                 icon: Scale,
-                title: 'Legal Support',
-                desc: 'If needed, we provide legal notice drafting and ombudsman complaint filing.'
+                title: t('mis_selling_why_choose_us_3_title'),
+                desc: t('mis_selling_why_choose_us_3_description')
               },
               {
                 icon: CheckCircle,
-                title: 'High Success Rate',
-                desc: 'We have helped hundreds of customers get compensation and policy cancellation.'
+                title: t('mis_selling_why_choose_us_4_title'),
+                desc: t('mis_selling_why_choose_us_4_description')
               },
             ].map((item, index) => (
               <motion.div
@@ -198,10 +200,10 @@ const MisSelling = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Our 6-Step Process to Resolve Mis-Selling
+              {t('mis_selling_process_flow')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Simple, transparent, and effective approach
+              {t('mis_selling_process_flow_description')}
             </p>
           </motion.div>
 
@@ -213,33 +215,33 @@ const MisSelling = () => {
               {[
                 {
                   step: '1',
-                  title: 'Consultation & Case Analysis',
-                  desc: 'We review your policy documents, sale records, and understand what was promised vs. what you received.'
+                  title: t('mis_selling_process_flow1_title'),
+                  desc: t('mis_selling_process_flow1_description')
                 },
                 {
                   step: '2',
-                  title: 'Evidence Collection',
-                  desc: 'We gather all proofs - policy documents, agent promises, email/SMS records, bank statements showing deductions.'
+                  title: t('mis_selling_process_flow2_title'),
+                  desc: t('mis_selling_process_flow2_description')
                 },
                 {
                   step: '3',
-                  title: 'Complaint Drafting',
-                  desc: 'We prepare a detailed complaint letter highlighting the mis-selling and your financial loss.'
+                  title: t('mis_selling_process_flow3_title'),
+                  desc: t('mis_selling_process_flow3_description')
                 },
                 {
                   step: '4',
-                  title: 'Filing Complaint',
-                  desc: 'We file the complaint with the insurance company\'s grievance cell and escalate if needed.'
+                  title: t('mis_selling_process_flow4_title'),
+                  desc: t('mis_selling_process_flow4_description')
                 },
                 {
                   step: '5',
-                  title: 'Ombudsman/IRDAI Escalation',
-                  desc: 'If the company doesn\'t respond, we escalate to the Insurance Ombudsman or IRDAI consumer cell.'
+                  title: t('mis_selling_process_flow5_title'),
+                  desc: t('mis_selling_process_flow5_description')
                 },
                 {
                   step: '6',
-                  title: 'Resolution & Compensation',
-                  desc: 'We follow up until you get policy cancellation, premium refund, or compensation for losses.'
+                  title: t('mis_selling_process_flow6_title'),
+                  desc: t('mis_selling_process_flow6_description')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -278,38 +280,38 @@ const MisSelling = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life Mis-Selling Examples
+              {t('mis_selling_example_scenarios')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              These are common scenarios we help resolve
+              {t('mis_selling_example_scenarios_subtitle')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Case 1: ULIP Sold as Fixed Deposit',
-                problem: 'Ramesh was told by his bank that he\'s opening a 5-year Fixed Deposit with guaranteed 8% returns.',
-                reality: 'It was actually a ULIP (market-linked insurance) with 5-year lock-in, high charges, and no guaranteed returns.',
-                solution: 'We helped Ramesh file a complaint. The bank refunded his premium and cancelled the policy.'
+                title: t('mis_selling_example_scenarios_case1_title'),
+                problem: t('mis_selling_example_scenarios_case1_problem'),
+                reality: t('mis_selling_example_scenarios_case1_reality'),
+                solution: t('mis_selling_example_scenarios_case1_solution')
               },
               {
-                title: 'Case 2: Hidden Charges in Policy',
-                problem: 'Sunita bought a pension plan but was never told about 30% surrender charges if she exits early.',
-                reality: 'When she tried to withdraw after 2 years, she lost ₹90,000 in surrender charges.',
-                solution: 'We escalated to the Insurance Ombudsman. Sunita got 60% of surrender charges refunded.'
+                title: t('mis_selling_example_scenarios_case2_title'),
+                problem: t('mis_selling_example_scenarios_case2_problem'),
+                reality: t('mis_selling_example_scenarios_case2_reality'),
+                solution: t('mis_selling_example_scenarios_case2_solution')
               },
               {
-                title: 'Case 3: Policy Sold Without Consent',
-                problem: 'Prakash found insurance premium deducted from his account without his knowledge while opening a savings account.',
-                reality: 'The bank had enrolled him in an insurance plan without proper explanation or signature.',
-                solution: 'We filed a complaint with IRDAI. The policy was cancelled and full premium was refunded.'
+                title: t('mis_selling_example_scenarios_case3_title'),
+                problem: t('mis_selling_example_scenarios_case3_problem'),
+                reality: t('mis_selling_example_scenarios_case3_reality'),
+                solution: t('mis_selling_example_scenarios_case3_solution')
               },
               {
-                title: 'Case 4: Fake Maturity Promises',
-                problem: 'Meera was promised ₹10 lakh maturity after 10 years by the insurance agent.',
-                reality: 'The policy document showed market-linked returns with no guarantee. She may get much less.',
-                solution: 'We helped her cancel the policy within the free-look period and get a full refund.'
+                title: t('mis_selling_example_scenarios_case4_title'),
+                problem: t('mis_selling_example_scenarios_case4_problem'),
+                reality: t('mis_selling_example_scenarios_case4_reality'),
+                solution: t('mis_selling_example_scenarios_case4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -328,15 +330,15 @@ const MisSelling = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-red-600 mb-2">❌ Problem:</h4>
+                    <h4 className="text-sm font-semibold text-red-600 mb-2">{t('mis_selling_example_scenarios_case_problem')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">⚠️ Reality:</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('mis_selling_example_scenarios_case_reality')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('mis_selling_example_scenarios_case_solution')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -351,38 +353,38 @@ const MisSelling = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('mis_selling_faqs')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about insurance mis-selling
+              {t('mis_selling_faq_subtitle')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'How do I know if I\'m a victim of mis-selling?',
-                a: 'If what you were promised verbally doesn\'t match your policy documents, or if important information (charges, lock-in period, exclusions) was hidden, it\'s mis-selling.'
+                q: t('mis_selling_faq1_question'),
+                a: t('mis_selling_faq1_answer')
               },
               {
-                q: 'What is the time limit to file a mis-selling complaint?',
-                a: 'You can file a complaint within 3 years from the date of purchase. However, if you discover the mis-selling later, you can still file based on when you discovered it.'
+                q: t('mis_selling_faq2_question'),
+                a: t('mis_selling_faq2_answer')
               },
               {
-                q: 'Can I get a full refund if mis-selling is proven?',
-                a: 'Yes, in many cases. If you\'re within the 15-30 day free-look period, you get a full refund. Otherwise, the ombudsman may order partial or full refund based on evidence.'
+                q: t('mis_selling_faq3_question'),
+                a: t('mis_selling_faq3_answer')
               },
               {
-                q: 'Will the agent or bank be penalized?',
-                a: 'Yes. IRDAI can impose penalties, cancel agent licenses, or fine the insurance company for mis-selling practices.'
+                q: t('mis_selling_faq4_question'),
+                a: t('mis_selling_faq4_answer')
               },
               {
-                q: 'Do I need a lawyer to file a mis-selling complaint?',
-                a: 'No. We handle everything - complaint drafting, filing, escalation. Legal notice is sent only if the company doesn\'t respond.'
+                q: t('mis_selling_faq5_question'),
+                a: t('mis_selling_faq5_answer')
               },
               {
-                q: 'How long does the mis-selling complaint process take?',
-                a: 'Insurance company grievance: 15-30 days. Ombudsman complaint: 2-4 months. We follow up at every step to speed up resolution.'
+                q: t('mis_selling_faq6_question'),
+                a: t('mis_selling_faq6_answer')
               },
             ].map((faq, index) => (
               <motion.div
@@ -428,10 +430,10 @@ const MisSelling = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Victim of Insurance Mis-Selling?
+              {t('mis_selling_cta_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Don't let insurance companies get away with it. We'll help you get justice, compensation, and policy cancellation. Contact us today for a free consultation.
+              {t('mis_selling_cta_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -439,17 +441,17 @@ const MisSelling = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('mis_selling_cta_button')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('mis_selling_cta_call_button')}
                 </a>
               </motion.div>
             </div>

@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   CreditCard, FileText, AlertTriangle, Shield, CheckCircle, 
   ArrowRight, HelpCircle, Users, Phone, Target, DollarSign, Clock 
 } from 'lucide-react';
 
 const ChequeBounceCases = () => {
+  const { t } = useLanguage();
+
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +33,9 @@ const ChequeBounceCases = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('cheque_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">Cheque Bounce Cases</span>
+              <span className="text-white text-sm">{t('cheque_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +43,12 @@ const ChequeBounceCases = () => {
                 <CreditCard className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Cheque Bounce Case Support
+                {t('cheque_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding cheque bounce situations and the legal process available for recovering unpaid amounts. A cheque bounce occurs when a bank refuses to process a cheque due to reasons such as insufficient funds or account-related issues, creating financial stress for individuals or businesses expecting payment.
+              {t('cheque_description')}
             </p>
           </motion.div>
         </div>
@@ -61,30 +64,24 @@ const ChequeBounceCases = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              Service Overview
+              {t('what_cheque_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
+              <p className="leading-relaxed mb-4">{t('what_cheque_description')}</p>
+              <p className="leading-relaxed mb-4">{t('what_cheque_description1')}</p>
+              <p className="leading-relaxed mb-4">{t('what_cheque_description2')}</p>
               <p className="leading-relaxed mb-4">
-                Cheque bounce cases arise when a cheque issued by one party is returned unpaid by the bank. This may occur due to insufficient funds, closed accounts, signature mismatches, or other banking reasons.
+                <strong>{t('what_cheque_description3')}</strong> {t('what_cheque_description4')}
               </p>
               <p className="leading-relaxed mb-4">
-                For the person expecting payment, a bounced cheque can create financial uncertainty and delays in receiving the owed amount.
-              </p>
-              <p className="leading-relaxed mb-4">
-                The law provides specific procedures that must be followed in such situations. These procedures involve receiving the cheque return memo, sending a legal notice within a specified time period, and initiating further legal steps if the payment is not made.
-              </p>
-              <p className="leading-relaxed mb-4">
-                <strong>Yashoda Total Solutions</strong> assists individuals and businesses by helping them understand the process involved in cheque bounce cases and guiding them through the documentation and procedural steps required to address the issue.
-              </p>
-              <p className="leading-relaxed mb-4">
-                <strong>Cheque Bounce Legal Process Flow:</strong>
+                <strong>{t('what_cheque_key_features')}</strong>
               </p>
               <ul className="space-y-3 ml-6">
-                <li>• Cheque Issued</li>
-                <li>• Cheque Deposited</li>
-                <li>• Cheque Bounced</li>
-                <li>• Return Memo Issued by Bank</li>
-                <li>• Legal Notice Sent</li>
+                <li>{t('what_cheque_key_feature1')}</li>
+                <li>{t('what_cheque_key_feature2')}</li>
+                <li>{t('what_cheque_key_feature3')}</li>
+                <li>{t('what_cheque_key_feature4')}</li>
+                <li>{t('what_cheque_key_feature5')}</li>
               </ul>
             </div>
           </motion.div>
@@ -96,10 +93,10 @@ const ChequeBounceCases = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common Signs of Cheque Bounce Situations
+              {t('common_indicators_cheque_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Certain situations may indicate that a cheque bounce issue has occurred
+              {t('common_indicators_cheque_description')}
             </p>
           </motion.div>
 
@@ -107,36 +104,36 @@ const ChequeBounceCases = () => {
             {[
               {
                 icon: CreditCard,
-                title: 'Cheque Returned',
-                desc: 'Bank returns the cheque unpaid due to insufficient funds or other issues.',
+                title: t('common_indicators_cheque_item1'),
+                desc: t('common_indicators_cheque_desc1'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: FileText,
-                title: 'Return Memo Issued',
-                desc: 'Cheque return memo issued by the bank explaining the reason for bounce.',
+                title: t('common_indicators_cheque_item2'),
+                desc: t('common_indicators_cheque_desc2'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: Clock,
-                title: 'Payment Delay',
-                desc: 'Delay in receiving promised payment creates financial uncertainty.',
+                title: t('common_indicators_cheque_item3'),
+                desc: t('common_indicators_cheque_desc3'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: AlertTriangle,
-                title: 'Communication Dispute',
-                desc: 'Communication disputes between payer and receiver regarding payment.',
+                title: t('common_indicators_cheque_item4'),
+                desc: t('common_indicators_cheque_desc4'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: Target,
-                title: 'Legal Action Considered',
-                desc: 'Uncertainty regarding the next legal steps to recover the amount.',
+                title: t('common_indicators_cheque_item5'),
+                desc: t('common_indicators_cheque_desc5'),
                 color: 'bg-green-50',
                 iconBg: 'bg-green-600'
               },
@@ -165,10 +162,10 @@ const ChequeBounceCases = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Yashoda Total Solution?
+              {t('why_choose_cheque_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Trusted support for cheque bounce case resolution and recovery
+              {t('why_choose_cheque_description')}
             </p>
           </motion.div>
 
@@ -176,23 +173,23 @@ const ChequeBounceCases = () => {
             {[
               {
                 icon: Users,
-                title: 'Experienced & Professional Team',
-                desc: 'Qualified professionals with industry knowledge and operational expertise.'
+                title: t('why_choose_cheque_item1'),
+                desc: t('why_choose_cheque_desc1'),
               },
               {
                 icon: Target,
-                title: 'Quick & Transparent Processing',
-                desc: 'Systematic workflows supported by clear communication and monitoring.'
+                title: t('why_choose_cheque_item2'),
+                desc: t('why_choose_cheque_desc2'),
               },
               {
                 icon: Shield,
-                title: 'Customer-First Approach',
-                desc: 'Every case handled with attention, empathy, and ethical responsibility.'
+                title: t('why_choose_cheque_item3'),
+                desc: t('why_choose_cheque_desc3'),
               },
               {
                 icon: CheckCircle,
-                title: 'Trusted Service Partner',
-                desc: 'Focused on long-term relationships built on trust, reliability, and service excellence.'
+                title: t('why_choose_cheque_item4'),
+                desc: t('why_choose_cheque_desc4'),
               },
             ].map((item, index) => (
               <motion.div
@@ -220,48 +217,47 @@ const ChequeBounceCases = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Our 6-Step Cheque Bounce Resolution Process
+              {t('process_cheque_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Simple, transparent, and effective approach
+              {t('process_cheque_description')}
             </p>
           </motion.div>
 
           <div className="relative">
-            {/* Vertical Line for Desktop */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
 
             <div className="space-y-12">
               {[
                 {
                   step: '1',
-                  title: 'Case Review & Documentation Check',
-                  desc: 'We review the bounced cheque, bank return memo, and understand the complete situation and timeline.'
+                  title: t('process_cheque_step1_title'),
+                  desc: t('process_cheque_step1_desc')
                 },
                 {
                   step: '2',
-                  title: 'Evidence Collection & Verification',
-                  desc: 'We collect and verify all documents including the original cheque, return memo, and transaction records.'
+                  title: t('process_cheque_step2_title'),
+                  desc: t('process_cheque_step2_desc')
                 },
                 {
                   step: '3',
-                  title: 'Legal Notice Preparation',
-                  desc: 'We prepare and send a legally compliant notice to the cheque issuer within the stipulated time period.'
+                  title: t('process_cheque_step3_title'),
+                  desc: t('process_cheque_step3_desc')
                 },
                 {
                   step: '4',
-                  title: 'Response Monitoring & Follow-up',
-                  desc: 'We monitor the response to the legal notice and follow up within the prescribed legal timeline.'
+                  title: t('process_cheque_step4_title'),
+                  desc: t('process_cheque_step4_desc')
                 },
                 {
                   step: '5',
-                  title: 'Complaint Filing & Court Proceedings',
-                  desc: 'If payment is not made, we assist in filing the complaint under Section 138 of Negotiable Instruments Act.'
+                  title: t('process_cheque_step5_title'),
+                  desc: t('process_cheque_step5_desc')
                 },
                 {
                   step: '6',
-                  title: 'Recovery & Resolution',
-                  desc: 'We follow up on court proceedings and work toward achieving payment recovery or legal resolution.'
+                  title: t('process_cheque_step6_title'),
+                  desc: t('process_cheque_step6_desc')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -285,8 +281,6 @@ const ChequeBounceCases = () => {
                       <p className="text-base text-white/90 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
-
-                  {/* Center Circle */}
                   <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#F39C12] rounded-full border-4 border-white shadow-lg z-10"></div>
                 </motion.div>
               ))}
@@ -300,38 +294,38 @@ const ChequeBounceCases = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life Cheque Bounce Examples
+              {t('ex_scenario_cheque_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              These are common scenarios we help resolve
+              {t('ex_scenario_cheque_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Case 1: Business Payment Dispute',
-                problem: 'A business owner receives a cheque from a client for payment of goods supplied. When the cheque is deposited, the bank returns it due to insufficient funds.',
-                reality: 'The client claimed financial difficulty and delayed payment for months, affecting the business cash flow and operations.',
-                solution: 'We sent a legal notice within 30 days of bounce. After no payment, filed Section 138 complaint. Court ordered payment with interest and penalty.'
+                title: t('ex_scenario_cheque_case1_title'),
+                problem: t('ex_scenario_cheque_case1_problem'),
+                reality: t('ex_scenario_cheque_case1_reality'),
+                solution: t('ex_scenario_cheque_case1_solution')
               },
               {
-                title: 'Case 2: Personal Loan Repayment',
-                problem: 'An individual lends money to a friend who later provides a cheque for repayment. The cheque is returned unpaid by the bank.',
-                reality: 'The friend stopped responding to calls and messages, leaving the lender with no recourse to recover the significant amount.',
-                solution: 'We issued legal notice, documented all evidence, and filed a criminal complaint. Recovery decree obtained with compensation for harassment.'
+                title: t('ex_scenario_cheque_case2_title'),
+                problem: t('ex_scenario_cheque_case2_problem'),
+                reality: t('ex_scenario_cheque_case2_reality'),
+                solution: t('ex_scenario_cheque_case2_solution')
               },
               {
-                title: 'Case 3: Commercial Transaction',
-                problem: 'A supplier receives a cheque from a retailer as payment for delivered products, but the cheque is returned because the account does not have sufficient balance.',
-                reality: 'Multiple cheques bounced in succession, suggesting deliberate avoidance of payment obligations.',
-                solution: 'We filed complaints for all bounced cheques, established pattern of non-payment, and secured judgment for full recovery plus damages.'
+                title: t('ex_scenario_cheque_case3_title'),
+                problem: t('ex_scenario_cheque_case3_problem'),
+                reality: t('ex_scenario_cheque_case3_reality'),
+                solution: t('ex_scenario_cheque_case3_solution')
               },
               {
-                title: 'Case 4: Delayed Settlement',
-                problem: 'A person receives a cheque as part of a financial settlement, but the cheque is returned unpaid, creating uncertainty about recovering the promised amount.',
-                reality: 'The issuer closed the bank account immediately after issuing the cheque, showing intent to defraud.',
-                solution: 'We proved fraudulent intent with banking records, filed criminal complaint, and obtained strict punishment order along with payment recovery.'
+                title: t('ex_scenario_cheque_case4_title'),
+                problem: t('ex_scenario_cheque_case4_problem'),
+                reality: t('ex_scenario_cheque_case4_reality'),
+                solution: t('ex_scenario_cheque_case4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -350,15 +344,15 @@ const ChequeBounceCases = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-red-600 mb-2">❌ Problem:</h4>
+                    <h4 className="text-sm font-semibold text-red-600 mb-2">{t('ex_scenario_cheque_problem_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">⚠️ Reality:</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_cheque_reality_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_cheque_solution_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -373,30 +367,30 @@ const ChequeBounceCases = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_cheque_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about cheque bounce cases
+              {t('faq_cheque_description')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'What does cheque bounce mean?',
-                a: 'Cheque bounce occurs when a bank refuses to process a cheque due to insufficient funds, account closure, signature mismatch, or other banking issues.'
+                question: t('faq_cheque_q1'),
+                answer: t('faq_cheque_a1'),
               },
               {
-                q: 'What is a cheque return memo?',
-                a: 'A cheque return memo is a document issued by the bank explaining why the cheque was not processed and returned unpaid.'
+                question: t('faq_cheque_q2'),
+                answer: t('faq_cheque_a2'),
               },
               {
-                q: 'Can legal action be taken for cheque bounce cases?',
-                a: 'Yes, under Section 138 of the Negotiable Instruments Act, legal proceedings can be initiated for cheque dishonour.'
+                question: t('faq_cheque_q3'),
+                answer: t('faq_cheque_a3'),
               },
               {
-                q: 'What documents are required in cheque bounce cases?',
-                a: 'Required documents include the original cheque, bank return memo, deposit slip, and communication records between parties.'
+                question: t('faq_cheque_q4'),
+                answer: t('faq_cheque_a4'),
               },
             ].map((faq, index) => (
               <motion.div
@@ -414,8 +408,8 @@ const ChequeBounceCases = () => {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-[#1F2933] mb-2">{faq.q}</h3>
-                    <p className="text-base text-[#52606D] leading-relaxed">{faq.a}</p>
+                    <h3 className="text-lg font-semibold text-[#1F2933] mb-2">{faq.question}</h3>
+                    <p className="text-base text-[#52606D] leading-relaxed">{faq.answer}</p>
                   </div>
                 </div>
               </motion.div>
@@ -442,10 +436,10 @@ const ChequeBounceCases = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Facing Issues Due to a Bounced Cheque?
+              {t('cta_cheque_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding the legal process and documentation requirements can help individuals and businesses address cheque bounce situations more effectively. Contact us today for professional cheque bounce case support.
+              {t('cta_cheque_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -453,17 +447,17 @@ const ChequeBounceCases = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('cta_cheque_button1')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('cta_cheque_button2')}
                 </a>
               </motion.div>
             </div>

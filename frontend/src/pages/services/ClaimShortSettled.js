@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   DollarSign, FileText, AlertCircle, CheckCircle, Shield, 
   ArrowRight, HelpCircle, Users, Phone, Calculator,
@@ -8,6 +9,7 @@ import {
 } from 'lucide-react';
 
 const ClaimShortSettled = () => {
+  const { t } = useLanguage();
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -31,9 +33,9 @@ const ClaimShortSettled = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('partial_claim_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">Partial Claim Settlement</span>
+              <span className="text-white text-sm">{t('partial_claim_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -41,12 +43,12 @@ const ClaimShortSettled = () => {
                 <MinusCircle className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Partial Claim Settlement Assistance
+                {t('partial_claim_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding situations where insurance claims are approved but settled for a lower amount than expected. Sometimes insurance companies approve a claim but pay only a portion of the total claimed amount. This situation is known as a partial claim settlement or partial claim settlement. Understanding the reasons behind the reduced claim amount is important for evaluating the situation and determining possible next steps.
+              {t('partial_claim_description')}
             </p>
           </motion.div>
         </div>
@@ -62,20 +64,20 @@ const ClaimShortSettled = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              Service Overview
+              {t('what_partial_claim_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
-                A partial claim settlement occurs when an insurance company approves a claim but pays only part of the total claimed amount.
+                {t('what_partial_claim_description')}
               </p>
               <p className="leading-relaxed mb-4">
-                This can happen when certain expenses fall outside the policy coverage or when <strong>policy limits and deductions apply.</strong>
+                {t('what_partial_claim_description1')} <strong>{t('what_partial_claim_description2')}</strong>
               </p>
               <p className="leading-relaxed mb-4">
-                For many policyholders, the difference between the claimed amount and the approved settlement amount can create confusion and financial concerns.
+                {t('what_partial_claim_description3')}
               </p>
               <p className="leading-relaxed">
-                Understanding how the insurance company calculates the claim amount and reviewing the policy terms carefully can help clarify why a partial settlement occurred. <strong>Yashoda Total Solutions</strong> assists policyholders by reviewing such situations, explaining possible reasons behind the settlement decision, and helping clients understand the process involved.
+                {t('what_partial_claim_description4')} <strong>{t('what_partial_claim_description5')}</strong> {t('what_partial_claim_description6')}
               </p>
             </div>
           </motion.div>
@@ -87,10 +89,10 @@ const ClaimShortSettled = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common Signs of Partial Claim Settlement
+              {t('common_signs_partial_claim')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Policyholders may notice certain signs when a claim has been settled for less than expected
+              {t('common_signs_partial_claim_description')}
             </p>
           </motion.div>
 
@@ -98,43 +100,43 @@ const ClaimShortSettled = () => {
             {[
               {
                 icon: DollarSign,
-                title: 'Lower Settlement Amount',
-                desc: 'The approved claim amount is significantly lower than the submitted expenses',
+                title: t('common_signs_partial_claim_title1'),
+                desc: t('common_signs_partial_claim_desc1'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: FileText,
-                title: 'Excluded Charges',
-                desc: 'Certain hospital or service charges are not included in the settlement',
+                title: t('common_signs_partial_claim_title2'),
+                desc: t('common_signs_partial_claim_desc2'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: Shield,
-                title: 'Policy Limits Applied',
-                desc: 'Maximum coverage limits reduce the total reimbursed amount',
+                title: t('common_signs_partial_claim_title3'),
+                desc: t('common_signs_partial_claim_desc3'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: AlertCircle,
-                title: 'Non-Covered Services',
-                desc: 'Some treatments or services are not covered under the policy',
+                title: t('common_signs_partial_claim_title4'),
+                desc: t('common_signs_partial_claim_desc4'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: MinusCircle,
-                title: 'Deductibles Applied',
-                desc: 'Policy deductibles are subtracted from the claim amount',
+                title: t('common_signs_partial_claim_title5'),
+                desc: t('common_signs_partial_claim_desc5'),
                 color: 'bg-teal-50',
                 iconBg: 'bg-teal-600'
               },
               {
                 icon: Percent,
-                title: 'Depreciation Deductions',
-                desc: 'Asset depreciation reduces the settlement in motor or property claims',
+                title: t('common_signs_partial_claim_title6'),
+                desc: t('common_signs_partial_claim_desc6'),
                 color: 'bg-pink-50',
                 iconBg: 'bg-pink-600'
               },
@@ -163,10 +165,10 @@ const ClaimShortSettled = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              What Actually Happens in Partial Claim Settlement Cases
+              {t('what_happens_after_partial_claim_title')}
             </h2>
             <p className="text-lg text-[#52606D] max-w-3xl mx-auto">
-              When a claim is submitted, the insurance company reviews the documents and evaluates the expenses according to policy conditions
+              {t('what_happens_after_partial_claim_description')}
             </p>
           </motion.div>
 
@@ -174,22 +176,22 @@ const ClaimShortSettled = () => {
             {[
               {
                 icon: FileText,
-                title: 'Policy Conditions Applied',
-                desc: 'Insurer applies coverage limits and policy terms during evaluation',
+                title: t('what_happens_partial_claim_item1'),
+                desc: t('what_happens_partial_claim_desc1'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: Calculator,
-                title: 'Deductions Calculated',
-                desc: 'Various deductions such as depreciation, deductibles, or co-pay are applied',
+                title: t('what_happens_partial_claim_item2'),
+                desc: t('what_happens_partial_claim_desc2'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: AlertCircle,
-                title: 'Technical Explanations',
-                desc: 'Settlement reports may contain technical language that is difficult to understand',
+                title: t('what_happens_partial_claim_item3'),
+                desc: t('what_happens_partial_claim_desc3'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
@@ -218,10 +220,10 @@ const ClaimShortSettled = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Claim Evaluation Process
+              {t('process_flow_partial_claim_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              How insurers calculate the final claim settlement amount
+              {t('process_flow_partial_claim_description')}
             </p>
           </motion.div>
 
@@ -230,28 +232,28 @@ const ClaimShortSettled = () => {
               {[
                 {
                   step: '1',
-                  title: 'Claim Submitted',
-                  desc: 'Policyholder submits claim with complete documentation and expense details'
+                  title: t('process_flow_partial_claim_item1'),
+                  desc: t('process_flow_partial_claim_desc1')
                 },
                 {
                   step: '2',
-                  title: 'Documents Verified',
-                  desc: 'Insurance company verifies all submitted documents and bills'
+                  title: t('process_flow_partial_claim_item2'),
+                  desc: t('process_flow_partial_claim_desc2')
                 },
                 {
                   step: '3',
-                  title: 'Policy Conditions Applied',
-                  desc: 'Coverage limits, exclusions, and policy terms are evaluated'
+                  title: t('process_flow_partial_claim_item3'),
+                  desc: t('process_flow_partial_claim_desc3')
                 },
                 {
                   step: '4',
-                  title: 'Deductions Calculated',
-                  desc: 'Deductibles, depreciation, and other applicable deductions are computed'
+                  title: t('process_flow_partial_claim_item4'),
+                  desc: t('process_flow_partial_claim_desc4')
                 },
                 {
                   step: '5',
-                  title: 'Final Settlement Approved',
-                  desc: 'Final reduced amount is approved and paid to the policyholder'
+                  title: t('process_flow_partial_claim_item5'),
+                  desc: t('process_flow_partial_claim_desc5')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -286,38 +288,38 @@ const ClaimShortSettled = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life Partial Claim Settlement Examples
+              {t('ex_scenario_partial_claim_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common scenarios where claims are settled for reduced amounts
+              {t('ex_scenario_partial_claim_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Example 1 – Hospital Room Rent Limit',
-                claimed: '₹1,20,000',
-                settled: '₹80,000',
-                reason: 'A patient receives hospital treatment and submits a claim for ₹1,20,000. However, the insurance company settles only ₹80,000 because the hospital room rent exceeded the limit allowed under the policy.'
+                title: t('ex_scenario_partial_claim_example1_title'),
+                claimed: t('ex_scenario_partial_claim_example1_claimed'),
+                settled: t('ex_scenario_partial_claim_example1_settled'),
+                reason: t('ex_scenario_partial_claim_example1_solution')
               },
               {
-                title: 'Example 2 – Non-Covered Medical Items',
-                claimed: '₹90,000',
-                settled: '₹65,000',
-                reason: 'A hospital bill includes certain items such as medical equipment or special services that are not covered by the insurance policy. These charges are removed from the claim amount during evaluation.'
+                title: t('ex_scenario_partial_claim_example2_title'),
+                claimed: t('ex_scenario_partial_claim_example2_claimed'),
+                settled: t('ex_scenario_partial_claim_example2_settled'),
+                reason: t('ex_scenario_partial_claim_example2_solution')
               },
               {
-                title: 'Example 3 – Depreciation in Motor Insurance',
-                claimed: '₹70,000',
-                settled: '₹50,000',
-                reason: 'After a vehicle accident, the repair bill amounts to ₹70,000. The insurance company settles only ₹50,000 because depreciation deductions apply to certain replaced parts.'
+                title: t('ex_scenario_partial_claim_example3_title'),
+                claimed: t('ex_scenario_partial_claim_example3_claimed'),
+                settled: t('ex_scenario_partial_claim_example3_settled'),
+                reason: t('ex_scenario_partial_claim_example3_solution')
               },
               {
-                title: 'Example 4 – Policy Sub-Limits',
-                claimed: '₹90,000',
-                settled: '₹60,000',
-                reason: 'A policy includes specific limits for certain treatments. Although the total hospital bill is ₹90,000, the insurer approves only ₹60,000 because the treatment category has a maximum payout limit.'
+                title: t('ex_scenario_partial_claim_example4_title'),
+                claimed: t('ex_scenario_partial_claim_example4_claimed'),
+                settled: t('ex_scenario_partial_claim_example4_settled'),
+                reason: t('ex_scenario_partial_claim_example4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -336,11 +338,11 @@ const ClaimShortSettled = () => {
                 </h3>
                 <div className="space-y-3 mb-4">
                   <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg">
-                    <span className="text-sm font-semibold text-red-600">Claimed Amount:</span>
+                    <span className="text-sm font-semibold text-red-600">{t('ex_scenario_partial_claim_example_head1')}</span>
                     <span className="text-base font-bold text-red-700">{scenario.claimed}</span>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                    <span className="text-sm font-semibold text-green-600">Settled Amount:</span>
+                    <span className="text-sm font-semibold text-green-600">{t('ex_scenario_partial_claim_example_head2')}</span>
                     <span className="text-base font-bold text-green-700">{scenario.settled}</span>
                   </div>
                 </div>
@@ -356,10 +358,10 @@ const ClaimShortSettled = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Understanding Claim Settlement Calculations
+              {t('partial_claim_calculation_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Key factors that determine the final settlement amount
+              {t('partial_claim_calculation_description')}
             </p>
           </motion.div>
 
@@ -367,23 +369,23 @@ const ClaimShortSettled = () => {
             {[
               {
                 icon: Shield,
-                title: 'Coverage Limits',
-                desc: 'Maximum limits for specific treatments or damages'
+                title: t('partial_claim_calculation_item1'),
+                desc: t('partial_claim_calculation_desc1')
               },
               {
                 icon: MinusCircle,
-                title: 'Deductibles',
-                desc: 'Amount that must be paid by the policyholder'
+                title: t('partial_claim_calculation_item2'),
+                desc: t('partial_claim_calculation_desc2')
               },
               {
                 icon: Percent,
-                title: 'Depreciation',
-                desc: 'Value reduction for certain assets or parts'
+                title: t('partial_claim_calculation_item3'),
+                desc: t('partial_claim_calculation_desc3')
               },
               {
                 icon: AlertCircle,
-                title: 'Exclusions',
-                desc: 'Specific services or treatments not covered'
+                title: t('partial_claim_calculation_item4'),
+                desc: t('partial_claim_calculation_desc4')
               },
             ].map((item, index) => (
               <motion.div
@@ -411,10 +413,10 @@ const ClaimShortSettled = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Choose Yashoda Total Solution?
+              {t('why_choose_partial_claim_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Expert guidance for claim settlement disputes and evaluations
+              {t('why_choose_partial_claim_description')}
             </p>
           </motion.div>
 
@@ -422,23 +424,23 @@ const ClaimShortSettled = () => {
             {[
               {
                 icon: Users,
-                title: 'Expert Team',
-                desc: 'Qualified professionals with years of experience in insurance claim evaluation'
+                title: t('why_choose_partial_claim_item1'),
+                desc: t('why_choose_partial_claim_desc1')
               },
               {
                 icon: FileText,
-                title: 'Complete Review',
-                desc: 'Thorough analysis of claim documents and policy terms'
+                title: t('why_choose_partial_claim_item2'),
+                desc: t('why_choose_partial_claim_desc2')
               },
               {
                 icon: Calculator,
-                title: 'Settlement Analysis',
-                desc: 'Detailed evaluation of how settlement amounts were calculated'
+                title: t('why_choose_partial_claim_item3'),
+                desc: t('why_choose_partial_claim_desc3')
               },
               {
                 icon: CheckCircle,
-                title: 'Proven Results',
-                desc: 'Successfully helped numerous clients understand and resolve partial claim settlements'
+                title: t('why_choose_partial_claim_item4'),
+                desc: t('why_choose_partial_claim_desc4')
               },
             ].map((item, index) => (
               <motion.div
@@ -466,30 +468,30 @@ const ClaimShortSettled = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_partial_claim_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about partial claim settlements
+              {t('faq_partial_claim_description')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'What does short claim settlement mean?',
-                a: 'Short settlement occurs when the insurance company approves a claim but pays only part of the claimed amount due to policy limits, deductions, or exclusions.'
+                q: t('faq_partial_claim_q1'),
+                a: t('faq_partial_claim_a1')
               },
               {
-                q: 'Why do insurance companies reduce claim amounts?',
-                a: 'The reduction may happen due to policy limits, exclusions, depreciation deductions, deductibles, or non-covered expenses as specified in the policy terms.'
+                q: t('faq_partial_claim_q2'),
+                a: t('faq_partial_claim_a2')
               },
               {
-                q: 'Can the settlement amount differ from the hospital bill?',
-                a: 'Yes, the approved amount may differ depending on policy conditions, coverage limits, room rent limits, and which medical services are covered under the policy.'
+                q: t('faq_partial_claim_q3'),
+                a: t('faq_partial_claim_a3')
               },
               {
-                q: 'How can policyholders understand the settlement calculation?',
-                a: 'Reviewing the policy document and claim settlement report can help explain the deductions applied. The settlement report usually lists all deductions and reasons for the reduced amount.'
+                q: t('faq_partial_claim_q4'),
+                a: t('faq_partial_claim_a4')
               },
             ].map((faq, index) => (
               <motion.div
@@ -535,10 +537,10 @@ const ClaimShortSettled = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Received a Claim Settlement Amount That is Lower Than Expected?
+              {t('cta_partial_claim_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding how the claim amount was calculated can help policyholders evaluate the situation and review their available options. Contact Yashoda Total Solution to learn more about insurance claim and dispute assistance services.
+              {t('cta_partial_claim_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -546,17 +548,17 @@ const ClaimShortSettled = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('cta_partial_claim_description2')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('cta_partial_claim_button')}
                 </a>
               </motion.div>
             </div>

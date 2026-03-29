@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   Shield, FileText, AlertCircle, CheckCircle, Users, 
   ArrowRight, HelpCircle, Phone, UserCheck, Building2, FileCheck
 } from 'lucide-react';
 
 const PMSBY = () => {
+  const { t } = useLanguage();
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +32,9 @@ const PMSBY = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('pmsby_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">PMSBY</span>
+              <span className="text-white text-sm">{t('pmsby_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +42,12 @@ const PMSBY = () => {
                 <Shield className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Pradhan Mantri Suraksha Bima Yojana (PMSBY) Assistance
+                {t('pmsby_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding the PMSBY accident insurance scheme and how beneficiaries can navigate the claim process. PMSBY is a government-backed accident insurance scheme that provides financial protection at a very affordable premium. Understanding the process and requirements is important for beneficiaries who wish to access the insurance benefits available under this program.
+              {t('pmsby_description')}
             </p>
           </motion.div>
         </div>
@@ -61,27 +63,27 @@ const PMSBY = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              What is Pradhan Mantri Suraksha Bima Yojana?
+              {t('what_pmsby_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
-                Pradhan Mantri Suraksha Bima Yojana (PMSBY) is an accident insurance scheme launched by the Government of India to provide financial protection in case of accidental death or disability.
+                {t('what_pmsby_description')}
               </p>
               <p className="leading-relaxed mb-4">
-                The scheme offers <strong>coverage at a minimal annual premium</strong> and is linked to the policyholder's bank account. Many individuals enroll in this scheme through their banks, often without fully understanding the claim procedure or documentation required.
+                {t('what_pmsby_description1')} <strong>{t('what_pmsby_description2')}</strong> {t('what_pmsby_description3')}
               </p>
               <p className="leading-relaxed mb-4">
-                When an accident occurs, beneficiaries may face challenges in understanding the steps required to submit a claim or collect the necessary documents.
+                {t('what_pmsby_description4')}
               </p>
               <p className="leading-relaxed mb-4">
-                Key features of PMSBY:
+                {t('what_pmsby_key_features')}
               </p>
               <ul className="space-y-3 ml-6">
-                <li>• Affordable annual premium</li>
-                <li>• Coverage for accidental death or disability</li>
-                <li>• Enrollment through bank account</li>
-                <li>• Government-backed scheme</li>
-                <li>• Open to eligible age groups</li>
+                <li>{t('what_pmsby_key_feature1')}</li>
+                <li>{t('what_pmsby_key_feature2')}</li>
+                <li>{t('what_pmsby_key_feature3')}</li>
+                <li>{t('what_pmsby_key_feature4')}</li>
+                <li>{t('what_pmsby_key_feature5')}</li>
               </ul>
             </div>
           </motion.div>
@@ -93,10 +95,10 @@ const PMSBY = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common PMSBY Claim Challenges
+              {t('common_challenges_pmsby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Issues beneficiaries may face during claim submission
+              {t('common_challenges_pmsby_description')}
             </p>
           </motion.div>
 
@@ -104,43 +106,43 @@ const PMSBY = () => {
             {[
               {
                 icon: AlertCircle,
-                title: 'Lack of Awareness',
-                desc: 'Beneficiaries are unaware that the person was enrolled in the PMSBY scheme',
+                title: t('common_challenges_pmsby_item1'),
+                desc: t('common_challenges_pmsby_desc1'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: HelpCircle,
-                title: 'Eligibility Confusion',
-                desc: 'Uncertainty regarding eligibility criteria for accident claims under PMSBY',
+                title: t('common_challenges_pmsby_item2'),
+                desc: t('common_challenges_pmsby_desc2'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: FileText,
-                title: 'Missing Documents',
-                desc: 'Difficulty collecting required accident reports and supporting documents',
+                title: t('common_challenges_pmsby_item3'),
+                desc: t('common_challenges_pmsby_desc3'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: FileCheck,
-                title: 'Process Uncertainty',
-                desc: 'Lack of understanding of the claim submission and verification process',
+                title: t('common_challenges_pmsby_item4'),
+                desc: t('common_challenges_pmsby_desc4'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: Building2,
-                title: 'Bank Coordination',
-                desc: 'Confusion about approaching the bank for claim initiation',
+                title: t('common_challenges_pmsby_item5'),
+                desc: t('common_challenges_pmsby_desc5'),
                 color: 'bg-teal-50',
                 iconBg: 'bg-teal-600'
               },
               {
                 icon: CheckCircle,
-                title: 'Verification Delays',
-                desc: 'Processing delays caused by incomplete or incorrect documentation',
+                title: t('common_challenges_pmsby_item6'),
+                desc: t('common_challenges_pmsby_desc6'),
                 color: 'bg-pink-50',
                 iconBg: 'bg-pink-600'
               },
@@ -169,10 +171,10 @@ const PMSBY = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              What Happens in PMSBY Claim Cases
+              {t('what_happens_after_pmsby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Understanding the claim discovery and submission process
+              {t('what_happens_after_pmsby_description')}
             </p>
           </motion.div>
 
@@ -180,22 +182,22 @@ const PMSBY = () => {
             {[
               {
                 icon: AlertCircle,
-                title: 'Coverage Discovery',
-                desc: 'Family members may discover PMSBY enrollment only after an accident occurs.',
+                title: t('what_happens_pmsby_item1'),
+                desc: t('what_happens_pmsby_desc1'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: FileText,
-                title: 'Document Collection',
-                desc: 'Beneficiaries must gather accident reports, identity proofs, and claim forms.',
+                title: t('what_happens_pmsby_item2'),
+                desc: t('what_happens_pmsby_desc2'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: Building2,
-                title: 'Bank Verification',
-                desc: 'Bank and insurance provider review documents to verify eligibility and coverage.',
+                title: t('what_happens_pmsby_item3'),
+                desc: t('what_happens_pmsby_desc3'),
                 color: 'bg-green-50',
                 iconBg: 'bg-green-600'
               },
@@ -224,10 +226,10 @@ const PMSBY = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Choose Yashoda Total Solution?
+              {t('why_choose_pmsby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Expert guidance for PMSBY claim assistance
+              {t('why_choose_pmsby_description')}
             </p>
           </motion.div>
 
@@ -235,23 +237,23 @@ const PMSBY = () => {
             {[
               {
                 icon: Users,
-                title: 'Expert Team',
-                desc: 'Qualified professionals with experience in government insurance schemes.'
+                title: t('why_choose_pmsby_item1'),
+                desc: t('why_choose_pmsby_desc1')
               },
               {
                 icon: FileText,
-                title: 'Document Support',
-                desc: 'Complete assistance with gathering and organizing required claim documents.'
+                title: t('why_choose_pmsby_item2'),
+                desc: t('why_choose_pmsby_desc2')
               },
               {
                 icon: Building2,
-                title: 'Bank Coordination',
-                desc: 'Help with bank communication and claim submission procedures.'
+                title: t('why_choose_pmsby_item3'),
+                desc: t('why_choose_pmsby_desc3')
               },
               {
                 icon: CheckCircle,
-                title: 'Proven Results',
-                desc: 'Successfully helped numerous beneficiaries with PMSBY claims.'
+                title: t('why_choose_pmsby_item4'),
+                desc: t('why_choose_pmsby_desc4')
               },
             ].map((item, index) => (
               <motion.div
@@ -279,10 +281,10 @@ const PMSBY = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Our 5-Step PMSBY Claim Assistance Process
+              {t('process_flow_pmsby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Simplified guidance for PMSBY beneficiaries
+              {t('process_flow_pmsby_description')}
             </p>
           </motion.div>
 
@@ -293,28 +295,28 @@ const PMSBY = () => {
               {[
                 {
                   step: '1',
-                  title: 'Enrollment Verification',
-                  desc: 'We help verify if the individual was enrolled in PMSBY through their bank account.'
+                  title: t('process_flow_pmsby_item1'),
+                  desc: t('process_flow_pmsby_desc1')
                 },
                 {
                   step: '2',
-                  title: 'Eligibility Assessment',
-                  desc: 'We review the accident details to confirm eligibility under PMSBY coverage terms.'
+                  title: t('process_flow_pmsby_item2'),
+                  desc: t('process_flow_pmsby_desc2')
                 },
                 {
                   step: '3',
-                  title: 'Document Collection',
-                  desc: 'We assist in gathering all required documents including accident reports and identity proofs.'
+                  title: t('process_flow_pmsby_item3'),
+                  desc: t('process_flow_pmsby_desc3')
                 },
                 {
                   step: '4',
-                  title: 'Claim Form Preparation',
-                  desc: 'We help complete the claim application forms with accurate information.'
+                  title: t('process_flow_pmsby_item4'),
+                  desc: t('process_flow_pmsby_desc4')
                 },
                 {
                   step: '5',
-                  title: 'Bank Submission & Follow-Up',
-                  desc: 'We guide you through bank submission and track the claim until processing is complete.'
+                  title: t('process_flow_pmsby_item5'),
+                  desc: t('process_flow_pmsby_desc5')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -352,38 +354,38 @@ const PMSBY = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life PMSBY Claim Examples
+              {t('ex_scenario_pmsby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common scenarios we help resolve
+              {t('ex_scenario_pmsby_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Example 1 – Family Unaware of Scheme Enrollment',
-                problem: 'A bank customer is enrolled in PMSBY through automatic enrollment.',
-                reality: 'After an accidental incident, the family learns that the individual was covered but is unsure how to initiate the claim.',
-                solution: 'We verified enrollment, explained the process, and helped submit a complete claim successfully.'
+                title: t('ex_scenario_pmsby_example1_title'),
+                problem: t('ex_scenario_pmsby_example1_problem'),
+                reality: t('ex_scenario_pmsby_example1_reality'),
+                solution: t('ex_scenario_pmsby_example1_solution')
               },
               {
-                title: 'Example 2 – Missing Accident Documentation',
-                problem: 'A beneficiary attempts to submit a claim for PMSBY benefits.',
-                reality: 'The claim faces difficulties because required accident reports and supporting documents are incomplete.',
-                solution: 'We helped obtain missing accident reports from authorities and completed the claim documentation.'
+                title: t('ex_scenario_pmsby_example2_title'),
+                problem: t('ex_scenario_pmsby_example2_problem'),
+                reality: t('ex_scenario_pmsby_example2_reality'),
+                solution: t('ex_scenario_pmsby_example2_solution')
               },
               {
-                title: 'Example 3 – Claim Submission Confusion',
-                problem: 'The family of an accident victim approaches the bank to claim insurance benefits.',
-                reality: 'They are uncertain about the documents and forms required to submit the PMSBY claim.',
-                solution: 'We provided a complete checklist, helped fill forms, and guided them through bank submission.'
+                title: t('ex_scenario_pmsby_example3_title'),
+                problem: t('ex_scenario_pmsby_example3_problem'),
+                reality: t('ex_scenario_pmsby_example3_reality'),
+                solution: t('ex_scenario_pmsby_example3_solution')
               },
               {
-                title: 'Example 4 – Eligibility Clarification',
-                problem: 'A beneficiary wants to file a PMSBY claim but is unsure about eligibility.',
-                reality: 'They need to understand whether the accident meets the conditions defined under the scheme.',
-                solution: 'We reviewed the accident details, confirmed eligibility, and proceeded with claim submission.'
+                title: t('ex_scenario_pmsby_example4_title'),
+                problem: t('ex_scenario_pmsby_example4_problem'),
+                reality: t('ex_scenario_pmsby_example4_reality'),
+                solution: t('ex_scenario_pmsby_example4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -402,15 +404,15 @@ const PMSBY = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">❌ Problem:</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_pmsby_example_head1')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-blue-600 mb-2">⚠️ Reality:</h4>
+                    <h4 className="text-sm font-semibold text-blue-600 mb-2">{t('ex_scenario_pmsby_example_head2')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_pmsby_example_head3')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -425,30 +427,30 @@ const PMSBY = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_pmsby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about PMSBY
+              {t('faq_pmsby_description')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'What is Pradhan Mantri Suraksha Bima Yojana (PMSBY)?',
-                a: 'PMSBY is a government accident insurance scheme that provides financial protection for accidental death or disability at an affordable annual premium.'
+                q: t('faq_pmsby_q1'),
+                a: t('faq_pmsby_a1')
               },
               {
-                q: 'Who can enroll in PMSBY?',
-                a: 'Individuals with a savings bank account within the eligible age group (typically 18-70 years) can enroll in the scheme through their bank.'
+                q: t('faq_pmsby_q2'),
+                a: t('faq_pmsby_a2')
               },
               {
-                q: 'What type of incidents are covered under PMSBY?',
-                a: 'The scheme typically provides coverage for accidental death and certain types of accidental permanent or partial disabilities as defined in the scheme terms.'
+                q: t('faq_pmsby_q3'),
+                a: t('faq_pmsby_a3')
               },
               {
-                q: 'How can beneficiaries know if someone was enrolled in PMSBY?',
-                a: 'Enrollment is usually linked to a bank account. Beneficiaries can check with the bank where the account is held to confirm PMSBY coverage.'
+                q: t('faq_pmsby_q4'),
+                a: t('faq_pmsby_a4')
               },
             ].map((faq, index) => (
               <motion.div
@@ -494,10 +496,10 @@ const PMSBY = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Need Help Understanding PMSBY Claims?
+              {t('cta_pmsby_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding the scheme requirements and documentation process can help beneficiaries navigate the claim procedure more confidently. Contact Yashoda Total Solution for expert assistance with PMSBY claims.
+              {t('cta_pmsby_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -505,17 +507,17 @@ const PMSBY = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('cta_pmsby_description2')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('cta_pmsby_button')}
                 </a>
               </motion.div>
             </div>

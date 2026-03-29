@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   FileText, CheckCircle, AlertCircle, Shield, 
   ArrowRight, HelpCircle, Users, Phone, Target, Gavel, Edit 
 } from 'lucide-react';
 
 const LegalDrafting = () => {
+  const { t } = useLanguage();
+
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +33,9 @@ const LegalDrafting = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('drafting_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">Legal Drafting & Verification Support</span>
+              <span className="text-white text-sm">{t('drafting_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +43,12 @@ const LegalDrafting = () => {
                 <FileText className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Legal Drafting & Verification Support
+                {t('drafting_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Ensuring clarity, accuracy, and legal protection in important documents and agreements. Legal documents form the foundation of many personal, financial, and business decisions. Even a small mistake or unclear wording can create misunderstandings or legal complications later.
+              {t('drafting_description')}
             </p>
           </motion.div>
         </div>
@@ -61,30 +64,24 @@ const LegalDrafting = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              Service Overview
+              {t('what_drafting_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
+              <p className="leading-relaxed mb-4">{t('what_drafting_description')}</p>
+              <p className="leading-relaxed mb-4">{t('what_drafting_description1')}</p>
+              <p className="leading-relaxed mb-4">{t('what_drafting_description2')}</p>
               <p className="leading-relaxed mb-4">
-                Legal drafting involves preparing documents that clearly describe rights, responsibilities, and agreements between parties. These documents may include contracts, notices, agreements, or other legal records used in personal, business, or administrative matters.
+                <strong>{t('what_drafting_description3')}</strong> {t('what_drafting_description4')}
               </p>
               <p className="leading-relaxed mb-4">
-                Verification of legal documents is equally important. Reviewing a document before it is signed or submitted can help identify unclear terms, missing clauses, or potential legal risks.
-              </p>
-              <p className="leading-relaxed mb-4">
-                Many individuals and businesses may not fully understand the legal language used in documents, which can lead to confusion or unintended consequences.
-              </p>
-              <p className="leading-relaxed mb-4">
-                <strong>Yashoda Total Solutions</strong> assists clients by carefully reviewing documents, verifying the legal structure, and preparing well-organized drafts that clearly communicate the intended terms and conditions.
-              </p>
-              <p className="leading-relaxed mb-4">
-                <strong>Legal Drafting Process Flow:</strong>
+                <strong>{t('what_drafting_key_features')}</strong>
               </p>
               <ul className="space-y-3 ml-6">
-                <li>• Client Explains Requirement</li>
-                <li>• Document Details Collected</li>
-                <li>• Draft Prepared or Existing Document Reviewed</li>
-                <li>• Legal Terms Structured Clearly</li>
-                <li>• Final Document Verified</li>
+                <li>{t('what_drafting_key_feature1')}</li>
+                <li>{t('what_drafting_key_feature2')}</li>
+                <li>{t('what_drafting_key_feature3')}</li>
+                <li>{t('what_drafting_key_feature4')}</li>
+                <li>{t('what_drafting_key_feature5')}</li>
               </ul>
             </div>
           </motion.div>
@@ -96,10 +93,10 @@ const LegalDrafting = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common Situations Where Legal Drafting Is Needed
+              {t('common_situations_drafting_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Legal drafting and verification may be required in many situations where written agreements are necessary
+              {t('common_situations_drafting_description')}
             </p>
           </motion.div>
 
@@ -107,36 +104,36 @@ const LegalDrafting = () => {
             {[
               {
                 icon: Edit,
-                title: 'Business Agreements',
-                desc: 'Preparing contracts or agreements between parties with clear terms and responsibilities.',
+                title: t('common_situations_drafting_item1'),
+                desc: t('common_situations_drafting_desc1'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: AlertCircle,
-                title: 'Property Documents',
-                desc: 'Drafting property or rental agreements that define rights and obligations.',
+                title: t('common_situations_drafting_item2'),
+                desc: t('common_situations_drafting_desc2'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: FileText,
-                title: 'Legal Notices',
-                desc: 'Responding to or issuing legal notices with proper structure and language.',
+                title: t('common_situations_drafting_item3'),
+                desc: t('common_situations_drafting_desc3'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: Gavel,
-                title: 'Official Applications',
-                desc: 'Preparing formal complaints or legal statements for official submission.',
+                title: t('common_situations_drafting_item4'),
+                desc: t('common_situations_drafting_desc4'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: CheckCircle,
-                title: 'Contract Verification',
-                desc: 'Reviewing documents before signing or submission to identify risks.',
+                title: t('common_situations_drafting_item5'),
+                desc: t('common_situations_drafting_desc5'),
                 color: 'bg-green-50',
                 iconBg: 'bg-green-600'
               },
@@ -165,10 +162,10 @@ const LegalDrafting = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Yashoda Total Solution?
+              {t('why_choose_drafting_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Trusted support for legal drafting and document verification
+              {t('why_choose_drafting_description')}
             </p>
           </motion.div>
 
@@ -176,23 +173,23 @@ const LegalDrafting = () => {
             {[
               {
                 icon: Users,
-                title: 'Experienced & Professional Team',
-                desc: 'Qualified professionals with industry knowledge and operational expertise.'
+                title: t('why_choose_drafting_item1'),
+                desc: t('why_choose_drafting_desc1'),
               },
               {
                 icon: Target,
-                title: 'Quick & Transparent Processing',
-                desc: 'Systematic workflows supported by clear communication and monitoring.'
+                title: t('why_choose_drafting_item2'),
+                desc: t('why_choose_drafting_desc2'),
               },
               {
                 icon: Shield,
-                title: 'Customer-First Approach',
-                desc: 'Every case handled with attention, empathy, and ethical responsibility.'
+                title: t('why_choose_drafting_item3'),
+                desc: t('why_choose_drafting_desc3'),
               },
               {
                 icon: CheckCircle,
-                title: 'Trusted Service Partner',
-                desc: 'Focused on long-term relationships built on trust, reliability, and service excellence.'
+                title: t('why_choose_drafting_item4'),
+                desc: t('why_choose_drafting_desc4'),
               },
             ].map((item, index) => (
               <motion.div
@@ -220,43 +217,42 @@ const LegalDrafting = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Our 5-Step Document Drafting Process
+              {t('process_drafting_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Simple, transparent, and effective approach
+              {t('process_drafting_description')}
             </p>
           </motion.div>
 
           <div className="relative">
-            {/* Vertical Line for Desktop */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
 
             <div className="space-y-12">
               {[
                 {
                   step: '1',
-                  title: 'Requirement Understanding',
-                  desc: 'We discuss your needs, understand the purpose of the document, and gather all relevant information about the parties involved.'
+                  title: t('process_drafting_step1_title'),
+                  desc: t('process_drafting_step1_desc')
                 },
                 {
                   step: '2',
-                  title: 'Information & Evidence Collection',
-                  desc: 'We collect all necessary details, supporting documents, and facts required to draft or verify the legal document.'
+                  title: t('process_drafting_step2_title'),
+                  desc: t('process_drafting_step2_desc')
                 },
                 {
                   step: '3',
-                  title: 'Document Drafting or Review',
-                  desc: 'We prepare a structured draft with clear legal terms or thoroughly review existing documents for clarity and completeness.'
+                  title: t('process_drafting_step3_title'),
+                  desc: t('process_drafting_step3_desc')
                 },
                 {
                   step: '4',
-                  title: 'Legal Structure Verification',
-                  desc: 'We verify that all legal terms, clauses, and conditions are properly defined and aligned with requirements.'
+                  title: t('process_drafting_step4_title'),
+                  desc: t('process_drafting_step4_desc')
                 },
                 {
                   step: '5',
-                  title: 'Final Document Delivery',
-                  desc: 'We provide the final verified document with explanations of key terms and answer any questions you may have.'
+                  title: t('process_drafting_step5_title'),
+                  desc: t('process_drafting_step5_desc')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -280,8 +276,6 @@ const LegalDrafting = () => {
                       <p className="text-base text-white/90 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
-
-                  {/* Center Circle */}
                   <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#F39C12] rounded-full border-4 border-white shadow-lg z-10"></div>
                 </motion.div>
               ))}
@@ -295,38 +289,38 @@ const LegalDrafting = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life Drafting & Verification Examples
+              {t('ex_scenario_drafting_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              These are common scenarios we help with
+              {t('ex_scenario_drafting_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Case 1: Business Agreement Drafting',
-                problem: 'Two business partners plan to start a joint venture and require a written agreement outlining their roles, financial contributions, and responsibilities.',
-                reality: 'Without clear documentation, disagreements about roles and profit-sharing could arise later, causing business conflicts.',
-                solution: 'We drafted a comprehensive partnership agreement defining each partner\'s duties, capital contributions, profit distribution, and exit terms.'
+                title: t('ex_scenario_drafting_case1_title'),
+                problem: t('ex_scenario_drafting_case1_problem'),
+                reality: t('ex_scenario_drafting_case1_reality'),
+                solution: t('ex_scenario_drafting_case1_solution')
               },
               {
-                title: 'Case 2: Property Rental Agreement',
-                problem: 'A property owner wants to create a rental agreement that clearly defines the terms of rent, duration of tenancy, and responsibilities of both parties.',
-                reality: 'Many rental disputes arise from unclear terms regarding maintenance, rent increases, and notice periods.',
-                solution: 'We prepared a detailed rental agreement covering rent payment terms, maintenance responsibilities, security deposit, and termination clauses.'
+                title: t('ex_scenario_drafting_case2_title'),
+                problem: t('ex_scenario_drafting_case2_problem'),
+                reality: t('ex_scenario_drafting_case2_reality'),
+                solution: t('ex_scenario_drafting_case2_solution')
               },
               {
-                title: 'Case 3: Legal Notice Reply',
-                problem: 'An individual receives a legal notice and needs to prepare a structured response explaining their position and addressing the claims mentioned in the notice.',
-                reality: 'The legal notice contained allegations that needed a point-by-point response with supporting facts and legal references.',
-                solution: 'We drafted a comprehensive reply notice addressing each allegation, providing factual clarifications and reserving legal rights.'
+                title: t('ex_scenario_drafting_case3_title'),
+                problem: t('ex_scenario_drafting_case3_problem'),
+                reality: t('ex_scenario_drafting_case3_reality'),
+                solution: t('ex_scenario_drafting_case3_solution')
               },
               {
-                title: 'Case 4: Document Verification Before Signing',
-                problem: 'A person is asked to sign a contract and wants to ensure that the terms and conditions are clearly written and legally appropriate before signing.',
-                reality: 'The contract contained ambiguous clauses regarding payment terms, liability limitations, and termination conditions.',
-                solution: 'We reviewed the contract, highlighted problematic clauses, suggested modifications, and helped negotiate better terms.'
+                title: t('ex_scenario_drafting_case4_title'),
+                problem: t('ex_scenario_drafting_case4_problem'),
+                reality: t('ex_scenario_drafting_case4_reality'),
+                solution: t('ex_scenario_drafting_case4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -345,15 +339,15 @@ const LegalDrafting = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-red-600 mb-2">❌ Problem:</h4>
+                    <h4 className="text-sm font-semibold text-red-600 mb-2">{t('ex_scenario_drafting_problem_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">⚠️ Reality:</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_drafting_reality_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_drafting_solution_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -368,30 +362,30 @@ const LegalDrafting = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_drafting_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about legal drafting and verification
+              {t('faq_drafting_description')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'What is legal drafting?',
-                a: 'Legal drafting is the preparation of written legal documents such as agreements, notices, or contracts.'
+                question: t('faq_drafting_q1'),
+                answer: t('faq_drafting_a1'),
               },
               {
-                q: 'Why is document verification important?',
-                a: 'Verification helps identify unclear clauses, missing information, or potential legal risks before the document is used.'
+                question: t('faq_drafting_q2'),
+                answer: t('faq_drafting_a2'),
               },
               {
-                q: 'Who may need legal drafting services?',
-                a: 'Individuals, business owners, property owners, and organizations may require drafting support for various legal documents.'
+                question: t('faq_drafting_q3'),
+                answer: t('faq_drafting_a3'),
               },
               {
-                q: 'Can existing documents be reviewed before signing?',
-                a: 'Yes, documents can be reviewed and verified to ensure the terms are clear and appropriate.'
+                question: t('faq_drafting_q4'),
+                answer: t('faq_drafting_a4'),
               },
             ].map((faq, index) => (
               <motion.div
@@ -409,8 +403,8 @@ const LegalDrafting = () => {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-[#1F2933] mb-2">{faq.q}</h3>
-                    <p className="text-base text-[#52606D] leading-relaxed">{faq.a}</p>
+                    <h3 className="text-lg font-semibold text-[#1F2933] mb-2">{faq.question}</h3>
+                    <p className="text-base text-[#52606D] leading-relaxed">{faq.answer}</p>
                   </div>
                 </div>
               </motion.div>
@@ -437,10 +431,10 @@ const LegalDrafting = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Need Help with Document Drafting or Verification?
+              {t('cta_drafting_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding the structure and legal wording of documents can help avoid confusion and reduce the chances of disputes. Contact us today for professional drafting support.
+              {t('cta_drafting_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -448,17 +442,17 @@ const LegalDrafting = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('cta_drafting_button1')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('cta_drafting_button2')}
                 </a>
               </motion.div>
             </div>

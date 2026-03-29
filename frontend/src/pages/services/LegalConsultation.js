@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   Scale, FileText, AlertCircle, Shield, CheckCircle, 
   ArrowRight, HelpCircle, Users, Phone, Target, Gavel 
 } from 'lucide-react';
 
 const LegalConsultation = () => {
+  const { t } = useLanguage();
+
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +33,9 @@ const LegalConsultation = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('legal_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">Legal Consultation</span>
+              <span className="text-white text-sm">{t('legal_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +43,12 @@ const LegalConsultation = () => {
                 <Scale className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Legal Consultation
+                {t('legal_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding legal situations clearly and evaluating possible paths before taking formal legal action. Legal consultation helps individuals understand their legal situation, rights, and possible options before initiating any formal legal process.
+              {t('legal_description')}
             </p>
           </motion.div>
         </div>
@@ -61,30 +64,24 @@ const LegalConsultation = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              Service Overview
+              {t('what_legal_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
+              <p className="leading-relaxed mb-4">{t('what_legal_description')}</p>
+              <p className="leading-relaxed mb-4">{t('what_legal_description1')}</p>
+              <p className="leading-relaxed mb-4">{t('what_legal_description2')}</p>
               <p className="leading-relaxed mb-4">
-                Legal consultation is the process of discussing a legal issue with experienced professionals to understand the facts, review documents, and evaluate possible legal options.
+                {t('what_legal_description3')} <strong>{t('what_legal_description4')}</strong>{t('what_legal_description5')}
               </p>
               <p className="leading-relaxed mb-4">
-                Many individuals face uncertainty when dealing with disputes, insurance issues, financial conflicts, or other legal matters. Without proper guidance, it can be difficult to determine whether a case has strong legal grounds or what steps should be taken next.
-              </p>
-              <p className="leading-relaxed mb-4">
-                A consultation allows clients to present their situation and receive a structured review of their documents and evidence.
-              </p>
-              <p className="leading-relaxed mb-4">
-                At <strong>Yashoda Total Solutions</strong>, legal consultation focuses on providing a realistic understanding of the situation by carefully reviewing the facts and identifying possible risks and opportunities before proceeding further.
-              </p>
-              <p className="leading-relaxed mb-4">
-                <strong>Legal Consultation Process Flow:</strong>
+                <strong>{t('what_legal_key_features')}</strong>
               </p>
               <ul className="space-y-3 ml-6">
-                <li>• Client Presents Issue</li>
-                <li>• Case Details Reviewed</li>
-                <li>• Documents and Evidence Evaluated</li>
-                <li>• Legal Position Analyzed</li>
-                <li>• Possible Solutions Identified</li>
+                <li>{t('what_legal_key_feature1')}</li>
+                <li>{t('what_legal_key_feature2')}</li>
+                <li>{t('what_legal_key_feature3')}</li>
+                <li>{t('what_legal_key_feature4')}</li>
+                <li>{t('what_legal_key_feature5')}</li>
               </ul>
             </div>
           </motion.div>
@@ -96,10 +93,10 @@ const LegalConsultation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common Situations Where Legal Consultation Is Needed
+              {t('common_situations_legal_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Individuals and businesses often seek legal consultation when they face situations that require clarity
+              {t('common_situations_legal_description')}
             </p>
           </motion.div>
 
@@ -107,36 +104,36 @@ const LegalConsultation = () => {
             {[
               {
                 icon: AlertCircle,
-                title: 'Financial Disputes',
-                desc: 'Disputes involving financial transactions that need legal clarity and evaluation.',
+                title: t('common_situations_legal_item1'),
+                desc: t('common_situations_legal_desc1'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: Shield,
-                title: 'Insurance Issues',
-                desc: 'Confusion regarding insurance claims or settlements requiring legal assessment.',
+                title: t('common_situations_legal_item2'),
+                desc: t('common_situations_legal_desc2'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: FileText,
-                title: 'Contract Conflicts',
-                desc: 'Disagreements related to contracts or services that need legal review.',
+                title: t('common_situations_legal_item3'),
+                desc: t('common_situations_legal_desc3'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: Gavel,
-                title: 'Legal Notices',
-                desc: 'Legal notices received from another party requiring professional guidance.',
+                title: t('common_situations_legal_item4'),
+                desc: t('common_situations_legal_desc4'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: Target,
-                title: 'Uncertain Legal Position',
-                desc: 'Uncertainty about the legal strength of a case before proceeding further.',
+                title: t('common_situations_legal_item5'),
+                desc: t('common_situations_legal_desc5'),
                 color: 'bg-green-50',
                 iconBg: 'bg-green-600'
               },
@@ -165,10 +162,10 @@ const LegalConsultation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Yashoda Total Solution?
+              {t('why_choose_legal_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Trusted support for legal consultation and case evaluation
+              {t('why_choose_legal_description')}
             </p>
           </motion.div>
 
@@ -176,23 +173,23 @@ const LegalConsultation = () => {
             {[
               {
                 icon: Users,
-                title: 'Experienced & Professional Team',
-                desc: 'Qualified professionals with industry knowledge and operational expertise.'
+                title: t('why_choose_legal_item1'),
+                desc: t('why_choose_legal_desc1'),
               },
               {
                 icon: Target,
-                title: 'Quick & Transparent Processing',
-                desc: 'Systematic workflows supported by clear communication and monitoring.'
+                title: t('why_choose_legal_item2'),
+                desc: t('why_choose_legal_desc2'),
               },
               {
                 icon: Shield,
-                title: 'Customer-First Approach',
-                desc: 'Every case handled with attention, empathy, and ethical responsibility.'
+                title: t('why_choose_legal_item3'),
+                desc: t('why_choose_legal_desc3'),
               },
               {
                 icon: CheckCircle,
-                title: 'Trusted Service Partner',
-                desc: 'Focused on long-term relationships built on trust, reliability, and service excellence.'
+                title: t('why_choose_legal_item4'),
+                desc: t('why_choose_legal_desc4'),
               },
             ].map((item, index) => (
               <motion.div
@@ -220,43 +217,42 @@ const LegalConsultation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Our 5-Step Legal Consultation Process
+              {t('process_legal_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Simple, transparent, and effective approach
+              {t('process_legal_description')}
             </p>
           </motion.div>
 
           <div className="relative">
-            {/* Vertical Line for Desktop */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
 
             <div className="space-y-12">
               {[
                 {
                   step: '1',
-                  title: 'Initial Consultation & Case Review',
-                  desc: 'We listen to your situation, understand the background, and review all relevant documents and facts you provide.'
+                  title: t('process_legal_step1_title'),
+                  desc: t('process_legal_step1_desc')
                 },
                 {
                   step: '2',
-                  title: 'Evidence & Document Analysis',
-                  desc: 'We carefully examine your documents, agreements, communications, and evidence to assess the legal position.'
+                  title: t('process_legal_step2_title'),
+                  desc: t('process_legal_step2_desc')
                 },
                 {
                   step: '3',
-                  title: 'Legal Strength Evaluation',
-                  desc: 'We analyze the legal merits of your case, identify strengths, weaknesses, and potential risks involved.'
+                  title: t('process_legal_step3_title'),
+                  desc: t('process_legal_step3_desc')
                 },
                 {
                   step: '4',
-                  title: 'Options & Strategy Discussion',
-                  desc: 'We explain possible legal options, strategies, and realistic outcomes based on the facts and evidence.'
+                  title: t('process_legal_step4_title'),
+                  desc: t('process_legal_step4_desc')
                 },
                 {
                   step: '5',
-                  title: 'Recommendation & Next Steps',
-                  desc: 'We provide clear recommendations and guide you on the best course of action to resolve your matter.'
+                  title: t('process_legal_step5_title'),
+                  desc: t('process_legal_step5_desc')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -280,8 +276,6 @@ const LegalConsultation = () => {
                       <p className="text-base text-white/90 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
-
-                  {/* Center Circle */}
                   <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#F39C12] rounded-full border-4 border-white shadow-lg z-10"></div>
                 </motion.div>
               ))}
@@ -295,38 +289,38 @@ const LegalConsultation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life Consultation Examples
+              {t('ex_scenario_legal_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              These are common scenarios we help evaluate
+              {t('ex_scenario_legal_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Case 1: Insurance Claim Dispute',
-                problem: 'A policyholder believes their insurance claim was not handled properly and wants to understand whether the situation has legal merit before proceeding further.',
-                reality: 'After reviewing the policy documents and claim correspondence, it was found that the claim rejection had procedural errors.',
-                solution: 'We provided consultation showing the legal grounds for challenging the rejection. Client filed a complaint with the ombudsman.'
+                title: t('ex_scenario_legal_case1_title'),
+                problem: t('ex_scenario_legal_case1_problem'),
+                reality: t('ex_scenario_legal_case1_reality'),
+                solution: t('ex_scenario_legal_case1_solution')
               },
               {
-                title: 'Case 2: Contractual Disagreement',
-                problem: 'Two parties enter into an agreement, but one party fails to meet the agreed terms. The affected party seeks consultation to understand possible legal options.',
-                reality: 'Contract review revealed specific breach of contract clauses and clear evidence of non-performance.',
-                solution: 'We advised on the legal remedy options including notice period and possible compensation claims under the contract.'
+                title: t('ex_scenario_legal_case2_title'),
+                problem: t('ex_scenario_legal_case2_problem'),
+                reality: t('ex_scenario_legal_case2_reality'),
+                solution: t('ex_scenario_legal_case2_solution')
               },
               {
-                title: 'Case 3: Financial Transaction Conflict',
-                problem: 'An individual faces a dispute related to money lent to another party and wants to know whether legal action is possible.',
-                reality: 'Limited documentation was available, making it difficult to prove the transaction terms and repayment agreement.',
-                solution: 'We explained the importance of written evidence and suggested alternative dispute resolution before legal action.'
+                title: t('ex_scenario_legal_case3_title'),
+                problem: t('ex_scenario_legal_case3_problem'),
+                reality: t('ex_scenario_legal_case3_reality'),
+                solution: t('ex_scenario_legal_case3_solution')
               },
               {
-                title: 'Case 4: Legal Notice Received',
-                problem: 'A person receives a legal notice and wants to understand the implications of the notice and the appropriate response.',
-                reality: 'The legal notice contained claims that were partially justified but had factual inaccuracies.',
-                solution: 'We helped draft a detailed response addressing each claim point-by-point and suggested settlement discussion.'
+                title: t('ex_scenario_legal_case4_title'),
+                problem: t('ex_scenario_legal_case4_problem'),
+                reality: t('ex_scenario_legal_case4_reality'),
+                solution: t('ex_scenario_legal_case4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -345,15 +339,15 @@ const LegalConsultation = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-red-600 mb-2">❌ Problem:</h4>
+                    <h4 className="text-sm font-semibold text-red-600 mb-2">{t('ex_scenario_legal_problem_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">⚠️ Reality:</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_legal_reality_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_legal_solution_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -368,30 +362,30 @@ const LegalConsultation = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_legal_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about legal consultation
+              {t('faq_legal_description')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'What is a legal consultation?',
-                a: 'Legal consultation is a discussion with legal professionals to understand a legal issue and evaluate possible options.'
+                question: t('faq_legal_q1'),
+                answer: t('faq_legal_a1'),
               },
               {
-                q: 'What should someone bring to a legal consultation?',
-                a: 'Relevant documents, agreements, and details related to the dispute can help provide a clearer understanding of the situation.'
+                question: t('faq_legal_q2'),
+                answer: t('faq_legal_a2'),
               },
               {
-                q: 'Can legal consultation help determine whether a case is strong?',
-                a: 'Yes, reviewing the documents and facts can help identify the strengths and potential risks of the case.'
+                question: t('faq_legal_q3'),
+                answer: t('faq_legal_a3'),
               },
               {
-                q: 'Is legal consultation useful before sending a legal notice?',
-                a: 'Yes, consultation can help determine whether sending a legal notice or taking further action is appropriate.'
+                question: t('faq_legal_q4'),
+                answer: t('faq_legal_a4'),
               },
             ].map((faq, index) => (
               <motion.div
@@ -409,8 +403,8 @@ const LegalConsultation = () => {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-[#1F2933] mb-2">{faq.q}</h3>
-                    <p className="text-base text-[#52606D] leading-relaxed">{faq.a}</p>
+                    <h3 className="text-lg font-semibold text-[#1F2933] mb-2">{faq.question}</h3>
+                    <p className="text-base text-[#52606D] leading-relaxed">{faq.answer}</p>
                   </div>
                 </div>
               </motion.div>
@@ -437,10 +431,10 @@ const LegalConsultation = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Need Clarity About Your Legal Situation?
+              {t('cta_legal_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding the facts, documents, and possible legal options can help individuals make informed decisions. Contact us today for a professional legal consultation.
+              {t('cta_legal_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -448,17 +442,17 @@ const LegalConsultation = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('cta_legal_button1')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('cta_legal_button2')}
                 </a>
               </motion.div>
             </div>

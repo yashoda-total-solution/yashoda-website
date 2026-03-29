@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   XCircle, FileText, AlertCircle, CheckCircle, Shield, 
   ArrowRight, HelpCircle, Users, Phone, Scale, Search
 } from 'lucide-react';
 
 const ClaimRejection = () => {
+  const { t } = useLanguage();
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +32,9 @@ const ClaimRejection = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('claim_rej_title_backlink2')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">Insurance Claim Rejection</span>
+              <span className="text-white text-sm">{t('claim_rej_title_backlink1')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +42,12 @@ const ClaimRejection = () => {
                 <XCircle className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Insurance Claim Rejection Assistance
+                {t('claim_rej_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding the reasons behind rejected insurance claims and exploring the steps that may help address the issue. An insurance claim rejection can be frustrating and emotionally difficult for policyholders. Insurance claim rejection may happen due to policy conditions, documentation issues, or interpretation of policy terms.
+              {t('claim_rej_description')}
             </p>
           </motion.div>
         </div>
@@ -61,28 +63,28 @@ const ClaimRejection = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              What is Insurance Claim Rejection?
+              {t('what_claim_rej_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
-                Insurance claim rejection occurs when an insurance company declines a policyholder's request for claim settlement.
+                {t('what_claim_rej_description')}
               </p>
               <p className="leading-relaxed mb-4">
-                This situation can arise for several reasons, including <strong>incomplete documentation, policy exclusions, missed deadlines, or disagreements regarding the coverage conditions.</strong>
+                {t('what_claim_rej_description1')} <strong>{t('what_claim_rej_description2')}</strong>
               </p>
               <p className="leading-relaxed mb-4">
-                Many policyholders feel uncertain about how to respond when their claim is rejected. The rejection notice may contain technical explanations that are difficult to understand, leaving customers unsure about whether the decision is final or if further steps can be taken.
+                {t('what_claim_rej_description3')}
               </p>
               <p className="leading-relaxed mb-4">
-                Common reasons include:
+                {t('what_claim_rej_common_reasons')}
               </p>
               <ul className="space-y-3 ml-6">
-                <li>✗ Incomplete or incorrect documentation</li>
-                <li>✗ Delay in claim submission</li>
-                <li>✗ Policy exclusions or limitations</li>
-                <li>✗ Non-disclosure of important information at policy purchase</li>
-                <li>✗ Disagreement over claim eligibility</li>
-                <li>✗ Incorrect interpretation of policy terms</li>
+                <li>{t('what_claim_rej_common_reasons1')}</li>
+                <li>{t('what_claim_rej_common_reasons2')}</li>
+                <li>{t('what_claim_rej_common_reasons3')}</li>
+                <li>{t('what_claim_rej_common_reasons4')}</li>
+                <li>{t('what_claim_rej_common_reasons5')}</li>
+                <li>{t('what_claim_rej_common_reasons6')}</li>
               </ul>
             </div>
           </motion.div>
@@ -94,10 +96,10 @@ const ClaimRejection = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              What Happens After Claim Rejection
+              {t('what_happens_after_claim_rej_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Understanding the impact and next steps after rejection
+              {t('what_happens_after_claim_rej_description')}
             </p>
           </motion.div>
 
@@ -105,22 +107,22 @@ const ClaimRejection = () => {
             {[
               {
                 icon: AlertCircle,
-                title: 'Confusion About Policy',
-                desc: 'Uncertainty about policy conditions and what was actually covered vs. what was promised.',
+                title: t('what_happens_item1'),
+                desc: t('what_happens_desc1'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: FileText,
-                title: 'Technical Explanations',
-                desc: 'The rejection letter may contain complex technical explanations that are hard to understand.',
+                title: t('what_happens_item2'),
+                desc: t('what_happens_desc2'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: Shield,
-                title: 'Unclear Next Steps',
-                desc: 'Policyholders are unsure whether the decision is final or if they can challenge it.',
+                title: t('what_happens_item3'),
+                desc: t('what_happens_desc3'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
@@ -149,10 +151,10 @@ const ClaimRejection = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Choose Yashoda Total Solution?
+              {t('why_choose_claim_rej_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Expert guidance to resolve claim rejection cases effectively
+                {t('why_choose_claim_rej_description')}
             </p>
           </motion.div>
 
@@ -160,23 +162,23 @@ const ClaimRejection = () => {
             {[
               {
                 icon: Users,
-                title: 'Expert Team',
-                desc: 'Years of experience handling insurance claim rejection complaints and disputes.'
+                title: t('why_choose_claim_rej_item1'),
+                desc: t('why_choose_claim_rej_desc1')
               },
               {
                 icon: FileText,
-                title: 'Complete Documentation',
-                desc: 'We prepare all necessary documents, notices, and complaint letters for you.'
+                title: t('why_choose_claim_rej_item2'),
+                desc: t('why_choose_claim_rej_desc2')
               },
               {
                 icon: Scale,
-                title: 'Legal Support',
-                desc: 'Legal notice drafting and ombudsman complaint filing when needed.'
+                title: t('why_choose_claim_rej_item3'),
+                desc: t('why_choose_claim_rej_desc3')
               },
               {
                 icon: CheckCircle,
-                title: 'High Success Rate',
-                desc: 'Helped hundreds of customers get compensation and policy resolution.'
+                title: t('why_choose_claim_rej_item4'),
+                desc: t('why_choose_claim_rej_desc4')
               },
             ].map((item, index) => (
               <motion.div
@@ -204,10 +206,10 @@ const ClaimRejection = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Our 5-Step Process to Resolve Rejection
+              {t('process_flow_claim_rej_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Systematic approach to address claim rejections
+              {t('process_flow_claim_rej_description')}
             </p>
           </motion.div>
 
@@ -218,28 +220,28 @@ const ClaimRejection = () => {
               {[
                 {
                   step: '1',
-                  title: 'Case Review & Analysis',
-                  desc: 'We review your policy documents, rejection letter, and understand the stated reasons for rejection.'
+                  title: t('process_flow_claim_rej_item1'),
+                  desc: t('process_flow_claim_rej_desc1')
                 },
                 {
                   step: '2',
-                  title: 'Evidence Collection',
-                  desc: 'We gather all supporting documents, policy terms, and correspondence related to your claim.'
+                  title: t('process_flow_claim_rej_item2'),
+                  desc: t('process_flow_claim_rej_desc2')
                 },
                 {
                   step: '3',
-                  title: 'Response Drafting',
-                  desc: 'We prepare a detailed response addressing the rejection reasons point-by-point.'
+                  title: t('process_flow_claim_rej_item3'),
+                  desc: t('process_flow_claim_rej_desc3')
                 },
                 {
                   step: '4',
-                  title: 'Complaint Filing',
-                  desc: 'We file complaints with the insurance company grievance cell and escalate if needed.'
+                  title: t('process_flow_claim_rej_item4'),
+                  desc: t('process_flow_claim_rej_desc4')
                 },
                 {
                   step: '5',
-                  title: 'Ombudsman Escalation',
-                  desc: 'If unresolved, we escalate to Insurance Ombudsman or IRDAI for further action.'
+                  title: t('process_flow_claim_rej_item5'),
+                  desc: t('process_flow_claim_rej_desc5')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -277,38 +279,38 @@ const ClaimRejection = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life Rejection Examples
+              {t('ex_scenario_claim_rej_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common scenarios we help resolve
+              {t('ex_scenario_claim_rej_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Example 1 – Missing Medical Documentation',
-                problem: 'A policyholder submits a health insurance claim after hospital treatment.',
-                reality: 'The insurance company rejects the claim because certain medical reports were not submitted.',
-                solution: 'We helped gather the missing documents and filed a fresh claim which was approved.'
+                title: t('ex_scenario_claim_rej_example1_title'),
+                problem: t('ex_scenario_claim_rej_example1_problem'),
+                reality: t('ex_scenario_claim_rej_example1_reality'),
+                solution: t('ex_scenario_claim_rej_example1_solution')
               },
               {
-                title: 'Example 2 – Policy Exclusion Clause',
-                problem: 'A customer files a claim for treatment of a specific illness.',
-                reality: 'The claim is rejected because the illness falls under the policy\'s exclusion list.',
-                solution: 'We reviewed the policy terms and helped the customer understand the exclusion clause.'
+                title: t('ex_scenario_claim_rej_example2_title'),
+                problem: t('ex_scenario_claim_rej_example2_problem'),
+                reality: t('ex_scenario_claim_rej_example2_reality'),
+                solution: t('ex_scenario_claim_rej_example2_solution')
               },
               {
-                title: 'Example 3 – Late Claim Submission',
-                problem: 'After a vehicle accident, the policyholder delays reporting to the insurance company.',
-                reality: 'The claim is rejected because it wasn\'t reported within the policy-specified timeframe.',
-                solution: 'We filed an appeal explaining the delay circumstances; partial claim was reconsidered.'
+                title: t('ex_scenario_claim_rej_example3_title'),
+                problem: t('ex_scenario_claim_rej_example3_problem'),
+                reality: t('ex_scenario_claim_rej_example3_reality'),
+                solution: t('ex_scenario_claim_rej_example3_solution')
               },
               {
-                title: 'Example 4 – Pre-Existing Condition Dispute',
-                problem: 'A health insurance claim is rejected due to pre-existing condition classification.',
-                reality: 'The insurer believes the illness existed before the policy was issued.',
-                solution: 'We collected medical records proving the condition started post-policy and got approval.'
+                title: t('ex_scenario_claim_rej_example4_title'),
+                problem: t('ex_scenario_claim_rej_example4_problem'),
+                reality: t('ex_scenario_claim_rej_example4_reality'),
+                solution: t('ex_scenario_claim_rej_example4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -327,15 +329,15 @@ const ClaimRejection = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-red-600 mb-2">❌ Problem:</h4>
+                    <h4 className="text-sm font-semibold text-red-600 mb-2">{t('ex_scenario_claim_rej_example_head1')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">⚠️ Reality:</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_claim_rej_example_head2')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_claim_rej_example_head3')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -350,30 +352,30 @@ const ClaimRejection = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_claim_rej_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about claim rejection
+              {t('faq_claim_rej_description')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'What does insurance claim rejection mean?',
-                a: 'Insurance claim rejection means that the insurance company has declined the claim request based on policy conditions or documentation issues.'
+                q: t('faq_claim_rej_q1'),
+                a: t('faq_claim_rej_a1')
               },
               {
-                q: 'Can a rejected insurance claim be reviewed?',
-                a: 'In some cases, policyholders may review the claim details and understand the reasons for rejection before deciding what steps to take next.'
+                q: t('faq_claim_rej_q2'),
+                a: t('faq_claim_rej_a2')
               },
               {
-                q: 'What documents are required for a claim?',
-                a: 'Required documents vary depending on the type of insurance policy and claim situation. Common documents include policy papers, claim forms, medical reports, and bills.'
+                q: t('faq_claim_rej_q3'),
+                a: t('faq_claim_rej_a3')
               },
               {
-                q: 'Why do claims get rejected?',
-                a: 'Claims may be rejected due to missing documents, policy exclusions, delayed submission, non-disclosure, or policy interpretation issues.'
+                q: t('faq_claim_rej_q4'),
+                a: t('faq_claim_rej_a4')
               },
             ].map((faq, index) => (
               <motion.div
@@ -419,10 +421,10 @@ const ClaimRejection = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Facing Confusion After Claim Rejection?
+              {t('cta_claim_rej_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding the reason behind claim rejection can help policyholders evaluate their options. Contact Yashoda Total Solution to learn more about claim rejection assistance services.
+              {t('cta_claim_rej_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -430,17 +432,17 @@ const ClaimRejection = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('cta_claim_rej_description2')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('cta_claim_rej_button')}
                 </a>
               </motion.div>
             </div>

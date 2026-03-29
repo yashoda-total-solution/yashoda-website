@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
+import ScrollToTop from './ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -27,11 +28,13 @@ import ConsumerCases from './pages/services/ConsumerCases';
 import CivilCases from './pages/services/CivilCases';
 import ChequeBounceCases from './pages/services/ChequeBounceCases';
 import './App.css';
+import ReviewAdmin from './pages/ReviewAdmin';
 
 function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <div className="App">
           <Navbar />
           <Routes>
@@ -58,6 +61,7 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/review-admin" element={<ReviewAdmin />} />
           </Routes>
           <Footer />
         </div>

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   Clock, FileText, AlertCircle, CheckCircle, Shield, 
   ArrowRight, HelpCircle, Users, Phone, Hourglass, Search
 } from 'lucide-react';
 
 const ClaimDelay = () => {
+  const { t } = useLanguage();
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +32,9 @@ const ClaimDelay = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('claim_delay_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">Delay in Claim Process</span>
+              <span className="text-white text-sm">{t('claim_delay_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +42,12 @@ const ClaimDelay = () => {
                 <Clock className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Delay in Insurance Claim Process
+                {t('claim_delay_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding why insurance claims sometimes take longer than expected and how policyholders can better understand the process. Delays may occur due to documentation verification, internal investigations, policy conditions, or administrative procedures followed by insurance companies.
+              {t('claim_delay_description')}
             </p>
           </motion.div>
         </div>
@@ -61,28 +63,28 @@ const ClaimDelay = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              Understanding Claim Processing Delays
+              {t('what_claim_delay_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
-                Insurance claim processing is a structured procedure that involves several stages of verification and documentation review.
+                {t('what_claim_delay_description')}
               </p>
               <p className="leading-relaxed mb-4">
-                Sometimes, claims may take longer than expected to process. These delays may happen due to multiple reasons such as <strong>additional document requests, internal review procedures, or clarification requirements related to the policy.</strong>
+                {t('what_claim_delay_description1')} <strong>{t('what_claim_delay_description2')}</strong>
               </p>
               <p className="leading-relaxed mb-4">
-                For policyholders, this waiting period can be frustrating and uncertain, especially when relying on the claim settlement to cover financial expenses related to accidents, medical treatment, or other insured events.
+                {t('what_claim_delay_description3')}
               </p>
               <p className="leading-relaxed mb-4">
-                Common causes of delays include:
+                {t('what_claim_delay_common_reasons')}
               </p>
               <ul className="space-y-3 ml-6">
-                <li>• Incomplete claim documents</li>
-                <li>• Additional verification or investigation by the insurance company</li>
-                <li>• Hospital or service provider documentation delays</li>
-                <li>• High volume of claims being processed</li>
-                <li>• Policy conditions requiring additional evaluation</li>
-                <li>• Communication gaps between involved parties</li>
+                <li>{t('what_claim_delay_common_reasons1')}</li>
+                <li>{t('what_claim_delay_common_reasons2')}</li>
+                <li>{t('what_claim_delay_common_reasons3')}</li>
+                <li>{t('what_claim_delay_common_reasons4')}</li>
+                <li>{t('what_claim_delay_common_reasons5')}</li>
+                <li>{t('what_claim_delay_common_reasons6')}</li>
               </ul>
             </div>
           </motion.div>
@@ -94,10 +96,10 @@ const ClaimDelay = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              What Happens During Claim Review
+              {t('what_happens_after_claim_delay_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Understanding the review process that may cause delays
+              {t('what_happens_after_claim_delay_description')}
             </p>
           </motion.div>
 
@@ -105,29 +107,29 @@ const ClaimDelay = () => {
             {[
               {
                 icon: Search,
-                title: 'Document Verification',
-                desc: 'Insurance company verifies all submitted documents and supporting evidence.',
+                title: t('what_happens_claim_delay_item1'),
+                desc: t('what_happens_claim_delay_desc1'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: FileText,
-                title: 'Medical Review',
-                desc: 'Detailed review of medical reports, accident details, or treatment records.',
+                title: t('what_happens_claim_delay_item2'),
+                desc: t('what_happens_claim_delay_desc2'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: Shield,
-                title: 'Policy Check',
-                desc: 'Confirmation of policy eligibility conditions and coverage terms.',
+                title: t('what_happens_claim_delay_item3'),
+                desc: t('what_happens_claim_delay_desc3'),
                 color: 'bg-teal-50',
                 iconBg: 'bg-teal-600'
               },
               {
                 icon: AlertCircle,
-                title: 'Additional Info',
-                desc: 'Request for supplementary documents if initial submission is incomplete.',
+                title: t('what_happens_claim_delay_item4'),
+                desc: t('what_happens_claim_delay_desc4'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
@@ -156,10 +158,10 @@ const ClaimDelay = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Choose Yashoda Total Solution?
+              {t('why_choose_claim_delay_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Expert assistance for claim processing guidance
+              {t('why_choose_claim_delay_description')}
             </p>
           </motion.div>
 
@@ -167,23 +169,23 @@ const ClaimDelay = () => {
             {[
               {
                 icon: Users,
-                title: 'Expert Team',
-                desc: 'Qualified professionals with industry knowledge and operational expertise.'
+                title: t('why_choose_claim_delay_item1'),
+                desc: t('why_choose_claim_delay_desc1')
               },
               {
                 icon: FileText,
-                title: 'Documentation Help',
-                desc: 'Ensure all required documents are properly prepared and submitted.'
+                title: t('why_choose_claim_delay_item2'),
+                desc: t('why_choose_claim_delay_desc2')
               },
               {
                 icon: Clock,
-                title: 'Status Tracking',
-                desc: 'Regular follow-ups to track claim progress and timely updates.'
+                title: t('why_choose_claim_delay_item3'),
+                desc: t('why_choose_claim_delay_desc3')
               },
               {
                 icon: CheckCircle,
-                title: 'High Success Rate',
-                desc: 'Successfully helped numerous clients navigate the claim process efficiently.'
+                title: t('why_choose_claim_delay_item4'),
+                desc: t('why_choose_claim_delay_desc4')
               },
             ].map((item, index) => (
               <motion.div
@@ -211,10 +213,10 @@ const ClaimDelay = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Our 5-Step Claim Assistance Process
+              {t('process_flow_claim_delay_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Helping you navigate claim delays effectively
+              {t('process_flow_claim_delay_description')}
             </p>
           </motion.div>
 
@@ -225,28 +227,28 @@ const ClaimDelay = () => {
               {[
                 {
                   step: '1',
-                  title: 'Documentation Review',
-                  desc: 'We review your claim documents and ensure all required paperwork is complete and accurate.'
+                  title: t('process_flow_claim_delay_item1'),
+                  desc: t('process_flow_claim_delay_desc1')
                 },
                 {
                   step: '2',
-                  title: 'Status Tracking',
-                  desc: 'We help you track claim status and understand where your claim is in the review process.'
+                  title: t('process_flow_claim_delay_item2'),
+                  desc: t('process_flow_claim_delay_desc2')
                 },
                 {
                   step: '3',
-                  title: 'Follow-Up Assistance',
-                  desc: 'Regular follow-ups with the insurance company to expedite the claim processing.'
+                  title: t('process_flow_claim_delay_item3'),
+                  desc: t('process_flow_claim_delay_desc3')
                 },
                 {
                   step: '4',
-                  title: 'Additional Documentation',
-                  desc: 'If additional documents are requested, we help you gather and submit them promptly.'
+                  title: t('process_flow_claim_delay_item4'),
+                  desc: t('process_flow_claim_delay_desc4')
                 },
                 {
                   step: '5',
-                  title: 'Resolution Support',
-                  desc: 'We guide you through the entire process until your claim is successfully settled.'
+                  title: t('process_flow_claim_delay_item5'),
+                  desc: t('process_flow_claim_delay_desc5')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -284,38 +286,38 @@ const ClaimDelay = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life Delay Examples
+              {t('ex_scenario_claim_delay_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common situations where claims experience delays
+              {t('ex_scenario_claim_delay_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Example 1 – Hospital Documentation Delay',
-                problem: 'A patient submits a health insurance claim after hospital treatment.',
-                reality: 'The claim remains pending because the insurance company is waiting for additional medical reports from the hospital.',
-                solution: 'We coordinated with the hospital to expedite report submission and the claim was processed within 2 weeks.'
+                title: t('ex_scenario_claim_delay_example1_title'),
+                problem: t('ex_scenario_claim_delay_example1_problem'),
+                reality: t('ex_scenario_claim_delay_example1_reality'),
+                solution: t('ex_scenario_claim_delay_example1_solution')
               },
               {
-                title: 'Example 2 – Accident Investigation',
-                problem: 'A motor accident claim takes longer to process than expected.',
-                reality: 'The insurance company conducts an investigation to verify accident details before approving the claim.',
-                solution: 'We provided all supporting evidence and followed up regularly; claim was settled in 45 days.'
+                title: t('ex_scenario_claim_delay_example2_title'),
+                problem: t('ex_scenario_claim_delay_example2_problem'),
+                reality: t('ex_scenario_claim_delay_example2_reality'),
+                solution: t('ex_scenario_claim_delay_example2_solution')
               },
               {
-                title: 'Example 3 – Missing Supporting Documents',
-                problem: 'A claim is delayed due to incomplete documentation.',
-                reality: 'Certain documents like discharge summaries and invoices were not submitted initially.',
-                solution: 'We helped gather all missing documents and resubmitted; claim approved within 10 days.'
+                title: t('ex_scenario_claim_delay_example3_title'),
+                problem: t('ex_scenario_claim_delay_example3_problem'),
+                reality: t('ex_scenario_claim_delay_example3_reality'),
+                solution: t('ex_scenario_claim_delay_example3_solution')
               },
               {
-                title: 'Example 4 – Policy Condition Review',
-                problem: 'An insurance company takes additional time to review the claim.',
-                reality: 'The insurer needed to verify whether the event falls within policy coverage conditions.',
-                solution: 'We provided policy clarifications and supporting documents; claim processed successfully.'
+                title: t('ex_scenario_claim_delay_example4_title'),
+                problem: t('ex_scenario_claim_delay_example4_problem'),
+                reality: t('ex_scenario_claim_delay_example4_reality'),
+                solution: t('ex_scenario_claim_delay_example4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -334,15 +336,15 @@ const ClaimDelay = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">⏱️ Problem:</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_claim_delay_example_head1')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-blue-600 mb-2">📋 Reality:</h4>
+                    <h4 className="text-sm font-semibold text-blue-600 mb-2">{t('ex_scenario_claim_delay_example_head2')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_claim_delay_example_head3')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -357,30 +359,30 @@ const ClaimDelay = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_claim_delay_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about claim processing delays
+              {t('faq_claim_delay_description')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'Why do insurance claims sometimes take longer than expected?',
-                a: 'Claim processing may require document verification, investigation, and policy evaluation, which can extend the processing time depending on complexity.'
+                q: t('faq_claim_delay_q1'),
+                a: t('faq_claim_delay_a1')
               },
               {
-                q: 'How long does claim processing usually take?',
-                a: 'The timeline varies depending on the type of claim, required documentation, and policy conditions. Some claims are processed within days, while others may take weeks.'
+                q: t('faq_claim_delay_q2'),
+                a: t('faq_claim_delay_a2')
               },
               {
-                q: 'What should policyholders do if their claim is delayed?',
-                a: 'Review the claim status, ensure all required documents are submitted, and follow up with the insurance company for updates on the processing timeline.'
+                q: t('faq_claim_delay_q3'),
+                a: t('faq_claim_delay_a3')
               },
               {
-                q: 'Can claim delays happen even if documents are submitted?',
-                a: 'Yes. Sometimes insurance companies conduct additional verification, investigation, or policy review before approving the claim.'
+                q: t('faq_claim_delay_q4'),
+                a: t('faq_claim_delay_a4')
               },
             ].map((faq, index) => (
               <motion.div
@@ -426,10 +428,10 @@ const ClaimDelay = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Experiencing Delays in Your Claim Process?
+              {t('cta_claim_delay_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding the claim procedure and documentation requirements can help policyholders navigate the situation more effectively. Contact Yashoda Total Solution for claim processing assistance.
+              {t('cta_claim_delay_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -437,17 +439,17 @@ const ClaimDelay = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('cta_claim_delay_description2')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('cta_claim_delay_button')}
                 </a>
               </motion.div>
             </div>

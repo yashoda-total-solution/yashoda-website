@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   CreditCard, FileText, AlertCircle, Shield, CheckCircle, 
   ArrowRight, HelpCircle, Users, Phone, Target, TrendingUp 
 } from 'lucide-react';
 
 const BankingAtmInsurance = () => {
+  const { t } = useLanguage();
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +32,9 @@ const BankingAtmInsurance = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('atm_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">Banking & ATM Card Insurance Claim Support</span>
+              <span className="text-white text-sm">{t('atm_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +42,12 @@ const BankingAtmInsurance = () => {
                 <CreditCard className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Banking & ATM Card Insurance Claim Support
+                {t('atm_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding insurance benefits linked to bank accounts and ATM cards and how beneficiaries can navigate the claim process. Many banks provide insurance coverage linked to ATM or debit cards, offering financial protection in case of accidental death, disability, or other eligible incidents.
+              {t('atm_description')}
             </p>
           </motion.div>
         </div>
@@ -61,29 +63,29 @@ const BankingAtmInsurance = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              Service Overview
+              {t('what_atm_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
-                Many banks offer insurance coverage linked to debit cards or ATM cards as part of their banking services. These policies may provide financial protection to cardholders or their beneficiaries in case of accidental death, disability, or other covered situations.
+                {t('what_atm_description')}
               </p>
               <p className="leading-relaxed mb-4">
-                However, many customers remain unaware that such insurance coverage exists or do not understand the claim process involved.
+                {t('what_atm_description1')}
               </p>
               <p className="leading-relaxed mb-4">
-                When an eligible incident occurs, beneficiaries may find it difficult to determine whether the insurance benefit applies and what documents are required to submit a claim.
+                {t('what_atm_description2')}
               </p>
               <p className="leading-relaxed mb-4">
-                <strong>Yashoda Total Solutions</strong> assists clients in understanding the eligibility criteria, preparing the required documents, and guiding them through the claim submission process to help them access the benefits available under bank-linked insurance policies.
+                <strong>{t('what_atm_description3')}</strong> {t('what_atm_description4')}
               </p>
               <p className="leading-relaxed mb-4">
-                <strong>Typical ATM Card Insurance Claim Process:</strong>
+                <strong>{t('what_atm_key_features')}</strong>
               </p>
               <ul className="space-y-3 ml-6">
-                <li>• ATM Card Issued by Bank → Insurance Coverage Linked to Card</li>
-                <li>• Accidental Incident Occurs</li>
-                <li>• Beneficiary Submits Claim</li>
-                <li>• Claim Verification and Processing</li>
+                <li>{t('what_atm_key_feature1')}</li>
+                <li>{t('what_atm_key_feature2')}</li>
+                <li>{t('what_atm_key_feature3')}</li>
+                <li>{t('what_atm_key_feature4')}</li>
               </ul>
             </div>
           </motion.div>
@@ -95,10 +97,10 @@ const BankingAtmInsurance = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common ATM Card Insurance Claim Challenges
+              {t('common_challenges_atm_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Beneficiaries may face several challenges when attempting to claim benefits
+              {t('common_challenges_atm_description')}
             </p>
           </motion.div>
 
@@ -106,36 +108,36 @@ const BankingAtmInsurance = () => {
             {[
               {
                 icon: AlertCircle,
-                title: 'Lack of Awareness',
-                desc: 'Beneficiaries are unaware that the ATM card included insurance coverage.',
+                title: t('common_challenges_atm_item1'),
+                desc: t('common_challenges_atm_desc1'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: HelpCircle,
-                title: 'Eligibility Confusion',
-                desc: 'Confusion about eligibility conditions for insurance claims.',
+                title: t('common_challenges_atm_item2'),
+                desc: t('common_challenges_atm_desc2'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: FileText,
-                title: 'Missing Documentation',
-                desc: 'Difficulty collecting the required documents.',
+                title: t('common_challenges_atm_item3'),
+                desc: t('common_challenges_atm_desc3'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: Target,
-                title: 'Claim Process Uncertainty',
-                desc: 'Uncertainty about the claim submission process.',
+                title: t('common_challenges_atm_item4'),
+                desc: t('common_challenges_atm_desc4'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: TrendingUp,
-                title: 'Verification Delays',
-                desc: 'Delays caused by incomplete or incorrect documentation.',
+                title: t('common_challenges_atm_item5'),
+                desc: t('common_challenges_atm_desc5'),
                 color: 'bg-green-50',
                 iconBg: 'bg-green-600'
               },
@@ -164,32 +166,32 @@ const BankingAtmInsurance = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-8 text-center">
-              What Actually Happens in ATM Card Insurance Claim Cases
+              {t('what_happens_after_atm_title')}
             </h2>
             
             <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
               <div className="prose prose-lg max-w-none text-[#52606D]">
                 <p className="leading-relaxed mb-4">
-                  In many situations, cardholders are automatically enrolled in insurance coverage when they receive an ATM or debit card from their bank.
+                  {t('what_happens_after_atm_description')}
                 </p>
                 <p className="leading-relaxed mb-4">
-                  However, customers often remain unaware of this coverage until an eligible incident occurs. When such an event happens, beneficiaries may later discover that the cardholder was entitled to insurance benefits.
+                  {t('what_happens_atm_description1')}
                 </p>
                 <p className="leading-relaxed mb-4">
-                  At that point, beneficiaries must understand the claim process and gather the required documents to submit the claim application.
+                  {t('what_happens_atm_description2')}
                 </p>
                 <p className="leading-relaxed mb-4">
-                  The bank and insurance provider typically review the submitted documents to verify eligibility and confirm whether the claim meets the policy conditions.
+                  {t('what_happens_atm_description3')}
                 </p>
                 <p className="leading-relaxed mb-4">
-                  <strong>Claim Review Process:</strong>
+                  <strong>{t('what_happens_atm_description4')}</strong>
                 </p>
                 <ul className="space-y-3 ml-6">
-                  <li>• Eligible Incident Occurs</li>
-                  <li>• Beneficiary Learns About ATM Card Insurance</li>
-                  <li>• Claim Application Prepared</li>
-                  <li>• Documents Submitted</li>
-                  <li>• Claim Verification and Decision</li>
+                  <li>{t('what_happens_atm_item1')}</li>
+                  <li>{t('what_happens_atm_item2')}</li>
+                  <li>{t('what_happens_atm_item3')}</li>
+                  <li>{t('what_happens_atm_item4')}</li>
+                  <li>{t('what_happens_atm_item5')}</li>
                 </ul>
               </div>
             </div>
@@ -202,33 +204,33 @@ const BankingAtmInsurance = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Example Scenarios
+              {t('ex_scenario_atm_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Real-world situations where ATM card insurance claims arise
+              {t('ex_scenario_atm_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Example 1 – Family Unaware of ATM Card Insurance',
-                desc: 'A bank customer holds an active ATM card that includes accidental insurance coverage. After an unfortunate accident, the family later learns that the cardholder was eligible for insurance benefits linked to the ATM card.',
+                title: t('ex_scenario_atm_example1_title'),
+                desc: t('ex_scenario_atm_example1_desc'),
                 color: 'from-blue-50 to-cyan-50'
               },
               {
-                title: 'Example 2 – Eligibility Requirement Confusion',
-                desc: 'A beneficiary attempts to file a claim but learns that certain eligibility conditions must be met, such as recent ATM card usage or active account status.',
+                title: t('ex_scenario_atm_example2_title'),
+                desc: t('ex_scenario_atm_example2_desc'),
                 color: 'from-purple-50 to-pink-50'
               },
               {
-                title: 'Example 3 – Documentation Challenges',
-                desc: 'A family member tries to submit a claim but struggles to collect the necessary documents required by the bank and insurance provider.',
+                title: t('ex_scenario_atm_example3_title'),
+                desc: t('ex_scenario_atm_example3_desc'),
                 color: 'from-orange-50 to-red-50'
               },
               {
-                title: 'Example 4 – Claim Procedure Uncertainty',
-                desc: 'A beneficiary approaches the bank to claim the insurance benefit but is unsure about the correct process and documentation required to submit the claim.',
+                title: t('ex_scenario_atm_example4_title'),
+                desc: t('ex_scenario_atm_example4_desc'),
                 color: 'from-green-50 to-emerald-50'
               },
             ].map((item, index) => (
@@ -253,22 +255,16 @@ const BankingAtmInsurance = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-8 text-center">
-              Understanding ATM Card Insurance Claim Requirements
+              {t('documentation_atm_title')}
             </h2>
             
             <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
               <p className="text-lg text-[#52606D] leading-relaxed mb-6">
-                ATM card insurance claims typically require certain documents and information to verify eligibility and process the claim.
+                {t('documentation_atm_description')}
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {[
-                  'Proof of the eligible incident',
-                  'Identity and bank account details',
-                  'ATM or debit card information',
-                  'Claim application forms',
-                  'Verification of insurance coverage linked to the card'
-                ].map((requirement, index) => (
+                {t('documentation_atm_list').map((requirement, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <CheckCircle className="h-6 w-6 text-[#0F7A4A] flex-shrink-0 mt-1" />
                     <p className="text-base text-[#52606D]">{requirement}</p>
@@ -277,11 +273,11 @@ const BankingAtmInsurance = () => {
               </div>
 
               <p className="text-base text-[#52606D] leading-relaxed mb-4">
-                Understanding these documentation requirements helps beneficiaries prepare the claim application correctly.
+                {t('documentation_atm_description1')}
               </p>
 
               <p className="text-base text-[#52606D] leading-relaxed">
-                <strong>Documentation Framework:</strong> Cardholder Verification → Incident Documentation → Claim Application Form → Bank Account Verification → Claim Evaluation
+                <strong>{t('documentation_atm_description2')}</strong> {t('documentation_atm_description3')}
               </p>
             </div>
           </motion.div>
@@ -293,10 +289,10 @@ const BankingAtmInsurance = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Yashoda Total Solution?
+              {t('why_choose_atm_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Trusted support for banking and ATM card insurance claims
+              {t('why_choose_atm_description')}
             </p>
           </motion.div>
 
@@ -304,28 +300,23 @@ const BankingAtmInsurance = () => {
             {[
               {
                 icon: Users,
-                title: 'Experienced & Professional Team',
-                desc: 'Qualified professionals with industry knowledge and operational expertise.'
+                title: t('why_choose_atm_item1'),
+                desc: t('why_choose_atm_desc1')
               },
               {
                 icon: TrendingUp,
-                title: 'Quick & Transparent Processing',
-                desc: 'Systematic workflows supported by clear communication and monitoring.'
+                title: t('why_choose_atm_item2'),
+                desc: t('why_choose_atm_desc2')
               },
               {
                 icon: Shield,
-                title: 'Customer-First Approach',
-                desc: 'Every case handled with attention, empathy, and ethical responsibility.'
+                title: t('why_choose_atm_item3'),
+                desc: t('why_choose_atm_desc3')
               },
               {
                 icon: Target,
-                title: 'Technology-Driven Monitoring',
-                desc: 'Advanced tracking systems ensure accountability and regular updates.'
-              },
-              {
-                icon: CheckCircle,
-                title: 'Trusted Service Partner',
-                desc: 'Focused on long-term relationships built on trust, reliability, and service excellence.'
+                title: t('why_choose_atm_item4'),
+                desc: t('why_choose_atm_desc4')
               },
             ].map((item, index) => (
               <motion.div
@@ -353,27 +344,27 @@ const BankingAtmInsurance = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_atm_title')}
             </h2>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                question: 'What is ATM card insurance coverage?',
-                answer: 'Some banks provide insurance benefits linked to ATM or debit cards for certain eligible incidents.'
+                question: t('faq_atm_q1'),
+                answer: t('faq_atm_a1')
               },
               {
-                question: 'Who can claim ATM card insurance benefits?',
-                answer: 'Beneficiaries of the cardholder may be eligible to claim benefits depending on the policy conditions.'
+                question: t('faq_atm_q2'),
+                answer: t('faq_atm_a2')
               },
               {
-                question: 'How can someone know if their ATM card includes insurance coverage?',
-                answer: 'The bank or the card issuing institution can confirm whether insurance coverage is linked to the ATM card.'
+                question: t('faq_atm_q3'),
+                answer: t('faq_atm_a3')
               },
               {
-                question: 'What documents are required for ATM card insurance claims?',
-                answer: 'Required documents may include identity verification, incident documentation, and claim forms.'
+                question: t('faq_atm_q4'),
+                answer: t('faq_atm_a3')
               },
             ].map((faq, index) => (
               <motion.div
@@ -411,20 +402,20 @@ const BankingAtmInsurance = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Need Help Understanding ATM Card Insurance Claim Procedures?
+              {t('cta_atm_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
-              Understanding eligibility conditions and documentation requirements can help beneficiaries navigate the claim process more confidently.
+              {t('cta_atm_description')}
             </p>
             <p className="text-lg text-white/90 mb-8">
-              Contact Yashoda Total Solution to learn more about assistance with banking and ATM card insurance claim support.
+              {t('cta_atm_description2')}
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center space-x-2 bg-[#F39C12] hover:bg-[#E67E22] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
             >
               <Phone className="h-5 w-5" />
-              <span>Contact Us Now</span>
+              <span>{t('cta_atm_button')}</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
           </motion.div>

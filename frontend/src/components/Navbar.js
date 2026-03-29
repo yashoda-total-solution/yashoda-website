@@ -16,11 +16,11 @@ const Navbar = () => {
     { path: '/about', label: t('nav_about') },
     // Services will be handled separately as dropdown
     { path: '/contact', label: t('nav_contact') },
-    { path: '/faqs', label: 'FAQs' },
-    { path: '/partner', label: 'Partner with us' },
+    { path: '/faqs', label: t('nav_faqs') },
+    { path: '/partner', label: t('nav_partner') },
     { path: '/gallery', label: t('nav_gallery') },
     { path: '/reviews', label: t('nav_reviews') },
-    { path: '/login', label: 'Login' },
+    { path: '/login', label: t('nav_login') },
   ];
 
   // Insurance Dispute Resolution (nested services)
@@ -62,9 +62,9 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3" data-testid="navbar-logo">
             <img 
-              src="https://customer-assets.emergentagent.com/job_1d118af0-25cf-4c4f-95a3-4dceda4b57a9/artifacts/boa41pzj_YASHODA%20TOTAL%20SOLUTION%201%20%281%29.png" 
+              src="logo.png" 
               alt="Yashoda Total Solution" 
-              className="h-12 w-auto"
+              className="h-16 w-auto"
             />
           </Link>
 
@@ -103,7 +103,7 @@ const Navbar = () => {
                         data-testid="nav-services-dropdown"
                         className="flex items-center space-x-1 text-base font-medium transition-colors text-[#1F2933] hover:text-[#0F7A4A]"
                       >
-                        <span>Services</span>
+                        <span>{t('nav_services')}</span>
                         <ChevronDown className="h-4 w-4" />
                       </button>
 

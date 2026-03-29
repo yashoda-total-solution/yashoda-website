@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   Heart, FileText, AlertCircle, CheckCircle, Shield, 
   ArrowRight, HelpCircle, Users, Phone, Building2, FileCheck
 } from 'lucide-react';
 
 const PMJJBY = () => {
+  const { t } = useLanguage();
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +32,9 @@ const PMJJBY = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('pmjjby_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">PMJJBY</span>
+              <span className="text-white text-sm">{t('pmjjby_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +42,12 @@ const PMJJBY = () => {
                 <Heart className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY) Assistance
+                {t('pmjjby_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding the PMJJBY life insurance scheme and how beneficiaries can navigate the claim process. PMJJBY is a government-supported life insurance scheme that provides affordable life insurance coverage to eligible individuals. Understanding how the scheme works is important for beneficiaries seeking to access insurance benefits.
+              {t('pmjjby_description')}
             </p>
           </motion.div>
         </div>
@@ -61,27 +63,27 @@ const PMJJBY = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              What is Pradhan Mantri Jeevan Jyoti Bima Yojana?
+              {t('what_pmjjby_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
-                Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY) is a life insurance scheme launched by the Government of India to provide affordable life insurance coverage to eligible citizens.
+                {t('what_pmjjby_description')}
               </p>
               <p className="leading-relaxed mb-4">
-                The scheme is generally <strong>linked to a savings bank account</strong>, allowing individuals to enroll easily through their bank. While the scheme offers important financial protection, beneficiaries may sometimes find it difficult to understand the claim procedure and documentation required.
+                {t('what_pmjjby_description1')} <strong>{t('what_pmjjby_description2')}</strong> {t('what_pmjjby_description3')}
               </p>
               <p className="leading-relaxed mb-4">
-                In many situations, family members or beneficiaries become aware of the policy only after an unfortunate event occurs, which can create uncertainty about how to proceed with the claim.
+                {t('what_pmjjby_description4')}
               </p>
               <p className="leading-relaxed mb-4">
-                Key features of PMJJBY:
+                {t('what_pmjjby_key_features')}
               </p>
               <ul className="space-y-3 ml-6">
-                <li>• Affordable annual premium for life insurance coverage</li>
-                <li>• Enrollment through savings bank account</li>
-                <li>• Government-backed life insurance scheme</li>
-                <li>• Coverage for eligible age groups</li>
-                <li>• Simple renewal process</li>
+                <li>{t('what_pmjjby_key_feature1')}</li>
+                <li>{t('what_pmjjby_key_feature2')}</li>
+                <li>{t('what_pmjjby_key_feature3')}</li>
+                <li>{t('what_pmjjby_key_feature4')}</li>
+                <li>{t('what_pmjjby_key_feature5')}</li>
               </ul>
             </div>
           </motion.div>
@@ -93,10 +95,10 @@ const PMJJBY = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common PMJJBY Claim Challenges
+              {t('common_challenges_pmjjby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Issues beneficiaries may encounter during claim submission
+              {t('common_challenges_pmjjby_description')}
             </p>
           </motion.div>
 
@@ -104,43 +106,43 @@ const PMJJBY = () => {
             {[
               {
                 icon: AlertCircle,
-                title: 'Lack of Awareness',
-                desc: 'Beneficiaries are unaware that the policyholder was enrolled in PMJJBY scheme',
+                title: t('common_challenges_pmjjby_item1'),
+                desc: t('common_challenges_pmjjby_desc1'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: HelpCircle,
-                title: 'Eligibility Confusion',
-                desc: 'Uncertainty regarding claim eligibility and coverage conditions',
+                title: t('common_challenges_pmjjby_item2'),
+                desc: t('common_challenges_pmjjby_desc2'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: FileText,
-                title: 'Missing Documentation',
-                desc: 'Difficulty gathering required documents for claim submission',
+                title: t('common_challenges_pmjjby_item3'),
+                desc: t('common_challenges_pmjjby_desc3'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: FileCheck,
-                title: 'Process Uncertainty',
-                desc: 'Confusion about how to initiate and complete the claim process',
+                title: t('common_challenges_pmjjby_item4'),
+                desc: t('common_challenges_pmjjby_desc4'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: Building2,
-                title: 'Bank Procedures',
-                desc: 'Understanding bank claim submission and verification procedures',
+                title: t('common_challenges_pmjjby_item5'),
+                desc: t('common_challenges_pmjjby_desc5'),
                 color: 'bg-teal-50',
                 iconBg: 'bg-teal-600'
               },
               {
                 icon: CheckCircle,
-                title: 'Verification Delays',
-                desc: 'Processing delays due to incomplete claim applications',
+                title: t('common_challenges_pmjjby_item6'),
+                desc: t('common_challenges_pmjjby_desc6'),
                 color: 'bg-pink-50',
                 iconBg: 'bg-pink-600'
               },
@@ -169,10 +171,10 @@ const PMJJBY = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              What Happens in PMJJBY Claim Cases
+              {t('what_happens_after_pmjjby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Understanding the claim discovery and submission process
+              {t('what_happens_after_pmjjby_description')}
             </p>
           </motion.div>
 
@@ -180,22 +182,22 @@ const PMJJBY = () => {
             {[
               {
                 icon: AlertCircle,
-                title: 'Coverage Discovery',
-                desc: 'Family members may discover PMJJBY enrollment only after the unfortunate event.',
+                title: t('what_happens_pmjjby_item1'),
+                desc: t('what_happens_pmjjby_desc1'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: FileText,
-                title: 'Document Collection',
-                desc: 'Beneficiaries must gather required documents including death certificate and claim forms.',
+                title: t('what_happens_pmjjby_item2'),
+                desc: t('what_happens_pmjjby_desc2'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: Building2,
-                title: 'Bank Verification',
-                desc: 'Bank and insurance provider review documents to verify eligibility and process claim.',
+                title: t('what_happens_pmjjby_item3'),
+                desc: t('what_happens_pmjjby_desc3'),
                 color: 'bg-green-50',
                 iconBg: 'bg-green-600'
               },
@@ -224,10 +226,10 @@ const PMJJBY = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Choose Yashoda Total Solution?
+              {t('why_choose_pmjjby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Expert guidance for PMJJBY claim assistance
+              {t('why_choose_pmjjby_description')}
             </p>
           </motion.div>
 
@@ -235,23 +237,23 @@ const PMJJBY = () => {
             {[
               {
                 icon: Users,
-                title: 'Expert Team',
-                desc: 'Qualified professionals with experience in government insurance schemes.'
+                title: t('why_choose_pmjjby_item1'),
+                desc: t('why_choose_pmjjby_desc1')
               },
               {
                 icon: FileText,
-                title: 'Document Support',
-                desc: 'Complete assistance with gathering and organizing required claim documents.'
+                title: t('why_choose_pmjjby_item2'),
+                desc: t('why_choose_pmjjby_desc2')
               },
               {
                 icon: Building2,
-                title: 'Bank Coordination',
-                desc: 'Help with bank communication and claim submission procedures.'
+                title: t('why_choose_pmjjby_item3'),
+                desc: t('why_choose_pmjjby_desc3')
               },
               {
                 icon: CheckCircle,
-                title: 'Proven Results',
-                desc: 'Successfully helped numerous beneficiaries with PMJJBY claims.'
+                title: t('why_choose_pmjjby_item4'),
+                desc: t('why_choose_pmjjby_desc4')
               },
             ].map((item, index) => (
               <motion.div
@@ -279,10 +281,10 @@ const PMJJBY = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Our 5-Step PMJJBY Claim Assistance Process
+              {t('process_flow_pmjjby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Simplified guidance for PMJJBY beneficiaries
+              {t('process_flow_pmjjby_description')}
             </p>
           </motion.div>
 
@@ -293,28 +295,28 @@ const PMJJBY = () => {
               {[
                 {
                   step: '1',
-                  title: 'Enrollment Verification',
-                  desc: 'We help verify if the policyholder was enrolled in PMJJBY through their bank account.'
+                  title: t('process_flow_pmjjby_item1'),
+                  desc: t('process_flow_pmjjby_desc1')
                 },
                 {
                   step: '2',
-                  title: 'Eligibility Assessment',
-                  desc: 'We review the policy details to confirm eligibility and active coverage status.'
+                  title: t('process_flow_pmjjby_item2'),
+                  desc: t('process_flow_pmjjby_desc2')
                 },
                 {
                   step: '3',
-                  title: 'Document Collection',
-                  desc: 'We assist in gathering all required documents including death certificate and identity proofs.'
+                  title: t('process_flow_pmjjby_item3'),
+                  desc: t('process_flow_pmjjby_desc3')
                 },
                 {
                   step: '4',
-                  title: 'Claim Form Preparation',
-                  desc: 'We help complete the claim application forms accurately with all necessary information.'
+                  title: t('process_flow_pmjjby_item4'),
+                  desc: t('process_flow_pmjjby_desc4')
                 },
                 {
                   step: '5',
-                  title: 'Bank Submission & Follow-Up',
-                  desc: 'We guide you through bank submission and track the claim until processing is complete.'
+                  title: t('process_flow_pmjjby_item5'),
+                  desc: t('process_flow_pmjjby_desc5')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -352,38 +354,38 @@ const PMJJBY = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life PMJJBY Claim Examples
+              {t('ex_scenario_pmjjby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common scenarios we help resolve
+              {t('ex_scenario_pmjjby_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Example 1 – Family Unaware of Life Insurance Coverage',
-                problem: 'A bank customer enrolls in PMJJBY through automatic enrollment.',
-                reality: 'After the policyholder passes away, the family learns about the life insurance coverage but is unsure how to begin the claim.',
-                solution: 'We verified enrollment, explained the process, and helped submit a complete claim successfully.'
+                title: t('ex_scenario_pmjjby_example1_title'),
+                problem: t('ex_scenario_pmjjby_example1_problem'),
+                reality: t('ex_scenario_pmjjby_example1_reality'),
+                solution: t('ex_scenario_pmjjby_example1_solution')
               },
               {
-                title: 'Example 2 – Documentation Confusion',
-                problem: 'The beneficiary attempts to submit a claim for PMJJBY benefits.',
-                reality: 'They face difficulties because they are uncertain about which documents are required for submission.',
-                solution: 'We provided a complete document checklist and helped gather all required papers for the claim.'
+                title: t('ex_scenario_pmjjby_example2_title'),
+                problem: t('ex_scenario_pmjjby_example2_problem'),
+                reality: t('ex_scenario_pmjjby_example2_reality'),
+                solution: t('ex_scenario_pmjjby_example2_solution')
               },
               {
-                title: 'Example 3 – Bank Claim Procedure Uncertainty',
-                problem: 'The family approaches the bank to claim the insurance benefit.',
-                reality: 'They find it difficult to understand the claim forms and verification procedures required.',
-                solution: 'We guided them through each step, helped fill forms correctly, and coordinated with the bank.'
+                title: t('ex_scenario_pmjjby_example3_title'),
+                problem: t('ex_scenario_pmjjby_example3_problem'),
+                reality: t('ex_scenario_pmjjby_example3_reality'),
+                solution: t('ex_scenario_pmjjby_example3_solution')
               },
               {
-                title: 'Example 4 – Eligibility Clarification',
-                problem: 'A beneficiary wants to file a claim but is unsure about eligibility.',
-                reality: 'They need to verify whether the policyholder met PMJJBY enrollment conditions at the time.',
-                solution: 'We reviewed enrollment records with the bank and confirmed eligibility before proceeding.'
+                title: t('ex_scenario_pmjjby_example4_title'),
+                problem: t('ex_scenario_pmjjby_example4_problem'),
+                reality: t('ex_scenario_pmjjby_example4_reality'),
+                solution: t('ex_scenario_pmjjby_example4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -402,15 +404,15 @@ const PMJJBY = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">❌ Problem:</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_pmjjby_example_head1')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-blue-600 mb-2">⚠️ Reality:</h4>
+                    <h4 className="text-sm font-semibold text-blue-600 mb-2">{t('ex_scenario_pmjjby_example_head2')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_pmjjby_example_head3')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -425,30 +427,30 @@ const PMJJBY = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_pmjjby_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about PMJJBY
+              {t('faq_pmjjby_description')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'What is Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)?',
-                a: 'PMJJBY is a government-backed life insurance scheme that provides affordable life insurance coverage to eligible individuals at a minimal annual premium.'
+                q: t('faq_pmjjby_q1'),
+                a: t('faq_pmjjby_a1')
               },
               {
-                q: 'Who can enroll in PMJJBY?',
-                a: 'Individuals with a savings bank account within the eligible age group (typically 18-50 years) can enroll in the scheme through their bank.'
+                q: t('faq_pmjjby_q2'),
+                a: t('faq_pmjjby_a2')
               },
               {
-                q: 'What type of coverage does PMJJBY provide?',
-                a: 'The scheme provides life insurance coverage for the policyholder during the active policy period, offering financial protection to beneficiaries.'
+                q: t('faq_pmjjby_q3'),
+                a: t('faq_pmjjby_a3')
               },
               {
-                q: 'How can beneficiaries check if someone was enrolled in PMJJBY?',
-                a: 'Enrollment is usually linked to the policyholder\'s bank account. Beneficiaries can check with the bank where the account is held to confirm PMJJBY coverage.'
+                q: t('faq_pmjjby_q4'),
+                a: t('faq_pmjjby_a4')
               },
             ].map((faq, index) => (
               <motion.div
@@ -494,10 +496,10 @@ const PMJJBY = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Need Help Understanding PMJJBY Claims?
+              {t('cta_pmjjby_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding the scheme requirements and documentation procedures can help beneficiaries navigate the claim process more confidently. Contact Yashoda Total Solution for expert assistance with PMJJBY claims.
+              {t('cta_pmjjby_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -505,17 +507,17 @@ const PMJJBY = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('cta_pmjjby_description2')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('cta_pmjjby_button')}
                 </a>
               </motion.div>
             </div>

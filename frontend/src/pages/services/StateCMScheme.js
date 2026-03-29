@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   Building2, FileText, AlertCircle, CheckCircle, Shield, 
   ArrowRight, HelpCircle, Users, Phone, UserCheck, FileCheck
 } from 'lucide-react';
 
 const StateCMScheme = () => {
+  const { t } = useLanguage();
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +32,9 @@ const StateCMScheme = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('state_cm_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">State CM Insurance Scheme</span>
+              <span className="text-white text-sm">{t('state_cm_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +42,12 @@ const StateCMScheme = () => {
                 <Building2 className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                State Chief Minister Insurance Scheme Assistance
+                {t('state_cm_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding state government insurance schemes and how beneficiaries can navigate the claim and application process. Many state governments provide insurance schemes to support citizens with financial protection. Understanding how the scheme works is important for individuals seeking to access these benefits.
+              {t('state_cm_description')}
             </p>
           </motion.div>
         </div>
@@ -61,27 +63,27 @@ const StateCMScheme = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              What are State Chief Minister Insurance Schemes?
+              {t('what_state_cm_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
-                State Chief Minister Insurance Schemes are government programs designed to provide financial assistance and protection to eligible citizens, particularly for healthcare expenses or other insured events.
+                {t('what_state_cm_description')}
               </p>
               <p className="leading-relaxed mb-4">
-                These schemes aim to support individuals and families by <strong>reducing the financial burden associated with medical treatment</strong> and other eligible situations.
+                {t('what_state_cm_description1')} <strong>{t('what_state_cm_description2')}</strong> {t('what_state_cm_description3')}
               </p>
               <p className="leading-relaxed mb-4">
-                However, many beneficiaries face challenges understanding the scheme requirements, eligibility criteria, and claim procedures. The documentation process and application steps can sometimes be difficult to navigate, especially for individuals unfamiliar with government insurance systems.
+                {t('what_state_cm_description4')}
               </p>
               <p className="leading-relaxed mb-4">
-                Key aspects of state insurance schemes:
+                {t('what_state_cm_key_features')}
               </p>
               <ul className="space-y-3 ml-6">
-                <li>• Government-backed financial protection programs</li>
-                <li>• Healthcare expense coverage for eligible citizens</li>
-                <li>• State-specific eligibility criteria and benefits</li>
-                <li>• Application and verification procedures</li>
-                <li>• Support for medical emergencies and treatment</li>
+                <li>{t('what_state_cm_key_feature1')}</li>
+                <li>{t('what_state_cm_key_feature2')}</li>
+                <li>{t('what_state_cm_key_feature3')}</li>
+                <li>{t('what_state_cm_key_feature4')}</li>
+                <li>{t('what_state_cm_key_feature5')}</li>
               </ul>
             </div>
           </motion.div>
@@ -93,10 +95,10 @@ const StateCMScheme = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common Scheme Application Challenges
+              {t('common_challenges_state_cm_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Issues beneficiaries may face during application or claims
+              {t('common_challenges_state_cm_description')}
             </p>
           </motion.div>
 
@@ -104,43 +106,43 @@ const StateCMScheme = () => {
             {[
               {
                 icon: HelpCircle,
-                title: 'Eligibility Confusion',
-                desc: 'Uncertainty about whether they qualify for the scheme benefits',
+                title: t('common_challenges_state_cm_item1'),
+                desc: t('common_challenges_state_cm_desc1'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: FileText,
-                title: 'Application Difficulty',
-                desc: 'Confusion regarding application procedures and submission process',
+                title: t('common_challenges_state_cm_item2'),
+                desc: t('common_challenges_state_cm_desc2'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: FileCheck,
-                title: 'Missing Documents',
-                desc: 'Difficulty gathering required identity and eligibility documents',
+                title: t('common_challenges_state_cm_item3'),
+                desc: t('common_challenges_state_cm_desc3'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: AlertCircle,
-                title: 'Limited Awareness',
-                desc: 'Lack of awareness about available scheme benefits and coverage',
+                title: t('common_challenges_state_cm_item4'),
+                desc: t('common_challenges_state_cm_desc4'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: Building2,
-                title: 'Process Complexity',
-                desc: 'Government procedures can be complex for first-time applicants',
+                title: t('common_challenges_state_cm_item5'),
+                desc: t('common_challenges_state_cm_desc5'),
                 color: 'bg-teal-50',
                 iconBg: 'bg-teal-600'
               },
               {
                 icon: CheckCircle,
-                title: 'Verification Delays',
-                desc: 'Processing delays due to incomplete or incorrect applications',
+                title: t('common_challenges_state_cm_item6'),
+                desc: t('common_challenges_state_cm_desc6'),
                 color: 'bg-pink-50',
                 iconBg: 'bg-pink-600'
               },
@@ -169,10 +171,10 @@ const StateCMScheme = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              What Happens in Scheme Claim Cases
+              {t('what_happens_after_state_cm_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Understanding the application and claim submission process
+              {t('what_happens_after_state_cm_description')}
             </p>
           </motion.div>
 
@@ -180,22 +182,22 @@ const StateCMScheme = () => {
             {[
               {
                 icon: AlertCircle,
-                title: 'Scheme Discovery',
-                desc: 'Beneficiaries often learn about the scheme when they require medical treatment or assistance.',
+                title: t('what_happens_state_cm_item1'),
+                desc: t('what_happens_state_cm_desc1'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: FileText,
-                title: 'Document Collection',
-                desc: 'Gathering required eligibility documents, identity proofs, and medical records.',
+                title: t('what_happens_state_cm_item2'),
+                desc: t('what_happens_state_cm_desc2'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: Building2,
-                title: 'Government Review',
-                desc: 'Authorities review documents to verify eligibility and process benefits.',
+                title: t('what_happens_state_cm_item3'),
+                desc: t('what_happens_state_cm_desc3'),
                 color: 'bg-green-50',
                 iconBg: 'bg-green-600'
               },
@@ -224,10 +226,10 @@ const StateCMScheme = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Choose Yashoda Total Solution?
+              {t('why_choose_state_cm_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Expert guidance for state insurance scheme assistance
+              {t('why_choose_state_cm_description')}
             </p>
           </motion.div>
 
@@ -235,23 +237,23 @@ const StateCMScheme = () => {
             {[
               {
                 icon: Users,
-                title: 'Expert Team',
-                desc: 'Qualified professionals with experience in government insurance schemes.'
+                title: t('why_choose_state_cm_item1'),
+                desc: t('why_choose_state_cm_desc1')
               },
               {
                 icon: FileText,
-                title: 'Document Support',
-                desc: 'Complete assistance with application forms and required documentation.'
+                title: t('why_choose_state_cm_item2'),
+                desc: t('why_choose_state_cm_desc2')
               },
               {
                 icon: Building2,
-                title: 'Government Coordination',
-                desc: 'Help with navigating government procedures and verification processes.'
+                title: t('why_choose_state_cm_item3'),
+                desc: t('why_choose_state_cm_desc3')
               },
               {
                 icon: CheckCircle,
-                title: 'Proven Results',
-                desc: 'Successfully helped numerous beneficiaries access state scheme benefits.'
+                title: t('why_choose_state_cm_item4'),
+                desc: t('why_choose_state_cm_desc4')
               },
             ].map((item, index) => (
               <motion.div
@@ -279,10 +281,10 @@ const StateCMScheme = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Our 5-Step Scheme Assistance Process
+              {t('process_flow_state_cm_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Simplified guidance for state insurance scheme beneficiaries
+              {t('process_flow_state_cm_description')}
             </p>
           </motion.div>
 
@@ -293,28 +295,28 @@ const StateCMScheme = () => {
               {[
                 {
                   step: '1',
-                  title: 'Eligibility Assessment',
-                  desc: 'We help determine if you qualify for the state insurance scheme based on official criteria.'
+                  title: t('process_flow_state_cm_item1'),
+                  desc: t('process_flow_state_cm_desc1')
                 },
                 {
                   step: '2',
-                  title: 'Document Preparation',
-                  desc: 'We assist in gathering all required identity, eligibility, and medical documents.'
+                  title: t('process_flow_state_cm_item2'),
+                  desc: t('process_flow_state_cm_desc2')
                 },
                 {
                   step: '3',
-                  title: 'Application Form Assistance',
-                  desc: 'We help complete application forms accurately with all necessary information.'
+                  title: t('process_flow_state_cm_item3'),
+                  desc: t('process_flow_state_cm_desc3')
                 },
                 {
                   step: '4',
-                  title: 'Submission Support',
-                  desc: 'We guide you through the submission process to government authorities.'
+                  title: t('process_flow_state_cm_item4'),
+                  desc: t('process_flow_state_cm_desc4')
                 },
                 {
                   step: '5',
-                  title: 'Follow-Up & Tracking',
-                  desc: 'We track your application status and follow up until benefits are processed.'
+                  title: t('process_flow_state_cm_item5'),
+                  desc: t('process_flow_state_cm_desc5')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -352,38 +354,38 @@ const StateCMScheme = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life Scheme Assistance Examples
+              {t('ex_scenario_state_cm_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common scenarios we help resolve
+              {t('ex_scenario_state_cm_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Example 1 – Eligibility Confusion',
-                problem: 'A patient requires medical treatment and learns about a state insurance scheme.',
-                reality: 'They are unsure whether they qualify for the benefits provided under the program.',
-                solution: 'We reviewed eligibility criteria, verified documentation, and confirmed qualification for the scheme.'
+                title: t('ex_scenario_state_cm_example1_title'),
+                problem: t('ex_scenario_state_cm_example1_problem'),
+                reality: t('ex_scenario_state_cm_example1_reality'),
+                solution: t('ex_scenario_state_cm_example1_solution')
               },
               {
-                title: 'Example 2 – Documentation Difficulty',
-                problem: 'A beneficiary attempts to apply for benefits under the scheme.',
-                reality: 'They face challenges collecting the required identity and eligibility documents.',
-                solution: 'We provided a document checklist and helped gather all necessary papers for submission.'
+                title: t('ex_scenario_state_cm_example2_title'),
+                problem: t('ex_scenario_state_cm_example2_problem'),
+                reality: t('ex_scenario_state_cm_example2_reality'),
+                solution: t('ex_scenario_state_cm_example2_solution')
               },
               {
-                title: 'Example 3 – Claim Process Uncertainty',
-                problem: 'A family member seeks to submit a claim after hospital treatment.',
-                reality: 'They are uncertain about the application process and verification procedures.',
-                solution: 'We guided them step-by-step through the application process and government procedures.'
+                title: t('ex_scenario_state_cm_example3_title'),
+                problem: t('ex_scenario_state_cm_example3_problem'),
+                reality: t('ex_scenario_state_cm_example3_reality'),
+                solution: t('ex_scenario_state_cm_example3_solution')
               },
               {
-                title: 'Example 4 – Awareness After Treatment',
-                problem: 'A patient undergoes treatment at a hospital.',
-                reality: 'They later discover the treatment may have been eligible for support under a state scheme.',
-                solution: 'We helped file a retrospective claim and successfully secured partial benefits.'
+                title: t('ex_scenario_state_cm_example4_title'),
+                problem: t('ex_scenario_state_cm_example4_problem'),
+                reality: t('ex_scenario_state_cm_example4_reality'),
+                solution: t('ex_scenario_state_cm_example4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -402,15 +404,15 @@ const StateCMScheme = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">❌ Problem:</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_state_cm_example_head1')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-blue-600 mb-2">⚠️ Reality:</h4>
+                    <h4 className="text-sm font-semibold text-blue-600 mb-2">{t('ex_scenario_state_cm_example_head2')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_state_cm_example_head3')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -425,30 +427,30 @@ const StateCMScheme = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_state_cm_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about state insurance schemes
+              {t('faq_state_cm_description')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'What are State Chief Minister Insurance Schemes?',
-                a: 'These are government insurance programs designed to provide financial support to eligible citizens for healthcare or other insured events, specific to each state.'
+                q: t('faq_state_cm_q1'),
+                a: t('faq_state_cm_a1')
               },
               {
-                q: 'Who can benefit from these schemes?',
-                a: 'Eligibility depends on the specific scheme and the criteria defined by the state government, typically based on income, residency, and other factors.'
+                q: t('faq_state_cm_q2'),
+                a: t('faq_state_cm_a2')
               },
               {
-                q: 'What documents are required for application or claims?',
-                a: 'Typical documents may include identity proof (Aadhaar, voter ID), eligibility verification, income certificate, medical records, and application forms.'
+                q: t('faq_state_cm_q3'),
+                a: t('faq_state_cm_a3')
               },
               {
-                q: 'How can beneficiaries confirm eligibility for the scheme?',
-                a: 'Eligibility can usually be verified through official scheme guidelines available on government portals or by contacting the relevant government department.'
+                q: t('faq_state_cm_q4'),
+                a: t('faq_state_cm_a4')
               },
             ].map((faq, index) => (
               <motion.div
@@ -494,10 +496,10 @@ const StateCMScheme = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Need Help with State Insurance Schemes?
+              {t('cta_state_cm_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding eligibility requirements and documentation procedures can help beneficiaries navigate the application and claim process more confidently. Contact Yashoda Total Solution for expert assistance.
+              {t('cta_state_cm_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -505,17 +507,17 @@ const StateCMScheme = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('cta_state_cm_description2')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('cta_state_cm_button')}
                 </a>
               </motion.div>
             </div>

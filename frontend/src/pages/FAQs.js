@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HelpCircle, ChevronDown, CheckCircle } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const FAQs = () => {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -11,46 +13,31 @@ const FAQs = () => {
 
   const faqs = [
     {
-      question: "Is Yashoda Total Solutions a law firm?",
-      answer: "No. Yashoda Total Solutions operates as a professional legal support and consultancy service provider. We are not a law firm. Instead, we collaborate with a network of qualified and experienced advocates from various legal domains and allocate them to clients based on the specific nature of the matter."
+      question: t('faq_ques_1'),
+      answer: t('faq_ans_1')
     },
     {
-      question: "Who will oversee and manage my case?",
-      answer: "Your case will be coordinated and supervised by Yashoda Total Solutions. Our internal management team continuously monitors the progress of every assignment. If any delay, non-performance, or professional lapse is identified, the company takes immediate corrective measures, including reassignment of the matter to another suitable advocate if necessary."
+      question: t('faq_ques_2'),
+      answer: t('faq_ans_2')
     },
     {
-      question: "How and where should service fees be paid?",
-      answer: "All service fees, professional charges, and administrative costs are payable only to Yashoda Total Solutions. Advocates associated with our panel are not authorized to receive payments directly from clients. The company manages and disburses professional remuneration to the advocates as per the mutually agreed terms and the scope of work performed."
+      question: t('faq_ques_3'),
+      answer: t('faq_ans_3')
     },
     {
-      question: "What if the advocate handling my matter withdraws or becomes unavailable?",
-      answer: "In the unlikely event that an assigned advocate becomes unavailable or discontinues the assignment, Yashoda Total Solutions will promptly appoint an alternate advocate from its professional panel to ensure continuity and minimize any disruption to the client's matter."
+      question: t('faq_ques_4'),
+      answer: t('faq_ans_4')
     },
     {
-      question: "Why should I engage Yashoda Total Solutions instead of a conventional law firm?",
-      answer: "Engaging Yashoda Total Solutions offers several strategic advantages:",
-      points: [
-        "Outcome-focused services – Our approach emphasizes practical and efficient resolution of legal matters.",
-        "Proactive case management – Matters are actively monitored to avoid unnecessary delays and procedural inefficiencies.",
-        "Structured administrative oversight – A dedicated support and coordination team supervises the progress of each assignment.",
-        "Extended professional support – Advocates receive assistance from our documentation and operational teams, enabling them to focus on core legal work.",
-        "Flexible advocate allocation – If required, the company can quickly assign another suitable professional to the matter.",
-        "Cost-effective service model – Our service structure is designed to remain economical while maintaining professional standards."
-      ]
+      question: t('faq_ques_5'),
+      answer: t('faq_ans_5'),
+      points: t('faq_ans_item_5')
     },
     {
-      question: "What are some common examples of insurance mis-selling?",
-      answer: "Insurance mis-selling occurs when a policy is sold using false promises, misleading information, or hidden conditions. Some common examples include:",
-      points: [
-        "Policy sold as a Fixed Deposit (FD)",
-        "Promise of interest-free loans",
-        "Assurance of recovering money from a lapsed policy",
-        "Offering \"free\" health insurance",
-        "Incentives such as gold coins, gifts, or cash benefits",
-        "Tower installation schemes",
-        "Promise of regular monthly income",
-        "False job or employment assurance"
-      ]
+      question: t('faq_ques_6'),
+      answer: t('faq_ans_6'),
+      points: t('faq_ans_item_6')
+      
     }
   ];
 
@@ -80,10 +67,10 @@ const FAQs = () => {
               <HelpCircle className="h-10 w-10 text-white" />
             </motion.div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Frequently Asked Questions
+              {t('faq_title')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
-              Find answers to common questions about our services, processes, and how we can help you
+              {t('faq_subtitle')}
             </p>
           </motion.div>
         </div>
@@ -179,16 +166,16 @@ const FAQs = () => {
           >
             <HelpCircle className="h-12 w-12 mx-auto mb-4 text-[#F39C12]" />
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Still Have Questions?
+              {t('faq_stiil_have_questions')}
             </h2>
             <p className="text-base md:text-lg text-white/90 mb-6 max-w-2xl mx-auto">
-              Can't find the answer you're looking for? Our team is here to help you with any queries.
+              {t('faq_ans_still_have_questions')}
             </p>
             <a
               href="/contact"
               className="inline-block bg-[#F39C12] text-white font-semibold px-8 py-3 rounded-full hover:bg-[#e08e0b] transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
-              Contact Us
+              {t('faq_btn_contact')}
             </a>
           </motion.div>
         </div>

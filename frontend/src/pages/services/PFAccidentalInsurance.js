@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   Briefcase, FileText, AlertCircle, Shield, CheckCircle, 
   ArrowRight, HelpCircle, Users, Phone, Target, ClipboardCheck 
 } from 'lucide-react';
 
 const PFAccidentalInsurance = () => {
+  const { t } = useLanguage();
+
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +33,9 @@ const PFAccidentalInsurance = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('pf_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">PF Accidental Insurance Claim Assistance</span>
+              <span className="text-white text-sm">{t('pf_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +43,12 @@ const PFAccidentalInsurance = () => {
                 <Briefcase className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                PF Accidental Insurance Claim Assistance
+                {t('pf_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding accidental insurance benefits linked to Provident Fund schemes and how beneficiaries can navigate the claim process. Certain PF schemes provide accidental insurance benefits to eligible members, though many remain unaware of these benefits or face difficulties with claim procedures.
+              {t('pf_description')}
             </p>
           </motion.div>
         </div>
@@ -61,30 +64,24 @@ const PFAccidentalInsurance = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              Service Overview
+              {t('what_pf_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
+              <p className="leading-relaxed mb-4">{t('what_pf_description')}</p>
+              <p className="leading-relaxed mb-4">{t('what_pf_description1')}</p>
+              <p className="leading-relaxed mb-4">{t('what_pf_description2')}</p>
               <p className="leading-relaxed mb-4">
-                Some Provident Fund schemes provide accidental insurance coverage to eligible members as part of employee benefit programs. These benefits may provide financial support to the member or their beneficiaries in case of accidental death or disability.
+                <strong>{t('what_pf_description3')}</strong> {t('what_pf_description4')}
               </p>
               <p className="leading-relaxed mb-4">
-                However, many individuals remain unaware that such coverage exists under their PF membership. When an accident occurs, beneficiaries may face confusion about eligibility conditions, claim procedures, and documentation requirements.
-              </p>
-              <p className="leading-relaxed mb-4">
-                In many cases, the process of verifying PF membership details and preparing the necessary documents can be complex.
-              </p>
-              <p className="leading-relaxed mb-4">
-                <strong>Yashoda Total Solutions</strong> assists clients by explaining the eligibility criteria, helping with necessary documentation, and guiding them through the claim submission process to access the insurance benefits available under PF-related schemes.
-              </p>
-              <p className="leading-relaxed mb-4">
-                <strong>PF Accidental Insurance Claim Process:</strong>
+                <strong>{t('what_pf_key_features')}</strong>
               </p>
               <ul className="space-y-3 ml-6">
-                <li>• PF Membership Active</li>
-                <li>• Accidental Incident Occurs</li>
-                <li>• Beneficiary Initiates Claim</li>
-                <li>• Documents Submitted for Verification</li>
-                <li>• Claim Evaluation and Processing</li>
+                <li>{t('what_pf_key_feature1')}</li>
+                <li>{t('what_pf_key_feature2')}</li>
+                <li>{t('what_pf_key_feature3')}</li>
+                <li>{t('what_pf_key_feature4')}</li>
+                <li>{t('what_pf_key_feature5')}</li>
               </ul>
             </div>
           </motion.div>
@@ -96,10 +93,10 @@ const PFAccidentalInsurance = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common PF Insurance Claim Challenges
+              {t('common_challenges_pf_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Beneficiaries may encounter several challenges when attempting to claim benefits
+              {t('common_challenges_pf_description')}
             </p>
           </motion.div>
 
@@ -107,36 +104,36 @@ const PFAccidentalInsurance = () => {
             {[
               {
                 icon: AlertCircle,
-                title: 'Lack of Awareness',
-                desc: 'Beneficiaries are unaware that PF membership includes accidental insurance coverage.',
+                title: t('common_challenges_pf_item1'),
+                desc: t('common_challenges_pf_desc1'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: HelpCircle,
-                title: 'Eligibility Confusion',
-                desc: 'Confusion about eligibility conditions for the claim.',
+                title: t('common_challenges_pf_item2'),
+                desc: t('common_challenges_pf_desc2'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: FileText,
-                title: 'Missing Documentation',
-                desc: 'Difficulty collecting PF membership details and required documents.',
+                title: t('common_challenges_pf_item3'),
+                desc: t('common_challenges_pf_desc3'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: ClipboardCheck,
-                title: 'PF Record Verification',
-                desc: 'Uncertainty regarding the claim submission process.',
+                title: t('common_challenges_pf_item4'),
+                desc: t('common_challenges_pf_desc4'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: Target,
-                title: 'Claim Processing Delays',
-                desc: 'Delays caused by incomplete documentation.',
+                title: t('common_challenges_pf_item5'),
+                desc: t('common_challenges_pf_desc5'),
                 color: 'bg-green-50',
                 iconBg: 'bg-green-600'
               },
@@ -165,35 +162,25 @@ const PFAccidentalInsurance = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-8 text-center">
-              What Actually Happens in PF Accidental Insurance Claim Cases
+              {t('what_happens_after_pf_title')}
             </h2>
             
             <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
               <div className="prose prose-lg max-w-none text-[#52606D]">
+                <p className="leading-relaxed mb-4">{t('what_happens_after_pf_description')}</p>
+                <p className="leading-relaxed mb-4">{t('what_happens_pf_description1')}</p>
+                <p className="leading-relaxed mb-4">{t('what_happens_pf_description2')}</p>
+                <p className="leading-relaxed mb-4">{t('what_happens_pf_description3')}</p>
+                <p className="leading-relaxed mb-4">{t('what_happens_pf_description4')}</p>
                 <p className="leading-relaxed mb-4">
-                  In many situations, employees are enrolled in PF schemes through their workplace without fully understanding the insurance benefits that may be associated with the program.
-                </p>
-                <p className="leading-relaxed mb-4">
-                  After an accidental incident occurs, beneficiaries may later discover that the PF member was eligible for accidental insurance benefits.
-                </p>
-                <p className="leading-relaxed mb-4">
-                  At that stage, the beneficiaries must gather the required documents and verify the PF membership details before submitting the claim application.
-                </p>
-                <p className="leading-relaxed mb-4">
-                  The concerned authorities and insurance provider then review the submitted documents to confirm eligibility and determine whether the claim meets the conditions defined under the scheme.
-                </p>
-                <p className="leading-relaxed mb-4">
-                  Understanding these steps helps beneficiaries navigate the claim process more effectively.
-                </p>
-                <p className="leading-relaxed mb-4">
-                  <strong>PF Insurance Claim Review Process:</strong>
+                  <strong>{t('what_happens_pf_description5')}</strong>
                 </p>
                 <ul className="space-y-3 ml-6">
-                  <li>• Accidental Incident Occurs</li>
-                  <li>• Beneficiary Learns About PF Insurance Coverage</li>
-                  <li>• Claim Application Prepared</li>
-                  <li>• Documents Submitted</li>
-                  <li>• Verification and Claim Decision</li>
+                  <li>{t('what_happens_pf_item1')}</li>
+                  <li>{t('what_happens_pf_item2')}</li>
+                  <li>{t('what_happens_pf_item3')}</li>
+                  <li>{t('what_happens_pf_item4')}</li>
+                  <li>{t('what_happens_pf_item5')}</li>
                 </ul>
               </div>
             </div>
@@ -206,33 +193,33 @@ const PFAccidentalInsurance = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Example Scenarios
+              {t('ex_scenario_pf_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Real-world situations where PF accidental insurance claims arise
+              {t('ex_scenario_pf_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Example 1 – Family Unaware of PF Insurance Coverage',
-                desc: 'An employee is enrolled in a PF scheme through their employer. After an accidental incident, the family later learns that the PF membership included accidental insurance benefits.',
+                title: t('ex_scenario_pf_example1_title'),
+                desc: t('ex_scenario_pf_example1_desc'),
                 color: 'from-blue-50 to-cyan-50'
               },
               {
-                title: 'Example 2 – PF Membership Verification',
-                desc: 'A beneficiary attempts to file a claim but must first confirm the PF membership details and eligibility conditions related to the insurance benefit.',
+                title: t('ex_scenario_pf_example2_title'),
+                desc: t('ex_scenario_pf_example2_desc'),
                 color: 'from-purple-50 to-pink-50'
               },
               {
-                title: 'Example 3 – Documentation Difficulty',
-                desc: 'A family member tries to submit the claim but faces challenges collecting the required documents related to PF records and accident verification.',
+                title: t('ex_scenario_pf_example3_title'),
+                desc: t('ex_scenario_pf_example3_desc'),
                 color: 'from-orange-50 to-red-50'
               },
               {
-                title: 'Example 4 – Claim Procedure Confusion',
-                desc: 'A beneficiary approaches the relevant authority to claim the benefit but finds it difficult to understand the correct process for submitting the claim.',
+                title: t('ex_scenario_pf_example4_title'),
+                desc: t('ex_scenario_pf_example4_desc'),
                 color: 'from-green-50 to-emerald-50'
               },
             ].map((item, index) => (
@@ -257,22 +244,16 @@ const PFAccidentalInsurance = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-8 text-center">
-              Understanding PF Insurance Claim Requirements
+              {t('documentation_pf_title')}
             </h2>
             
             <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
               <p className="text-lg text-[#52606D] leading-relaxed mb-6">
-                PF accidental insurance claims typically require certain documents and information to verify eligibility and process the claim.
+                {t('documentation_pf_description')}
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {[
-                  'Proof of accidental incident',
-                  'PF membership or account details',
-                  'Identity and beneficiary information',
-                  'Claim application forms',
-                  'Verification of eligibility under the PF scheme'
-                ].map((requirement, index) => (
+                {t('documentation_pf_list').map((requirement, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <CheckCircle className="h-6 w-6 text-[#0F7A4A] flex-shrink-0 mt-1" />
                     <p className="text-base text-[#52606D]">{requirement}</p>
@@ -281,11 +262,11 @@ const PFAccidentalInsurance = () => {
               </div>
 
               <p className="text-base text-[#52606D] leading-relaxed mb-4">
-                Understanding these documentation requirements helps beneficiaries prepare the claim application properly.
+                {t('documentation_pf_description1')}
               </p>
 
               <p className="text-base text-[#52606D] leading-relaxed">
-                <strong>PF Insurance Claim Documentation Framework:</strong> PF Membership Verification → Incident Documentation → Claim Application Form → Beneficiary Identification → Claim Evaluation
+                <strong>{t('documentation_pf_description2')}</strong> {t('documentation_pf_description3')}
               </p>
             </div>
           </motion.div>
@@ -297,10 +278,10 @@ const PFAccidentalInsurance = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Yashoda Total Solution?
+              {t('why_choose_pf_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Trusted support for PF accidental insurance claims
+              {t('why_choose_pf_description')}
             </p>
           </motion.div>
 
@@ -308,28 +289,28 @@ const PFAccidentalInsurance = () => {
             {[
               {
                 icon: Users,
-                title: 'Experienced & Professional Team',
-                desc: 'Qualified professionals with industry knowledge and operational expertise.'
+                title: t('why_choose_pf_item1'),
+                desc: t('why_choose_pf_desc1'),
               },
               {
                 icon: Target,
-                title: 'Quick & Transparent Processing',
-                desc: 'Systematic workflows supported by clear communication and monitoring.'
+                title: t('why_choose_pf_item2'),
+                desc: t('why_choose_pf_desc2'),
               },
               {
                 icon: Shield,
-                title: 'Customer-First Approach',
-                desc: 'Every case handled with attention, empathy, and ethical responsibility.'
+                title: t('why_choose_pf_item3'),
+                desc: t('why_choose_pf_desc3'),
               },
               {
                 icon: ClipboardCheck,
-                title: 'Technology-Driven Monitoring',
-                desc: 'Advanced tracking systems ensure accountability and regular updates.'
+                title: t('why_choose_pf_item4'),
+                desc: t('why_choose_pf_desc4'),
               },
               {
                 icon: CheckCircle,
-                title: 'Trusted Service Partner',
-                desc: 'Focused on long-term relationships built on trust, reliability, and service excellence.'
+                title: t('why_choose_pf_item5'),
+                desc: t('why_choose_pf_desc5'),
               },
             ].map((item, index) => (
               <motion.div
@@ -357,27 +338,27 @@ const PFAccidentalInsurance = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_pf_title')}
             </h2>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                question: 'What is PF accidental insurance coverage?',
-                answer: 'Some Provident Fund schemes provide accidental insurance benefits for eligible members.'
+                question: t('faq_pf_q1'),
+                answer: t('faq_pf_a1'),
               },
               {
-                question: 'Who can claim PF accidental insurance benefits?',
-                answer: 'Beneficiaries of the PF member may be eligible to claim benefits depending on the scheme conditions.'
+                question: t('faq_pf_q2'),
+                answer: t('faq_pf_a2'),
               },
               {
-                question: 'How can beneficiaries confirm PF insurance coverage?',
-                answer: 'PF records and related scheme details can help verify whether insurance coverage applies.'
+                question: t('faq_pf_q3'),
+                answer: t('faq_pf_a3'),
               },
               {
-                question: 'What documents are required for PF accidental insurance claims?',
-                answer: 'Required documents may include PF membership details, incident proof, and claim application forms.'
+                question: t('faq_pf_q4'),
+                answer: t('faq_pf_a4'),
               },
             ].map((faq, index) => (
               <motion.div
@@ -415,20 +396,20 @@ const PFAccidentalInsurance = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Need Help Understanding PF Accidental Insurance Claim Procedures?
+              {t('cta_pf_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
-              Understanding eligibility conditions and documentation requirements can help beneficiaries navigate the claim process more confidently.
+              {t('cta_pf_description')}
             </p>
             <p className="text-lg text-white/90 mb-8">
-              Contact Yashoda Total Solution to learn more about assistance with PF accidental insurance claim support.
+              {t('cta_pf_description2')}
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center space-x-2 bg-[#F39C12] hover:bg-[#E67E22] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
             >
               <Phone className="h-5 w-5" />
-              <span>Contact Us Now</span>
+              <span>{t('cta_pf_button')}</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
           </motion.div>

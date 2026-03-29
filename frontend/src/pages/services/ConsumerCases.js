@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   ShoppingCart, FileText, AlertTriangle, Shield, CheckCircle, 
   ArrowRight, HelpCircle, Users, Phone, Target, DollarSign, Package 
 } from 'lucide-react';
 
 const ConsumerCases = () => {
+  const { t } = useLanguage();
+
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -30,9 +33,9 @@ const ConsumerCases = () => {
             className="max-w-4xl"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">Home</Link>
+              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('consumer_title_backlink1')}</Link>
               <span className="text-white/60">/</span>
-              <span className="text-white text-sm">Consumer Protection Support</span>
+              <span className="text-white text-sm">{t('consumer_title_backlink2')}</span>
             </div>
             
             <div className="flex items-center space-x-3 mb-6">
@@ -40,12 +43,12 @@ const ConsumerCases = () => {
                 <ShoppingCart className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Consumer Protection Support
+                {t('consumer_title')}
               </h1>
             </div>
             
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Understanding consumer rights and addressing disputes related to defective products, poor services, or unfair trade practices. Under the Consumer Protection Act, 2019, consumers have legal rights that protect them from defective products, poor service quality, misleading advertisements, and unfair trade practices.
+              {t('consumer_description')}
             </p>
           </motion.div>
         </div>
@@ -61,33 +64,25 @@ const ConsumerCases = () => {
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
-              Service Overview
+              {t('what_consumer_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
+              <p className="leading-relaxed mb-4">{t('what_consumer_description')}</p>
+              <p className="leading-relaxed mb-4">{t('what_consumer_description1')}</p>
+              <p className="leading-relaxed mb-4">{t('what_consumer_description2')}</p>
+              <p className="leading-relaxed mb-4">{t('what_consumer_description3')}</p>
               <p className="leading-relaxed mb-4">
-                Consumer protection laws are designed to ensure that customers receive fair treatment when purchasing products or services.
+                <strong>{t('what_consumer_description4')}</strong> {t('what_consumer_description5')}
               </p>
               <p className="leading-relaxed mb-4">
-                However, many consumers face difficulties when they encounter problems such as defective goods, poor service quality, misleading advertisements, or refusal of refunds.
-              </p>
-              <p className="leading-relaxed mb-4">
-                In such situations, understanding the consumer protection process and available options becomes important.
-              </p>
-              <p className="leading-relaxed mb-4">
-                Consumer Protection Support helps individuals understand their rights as consumers and the procedures involved in addressing disputes with businesses or service providers.
-              </p>
-              <p className="leading-relaxed mb-4">
-                <strong>Yashoda Total Solutions</strong> assists clients by helping them understand consumer protection procedures, preparing necessary documentation, and guiding them through the appropriate steps to address consumer disputes.
-              </p>
-              <p className="leading-relaxed mb-4">
-                <strong>Consumer Dispute Resolution Flow:</strong>
+                <strong>{t('what_consumer_key_features')}</strong>
               </p>
               <ul className="space-y-3 ml-6">
-                <li>• Product or Service Purchased</li>
-                <li>• Consumer Faces Problem</li>
-                <li>• Complaint Submitted</li>
-                <li>• Issue Reviewed by Authorities</li>
-                <li>• Resolution or Compensation</li>
+                <li>{t('what_consumer_key_feature1')}</li>
+                <li>{t('what_consumer_key_feature2')}</li>
+                <li>{t('what_consumer_key_feature3')}</li>
+                <li>{t('what_consumer_key_feature4')}</li>
+                <li>{t('what_consumer_key_feature5')}</li>
               </ul>
             </div>
           </motion.div>
@@ -99,10 +94,10 @@ const ConsumerCases = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Common Types of Consumer Disputes
+              {t('common_disputes_consumer_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Consumers may face different types of disputes while purchasing goods or using services
+              {t('common_disputes_consumer_description')}
             </p>
           </motion.div>
 
@@ -110,36 +105,36 @@ const ConsumerCases = () => {
             {[
               {
                 icon: Package,
-                title: 'Defective Products',
-                desc: 'Defective or malfunctioning products that do not work as expected or promised.',
+                title: t('common_disputes_consumer_item1'),
+                desc: t('common_disputes_consumer_desc1'),
                 color: 'bg-red-50',
                 iconBg: 'bg-red-600'
               },
               {
                 icon: AlertTriangle,
-                title: 'Service Deficiency',
-                desc: 'Poor quality or incomplete services that fail to meet stated standards.',
+                title: t('common_disputes_consumer_item2'),
+                desc: t('common_disputes_consumer_desc2'),
                 color: 'bg-orange-50',
                 iconBg: 'bg-orange-600'
               },
               {
                 icon: FileText,
-                title: 'Misleading Advertisements',
-                desc: 'False claims or exaggerated promises in advertisements that mislead consumers.',
+                title: t('common_disputes_consumer_item3'),
+                desc: t('common_disputes_consumer_desc3'),
                 color: 'bg-purple-50',
                 iconBg: 'bg-purple-600'
               },
               {
                 icon: DollarSign,
-                title: 'Overcharging',
-                desc: 'Charging above the stated price or adding hidden charges without disclosure.',
+                title: t('common_disputes_consumer_item4'),
+                desc: t('common_disputes_consumer_desc4'),
                 color: 'bg-blue-50',
                 iconBg: 'bg-blue-600'
               },
               {
                 icon: Shield,
-                title: 'Refund Refusal',
-                desc: 'Refusal to provide refunds or replacements for defective or unsuitable products.',
+                title: t('common_disputes_consumer_item5'),
+                desc: t('common_disputes_consumer_desc5'),
                 color: 'bg-green-50',
                 iconBg: 'bg-green-600'
               },
@@ -168,10 +163,10 @@ const ConsumerCases = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Why Yashoda Total Solution?
+              {t('why_choose_consumer_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Trusted support for consumer protection and dispute resolution
+              {t('why_choose_consumer_description')}
             </p>
           </motion.div>
 
@@ -179,23 +174,23 @@ const ConsumerCases = () => {
             {[
               {
                 icon: Users,
-                title: 'Experienced & Professional Team',
-                desc: 'Qualified professionals with industry knowledge and operational expertise.'
+                title: t('why_choose_consumer_item1'),
+                desc: t('why_choose_consumer_desc1'),
               },
               {
                 icon: Target,
-                title: 'Quick & Transparent Processing',
-                desc: 'Systematic workflows supported by clear communication and monitoring.'
+                title: t('why_choose_consumer_item2'),
+                desc: t('why_choose_consumer_desc2'),
               },
               {
                 icon: Shield,
-                title: 'Customer-First Approach',
-                desc: 'Every case handled with attention, empathy, and ethical responsibility.'
+                title: t('why_choose_consumer_item3'),
+                desc: t('why_choose_consumer_desc3'),
               },
               {
                 icon: CheckCircle,
-                title: 'Trusted Service Partner',
-                desc: 'Focused on long-term relationships built on trust, reliability, and service excellence.'
+                title: t('why_choose_consumer_item4'),
+                desc: t('why_choose_consumer_desc4'),
               },
             ].map((item, index) => (
               <motion.div
@@ -223,48 +218,47 @@ const ConsumerCases = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Our 6-Step Consumer Complaint Process
+              {t('process_consumer_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Simple, transparent, and effective approach
+              {t('process_consumer_description')}
             </p>
           </motion.div>
 
           <div className="relative">
-            {/* Vertical Line for Desktop */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
 
             <div className="space-y-12">
               {[
                 {
                   step: '1',
-                  title: 'Case Understanding & Documentation Review',
-                  desc: 'We understand your consumer issue, review purchase documents, and evaluate the nature of the dispute.'
+                  title: t('process_consumer_step1_title'),
+                  desc: t('process_consumer_step1_desc')
                 },
                 {
                   step: '2',
-                  title: 'Consumer Rights Assessment',
-                  desc: 'We assess your rights under consumer protection laws and determine the validity of your complaint.'
+                  title: t('process_consumer_step2_title'),
+                  desc: t('process_consumer_step2_desc')
                 },
                 {
                   step: '3',
-                  title: 'Evidence & Proof Collection',
-                  desc: 'We help gather all necessary evidence including purchase invoices, communication records, and product details.'
+                  title: t('process_consumer_step3_title'),
+                  desc: t('process_consumer_step3_desc')
                 },
                 {
                   step: '4',
-                  title: 'Complaint Drafting & Filing',
-                  desc: 'We prepare a detailed consumer complaint and file it with the appropriate consumer forum or authority.'
+                  title: t('process_consumer_step4_title'),
+                  desc: t('process_consumer_step4_desc')
                 },
                 {
                   step: '5',
-                  title: 'Follow-up & Escalation',
-                  desc: 'We follow up on your complaint and escalate to higher forums if needed for resolution.'
+                  title: t('process_consumer_step5_title'),
+                  desc: t('process_consumer_step5_desc')
                 },
                 {
                   step: '6',
-                  title: 'Resolution & Compensation',
-                  desc: 'We ensure you receive the compensation, replacement, refund, or corrective action you deserve.'
+                  title: t('process_consumer_step6_title'),
+                  desc: t('process_consumer_step6_desc')
                 },
               ].map((item, index) => (
                 <motion.div
@@ -288,8 +282,6 @@ const ConsumerCases = () => {
                       <p className="text-base text-white/90 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
-
-                  {/* Center Circle */}
                   <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#F39C12] rounded-full border-4 border-white shadow-lg z-10"></div>
                 </motion.div>
               ))}
@@ -303,38 +295,38 @@ const ConsumerCases = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Real-Life Consumer Dispute Examples
+              {t('ex_scenario_consumer_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              These are common scenarios we help resolve
+              {t('ex_scenario_consumer_description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Case 1: Defective Product',
-                problem: 'A customer purchases a home appliance that stops working shortly after purchase. Despite contacting the seller multiple times, the issue is not resolved.',
-                reality: 'The seller refused to replace the product, claiming the warranty period had expired even though the defect occurred within the warranty period.',
-                solution: 'We filed a consumer complaint with documentation proving the defect timeline. The consumer forum ordered a full replacement and compensation for inconvenience.'
+                title: t('ex_scenario_consumer_case1_title'),
+                problem: t('ex_scenario_consumer_case1_problem'),
+                reality: t('ex_scenario_consumer_case1_reality'),
+                solution: t('ex_scenario_consumer_case1_solution')
               },
               {
-                title: 'Case 2: Poor Service Quality',
-                problem: 'A customer pays for a service but receives incomplete or unsatisfactory service from the provider.',
-                reality: 'The service provider delivered only 50% of the promised work and refused to complete it or provide a refund.',
-                solution: 'We filed a complaint under consumer protection law. The provider was ordered to complete the service and pay penalty for deficiency.'
+                title: t('ex_scenario_consumer_case2_title'),
+                problem: t('ex_scenario_consumer_case2_problem'),
+                reality: t('ex_scenario_consumer_case2_reality'),
+                solution: t('ex_scenario_consumer_case2_solution')
               },
               {
-                title: 'Case 3: Misleading Advertisement',
-                problem: 'A consumer purchases a product based on advertising claims that later turn out to be inaccurate or exaggerated.',
-                reality: 'The product features advertised were completely false, and the actual product was of inferior quality with missing features.',
-                solution: 'We proved misleading advertisement with evidence. The consumer received a full refund plus compensation for unfair trade practice.'
+                title: t('ex_scenario_consumer_case3_title'),
+                problem: t('ex_scenario_consumer_case3_problem'),
+                reality: t('ex_scenario_consumer_case3_reality'),
+                solution: t('ex_scenario_consumer_case3_solution')
               },
               {
-                title: 'Case 4: Online Purchase Dispute',
-                problem: 'A customer orders a product from an e-commerce platform but receives a different product and struggles to obtain a refund or replacement.',
-                reality: 'The e-commerce platform kept delaying the refund citing various procedural reasons and offered only partial compensation.',
-                solution: 'We escalated to the consumer forum with proof of wrong product delivery. Full refund was ordered along with compensation for harassment.'
+                title: t('ex_scenario_consumer_case4_title'),
+                problem: t('ex_scenario_consumer_case4_problem'),
+                reality: t('ex_scenario_consumer_case4_reality'),
+                solution: t('ex_scenario_consumer_case4_solution')
               },
             ].map((scenario, index) => (
               <motion.div
@@ -353,15 +345,15 @@ const ConsumerCases = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-red-600 mb-2">❌ Problem:</h4>
+                    <h4 className="text-sm font-semibold text-red-600 mb-2">{t('ex_scenario_consumer_problem_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">⚠️ Reality:</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_consumer_reality_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">✅ Our Solution:</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_consumer_solution_label')}</h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -376,30 +368,30 @@ const ConsumerCases = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
-              Frequently Asked Questions
+              {t('faq_consumer_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-              Common questions about consumer protection
+              {t('faq_consumer_description')}
             </p>
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                q: 'What is consumer protection support?',
-                a: 'It involves understanding consumer rights and addressing disputes related to products or services under the Consumer Protection Act.'
+                question: t('faq_consumer_q1'),
+                answer: t('faq_consumer_a1'),
               },
               {
-                q: 'What types of issues can be raised under consumer protection?',
-                a: 'Issues such as defective goods, poor service, misleading advertisements, and refund disputes may be addressed under consumer protection laws.'
+                question: t('faq_consumer_q2'),
+                answer: t('faq_consumer_a2'),
               },
               {
-                q: 'What documents are required for a consumer complaint?',
-                a: 'Typical documents include purchase invoices, communication records, product details, and a description of the issue faced.'
+                question: t('faq_consumer_q3'),
+                answer: t('faq_consumer_a3'),
               },
               {
-                q: 'Can online purchase disputes be raised under consumer protection laws?',
-                a: 'Yes, disputes related to online purchases from e-commerce platforms also fall under consumer protection regulations.'
+                question: t('faq_consumer_q4'),
+                answer: t('faq_consumer_a4'),
               },
             ].map((faq, index) => (
               <motion.div
@@ -417,8 +409,8 @@ const ConsumerCases = () => {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-[#1F2933] mb-2">{faq.q}</h3>
-                    <p className="text-base text-[#52606D] leading-relaxed">{faq.a}</p>
+                    <h3 className="text-lg font-semibold text-[#1F2933] mb-2">{faq.question}</h3>
+                    <p className="text-base text-[#52606D] leading-relaxed">{faq.answer}</p>
                   </div>
                 </div>
               </motion.div>
@@ -445,10 +437,10 @@ const ConsumerCases = () => {
               <Phone className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white">
-              Facing Problems with a Product or Service?
+              {t('cta_consumer_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Understanding your consumer rights and the complaint process can help you address disputes more effectively. Contact us today for professional consumer protection support.
+              {t('cta_consumer_description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -456,17 +448,17 @@ const ConsumerCases = () => {
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
                 >
-                  Get Free Consultation
+                  {t('cta_consumer_button1')}
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
-                  href="tel:+919021022851"
+                  href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
                 >
                   <Phone className="mr-2 h-6 w-6" />
-                  Call Now
+                  {t('cta_consumer_button2')}
                 </a>
               </motion.div>
             </div>
