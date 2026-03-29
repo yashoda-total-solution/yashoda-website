@@ -108,7 +108,7 @@ const Home = () => {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [heroImages.length]);
+  }, []);
 
   useEffect(() => {
     const fetchApproved = async () => {
