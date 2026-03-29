@@ -95,8 +95,9 @@ const Home = () => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
     }, 2000);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [heroImages.length]);
 
   useEffect(() => {
     const fetchApproved = async () => {
@@ -116,11 +117,11 @@ const Home = () => {
     fetchApproved();
   }, []);
 
-  const totalPages     = Math.ceil(approvedReviews.length / REVIEWS_PER_PAGE);
+  const totalPages = Math.ceil(approvedReviews.length / REVIEWS_PER_PAGE);
   const reviewStartIdx = reviewPage * REVIEWS_PER_PAGE;
   const visibleReviews = approvedReviews.slice(reviewStartIdx, reviewStartIdx + REVIEWS_PER_PAGE);
-  const canGoPrev      = reviewPage > 0;
-  const canGoNext      = reviewPage < totalPages - 1;
+  const canGoPrev = reviewPage > 0;
+  const canGoNext = reviewPage < totalPages - 1;
 
   const fallbackTestimonials = [
     { id: 'f1', customer_name: t('testimonial1_name'), city: t('testimonial1_location'), rating: 5, review_message: t('testimonial1_text') },
@@ -255,10 +256,10 @@ const Home = () => {
           <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { number: '500+', label: t('hero_stats1'), icon: Users      },
-                { number: '95%',  label: t('hero_stats2'), icon: TrendingUp },
-                { number: '24/7', label: t('hero_stats3'), icon: Clock      },
-                { number: '100%', label: t('hero_stats4'), icon: Lock       },
+                { number: '500+', label: t('hero_stats1'), icon: Users },
+                { number: '95%', label: t('hero_stats2'), icon: TrendingUp },
+                { number: '24/7', label: t('hero_stats3'), icon: Clock },
+                { number: '100%', label: t('hero_stats4'), icon: Lock },
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -286,9 +287,9 @@ const Home = () => {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Users,  title: t('about_card1_title'), desc: t('about_card1_desc'), color: 'bg-blue-50',   iconColor: 'text-blue-600'   },
-              { icon: Target, title: t('about_card2_title'), desc: t('about_card2_desc'), color: 'bg-green-50',  iconColor: 'text-green-600'  },
-              { icon: Clock,  title: t('about_card3_title'), desc: t('about_card3_desc'), color: 'bg-orange-50', iconColor: 'text-orange-600' },
+              { icon: Users, title: t('about_card1_title'), desc: t('about_card1_desc'), color: 'bg-blue-50', iconColor: 'text-blue-600' },
+              { icon: Target, title: t('about_card2_title'), desc: t('about_card2_desc'), color: 'bg-green-50', iconColor: 'text-green-600' },
+              { icon: Clock, title: t('about_card3_title'), desc: t('about_card3_desc'), color: 'bg-orange-50', iconColor: 'text-orange-600' },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -322,10 +323,10 @@ const Home = () => {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { title: t('problem1_title'), desc: t('problem1_desc'), icon: Shield,    gradient: 'from-red-500 to-orange-500'    },
-              { title: t('problem2_title'), desc: t('problem2_desc'), icon: FileCheck, gradient: 'from-blue-500 to-cyan-500'     },
-              { title: t('problem3_title'), desc: t('problem3_desc'), icon: Banknote,  gradient: 'from-green-500 to-emerald-500' },
-              { title: t('problem4_title'), desc: t('problem4_desc'), icon: Landmark,  gradient: 'from-purple-500 to-pink-500'   },
+              { title: t('problem1_title'), desc: t('problem1_desc'), icon: Shield, gradient: 'from-red-500 to-orange-500' },
+              { title: t('problem2_title'), desc: t('problem2_desc'), icon: FileCheck, gradient: 'from-blue-500 to-cyan-500' },
+              { title: t('problem3_title'), desc: t('problem3_desc'), icon: Banknote, gradient: 'from-green-500 to-emerald-500' },
+              { title: t('problem4_title'), desc: t('problem4_desc'), icon: Landmark, gradient: 'from-purple-500 to-pink-500' },
             ].map((problem, index) => (
               <motion.div
                 key={index}
@@ -360,11 +361,11 @@ const Home = () => {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: t('why1_title'), desc: t('why1_desc'), icon: Award          },
-              { title: t('why2_title'), desc: t('why2_desc'), icon: Zap            },
-              { title: t('why3_title'), desc: t('why3_desc'), icon: HeartHandshake  },
-              { title: t('why4_title'), desc: t('why4_desc'), icon: Eye            },
-              { title: t('why5_title'), desc: t('why5_desc'), icon: Shield         },
+              { title: t('why1_title'), desc: t('why1_desc'), icon: Award },
+              { title: t('why2_title'), desc: t('why2_desc'), icon: Zap },
+              { title: t('why3_title'), desc: t('why3_desc'), icon: HeartHandshake },
+              { title: t('why4_title'), desc: t('why4_desc'), icon: Eye },
+              { title: t('why5_title'), desc: t('why5_desc'), icon: Shield },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -442,11 +443,10 @@ const Home = () => {
                       <button
                         key={i}
                         onClick={() => setReviewPage(i)}
-                        className={`rounded-full transition-all duration-300 ${
-                          i === reviewPage
+                        className={`rounded-full transition-all duration-300 ${i === reviewPage
                             ? 'bg-[#0F7A4A] w-6 h-3'
                             : 'bg-gray-300 hover:bg-[#0F7A4A]/40 w-3 h-3'
-                        }`}
+                          }`}
                       />
                     ))}
                   </div>
