@@ -90,14 +90,16 @@ const Home = () => {
     "/home3.webp",
     "/home4.webp"
   ];
-
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     heroImages.forEach((src) => {
       const img = new Image();
       img.src = src;
     });
   }, []);
-
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
