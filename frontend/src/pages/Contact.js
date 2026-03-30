@@ -6,11 +6,20 @@ import { Phone, Mail, MapPin, Send, CheckCircle, User, MessageSquare, MessageCir
 
 
 
-const ACTIVE_STATES = ['Maharashtra', 'Gujarat'];
+const ACTIVE_STATES = ['Maharashtra', 'Gujarat', 'Madhya Pradesh', 'Uttar Pradesh'];
 
 const PIN_COORDS = {
   Maharashtra: [75.7139, 19.7515],
   Gujarat: [71.1924, 22.2587],
+  'Madhya Pradesh': [77.4126, 22.9734],
+  'Uttar Pradesh': [80.9462, 26.8467],
+};
+
+const STATE_KEYS = {
+  Maharashtra: 'map_state_maharashtra',
+  Gujarat: 'map_state_gujarat',
+  'Madhya Pradesh': 'map_state_madhya_pradesh',
+  'Uttar Pradesh': 'map_state_uttar_pradesh',
 };
 
 /* ─── India Map Component ─── */
@@ -59,8 +68,6 @@ const IndiaMap = ({ branches, t }) => {
         .attr('preserveAspectRatio', 'xMidYMid meet');
 
       svg.selectAll('*').remove();
-
-      
 
       const projection = d3
         .geoMercator()
@@ -149,49 +156,13 @@ const IndiaMap = ({ branches, t }) => {
           .style('cursor', 'pointer')
           .on('click', () => setPopup(stateName));
 
-        /* Pulse rings 
-        [0, 1].forEach((i) => {
-          g.append('circle')
-            .attr('cx', px)
-            .attr('cy', py)
-            .attr('r', 14)
-            .style('fill', 'none')
-            .style('stroke', '#e8891a')
-            .style('stroke-width', '1.5')
-            .style('animation', `mapPulse 2s ease-out ${delay + i}s infinite`);
-        }); */
-
-        /* Pin tail 
-        g.append('path')
-          .attr(
-            'd',
-            `M${px},${py + 26} L${px - 5},${py + 18} Q${px},${py + 30} ${px + 5},${py + 18} Z`
-          )
-          .style('fill', '#e8891a'); */
-
-        /* Pin circle 
-        g.append('circle')
-          .attr('cx', px)
-          .attr('cy', py)
-          .attr('r', 14)
-          .style('fill', '#e8891a')
-          .style('stroke', '#fff')
-          .style('stroke-width', '2')
-          .style('filter', 'drop-shadow(0 2px 5px rgba(0,0,0,0.4))')
-          .on('mouseover', function () {
-            d3.select(this).style('fill', '#f5a030');
-          })
-          .on('mouseout', function () {
-            d3.select(this).style('fill', '#e8891a');
-          }); */
-
         /* Image Pin */
         g.append('image')
-          .attr('href', '/location.png')   // 👈 your image in public folder
+          .attr('href', '/location.png')
           .attr('width', 40)
           .attr('height', 40)
-          .attr('x', px - 20)   // center align
-          .attr('y', py - 40)   // bottom tip alignment
+          .attr('x', px - 20)
+          .attr('y', py - 40)
           .style('filter', 'drop-shadow(0 4px 6px rgba(0,0,0,0.3))')
           .on('mouseover', function () {
             d3.select(this).attr('transform', `translate(${px}, ${py}) scale(1.2) translate(${-px}, ${-py})`);
@@ -211,7 +182,7 @@ const IndiaMap = ({ branches, t }) => {
           .style('dominant-baseline', 'central')
           .style('pointer-events', 'none')
           .style('letter-spacing', '0.5px')
-          .text(stateName === 'Maharashtra' ? 'Maharashtra' : 'Gujarat');
+          .text(t(STATE_KEYS[stateName]));
       });
 
       setMapLoaded(true);
@@ -235,7 +206,7 @@ const IndiaMap = ({ branches, t }) => {
 
     fetchMap();
     return () => { cancelled = true; };
-  }, []);
+  }, [t]);
 
   return (
     <>
@@ -281,10 +252,10 @@ const IndiaMap = ({ branches, t }) => {
             `}</style>
             <div className="bg-[#e8891a] px-5 py-4 flex items-start justify-between">
               <div>
-                <div className="text-lg font-extrabold text-white">{popup}</div>
+                <div className="text-lg font-extrabold text-white">{t(STATE_KEYS[popup])}</div>
                 <div className="text-xs text-white/80 mt-0.5">
                   {branches[popup]?.offices.length}{' '}
-                  {branches[popup]?.offices.length === 1 ? 'Office' : 'Offices'}
+                  {branches[popup]?.offices.length === 1 ? t('map_office_single') : t('map_office_multiple')}
                 </div>
               </div>
               <button
@@ -304,7 +275,6 @@ const IndiaMap = ({ branches, t }) => {
                     <span className="text-sm font-bold text-[#1b5e38]">{o.name}</span>
                   </div>
                   <p className="text-xs text-gray-500 leading-relaxed pl-8 mb-1">{o.addr}</p>
-                  {/* <p className="text-xs font-semibold text-[#e8891a] pl-8">📞 {o.phone}</p> */}
                 </div>
               ))}
             </div>
@@ -334,22 +304,33 @@ const Contact = () => {
   const BRANCHES = {
     Maharashtra: {
       offices: [
-        {
-          name: t('map_mumbai_branch'),
-          addr: t('map_mumbai_branch_addr'),
-        },
-        {
-          name: t('map_pune_branch'),
-          addr: t('map_pune_branch_addr'),
-        },
+        { name: t('map_mumbai_branch'),   addr: t('map_mumbai_branch_addr') },
+        { name: t('map_pune_branch'),     addr: t('map_pune_branch_addr') },
+        { name: t('map_nagpur_branch'),   addr: t('map_nagpur_branch_addr') },
+        { name: t('map_nashik_branch'),   addr: t('map_nashik_branch_addr') },
+        { name: t('map_kolhapur_branch'), addr: t('map_kolhapur_branch_addr') },
+        { name: t('map_solapur_branch'),  addr: t('map_solapur_branch_addr') },
+        { name: t('map_satara_branch'),   addr: t('map_satara_branch_addr') },
       ],
     },
     Gujarat: {
       offices: [
-        {
-          name: t('map_ahmedabad_branch'),
-          addr: t('map_ahmedabad_branch_addr'),
-        },
+        { name: t('map_ahmedabad_branch'), addr: t('map_ahmedabad_branch_addr') },
+        { name: t('map_surat_branch'),     addr: t('map_surat_branch_addr') },
+        { name: t('map_rajkot_branch'),    addr: t('map_rajkot_branch_addr') },
+      ],
+    },
+    'Madhya Pradesh': {
+      offices: [
+        { name: t('map_indore_branch'), addr: t('map_indore_branch_addr') },
+      ],
+    },
+    'Uttar Pradesh': {
+      offices: [
+        { name: t('map_lucknow_branch'),   addr: t('map_lucknow_branch_addr') },
+        { name: t('map_varanasi_branch'),  addr: t('map_varanasi_branch_addr') },
+        { name: t('map_gorakhpur_branch'), addr: t('map_gorakhpur_branch_addr') },
+        { name: t('map_basti_branch'),     addr: t('map_basti_branch_addr') },
       ],
     },
   };
@@ -496,7 +477,6 @@ const Contact = () => {
                 {t('our_network_desc1')}
                 <span className="font-bold text-[#F39C12]">{t('our_network_desc2')}</span> {t('our_network_desc3')}
               </p>
-              {/* ── D3 India Map inserted here ── */}
               <p className="text-base md:text-lg text-white/90 leading-relaxed">
                 {t('our_network_desc4')}
               </p>

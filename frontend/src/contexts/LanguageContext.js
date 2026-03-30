@@ -2090,12 +2090,57 @@ export const translations = {
     network_stat3_desc: 'States & Cities',
     network_cta_button: 'Join Our Expanding Network of Service Excellence',
 
+    // India Map Branches ------------------------------------------------------------------------ 
+
+    // Maharashtra
     map_mumbai_branch: 'Mumbai Head Office',
-    map_mumbai_branch_addr: 'Unit 12, Nirmal Corporate Centre, Kurla West, Mumbai – 400 070',
+    map_mumbai_branch_addr: '2B 70, Yashoda Total Solution, Phoenix Paragon Plaza, Lal Bahadur Shastri Marg, Kamani, Kurla (West), Mumbai, Maharashtra 400070',
     map_pune_branch: 'Pune Branch',
-    map_pune_branch_addr: 'Office 5B, Amanora Chambers, Hadapsar, Pune – 411 028',
-    map_ahmedabad_branch: 'Ahmedabad Office',
-    map_ahmedabad_branch_addr: '302, Shivalik Business Hub, S.G. Highway, Bodakdev, Ahmedabad – 380 054',
+    map_pune_branch_addr: 'Coming Soon...',
+    map_nagpur_branch: 'Nagpur Branch',
+    map_nagpur_branch_addr: 'Coming Soon...',
+    map_nashik_branch: 'Nashik Branch',
+    map_nashik_branch_addr: 'Coming Soon...',
+    map_kolhapur_branch: 'Kolhapur Branch',
+    map_kolhapur_branch_addr: 'Coming Soon...',
+    map_solapur_branch: 'Solapur Branch',
+    map_solapur_branch_addr: 'Coming Soon...',
+    map_satara_branch: 'Satara Branch',
+    map_satara_branch_addr: 'Coming Soon...',
+
+    // Gujarat
+    map_ahmedabad_branch: 'Ahmedabad Branch',
+    map_ahmedabad_branch_addr: 'Coming Soon...',
+    map_surat_branch: 'Surat Branch',
+    map_surat_branch_addr: 'Coming Soon...',
+    map_rajkot_branch: 'Rajkot Branch',
+    map_rajkot_branch_addr: 'Coming Soon...',
+
+
+    // Madhya Pradesh
+    map_indore_branch: 'Indore Branch',
+    map_indore_branch_addr: 'Coming Soon...',
+
+    // Uttar Pradesh
+    map_lucknow_branch: 'Lucknow Branch',
+    map_lucknow_branch_addr: 'Coming Soon...',
+    map_varanasi_branch: 'Varanasi Branch',
+    map_varanasi_branch_addr: 'Coming Soon...',
+    map_gorakhpur_branch: 'Gorakhpur Branch',
+    map_gorakhpur_branch_addr: 'Coming Soon...',
+    map_basti_branch: 'Basti Branch',
+    map_basti_branch_addr: 'Coming Soon...',
+
+
+    // States
+    map_state_maharashtra: 'Maharashtra',
+    map_state_gujarat: 'Gujarat',
+    map_state_madhya_pradesh: 'Madhya Pradesh',
+    map_state_uttar_pradesh: 'Uttar Pradesh',
+
+    // Office count
+    map_office_single: 'Office',
+    map_office_multiple: 'Offices',
 
     map_load: 'Loading map...',
     map_load_error: '⚠️ Could not load map. Please check your connection and reload.',
@@ -4549,14 +4594,50 @@ export const translations = {
 
     network_cta_button: 'हमारे बढ़ते सेवा नेटवर्क से जुड़ें',
 
+    // India Map Branches 
+
     map_mumbai_branch: 'मुंबई मुख्य कार्यालय',
-    map_mumbai_branch_addr: 'यूनिट 12, निर्मल कॉर्पोरेट सेंटर, कुर्ला वेस्ट, मुंबई – 400 070',
-
+    map_mumbai_branch_addr: '2B 70, यशोदा टोटल सॉल्यूशन, फीनिक्स पैरागॉन प्लाज़ा, लाल बहादुर शास्त्री मार्ग, कामानी, कुर्ला (पश्चिम), मुंबई, महाराष्ट्र 400070',
     map_pune_branch: 'पुणे शाखा',
-    map_pune_branch_addr: 'ऑफिस 5B, अमनोरा चैंबर्स, हडपसर, पुणे – 411 028',
+    map_pune_branch_addr: 'जल्द आ रहा है...',
+    map_nagpur_branch: 'नागपुर शाखा',
+    map_nagpur_branch_addr: 'जल्द आ रहा है...',
+    map_nashik_branch: 'नासिक शाखा',
+    map_nashik_branch_addr: 'जल्द आ रहा है...',
+    map_kolhapur_branch: 'कोल्हापुर शाखा',
+    map_kolhapur_branch_addr: 'जल्द आ रहा है...',
+    map_solapur_branch: 'सोलापुर शाखा',
+    map_solapur_branch_addr: 'जल्द आ रहा है...',
+    map_satara_branch: 'सतारा शाखा',
+    map_satara_branch_addr: 'जल्द आ रहा है...',
 
-    map_ahmedabad_branch: 'अहमदाबाद कार्यालय',
-    map_ahmedabad_branch_addr: '302, शिवालिक बिजनेस हब, एस.जी. हाईवे, बोदकदेव, अहमदाबाद – 380 054',
+    map_ahmedabad_branch: 'अहमदाबाद शाखा',
+    map_ahmedabad_branch_addr: 'जल्द आ रहा है...',
+    map_surat_branch: 'सूरत शाखा',
+    map_surat_branch_addr: 'जल्द आ रहा है...',
+    map_rajkot_branch: 'राजकोट शाखा',
+    map_rajkot_branch_addr: 'जल्द आ रहा है...',
+
+    map_indore_branch: 'इंदौर शाखा',
+    map_indore_branch_addr: 'जल्द आ रहा है...',
+
+    map_lucknow_branch: 'लखनऊ शाखा',
+    map_lucknow_branch_addr: 'जल्द आ रहा है...',
+    map_varanasi_branch: 'वाराणसी शाखा',
+    map_varanasi_branch_addr: 'जल्द आ रहा है...',
+    map_gorakhpur_branch: 'गोरखपुर शाखा',
+    map_gorakhpur_branch_addr: 'जल्द आ रहा है...',
+    map_basti_branch: 'बस्ती शाखा',
+    map_basti_branch_addr: 'जल्द आ रहा है...',
+
+
+    map_state_maharashtra: 'महाराष्ट्र',
+    map_state_gujarat: 'गुजरात',
+    map_state_madhya_pradesh: 'मध्य प्रदेश',
+    map_state_uttar_pradesh: 'उत्तर प्रदेश',
+
+    map_office_single: 'कार्यालय',
+    map_office_multiple: 'कार्यालय',
 
     map_load: 'मैप लोड हो रहा है...',
     map_load_error: '⚠️ मैप लोड नहीं हो सका। कृपया अपना कनेक्शन जांचें और पुनः लोड करें।',
@@ -7024,14 +7105,50 @@ export const translations = {
 
     network_cta_button: 'आमच्या वाढत्या सेवा नेटवर्कमध्ये सामील व्हा',
 
+    // India Map Branches
+
     map_mumbai_branch: 'मुंबई मुख्य कार्यालय',
-    map_mumbai_branch_addr: 'युनिट 12, निर्मल कॉर्पोरेट सेंटर, कुर्ला वेस्ट, मुंबई – 400 070',
-
+    map_mumbai_branch_addr: '2B 70, यशोदा टोटल सोल्यूशन, फिनिक्स पॅरागॉन प्लाझा, लाल बहादूर शास्त्री मार्ग, कामानी, कुर्ला (पश्चिम), मुंबई, महाराष्ट्र 400070',
     map_pune_branch: 'पुणे शाखा',
-    map_pune_branch_addr: 'ऑफिस 5B, अमनोरा चेंबर्स, हडपसर, पुणे – 411 028',
+    map_pune_branch_addr: 'लवकरच उपलब्ध...',
+    map_nagpur_branch: 'नागपूर शाखा',
+    map_nagpur_branch_addr: 'लवकरच उपलब्ध...',
+    map_nashik_branch: 'नाशिक शाखा',
+    map_nashik_branch_addr: 'लवकरच उपलब्ध...',
+    map_kolhapur_branch: 'कोल्हापूर शाखा',
+    map_kolhapur_branch_addr: 'लवकरच उपलब्ध...',
+    map_solapur_branch: 'सोलापूर शाखा',
+    map_solapur_branch_addr: 'लवकरच उपलब्ध...',
+    map_satara_branch: 'सातारा शाखा',
+    map_satara_branch_addr: 'लवकरच उपलब्ध...',
 
-    map_ahmedabad_branch: 'अहमदाबाद कार्यालय',
-    map_ahmedabad_branch_addr: '302, शिवालिक बिझनेस हब, एस.जी. हायवे, बोदकदेव, अहमदाबाद – 380 054',
+    map_ahmedabad_branch: 'अहमदाबाद शाखा',
+    map_ahmedabad_branch_addr: 'लवकरच उपलब्ध...',
+    map_surat_branch: 'सुरत शाखा',
+    map_surat_branch_addr: 'लवकरच उपलब्ध...',
+    map_rajkot_branch: 'राजकोट शाखा',
+    map_rajkot_branch_addr: 'लवकरच उपलब्ध...',
+
+    map_indore_branch: 'इंदौर शाखा',
+    map_indore_branch_addr: 'लवकरच उपलब्ध...',
+
+    map_lucknow_branch: 'लखनऊ शाखा',
+    map_lucknow_branch_addr: 'लवकरच उपलब्ध...',
+    map_varanasi_branch: 'वाराणसी शाखा',
+    map_varanasi_branch_addr: 'लवकरच उपलब्ध...',
+    map_gorakhpur_branch: 'गोरखपूर शाखा',
+    map_gorakhpur_branch_addr: 'लवकरच उपलब्ध...',
+    map_basti_branch: 'बस्ती शाखा',
+    map_basti_branch_addr: 'लवकरच उपलब्ध...',
+
+
+    map_state_maharashtra: 'महाराष्ट्र',
+    map_state_gujarat: 'गुजरात',
+    map_state_madhya_pradesh: 'मध्य प्रदेश',
+    map_state_uttar_pradesh: 'उत्तर प्रदेश',
+
+    map_office_single: 'कार्यालय',
+    map_office_multiple: 'कार्यालये',
 
     map_load: 'नकाशा लोड होत आहे...',
     map_load_error: '⚠️ नकाशा लोड होऊ शकला नाही. कृपया तुमचे कनेक्शन तपासा आणि पुन्हा लोड करा.',
