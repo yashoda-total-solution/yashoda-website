@@ -81,7 +81,7 @@ const heroImages = [
 
 // ── Home ──────────────────────────────────────────────────────────────────────
 const Home = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const REVIEWS_PER_PAGE = 3;
@@ -127,6 +127,13 @@ const Home = () => {
     };
     fetchApproved();
   }, []);
+
+  // ← ADD THIS after your useState declarations
+const getLangField = (review, field) => {
+  if (language === 'hi') return review[`${field}_hi`] || review[field];
+  if (language === 'mr') return review[`${field}_mr`] || review[field];
+  return review[field];
+};
 
   const totalPages = Math.ceil(approvedReviews.length / REVIEWS_PER_PAGE);
   const reviewStartIdx = reviewPage * REVIEWS_PER_PAGE;
@@ -425,8 +432,16 @@ const Home = () => {
                   className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch"
                 >
                   {displayReviews.map((review, index) => (
-                    <TestimonialCard key={review.id} review={review} index={index} />
-                  ))}
+  <TestimonialCard
+    key={review.id}
+    review={{
+      ...review,
+      customer_name:    getLangField(review, 'customer_name'),
+      review_message:   getLangField(review, 'review_message'),
+    }}
+    index={index}
+  />
+))}
                 </motion.div>
               </AnimatePresence>
 

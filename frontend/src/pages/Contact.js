@@ -60,6 +60,8 @@ const IndiaMap = ({ branches, t }) => {
 
       svg.selectAll('*').remove();
 
+      
+
       const projection = d3
         .geoMercator()
         .center([82.5, 22.5])
