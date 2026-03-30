@@ -1,20 +1,21 @@
 """
 Backend server for Yashoda Total Solution Website
 + Email sending via Resend (background, no delay)
-+ Auto-translation to Hindi & Marathi via deep-translator (free, no API key)
++ Auto-translation to Hindi, Marathi & English via deep-translator (free, no API key)
++ PostgreSQL via Supabase (persistent — data survives redeployments forever)
 """
 
 from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel, Field
-from datetime import datetime
-import sqlite3
+import psycopg2
+import psycopg2.extras
 import secrets
 import os
 import requests
 from dotenv import load_dotenv
-from deep_translator import GoogleTranslator   # ← NEW
+from deep_translator import GoogleTranslator
 
 load_dotenv()
 
@@ -30,7 +31,7 @@ app.add_middleware(
 )
 
 # ── ENV CONFIG ───────────────────────────────────────────────
-DB_PATH        = os.getenv("DB_PATH", "app.db")
+DATABASE_URL   = os.getenv("DATABASE_URL")
 ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 RESEND_API_KEY = os.getenv("RESEND_API_KEY")
@@ -42,64 +43,51 @@ security = HTTPBearer(auto_error=False)
 # ── DATABASE ─────────────────────────────────────────────────
 
 def get_db():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
+    conn = psycopg2.connect(DATABASE_URL, cursor_factory=psycopg2.extras.RealDictCursor)
     return conn
 
 
 def init_db():
     conn = get_db()
+    cur = conn.cursor()
 
-    # Create table with all columns (new installs)
-    conn.execute("""
+    cur.execute("""
         CREATE TABLE IF NOT EXISTS reviews (
-            id               INTEGER PRIMARY KEY AUTOINCREMENT,
-            customer_name    TEXT,
-            customer_name_hi TEXT,
-            customer_name_mr TEXT,
-            city             TEXT,
-            rating           INTEGER,
+            id                SERIAL PRIMARY KEY,
+            customer_name     TEXT,
+            customer_name_hi  TEXT,
+            customer_name_mr  TEXT,
+            customer_name_en  TEXT,
+            city              TEXT,
+            city_hi           TEXT,
+            city_mr           TEXT,
+            city_en           TEXT,
+            rating            INTEGER,
             review_message    TEXT,
             review_message_hi TEXT,
             review_message_mr TEXT,
-            approved         INTEGER DEFAULT 0,
-            created_at       TEXT DEFAULT (datetime('now'))
+            review_message_en TEXT,
+            approved          INTEGER DEFAULT 0,
+            created_at        TIMESTAMP DEFAULT NOW()
         )
     """)
 
-    # Safe migration for existing installs — adds columns if missing
-    new_cols = [
-        "customer_name_hi TEXT",
-        "customer_name_mr TEXT",
-        "customer_name_en TEXT",   # ← ADD
-        "review_message_hi TEXT",
-        "review_message_mr TEXT",
-        "review_message_en TEXT",
-        "city_hi TEXT",   # ← ADD
-        "city_mr TEXT",   # ← ADD
-        "city_en TEXT",
-    ]
-    for col_def in new_cols:
-        col_name = col_def.split()[0]
-        try:
-            conn.execute(f"ALTER TABLE reviews ADD COLUMN {col_def}")
-            print(f"✅ Migration: added column '{col_name}'")
-        except Exception:
-            pass  # Column already exists — safe to ignore
-
-    conn.execute("""
+    cur.execute("""
         CREATE TABLE IF NOT EXISTS contacts (
-            id          INTEGER PRIMARY KEY AUTOINCREMENT,
-            name        TEXT,
-            phone       TEXT,
-            location    TEXT,
-            service     TEXT,
-            message     TEXT,
-            created_at  TEXT DEFAULT (datetime('now'))
+            id         SERIAL PRIMARY KEY,
+            name       TEXT,
+            phone      TEXT,
+            location   TEXT,
+            service    TEXT,
+            message    TEXT,
+            created_at TIMESTAMP DEFAULT NOW()
         )
     """)
+
     conn.commit()
+    cur.close()
     conn.close()
+    print("✅ Database initialized (Supabase PostgreSQL)")
 
 
 init_db()
@@ -107,41 +95,43 @@ init_db()
 # ── TRANSLATION (FREE — deep-translator / Google) ────────────
 
 def translate_text(text: str, target_lang: str) -> str:
-    """Translate text to target_lang ('hi' or 'mr'). Returns original on failure."""
+    """Translate text to target_lang. Returns original on failure."""
     try:
         return GoogleTranslator(source='auto', target=target_lang).translate(text)
     except Exception as e:
         print(f"❌ Translation error ({target_lang}):", e)
-        return text   # graceful fallback — show original if translation fails
+        return text  # graceful fallback
 
 
-# AFTER:
 def translate_and_save(review_id: int, customer_name: str, review_message: str, city: str):
-    name_hi  = translate_text(customer_name,  'hi')
-    name_mr  = translate_text(customer_name,  'mr')
-    name_en  = translate_text(customer_name,  'en')   # ← ADD
-    msg_hi   = translate_text(review_message, 'hi')
-    msg_mr   = translate_text(review_message, 'mr')
-    msg_en   = translate_text(review_message, 'en')   # ← ADD
-    city_hi  = translate_text(city,           'hi')
-    city_mr  = translate_text(city,           'mr')
-    city_en  = translate_text(city,           'en')   # ← ADD
+    """Background task: translate review to Hindi, Marathi & English, then persist."""
+    name_hi = translate_text(customer_name,  'hi')
+    name_mr = translate_text(customer_name,  'mr')
+    name_en = translate_text(customer_name,  'en')
+    msg_hi  = translate_text(review_message, 'hi')
+    msg_mr  = translate_text(review_message, 'mr')
+    msg_en  = translate_text(review_message, 'en')
+    city_hi = translate_text(city,           'hi')
+    city_mr = translate_text(city,           'mr')
+    city_en = translate_text(city,           'en')
 
     conn = get_db()
-    conn.execute("""
-        UPDATE reviews
-        SET customer_name_hi  = ?,
-            customer_name_mr  = ?,
-            customer_name_en  = ?,
-            review_message_hi = ?,
-            review_message_mr = ?,
-            review_message_en = ?,
-            city_hi           = ?,
-            city_mr           = ?,
-            city_en           = ?
-        WHERE id = ?
+    cur = conn.cursor()
+    cur.execute("""
+        UPDATE reviews SET
+            customer_name_hi  = %s,
+            customer_name_mr  = %s,
+            customer_name_en  = %s,
+            review_message_hi = %s,
+            review_message_mr = %s,
+            review_message_en = %s,
+            city_hi           = %s,
+            city_mr           = %s,
+            city_en           = %s
+        WHERE id = %s
     """, (name_hi, name_mr, name_en, msg_hi, msg_mr, msg_en, city_hi, city_mr, city_en, review_id))
     conn.commit()
+    cur.close()
     conn.close()
     print(f"✅ Translations saved for review id={review_id}")
 
@@ -208,29 +198,35 @@ def root():
 @app.post("/api/reviews")
 def submit_review(review: ReviewCreate, background_tasks: BackgroundTasks):
     conn = get_db()
-    cur = conn.execute(
-        "INSERT INTO reviews (customer_name, city, rating, review_message, approved) VALUES (?, ?, ?, ?, 0)",
+    cur = conn.cursor()
+    cur.execute(
+        """INSERT INTO reviews (customer_name, city, rating, review_message, approved)
+           VALUES (%s, %s, %s, %s, 0) RETURNING *""",
         (review.customer_name, review.city, review.rating, review.review_message)
     )
-    review_id = cur.lastrowid
+    row = dict(cur.fetchone())
     conn.commit()
-    row = conn.execute("SELECT * FROM reviews WHERE id = ?", (review_id,)).fetchone()
+    cur.close()
     conn.close()
 
-    # ← Translate to Hindi + Marathi in background (user gets instant response)
-    background_tasks.add_task(translate_and_save, review_id, review.customer_name, review.review_message, review.city)
-
-    return dict(row)
+    background_tasks.add_task(
+        translate_and_save,
+        row["id"], review.customer_name, review.review_message, review.city
+    )
+    return row
 
 
 @app.get("/api/reviews")
 def get_approved_reviews():
     conn = get_db()
-    rows = conn.execute(
+    cur = conn.cursor()
+    cur.execute(
         "SELECT * FROM reviews WHERE approved = 1 ORDER BY created_at DESC"
-    ).fetchall()
+    )
+    rows = [dict(r) for r in cur.fetchall()]
+    cur.close()
     conn.close()
-    return [dict(r) for r in rows]
+    return rows
 
 
 # ── CONTACT API ──────────────────────────────────────────────
@@ -238,11 +234,13 @@ def get_approved_reviews():
 @app.post("/api/contacts")
 def submit_contact(contact: ContactCreate, background_tasks: BackgroundTasks):
     conn = get_db()
-    conn.execute(
-        "INSERT INTO contacts (name, phone, location, service, message) VALUES (?, ?, ?, ?, ?)",
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO contacts (name, phone, location, service, message) VALUES (%s, %s, %s, %s, %s)",
         (contact.name, contact.phone, contact.location, contact.service, contact.message)
     )
     conn.commit()
+    cur.close()
     conn.close()
 
     email_body = f"""
@@ -290,16 +288,21 @@ def admin_login(credentials: AdminLogin):
 @app.get("/api/admin/reviews")
 def admin_reviews(token: str = Depends(require_admin)):
     conn = get_db()
-    rows = conn.execute("SELECT * FROM reviews").fetchall()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM reviews ORDER BY created_at DESC")
+    rows = [dict(r) for r in cur.fetchall()]
+    cur.close()
     conn.close()
-    return [dict(r) for r in rows]
+    return rows
 
 
 @app.patch("/api/admin/reviews/{review_id}/approve")
 def approve_review(review_id: int, token: str = Depends(require_admin)):
     conn = get_db()
-    conn.execute("UPDATE reviews SET approved = 1 WHERE id = ?", (review_id,))
+    cur = conn.cursor()
+    cur.execute("UPDATE reviews SET approved = 1 WHERE id = %s", (review_id,))
     conn.commit()
+    cur.close()
     conn.close()
     return {"message": "Approved"}
 
@@ -307,8 +310,10 @@ def approve_review(review_id: int, token: str = Depends(require_admin)):
 @app.delete("/api/admin/reviews/{review_id}")
 def delete_review(review_id: int, token: str = Depends(require_admin)):
     conn = get_db()
-    conn.execute("DELETE FROM reviews WHERE id = ?", (review_id,))
+    cur = conn.cursor()
+    cur.execute("DELETE FROM reviews WHERE id = %s", (review_id,))
     conn.commit()
+    cur.close()
     conn.close()
     return {"message": "Deleted"}
 
