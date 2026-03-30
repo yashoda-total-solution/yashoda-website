@@ -103,19 +103,28 @@ def translate_text(text: str, target_lang: str) -> str:
         return text  # graceful fallback
 
 
+def translate_text_safe(text: str, target_lang: str, retries: int = 2) -> str:
+    """Translate with retry — if result equals original, try again."""
+    for _ in range(retries):
+        result = translate_text(text, target_lang)
+        if result and result.strip() != text.strip():
+            return result  # valid translation
+    return text  # fallback to original if all retries fail
+
+
 def translate_and_save(review_id: int, customer_name: str, review_message: str, city: str):
     """Background task: translate review to Hindi, Marathi & English, then persist."""
-    
+
     translations = {
-        "customer_name_hi":  translate_text(customer_name,  'hi'),
-        "customer_name_mr":  translate_text(customer_name,  'mr'),
-        "customer_name_en":  translate_text(customer_name,  'en'),
-        "review_message_hi": translate_text(review_message, 'hi'),
-        "review_message_mr": translate_text(review_message, 'mr'),
-        "review_message_en": translate_text(review_message, 'en'),
-        "city_hi":           translate_text(city,           'hi'),
-        "city_mr":           translate_text(city,           'mr'),
-        "city_en":           translate_text(city,           'en'),
+        "customer_name_hi":  translate_text_safe(customer_name,  'hi'),
+        "customer_name_mr":  translate_text_safe(customer_name,  'mr'),
+        "customer_name_en":  translate_text_safe(customer_name,  'en'),
+        "review_message_hi": translate_text_safe(review_message, 'hi'),
+        "review_message_mr": translate_text_safe(review_message, 'mr'),
+        "review_message_en": translate_text_safe(review_message, 'en'),
+        "city_hi":           translate_text_safe(city,           'hi'),
+        "city_mr":           translate_text_safe(city,           'mr'),
+        "city_en":           translate_text_safe(city,           'en'),
     }
 
     conn = get_db()
@@ -148,7 +157,6 @@ def translate_and_save(review_id: int, customer_name: str, review_message: str, 
     cur.close()
     conn.close()
     print(f"✅ All translations saved for review id={review_id}")
-
 
 # ── EMAIL FUNCTION (RESEND) ──────────────────────────────────
 
