@@ -246,7 +246,7 @@ def submit_contact(contact: ContactCreate, background_tasks: BackgroundTasks):
     conn.close()
 
     email_body = f"""
-New Contact Form Submission:
+New Customer Request Submission:
 
 Name: {contact.name}
 Phone: {contact.phone}
@@ -254,7 +254,7 @@ Location: {contact.location}
 Service: {contact.service}
 Message: {contact.message}
 """
-    background_tasks.add_task(send_email, "New Contact Form Submission", email_body)
+    background_tasks.add_task(send_email, "New Customer Request Submission", email_body)
     return {"message": "Submitted successfully"}
 
 
@@ -263,7 +263,7 @@ Message: {contact.message}
 @app.post("/api/partner")
 def submit_partner(data: dict, background_tasks: BackgroundTasks):
     email_body = f"""
-New Partner Request:
+New Partnership Request:
 
 Name: {data.get('name')}
 Mobile: {data.get('mobile')}
@@ -272,7 +272,7 @@ Email: {data.get('email')}
 Partner Type: {data.get('partnerType')}
 Additional Info: {data.get('additionalInfo')}
     """
-    background_tasks.add_task(send_email, "New Partner Request", email_body)
+    background_tasks.add_task(send_email, "New Partnership Request", email_body)
     return {"message": "Partner request submitted"}
 
 

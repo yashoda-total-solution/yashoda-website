@@ -41,11 +41,12 @@ const GALLERY_IMAGES = [
   },
 ];
 
+const CATEGORIES = ['team', 'office', 'work', 'success'];
+
 const galleryText = {
   en: {
     title: 'Gallery',
     subtitle: 'A glimpse into our workspace, team, and the work we do for our clients',
-    all: 'All',
     team: 'Team',
     office: 'Office',
     work: 'Our Work',
@@ -54,7 +55,6 @@ const galleryText = {
   hi: {
     title: 'गैलरी',
     subtitle: 'हमारे कार्यस्थल, टीम और ग्राहकों के लिए हमारे काम की एक झलक',
-    all: 'सभी',
     team: 'टीम',
     office: 'कार्यालय',
     work: 'हमारा काम',
@@ -63,7 +63,6 @@ const galleryText = {
   mr: {
     title: 'गॅलरी',
     subtitle: 'आमचे कार्यस्थळ, टीम आणि ग्राहकांसाठी आम्ही करत असलेल्या कामाची एक झलक',
-    all: 'सर्व',
     team: 'टीम',
     office: 'कार्यालय',
     work: 'आमचे काम',
@@ -74,7 +73,10 @@ const galleryText = {
 const Gallery = () => {
   const { language } = useLanguage();
   const txt = galleryText[language];
+  const [activeCategory, setActiveCategory] = useState('team');
   const [lightboxImage, setLightboxImage] = useState(null);
+
+  const filteredImages = GALLERY_IMAGES.filter(img => img.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-[#F5F7F9]">
@@ -89,12 +91,41 @@ const Gallery = () => {
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }} />
       </section>
 
+      {/* Filter Tabs */}
+      <section className="pt-10 pb-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center gap-3">
+            {CATEGORIES.map(category => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`relative px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                  activeCategory === category
+                    ? 'bg-[#0F7A4A] text-white shadow-lg shadow-[#0F7A4A]/30'
+                    : 'bg-white text-gray-600 hover:bg-gray-100 shadow-sm border border-gray-200'
+                }`}
+                data-testid={`filter-tab-${category}`}
+              >
+                {activeCategory === category && (
+                  <motion.span
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-[#0F7A4A] rounded-full -z-10"
+                    transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
+                  />
+                )}
+                {txt[category]}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Gallery Grid */}
-      <section className="py-16 md:py-24">
+      <section className="py-10 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence mode="popLayout">
-              {GALLERY_IMAGES.map((img, index) => (
+              {filteredImages.map((img, index) => (
                 <motion.div
                   key={img.src}
                   layout
@@ -162,5 +193,4 @@ const Gallery = () => {
     </div>
   );
 };
-
 export default Gallery;

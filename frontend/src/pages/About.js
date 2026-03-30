@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 
 const TEAM_IMAGES = {
-  md: 'director.png',
+  md: 'director.PNG',
   sales: 'https://static.prod-images.emergentagent.com/jobs/bd5b376d-ca14-453c-bb4f-06833e2e2741/images/87447e00c2f040c5a6f2bfadb1ae27a431d8b28a7e9a40f86d3b3d5a785b21c4.png',
   legal: 'https://static.prod-images.emergentagent.com/jobs/bd5b376d-ca14-453c-bb4f-06833e2e2741/images/a75fe35cf9732eed2e87f9cab7303f4159c6a291444cd1c3688266fe8ac59960.png',
 };
@@ -46,7 +46,7 @@ const About = () => {
     {
       key: 'legal',
       image: TEAM_IMAGES.legal,
-      title: t('legal_title'),
+      title: t('legal_title1'),
       name: null,
       icon: Shield,
       color: '#F97316',

@@ -167,7 +167,7 @@ export const translations = {
     footer_phone: 'Phone',
     footer_email: 'Email',
     footer_address: 'Address',
-    footer_address_text: '2B 70, Yashoda Total Solution, Phoenix Paragon Plaza, Lal Bahadur Shastri Marg, Kamani, Ashok Nagar, Kurla, Mumbai, Maharashtra 400070',
+    footer_address_text: '2B 70, Yashoda Total Solution, Phoenix Paragon Plaza, Lal Bahadur Shastri Marg, Kamani, Kurla (West), Mumbai, Maharashtra 400070',
 
     footer_rights: '© 2026 Yashoda Total Solution. All rights reserved.',
     footer_designed_by: 'Design & Developed by',
@@ -250,7 +250,7 @@ export const translations = {
     sales_desc3: "Our strength lies in our hardworking approach, customer-focused mindset, and strong coordination with our legal and claims experts to ensure the best possible outcome for you.",
     sales_motto: "Your trust motivates us. Your success is our achievement.",
 
-    legal_title: "Legal Team",
+    legal_title1: "Legal Team",
     legal_desc1: "At Yashoda Total Solution, we have a highly experienced and dedicated legal team specializing in Insurance Dispute Resolution Management. Our experts have successfully handled complex cases including insurance mis-selling, claim settlement disputes, and third-party claim settlements.",
     legal_desc2: "With deep industry knowledge and strategic legal expertise, we stand firmly for our clients' rights and ensure they receive the justice and compensation they deserve. Our unique and result-oriented approach empowers you to recover your hard-earned money — even from the biggest and most powerful insurance companies.",
     legal_motto: "Your fight is our responsibility. Your justice is our mission.",
@@ -2034,7 +2034,7 @@ export const translations = {
     contact_email_title: 'Email Address',
     contact_email_address: 'info@yashodatotalsolution.com',
     contact_address_title: 'Head Office',
-    contact_address_text: '2B 70, Yashoda Total Solution, Phoenix Paragon Plaza, Lal Bahadur Shastri Marg, Kamani, Ashok Nagar, Kurla, Mumbai, Maharashtra 400070',
+    contact_address_text: '2B 70, Yashoda Total Solution, Phoenix Paragon Plaza, Lal Bahadur Shastri Marg, Kamani, Kurla (West), Mumbai, Maharashtra 400070',
 
     contact_form_title: 'Send Us a Message',
     contact_form_subtitle: 'Have a problem? Submit your details and our team will contact you soon.',
@@ -2346,7 +2346,7 @@ export const translations = {
     footer_phone: 'फोन',
     footer_email: 'ईमेल',
     footer_address: 'पता',
-    footer_address_text: '2B 70, यशोदा टोटल सॉल्यूशन, फीनिक्स पैरागॉन प्लाज़ा, लाल बहादुर शास्त्री मार्ग, कामानी, अशोक नगर, कुर्ला, मुंबई, महाराष्ट्र 400070',
+    footer_address_text: '2B 70, यशोदा टोटल सॉल्यूशन, फीनिक्स पैरागॉन प्लाज़ा, लाल बहादुर शास्त्री मार्ग, कामानी, कुर्ला (पश्चिम), मुंबई, महाराष्ट्र 400070',
 
     footer_rights: '© 2026 यशोदा टोटल सॉल्यूशन। सर्वाधिकार सुरक्षित।',
     footer_designed_by: 'डिज़ाइन एवं विकसित द्वारा',
@@ -2434,7 +2434,7 @@ export const translations = {
 
     sales_motto: "आपका विश्वास हमारी प्रेरणा है। आपकी सफलता हमारी उपलब्धि है।",
 
-    legal_title: "कानूनी टीम",
+    legal_title1: "कानूनी टीम",
     legal_desc1: "यशोदा टोटल सॉल्यूशन में, हमारे पास बीमा विवाद समाधान प्रबंधन में विशेषज्ञता रखने वाली अत्यंत अनुभवी और समर्पित कानूनी टीम है। हमारे विशेषज्ञों ने बीमा मिस-सेलिंग, दावा निपटान विवाद और थर्ड-पार्टी क्लेम सेटलमेंट जैसे जटिल मामलों को सफलतापूर्वक संभाला है।",
     legal_desc2: "गहन उद्योग ज्ञान और रणनीतिक कानूनी विशेषज्ञता के साथ, हम अपने ग्राहकों के अधिकारों के लिए दृढ़ता से खड़े रहते हैं और सुनिश्चित करते हैं कि उन्हें वह न्याय और मुआवजा मिले जिसके वे हकदार हैं। हमारा अनूठा और परिणाम-उन्मुख दृष्टिकोण आपको आपकी मेहनत की कमाई वापस दिलाने में सक्षम बनाता है — यहां तक कि सबसे बड़ी और प्रभावशाली बीमा कंपनियों से भी।",
     legal_motto: "आपकी लड़ाई हमारी जिम्मेदारी है। आपका न्याय हमारा मिशन है।",
@@ -4484,7 +4484,7 @@ export const translations = {
     contact_email_address: 'info@yashodatotalsolution.com',
 
     contact_address_title: 'मुख्य कार्यालय',
-    contact_address_text: '2B 70, यशोदा टोटल सॉल्यूशन, फीनिक्स पैरागन प्लाज़ा, लाल बहादुर शास्त्री मार्ग, कमानी, अशोक नगर, कुर्ला, मुंबई, महाराष्ट्र 400070',
+    contact_address_text: '2B 70, यशोदा टोटल सॉल्यूशन, फीनिक्स पैरागन प्लाज़ा, लाल बहादुर शास्त्री मार्ग, कमानी, कुर्ला (पश्चिम), मुंबई, महाराष्ट्र 400070',
 
     contact_form_title: 'हमें संदेश भेजें',
     contact_form_subtitle: 'कोई समस्या है? अपने विवरण सबमिट करें, हमारी टीम जल्द ही आपसे संपर्क करेगी।',
@@ -4825,7 +4825,7 @@ export const translations = {
     footer_phone: 'फोन',
     footer_email: 'ईमेल',
     footer_address: 'पत्ता',
-    footer_address_text: '2B 70, यशोदा टोटल सोल्यूशन, फिनिक्स पॅरागॉन प्लाझा, लाल बहादूर शास्त्री मार्ग, कामानी, अशोक नगर, कुर्ला, मुंबई, महाराष्ट्र 400070',
+    footer_address_text: '2B 70, यशोदा टोटल सोल्यूशन, फिनिक्स पॅरागॉन प्लाझा, लाल बहादूर शास्त्री मार्ग, कामानी, कुर्ला (पश्चिम), मुंबई, महाराष्ट्र 400070',
 
     footer_rights: '© 2026 यशोदा टोटल सोल्यूशन. सर्व हक्क राखीव.',
     footer_designed_by: 'डिझाइन व विकसित केले',
@@ -4909,7 +4909,7 @@ export const translations = {
     sales_desc3: "आमची ताकद आमच्या मेहनती दृष्टिकोनात, ग्राहक-केंद्रित विचारसरणीत आणि आमच्या कायदेशीर व दावा तज्ञांसोबतच्या मजबूत समन्वयात आहे, ज्यामुळे तुमच्यासाठी सर्वोत्तम परिणाम सुनिश्चित होतात.",
     sales_motto: "तुमचा विश्वास आम्हाला प्रेरणा देतो. तुमचे यश आमचे यश आहे.",
 
-    legal_title: "कायदेशीर टीम",
+    legal_title1: "कायदेशीर टीम",
     legal_desc1: "यशोदा टोटल सोल्यूशन्समध्ये आमच्याकडे विमा वाद निराकरण व्यवस्थापनात तज्ज्ञ असलेली अत्यंत अनुभवी आणि समर्पित कायदेशीर टीम आहे. आमच्या तज्ञांनी विमा मिस-सेलिंग, दावा सेटलमेंट वाद आणि थर्ड-पार्टी क्लेम सेटलमेंटसारख्या गुंतागुंतीच्या प्रकरणांचे यशस्वीपणे हाताळले आहे.",
     legal_desc2: "सखोल उद्योगज्ञान आणि धोरणात्मक कायदेशीर कौशल्याच्या जोरावर आम्ही आमच्या ग्राहकांच्या हक्कांसाठी ठामपणे उभे राहतो आणि त्यांना योग्य न्याय व भरपाई मिळवून देतो. आमचा परिणाम-केंद्रित दृष्टिकोन तुम्हाला तुमची मेहनतीची कमाई परत मिळवून देण्यासाठी सक्षम करतो — अगदी मोठ्या आणि प्रभावशाली विमा कंपन्यांकडूनसुद्धा.",
     legal_motto: "तुमचा लढा ही आमची जबाबदारी आहे. तुमचा न्याय हे आमचे ध्येय आहे.",
@@ -6959,7 +6959,7 @@ export const translations = {
     contact_email_address: 'info@yashodatotalsolution.com',
 
     contact_address_title: 'मुख्य कार्यालय',
-    contact_address_text: '2B 70, यशोदा टोटल सोल्यूशन्स, फिनिक्स पॅरागॉन प्लाझा, लाल बहादुर शास्त्री मार्ग, कमानी, अशोक नगर, कुर्ला, मुंबई, महाराष्ट्र 400070',
+    contact_address_text: '2B 70, यशोदा टोटल सोल्यूशन्स, फिनिक्स पॅरागॉन प्लाझा, लाल बहादुर शास्त्री मार्ग, कमानी, कुर्ला (पश्चिम), मुंबई, महाराष्ट्र 400070',
 
     contact_form_title: 'आम्हाला संदेश पाठवा',
     contact_form_subtitle: 'काही समस्या आहे का? तुमची माहिती सबमिट करा, आमची टीम लवकरच तुमच्याशी संपर्क साधेल।',
