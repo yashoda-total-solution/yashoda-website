@@ -71,10 +71,13 @@ def init_db():
     new_cols = [
         "customer_name_hi TEXT",
         "customer_name_mr TEXT",
+        "customer_name_en TEXT",   # ← ADD
         "review_message_hi TEXT",
         "review_message_mr TEXT",
+        "review_message_en TEXT",
         "city_hi TEXT",   # ← ADD
         "city_mr TEXT",   # ← ADD
+        "city_en TEXT",
     ]
     for col_def in new_cols:
         col_name = col_def.split()[0]
@@ -116,22 +119,28 @@ def translate_text(text: str, target_lang: str) -> str:
 def translate_and_save(review_id: int, customer_name: str, review_message: str, city: str):
     name_hi  = translate_text(customer_name,  'hi')
     name_mr  = translate_text(customer_name,  'mr')
+    name_en  = translate_text(customer_name,  'en')   # ← ADD
     msg_hi   = translate_text(review_message, 'hi')
     msg_mr   = translate_text(review_message, 'mr')
+    msg_en   = translate_text(review_message, 'en')   # ← ADD
     city_hi  = translate_text(city,           'hi')
     city_mr  = translate_text(city,           'mr')
+    city_en  = translate_text(city,           'en')   # ← ADD
 
     conn = get_db()
     conn.execute("""
         UPDATE reviews
         SET customer_name_hi  = ?,
             customer_name_mr  = ?,
+            customer_name_en  = ?,
             review_message_hi = ?,
             review_message_mr = ?,
+            review_message_en = ?,
             city_hi           = ?,
-            city_mr           = ?
+            city_mr           = ?,
+            city_en           = ?
         WHERE id = ?
-    """, (name_hi, name_mr, msg_hi, msg_mr, city_hi, city_mr, review_id))
+    """, (name_hi, name_mr, name_en, msg_hi, msg_mr, msg_en, city_hi, city_mr, city_en, review_id))
     conn.commit()
     conn.close()
     print(f"✅ Translations saved for review id={review_id}")
