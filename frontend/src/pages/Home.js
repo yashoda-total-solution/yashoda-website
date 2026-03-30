@@ -438,6 +438,7 @@ const getLangField = (review, field) => {
       ...review,
       customer_name:    getLangField(review, 'customer_name'),
       review_message:   getLangField(review, 'review_message'),
+      city:             getLangField(review, 'city'),   // ← ADD
     }}
     index={index}
   />
@@ -461,7 +462,7 @@ const getLangField = (review, field) => {
                     className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#0F7A4A] text-[#0F7A4A] font-semibold text-sm transition-all hover:bg-[#0F7A4A] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
                   >
                     <ChevronLeft className="h-4 w-4" />
-                    Previous
+                    {t('review_previous_button')}
                   </motion.button>
 
                   <div className="flex gap-2 items-center">
@@ -484,7 +485,7 @@ const getLangField = (review, field) => {
                     disabled={!canGoNext}
                     className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#0F7A4A] to-[#159F61] text-white font-semibold text-sm transition-all shadow-lg hover:shadow-xl disabled:opacity-30 disabled:cursor-not-allowed"
                   >
-                    See More Reviews
+                    {t('review_more_button')}
                     <ChevronRight className="h-4 w-4" />
                   </motion.button>
                 </motion.div>
@@ -492,7 +493,7 @@ const getLangField = (review, field) => {
 
               {approvedReviews.length > 0 && (
                 <p className="text-center text-sm text-[#9AA5B1] mt-4">
-                  Showing {reviewStartIdx + 1}–{Math.min(reviewStartIdx + REVIEWS_PER_PAGE, approvedReviews.length)} of {approvedReviews.length} customer review{approvedReviews.length !== 1 ? 's' : ''}
+                  {t('review_more_text1')} {reviewStartIdx + 1}–{Math.min(reviewStartIdx + REVIEWS_PER_PAGE, approvedReviews.length)} {t('review_more_text2')} {approvedReviews.length} {t('review_more_text3')}{approvedReviews.length !== 1 ? 's' : ''}
                 </p>
               )}
             </>

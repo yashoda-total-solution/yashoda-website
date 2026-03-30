@@ -43,6 +43,13 @@ export const translations = {
 
     //Home Page --------------------------------------------------------------------------------------------------------------
 
+    // Review Section
+    review_more_button: 'See More Reviews',
+    review_previous_button: 'Previous',
+    review_more_text1: 'Showing',
+    review_more_text2: 'of',
+    review_more_text3: 'customer review',
+
     // Hero Section
     hero_headline: 'Helping Policyholders take control of their insurance and resolve issues quickly.',
     hero_subtext: 'Yashoda Total Solutions (Service Provider) assists individuals with insurance claims, disputes, and legal matters; to this end, it provides clear, step-by-step guidance in simple language, enabling clients to easily understand the entire process.',
@@ -2214,6 +2221,14 @@ export const translations = {
     service_cheque_bounce: 'चेक बाउंस मामले',
 
     // Home Page
+
+    //Review on home page
+
+    review_more_button: 'और समीक्षाएँ देखें',
+    review_previous_button: 'पिछला',
+    review_more_text1: 'दिखाया जा रहा है',
+    review_more_text2: 'में से',
+    review_more_text3: 'ग्राहक समीक्षा',
 
     // Hero Section
     hero_headline: 'पॉलिसीधारकों को अपने बीमा पर नियंत्रण पाने और समस्याओं का तेजी से समाधान करने में मदद करना।',
@@ -4686,6 +4701,14 @@ export const translations = {
     service_cheque_bounce: 'चेक बाउंस प्रकरणे',
 
     // Hero Section
+
+    //review on home page
+    review_more_button: 'अधिक समीक्षा पहा',
+    review_previous_button: 'मागील',
+    review_more_text1: 'दाखविले जात आहे',
+    review_more_text2: 'पैकी',
+    review_more_text3: 'ग्राहक समीक्षा',
+
     hero_headline: 'पॉलिसीधारकांना त्यांच्या विम्यावर नियंत्रण मिळविण्यास आणि समस्या लवकर सोडविण्यास मदत करणे.',
     hero_subtext: 'यशोदा टोटल सोल्यूशन्स (सेवा प्रदाता) व्यक्तींना विमा दावे, वाद आणि कायदेशीर बाबींमध्ये सहाय्य करते; यासाठी ते सोप्या भाषेत टप्प्याटप्प्याने मार्गदर्शन प्रदान करते, ज्यामुळे ग्राहकांना संपूर्ण प्रक्रिया सहज समजते.',
     hero_btn_contact: 'संपर्क करा',

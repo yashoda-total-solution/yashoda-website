@@ -73,6 +73,8 @@ def init_db():
         "customer_name_mr TEXT",
         "review_message_hi TEXT",
         "review_message_mr TEXT",
+        "city_hi TEXT",   # ← ADD
+        "city_mr TEXT",   # ← ADD
     ]
     for col_def in new_cols:
         col_name = col_def.split()[0]
@@ -110,12 +112,14 @@ def translate_text(text: str, target_lang: str) -> str:
         return text   # graceful fallback — show original if translation fails
 
 
-def translate_and_save(review_id: int, customer_name: str, review_message: str):
-    """Background task: translate review to Hindi + Marathi and persist."""
+# AFTER:
+def translate_and_save(review_id: int, customer_name: str, review_message: str, city: str):
     name_hi  = translate_text(customer_name,  'hi')
     name_mr  = translate_text(customer_name,  'mr')
     msg_hi   = translate_text(review_message, 'hi')
     msg_mr   = translate_text(review_message, 'mr')
+    city_hi  = translate_text(city,           'hi')
+    city_mr  = translate_text(city,           'mr')
 
     conn = get_db()
     conn.execute("""
@@ -123,9 +127,11 @@ def translate_and_save(review_id: int, customer_name: str, review_message: str):
         SET customer_name_hi  = ?,
             customer_name_mr  = ?,
             review_message_hi = ?,
-            review_message_mr = ?
+            review_message_mr = ?,
+            city_hi           = ?,
+            city_mr           = ?
         WHERE id = ?
-    """, (name_hi, name_mr, msg_hi, msg_mr, review_id))
+    """, (name_hi, name_mr, msg_hi, msg_mr, city_hi, city_mr, review_id))
     conn.commit()
     conn.close()
     print(f"✅ Translations saved for review id={review_id}")
@@ -203,12 +209,7 @@ def submit_review(review: ReviewCreate, background_tasks: BackgroundTasks):
     conn.close()
 
     # ← Translate to Hindi + Marathi in background (user gets instant response)
-    background_tasks.add_task(
-        translate_and_save,
-        review_id,
-        review.customer_name,
-        review.review_message,
-    )
+    background_tasks.add_task(translate_and_save, review_id, review.customer_name, review.review_message, review.city)
 
     return dict(row)
 
