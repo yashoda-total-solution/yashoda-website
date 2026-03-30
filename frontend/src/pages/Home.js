@@ -132,7 +132,7 @@ const Home = () => {
 const getLangField = (review, field) => {
   if (language === 'hi') return review[`${field}_hi`] || review[field];
   if (language === 'mr') return review[`${field}_mr`] || review[field];
-  return review[`${field}_en`] || review[field];  // ← English translation first
+  return review[field];  // English: always use original text
 };
 
   const totalPages = Math.ceil(approvedReviews.length / REVIEWS_PER_PAGE);

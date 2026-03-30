@@ -105,15 +105,18 @@ def translate_text(text: str, target_lang: str) -> str:
 
 def translate_and_save(review_id: int, customer_name: str, review_message: str, city: str):
     """Background task: translate review to Hindi, Marathi & English, then persist."""
-    name_hi = translate_text(customer_name,  'hi')
-    name_mr = translate_text(customer_name,  'mr')
-    name_en = translate_text(customer_name,  'en')
-    msg_hi  = translate_text(review_message, 'hi')
-    msg_mr  = translate_text(review_message, 'mr')
-    msg_en  = translate_text(review_message, 'en')
-    city_hi = translate_text(city,           'hi')
-    city_mr = translate_text(city,           'mr')
-    city_en = translate_text(city,           'en')
+    
+    translations = {
+        "customer_name_hi":  translate_text(customer_name,  'hi'),
+        "customer_name_mr":  translate_text(customer_name,  'mr'),
+        "customer_name_en":  translate_text(customer_name,  'en'),
+        "review_message_hi": translate_text(review_message, 'hi'),
+        "review_message_mr": translate_text(review_message, 'mr'),
+        "review_message_en": translate_text(review_message, 'en'),
+        "city_hi":           translate_text(city,           'hi'),
+        "city_mr":           translate_text(city,           'mr'),
+        "city_en":           translate_text(city,           'en'),
+    }
 
     conn = get_db()
     cur = conn.cursor()
@@ -129,11 +132,22 @@ def translate_and_save(review_id: int, customer_name: str, review_message: str, 
             city_mr           = %s,
             city_en           = %s
         WHERE id = %s
-    """, (name_hi, name_mr, name_en, msg_hi, msg_mr, msg_en, city_hi, city_mr, city_en, review_id))
+    """, (
+        translations["customer_name_hi"],
+        translations["customer_name_mr"],
+        translations["customer_name_en"],
+        translations["review_message_hi"],
+        translations["review_message_mr"],
+        translations["review_message_en"],
+        translations["city_hi"],
+        translations["city_mr"],
+        translations["city_en"],
+        review_id
+    ))
     conn.commit()
     cur.close()
     conn.close()
-    print(f"✅ Translations saved for review id={review_id}")
+    print(f"✅ All translations saved for review id={review_id}")
 
 
 # ── EMAIL FUNCTION (RESEND) ──────────────────────────────────
