@@ -2049,7 +2049,7 @@ export const translations = {
     contact_success_title: 'Message Sent Successfully!',
     contact_success_message: 'Thank you for contacting us. Our team will get back to you soon.',
     contact_another_btn: 'Send Another Message',
-    contact_whatsapp_btn: 'Chat on WhatsApp',
+    contact_whatsapp_btn: 'CHAT WITH YASHIFY',
 
     contact_map_title: 'Location On Google Map',
 
@@ -4564,7 +4564,7 @@ export const translations = {
     contact_success_message: 'हमसे संपर्क करने के लिए धन्यवाद। हमारी टीम जल्द ही आपसे संपर्क करेगी।',
 
     contact_another_btn: 'एक और संदेश भेजें',
-    contact_whatsapp_btn: 'व्हाट्सएप पर चैट करें',
+    contact_whatsapp_btn: 'यशिफाई से चैट करें',
 
     contact_map_title: 'गूगल मैप पर स्थान',
 
@@ -7089,7 +7089,7 @@ export const translations = {
     contact_success_message: 'आमच्याशी संपर्क साधल्याबद्दल धन्यवाद. आमची टीम लवकरच तुमच्याशी संपर्क साधेल.',
 
     contact_another_btn: 'आणखी एक संदेश पाठवा',
-    contact_whatsapp_btn: 'व्हॉट्सअॅपवर चॅट करा',
+    contact_whatsapp_btn: 'यशिफायशी चॅट करा',
 
     contact_map_title: 'गूगल मॅपवरील स्थान',
 
