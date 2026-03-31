@@ -6,13 +6,15 @@ import { Phone, Mail, MapPin, Send, CheckCircle, User, MessageSquare, MessageCir
 
 
 
-const ACTIVE_STATES = ['Maharashtra', 'Gujarat', 'Madhya Pradesh', 'Uttar Pradesh'];
+const ACTIVE_STATES = ['Maharashtra', 'Gujarat', 'Madhya Pradesh', 'Uttar Pradesh', 'Rajasthan', 'Delhi'];     
 
 const PIN_COORDS = {
   Maharashtra: [75.7139, 19.7515],
   Gujarat: [71.1924, 22.2587],
   'Madhya Pradesh': [77.4126, 22.9734],
   'Uttar Pradesh': [80.9462, 26.8467],
+  Rajasthan: [74.2179, 27.0238],
+  Delhi: [77.1025, 28.7041],
 };
 
 const STATE_KEYS = {
@@ -20,6 +22,8 @@ const STATE_KEYS = {
   Gujarat: 'map_state_gujarat',
   'Madhya Pradesh': 'map_state_madhya_pradesh',
   'Uttar Pradesh': 'map_state_uttar_pradesh',
+  Rajasthan: 'map_state_rajasthan',
+  Delhi: 'map_state_delhi',
 };
 
 /* ─── India Map Component ─── */
@@ -325,11 +329,26 @@ const Contact = () => {
         { name: t('map_indore_branch'), addr: t('map_indore_branch_addr') },
       ],
     },
+
+    Rajasthan: { // ✅ NEW STATE
+      offices: [
+        { name: t('map_jaipur_branch'), addr: t('map_jaipur_branch_addr') },
+        { name: t('map_kota_branch'), addr: t('map_kota_branch_addr') },
+      ],
+    },
+
+    Delhi: { // ✅ NEW STATE
+      offices: [
+        { name: t('map_delhi_branch'), addr: t('map_delhi_branch_addr') },
+      ],
+    },
+
     'Uttar Pradesh': {
       offices: [
         { name: t('map_lucknow_branch'),   addr: t('map_lucknow_branch_addr') },
         { name: t('map_varanasi_branch'),  addr: t('map_varanasi_branch_addr') },
         { name: t('map_gorakhpur_branch'), addr: t('map_gorakhpur_branch_addr') },
+        { name: t('map_jhansi_branch'),     addr: t('map_jhansi_branch_addr') },
         { name: t('map_basti_branch'),     addr: t('map_basti_branch_addr') },
       ],
     },

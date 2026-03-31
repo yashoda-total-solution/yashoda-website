@@ -2128,8 +2128,22 @@ export const translations = {
     map_varanasi_branch_addr: 'Coming Soon...',
     map_gorakhpur_branch: 'Gorakhpur Branch',
     map_gorakhpur_branch_addr: 'Coming Soon...',
+    map_jhansi_branch: 'Jhansi Branch',
+    map_jhansi_branch_addr: 'Coming Soon...',
     map_basti_branch: 'Basti Branch',
     map_basti_branch_addr: 'Coming Soon...',
+
+    // Rajasthan
+    map_state_rajasthan: 'Rajasthan',
+    map_jaipur_branch: 'Jaipur Branch',
+    map_jaipur_branch_addr: 'Coming Soon...',
+    map_kota_branch: 'Kota Branch',
+    map_kota_branch_addr: 'Coming Soon...',
+
+    // Delhi
+    map_state_delhi: 'Delhi',
+    map_delhi_branch: 'New Delhi Branch',
+    map_delhi_branch_addr: 'Coming Soon...',
 
 
     // States
@@ -4627,8 +4641,22 @@ export const translations = {
     map_varanasi_branch_addr: 'जल्द आ रहा है...',
     map_gorakhpur_branch: 'गोरखपुर शाखा',
     map_gorakhpur_branch_addr: 'जल्द आ रहा है...',
+    map_jhansi_branch: 'झांसी शाखा',
+    map_jhansi_branch_addr: 'जल्द आ रहा है...',
     map_basti_branch: 'बस्ती शाखा',
     map_basti_branch_addr: 'जल्द आ रहा है...',
+
+    // Rajasthan
+    map_state_rajasthan: 'राजस्थान',
+    map_jaipur_branch: 'जयपुर शाखा',
+    map_jaipur_branch_addr: 'जल्द आ रहा है...',
+    map_kota_branch: 'कोटा शाखा',
+    map_kota_branch_addr: 'जल्द आ रहा है...',
+
+    // Delhi
+    map_state_delhi: 'दिल्ली',
+    map_delhi_branch: 'नई दिल्ली शाखा',
+    map_delhi_branch_addr: 'जल्द आ रहा है...',
 
 
     map_state_maharashtra: 'महाराष्ट्र',
@@ -7138,8 +7166,22 @@ export const translations = {
     map_varanasi_branch_addr: 'लवकरच उपलब्ध...',
     map_gorakhpur_branch: 'गोरखपूर शाखा',
     map_gorakhpur_branch_addr: 'लवकरच उपलब्ध...',
+    map_jhansi_branch: 'झांसी शाखा',
+    map_jhansi_branch_addr: 'लवकरच उपलब्ध...',
     map_basti_branch: 'बस्ती शाखा',
     map_basti_branch_addr: 'लवकरच उपलब्ध...',
+
+    // Rajasthan
+    map_state_rajasthan: 'राजस्थान',
+    map_jaipur_branch: 'जयपूर शाखा',
+    map_jaipur_branch_addr: 'लवकरच उपलब्ध...',
+    map_kota_branch: 'कोटा शाखा',
+    map_kota_branch_addr: 'लवकरच उपलब्ध...',
+
+    // Delhi
+    map_state_delhi: 'दिल्ली',
+    map_delhi_branch: 'नवी दिल्ली शाखा',
+    map_delhi_branch_addr: 'लवकरच उपलब्ध...',
 
 
     map_state_maharashtra: 'महाराष्ट्र',
