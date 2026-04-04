@@ -270,7 +270,9 @@ export const translations = {
     mis_selling_description: 'Were you sold an insurance policy that doesn\'t match what was promised? Insurance mis-selling is when agents or banks mislead customers about policy features, benefits, or terms. We help you get justice and compensation.',
 
     mis_selling_what_is: 'What is Insurance Mis-Selling?',
-    mis_selling_what_is_description: 'Insurance mis-selling occurs when insurance agents, banks, or financial institutions sell insurance policies by providing <strong>false information, hiding important terms, or making misleading promises</strong> to customers.',
+    mis_selling_what_is_description1: 'Insurance mis-selling occurs when insurance agents, banks, or financial institutions sell insurance policies by providing',
+    mis_selling_what_is_description2: 'false information, hiding important terms, or making misleading promises',
+    mis_selling_what_is_description3: 'to customers.',
 
     mis_selling_examples: 'Common examples include:',
     mis_selling_example_1: '✗ Selling ULIP (Unit Linked Insurance Plan) as a Fixed Deposit',
@@ -2049,7 +2051,7 @@ export const translations = {
     contact_success_title: 'Message Sent Successfully!',
     contact_success_message: 'Thank you for contacting us. Our team will get back to you soon.',
     contact_another_btn: 'Send Another Message',
-    contact_whatsapp_btn: 'CHAT WITH YASHIFY',
+    contact_whatsapp_btn: 'CHAT WITH',
 
     contact_map_title: 'Location On Google Map',
 
@@ -2516,7 +2518,9 @@ export const translations = {
     mis_selling_description: 'क्या आपको ऐसी बीमा पॉलिसी बेची गई है जो वादे के अनुसार नहीं है? बीमा मिस-सेलिंग तब होती है जब एजेंट या बैंक ग्राहकों को पॉलिसी की विशेषताओं, लाभों या शर्तों के बारे में गुमराह करते हैं। हम आपको न्याय और मुआवजा दिलाने में मदद करते हैं।',
 
     mis_selling_what_is: 'बीमा मिस-सेलिंग क्या है?',
-    mis_selling_what_is_description: 'बीमा मिस-सेलिंग तब होती है जब बीमा एजेंट, बैंक या वित्तीय संस्थान ग्राहकों को <strong>गलत जानकारी देकर, महत्वपूर्ण शर्तों को छिपाकर या भ्रामक वादे करके</strong> बीमा पॉलिसी बेचते हैं।',
+    mis_selling_what_is_description1: 'बीमा मिस-सेलिंग तब होती है जब बीमा एजेंट, बैंक या वित्तीय संस्थान ग्राहकों को',
+    mis_selling_what_is_description2: 'गलत जानकारी देकर, महत्वपूर्ण शर्तों को छिपाकर या भ्रामक वादे करके',
+    mis_selling_what_is_description3: 'बीमा पॉलिसी बेचते हैं।',
 
     mis_selling_examples: 'सामान्य उदाहरण शामिल हैं:',
     mis_selling_example_1: '✗ ULIP (यूनिट लिंक्ड इंश्योरेंस प्लान) को फिक्स्ड डिपॉजिट के रूप में बेचना',
@@ -4564,7 +4568,7 @@ export const translations = {
     contact_success_message: 'हमसे संपर्क करने के लिए धन्यवाद। हमारी टीम जल्द ही आपसे संपर्क करेगी।',
 
     contact_another_btn: 'एक और संदेश भेजें',
-    contact_whatsapp_btn: 'यशिफाई से चैट करें',
+    contact_whatsapp_btn: 'चैट करें',
 
     contact_map_title: 'गूगल मैप पर स्थान',
 
@@ -5040,7 +5044,9 @@ export const translations = {
     mis_selling_description: 'तुम्हाला अशी विमा पॉलिसी विकली गेली आहे का जी सांगितल्याप्रमाणे नाही? विमा मिस-सेलिंग तेव्हा होते जेव्हा एजंट किंवा बँका ग्राहकांना पॉलिसीच्या वैशिष्ट्यांबद्दल, फायद्यांबद्दल किंवा अटींबद्दल चुकीची माहिती देतात. आम्ही तुम्हाला न्याय आणि भरपाई मिळवून देतो.',
 
     mis_selling_what_is: 'विमा मिस-सेलिंग म्हणजे काय?',
-    mis_selling_what_is_description: 'विमा मिस-सेलिंग तेव्हा होते जेव्हा विमा एजंट, बँका किंवा आर्थिक संस्था ग्राहकांना <strong>खोटी माहिती देऊन, महत्त्वाच्या अटी लपवून किंवा दिशाभूल करणारी आश्वासने देऊन</strong> विमा पॉलिसी विकतात.',
+    mis_selling_what_is_description1: 'विमा मिस-सेलिंग तेव्हा होते जेव्हा विमा एजंट, बँका किंवा आर्थिक संस्था ग्राहकांना',
+    mis_selling_what_is_description2: 'खोटी माहिती देऊन, महत्त्वाच्या अटी लपवून किंवा दिशाभूल करणारी आश्वासने देऊन',
+    mis_selling_what_is_description3: 'विमा पॉलिसी विकतात.',
 
     mis_selling_examples: 'सामान्य उदाहरणे:',
     mis_selling_example_1: '✗ ULIP (युनिट लिंक्ड इन्शुरन्स प्लॅन) ला फिक्स्ड डिपॉझिट म्हणून विकणे',
@@ -7089,7 +7095,7 @@ export const translations = {
     contact_success_message: 'आमच्याशी संपर्क साधल्याबद्दल धन्यवाद. आमची टीम लवकरच तुमच्याशी संपर्क साधेल.',
 
     contact_another_btn: 'आणखी एक संदेश पाठवा',
-    contact_whatsapp_btn: 'यशिफायशी चॅट करा',
+    contact_whatsapp_btn: 'चॅट करा',
 
     contact_map_title: 'गूगल मॅपवरील स्थान',
 

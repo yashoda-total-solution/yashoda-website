@@ -67,7 +67,7 @@ const MisSelling = () => {
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
               <p className="leading-relaxed mb-4">
-                {t('mis_selling_what_is_description')}
+                 {t('mis_selling_what_is_description1')} <strong>{t('mis_selling_what_is_description2')}</strong> {t('mis_selling_what_is_description3')} 
               </p>
               <p className="leading-relaxed mb-4">
                 {t('Common examples include:')}

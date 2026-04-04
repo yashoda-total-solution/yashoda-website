@@ -6,7 +6,7 @@ import { Phone, Mail, MapPin, Send, CheckCircle, User, MessageSquare, MessageCir
 
 
 
-const ACTIVE_STATES = ['Maharashtra', 'Gujarat', 'Madhya Pradesh', 'Uttar Pradesh', 'Rajasthan', 'Delhi'];     
+const ACTIVE_STATES = ['Maharashtra', 'Gujarat', 'Madhya Pradesh', 'Uttar Pradesh', 'Rajasthan', 'Delhi'];
 
 const PIN_COORDS = {
   Maharashtra: [75.7139, 19.7515],
@@ -308,20 +308,20 @@ const Contact = () => {
   const BRANCHES = {
     Maharashtra: {
       offices: [
-        { name: t('map_mumbai_branch'),   addr: t('map_mumbai_branch_addr') },
-        { name: t('map_pune_branch'),     addr: t('map_pune_branch_addr') },
-        { name: t('map_nagpur_branch'),   addr: t('map_nagpur_branch_addr') },
-        { name: t('map_nashik_branch'),   addr: t('map_nashik_branch_addr') },
+        { name: t('map_mumbai_branch'), addr: t('map_mumbai_branch_addr') },
+        { name: t('map_pune_branch'), addr: t('map_pune_branch_addr') },
+        { name: t('map_nagpur_branch'), addr: t('map_nagpur_branch_addr') },
+        { name: t('map_nashik_branch'), addr: t('map_nashik_branch_addr') },
         { name: t('map_kolhapur_branch'), addr: t('map_kolhapur_branch_addr') },
-        { name: t('map_solapur_branch'),  addr: t('map_solapur_branch_addr') },
-        { name: t('map_satara_branch'),   addr: t('map_satara_branch_addr') },
+        { name: t('map_solapur_branch'), addr: t('map_solapur_branch_addr') },
+        { name: t('map_satara_branch'), addr: t('map_satara_branch_addr') },
       ],
     },
     Gujarat: {
       offices: [
         { name: t('map_ahmedabad_branch'), addr: t('map_ahmedabad_branch_addr') },
-        { name: t('map_surat_branch'),     addr: t('map_surat_branch_addr') },
-        { name: t('map_rajkot_branch'),    addr: t('map_rajkot_branch_addr') },
+        { name: t('map_surat_branch'), addr: t('map_surat_branch_addr') },
+        { name: t('map_rajkot_branch'), addr: t('map_rajkot_branch_addr') },
       ],
     },
     'Madhya Pradesh': {
@@ -345,11 +345,11 @@ const Contact = () => {
 
     'Uttar Pradesh': {
       offices: [
-        { name: t('map_lucknow_branch'),   addr: t('map_lucknow_branch_addr') },
-        { name: t('map_varanasi_branch'),  addr: t('map_varanasi_branch_addr') },
+        { name: t('map_lucknow_branch'), addr: t('map_lucknow_branch_addr') },
+        { name: t('map_varanasi_branch'), addr: t('map_varanasi_branch_addr') },
         { name: t('map_gorakhpur_branch'), addr: t('map_gorakhpur_branch_addr') },
-        { name: t('map_jhansi_branch'),     addr: t('map_jhansi_branch_addr') },
-        { name: t('map_basti_branch'),     addr: t('map_basti_branch_addr') },
+        { name: t('map_jhansi_branch'), addr: t('map_jhansi_branch_addr') },
+        { name: t('map_basti_branch'), addr: t('map_basti_branch_addr') },
       ],
     },
   };
@@ -714,13 +714,18 @@ const Contact = () => {
         <MessageCircle className="h-8 w-8" />
       </motion.button>
 
-      {/* WhatsApp Tooltip */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1 }}
-        className="fixed bottom-8 right-28 bg-white px-4 py-2 rounded-lg shadow-lg text-sm font-semibold text-[#1F2933] hidden md:block"
-      >
-        {t('contact_whatsapp_btn')}
-      </motion.div>
+{/* WhatsApp Tooltip */}
+<motion.div
+  initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1 }}
+  className="fixed bottom-8 right-20 md:right-28 bg-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg shadow-lg z-[9999] flex items-center gap-2"
+>
+  <span className="text-xs md:text-sm font-semibold text-[#1F2933]">{t('contact_whatsapp_btn')}</span>
+  <img
+    src="/yashify.png"
+    alt="Yashify"
+    className="h-4 md:h-5 object-contain"
+  />
+</motion.div>
     </div>
   );
 };
