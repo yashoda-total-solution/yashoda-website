@@ -721,7 +721,7 @@ const Contact = () => {
 >
   <span className="text-xs md:text-sm font-semibold text-[#1F2933]">{t('contact_whatsapp_btn')}</span>
   <img
-    src="/yashify.png"
+    src="/yashify1.png"
     alt="Yashify"
     className="h-4 md:h-5 object-contain"
   />
