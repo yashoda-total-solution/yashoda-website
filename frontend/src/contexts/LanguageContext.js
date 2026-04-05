@@ -46,9 +46,7 @@ export const translations = {
     // Review Section
     review_more_button: 'See More Reviews',
     review_previous_button: 'Previous',
-    review_more_text1: 'Showing',
-    review_more_text2: 'of',
-    review_more_text3: 'customer review',
+    review_pagination_text: 'Showing {{start}}–{{end}} of {{total}} customer reviews',
 
     // Hero Section
     hero_headline: 'Helping Policyholders take control of their insurance and resolve issues quickly.',
@@ -2287,13 +2285,11 @@ export const translations = {
 
     review_more_button: 'और समीक्षाएँ देखें',
     review_previous_button: 'पिछला',
-    review_more_text1: 'दिखाया जा रहा है',
-    review_more_text2: 'में से',
-    review_more_text3: 'ग्राहक समीक्षा',
+    review_pagination_text: '{{total}} ग्राहक समीक्षाओं में से {{start}}–{{end}} दिखाई जा रही हैं',
 
     // Hero Section
     hero_headline: 'पॉलिसीधारकों को अपने बीमा पर नियंत्रण पाने और समस्याओं का तेजी से समाधान करने में मदद करना।',
-    hero_subtext: 'यशोदा टोटल सॉल्यूशंस (सेवा प्रदाता) व्यक्तियों को बीमा दावों, विवादों और कानूनी मामलों में सहायता प्रदान करता है; इसके लिए यह सरल भाषा में चरण-दर-चरण मार्गदर्शन देता है, जिससे ग्राहक पूरी प्रक्रिया को आसानी से समझ सकें।',
+    hero_subtext: 'यशोदा टोटल सोल्यूशन (सेवा प्रदाता) बीमा दावों, विवादों और कानूनी मामलों मे व्यक्तियों को सहायता प्रदान करता है; इसके लिए यह सरल भाषा में चरण-दर-चरण मार्गदर्शन देता है, जिससे ग्राहक पूरी प्रक्रिया को आसानी से समझ सकें।',
     hero_btn_contact: 'संपर्क करें',
     hero_btn_help: 'मदद लें अभी',
     hero_small1: '100% गोपनीय',
@@ -2306,17 +2302,17 @@ export const translations = {
 
     // About Section
     about_title: 'हम कौन हैं',
-    about_desc: 'यशोदा टोटल सॉल्यूशन आपकी बीमा क्लेम, बीमा विवाद और सभी डॉक्यूमेंट की मदद के लिए है। हम आपकी समस्याओं को समझते हैं और ईमानदार गाइडेंस देते हैं।',
+    about_desc: 'यशोदा टोटल सोल्यूशन बीमा दावों, बीमा विवादों और सभी डॉक्यूमेंट की मदद के लिए है। हम आपकी समस्याओं को समझते हैं और ईमानदारी से मार्गदर्शन प्रदान करते है।',
     about_card1_title: 'अनुभवी टीम',
-    about_card1_desc: 'हमारी अनुभवी टीम आपको जटिल बीमा और कानूनी प्रक्रिया समझाने में मदद करती है।',
-    about_card2_title: 'आसान प्रक्रिया',
+    about_card1_desc: 'हमारी अनुभवी टीम आपको जटिल बीमा और कानूनी प्रक्रियाओं को समझाने में मदद करती है।',
+    about_card2_title: 'सरल प्रक्रिया',
     about_card2_desc: 'हम सब कुछ सरल भाषा में समझाते हैं जो हर कोई समझ सके।',
-    about_card3_title: 'तेज़ सहायता',
+    about_card3_title: 'त्वरित सहायता',
     about_card3_desc: 'हम जल्दी जवाब देते हैं और स्टेप बाय स्टेप आपकी समस्या हल करते हैं।',
 
     // Problems Section
-    problems_title: 'आम समस्याएं जो हम सुलझाते हैं',
-    problems_subtitle: 'क्या आपको इनमें से कोई समस्या है?',
+    problems_title: 'सामान्य समस्याएं जिनका हम समाधान करते है',
+    problems_subtitle: 'क्या आप इनमें से किसी समस्या का सामना कर रहे है?',
     problem1_title: 'बीमा क्लेम रिजेक्ट',
     problem1_desc: 'आपकी बीमा कंपनी ने क्लेम रिजेक्ट कर दिया? हम आपको पैसे दिलाने में मदद करेंगे।',
     problem2_title: 'एजेंट ने गलत पॉलिसी बेची',
@@ -2354,7 +2350,7 @@ export const translations = {
     why4_title: 'तकनीक-आधारित निगरानी',
     why4_desc: 'उन्नत ट्रैकिंग सिस्टम जवाबदेही और नियमित अपडेट सुनिश्चित करते हैं।',
     why5_title: 'विश्वसनीय सेवा भागीदार',
-    why5_desc: 'विश्वास, भरोसेमंदता और उत्कृष्ट सेवा पर आधारित दीर्घकालिक संबंधों पर केंद्रित।',
+    why5_desc: 'विश्वास, विश्वसनीयता और उत्कृष्ट सेवा पर आधारित दीर्घकालिक संबंधों पर केंद्रित।',
 
     // Testimonials Section
     testimonials_title: 'हमारे ग्राहक क्या कहते हैं',
@@ -2546,7 +2542,7 @@ export const translations = {
     mis_selling_why_choose_us_2_title: 'पूर्ण दस्तावेज़ीकरण',
     mis_selling_why_choose_us_2_description: 'हम सभी आवश्यक दस्तावेज़, नोटिस और शिकायत पत्र तैयार करते हैं।',
     mis_selling_why_choose_us_3_title: 'कानूनी सहायता',
-    mis_selling_why_choose_us_3_description: 'आवश्यक होने पर हम कानूनी नोटिस और ओम्बड्समैन शिकायत दाखिल करने में मदद करते हैं।',
+    mis_selling_why_choose_us_3_description: 'आवश्यकता पड़ने पर, हम कानूनी नोटिस तैयार करने और लोकपाल मे शिकायत दर्ज करने की सेवाएं प्रदान करते हैं।',
     mis_selling_why_choose_us_4_title: 'उच्च सफलता दर',
     mis_selling_why_choose_us_4_description: 'हमने सैकड़ों ग्राहकों को मुआवजा और पॉलिसी रद्द कराने में मदद की है।',
 
@@ -2559,7 +2555,7 @@ export const translations = {
     mis_selling_process_flow3_title: 'शिकायत तैयार करना',
     mis_selling_process_flow3_description: 'हम एक विस्तृत शिकायत पत्र तैयार करते हैं जिसमें मिस-सेलिंग और आपके नुकसान को दर्शाया जाता है।',
     mis_selling_process_flow4_title: 'शिकायत दर्ज करना',
-    mis_selling_process_flow4_description: 'हम बीमा कंपनी के ग्रिवांस सेल में शिकायत दर्ज करते हैं और आवश्यकता होने पर आगे बढ़ाते हैं।',
+    mis_selling_process_flow4_description: 'हम बीमा कंपनी के ग्रिवांस सेल में शिकायत दर्ज करते हैं और आवश्यकता होने पर हम मामले को आगे बढ़ाते हैं।',
     mis_selling_process_flow5_title: 'ओम्बड्समैन/IRDAI में शिकायत',
     mis_selling_process_flow5_description: 'यदि कंपनी जवाब नहीं देती, तो हम मामले को ओम्बड्समैन या IRDAI तक ले जाते हैं।',
     mis_selling_process_flow6_title: 'समाधान और मुआवजा',
@@ -2572,10 +2568,10 @@ export const translations = {
     mis_selling_example_scenarios_case1_title: 'केस 1: ULIP को फिक्स्ड डिपॉजिट के रूप में बेचा गया',
     mis_selling_example_scenarios_case1_problem: 'रमेश को बैंक द्वारा बताया गया कि वह 5 साल का फिक्स्ड डिपॉजिट खोल रहा है जिसमें 8% गारंटीड रिटर्न मिलेगा।',
     mis_selling_example_scenarios_case1_reality: 'वास्तव में यह एक ULIP (मार्केट-लिंक्ड बीमा) था जिसमें 5 साल का लॉक-इन, उच्च शुल्क और कोई गारंटीड रिटर्न नहीं था।',
-    mis_selling_example_scenarios_case1_solution: 'हमने रमेश की शिकायत दर्ज करने में मदद की। बैंक ने उसका प्रीमियम वापस किया और पॉलिसी रद्द कर दी।',
+    mis_selling_example_scenarios_case1_solution: 'हमने रमेश की शिकायत दर्ज करने में मदद की। बीमा कंपनी ने उसका प्रीमियम वापस किया और पॉलिसी रद्द कर दी।',
 
     mis_selling_example_scenarios_case2_title: 'केस 2: पॉलिसी में छिपे हुए शुल्क',
-    mis_selling_example_scenarios_case2_problem: 'सुनीता ने एक पेंशन प्लान खरीदा, लेकिन उसे यह नहीं बताया गया कि जल्दी निकलने पर 30% सरेंडर चार्ज लगेगा।',
+    mis_selling_example_scenarios_case2_problem: 'सुनीता ने एक पेंशन प्लान खरीदा, लेकिन उसे यह नहीं बताया गया कि जल्दी निकालने पर 30% सरेंडर चार्ज लगेगा।',
     mis_selling_example_scenarios_case2_reality: 'जब उसने 2 साल बाद पैसा निकालने की कोशिश की, तो उसे ₹90,000 का नुकसान हुआ।',
     mis_selling_example_scenarios_case2_solution: 'हमने मामले को बीमा ओम्बड्समैन तक पहुंचाया। सुनीता को 60% सरेंडर चार्ज वापस मिला।',
 
@@ -2630,7 +2626,7 @@ export const translations = {
 
     claim_rej_title: 'बीमा दावा अस्वीकृति सहायता',
 
-    claim_rej_description: 'अस्वीकृत बीमा दावों के पीछे के कारणों को समझना और उन कदमों का पता लगाना जो समस्या को हल करने में मदद कर सकते हैं। बीमा दावा अस्वीकृति पॉलिसीधारकों के लिए निराशाजनक और भावनात्मक रूप से कठिन हो सकती है। बीमा दावा अस्वीकृति पॉलिसी की शर्तों, दस्तावेज़ संबंधी समस्याओं या शर्तों की व्याख्या के कारण हो सकती है।',
+    claim_rej_description: 'बीमा दावों की अस्वीकृति के कारणों को समझना और समस्या के समाधान के लिए उठाए जा सकने वाले कदमों का पता लगाना। बीमा दावा अस्वीकृत होना पॉलिसीधारकों के लिए निराशाजनक और भावनात्मक रूप से कठिन हो सकता है। बीमा दावा अस्वीकृति पॉलिसी की शर्तों, दस्तावेज़ीकरण संबंधी समस्याओं या पॉलिसी की शर्तों की व्याख्या में त्रुटि के कारण हो सकती है।',
 
     what_claim_rej_title: 'बीमा दावा अस्वीकृति क्या है?',
     what_claim_rej_description: 'बीमा दावा अस्वीकृति तब होती है जब बीमा कंपनी पॉलिसीधारक के दावे के निपटान के अनुरोध को अस्वीकार कर देती है।',
@@ -2640,7 +2636,7 @@ export const translations = {
 
     what_claim_rej_common_reasons: 'सामान्य कारण शामिल हैं:',
     what_claim_rej_common_reasons1: '✗ अधूरे या गलत दस्तावेज़',
-    what_claim_rej_common_reasons2: '✗ दावा जमा करने में देरी',
+    what_claim_rej_common_reasons2: '✗ दावा प्रस्तुत करने में देरी',
     what_claim_rej_common_reasons3: '✗ पॉलिसी एक्सक्लूजन या सीमाएं',
     what_claim_rej_common_reasons4: '✗ पॉलिसी खरीद के समय महत्वपूर्ण जानकारी का खुलासा न करना',
     what_claim_rej_common_reasons5: '✗ दावा पात्रता पर असहमति',
@@ -2748,7 +2744,7 @@ export const translations = {
 
     claim_delay_title: 'बीमा दावा प्रक्रिया में देरी',
 
-    claim_delay_description: 'यह समझना कि बीमा दावे कभी-कभी अपेक्षा से अधिक समय क्यों लेते हैं और पॉलिसीधारक इस प्रक्रिया को बेहतर तरीके से कैसे समझ सकते हैं। देरी दस्तावेज़ सत्यापन, आंतरिक जांच, पॉलिसी शर्तों या बीमा कंपनियों द्वारा अपनाई जाने वाली प्रशासनिक प्रक्रियाओं के कारण हो सकती है।',
+    claim_delay_description: 'यह समझना कि बीमा दावे कभी-कभी अपेक्षा से अधिक समय क्यों लेते हैं और पॉलिसीधारक इस प्रक्रिया को बेहतर तरीके से कैसे समझ सकते हैं। दस्तावेज़ सत्यापन, आंतरिक जांच, पॉलिसी शर्तों या बीमा कंपनियों द्वारा अपनाई जाने वाली प्रशासनिक प्रक्रियाओं के कारण देरी हो सकती है।',
 
     what_claim_delay_title: 'दावा प्रक्रिया में देरी को समझना',
 
@@ -4607,10 +4603,10 @@ export const translations = {
     network_stat2_number: 'बढ़ता हुआ',
     network_stat2_desc: 'प्रशिक्षित सेल्स और सपोर्ट टीम',
 
-    network_stat3_number: 'कई',
+    network_stat3_number: 'विभिन्न',
     network_stat3_desc: 'राज्य और शहर',
 
-    network_cta_button: 'हमारे बढ़ते सेवा नेटवर्क से जुड़ें',
+    network_cta_button: 'हमारी उत्कृष्ट सेवाओ के बढ़ते नेटवर्क मे सामील हो',
 
     // India Map Branches 
 
@@ -4818,9 +4814,7 @@ export const translations = {
     //review on home page
     review_more_button: 'अधिक समीक्षा पहा',
     review_previous_button: 'मागील',
-    review_more_text1: 'दाखविले जात आहे',
-    review_more_text2: 'पैकी',
-    review_more_text3: 'ग्राहक समीक्षा',
+    review_pagination_text: '{{total}} ग्राहक रिव्ह्यूंपैकी {{start}}–{{end}} दाखवले जात आहेत',
 
     hero_headline: 'पॉलिसीधारकांना त्यांच्या विम्यावर नियंत्रण मिळविण्यास आणि समस्या लवकर सोडविण्यास मदत करणे.',
     hero_subtext: 'यशोदा टोटल सोल्यूशन्स (सेवा प्रदाता) व्यक्तींना विमा दावे, वाद आणि कायदेशीर बाबींमध्ये सहाय्य करते; यासाठी ते सोप्या भाषेत टप्प्याटप्प्याने मार्गदर्शन प्रदान करते, ज्यामुळे ग्राहकांना संपूर्ण प्रक्रिया सहज समजते.',
@@ -7315,8 +7309,17 @@ export const translations = {
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState('en');
 
-  const t = (key) => {
-    return translations[language][key] || key;
+  const t = (key, variables = {}) => {
+    let text = translations[language]?.[key] || key;
+
+    Object.keys(variables).forEach((varKey) => {
+      text = text.replace(
+        new RegExp(`{{${varKey}}}`, 'g'),
+        variables[varKey]
+      );
+    });
+
+    return text;
   };
 
   return (

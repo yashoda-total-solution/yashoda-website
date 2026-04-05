@@ -73,11 +73,11 @@ const TestimonialCard = ({ review, index }) => {
 };
 
 const heroImages = [
-    "/home1.webp",
-    "/home2.webp",
-    "/home3.webp",
-    "/home4.webp"
-  ];
+  "/home1.webp",
+  "/home2.webp",
+  "/home3.webp",
+  "/home4.webp"
+];
 
 // ── Home ──────────────────────────────────────────────────────────────────────
 const Home = () => {
@@ -91,8 +91,8 @@ const Home = () => {
   const [reviewsLoading, setReviewsLoading] = useState(true);
   const [reviewPage, setReviewPage] = useState(0);
 
-  
-  
+
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     heroImages.forEach((src) => {
@@ -100,7 +100,7 @@ const Home = () => {
       img.src = src;
     });
   }, []);
-  
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const interval = setInterval(() => {
@@ -129,11 +129,11 @@ const Home = () => {
   }, []);
 
   // ← ADD THIS after your useState declarations
-const getLangField = (review, field) => {
-  if (language === 'hi') return review[`${field}_hi`] || review[field];
-  if (language === 'mr') return review[`${field}_mr`] || review[field];
-  return review[field];  // English: always use original text
-};
+  const getLangField = (review, field) => {
+    if (language === 'hi') return review[`${field}_hi`] || review[field];
+    if (language === 'mr') return review[`${field}_mr`] || review[field];
+    return review[field];  // English: always use original text
+  };
 
   const totalPages = Math.ceil(approvedReviews.length / REVIEWS_PER_PAGE);
   const reviewStartIdx = reviewPage * REVIEWS_PER_PAGE;
@@ -432,17 +432,17 @@ const getLangField = (review, field) => {
                   className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch"
                 >
                   {displayReviews.map((review, index) => (
-  <TestimonialCard
-    key={review.id}
-    review={{
-      ...review,
-      customer_name:    getLangField(review, 'customer_name'),
-      review_message:   getLangField(review, 'review_message'),
-      city:             getLangField(review, 'city'),   // ← ADD
-    }}
-    index={index}
-  />
-))}
+                    <TestimonialCard
+                      key={review.id}
+                      review={{
+                        ...review,
+                        customer_name: getLangField(review, 'customer_name'),
+                        review_message: getLangField(review, 'review_message'),
+                        city: getLangField(review, 'city'),   // ← ADD
+                      }}
+                      index={index}
+                    />
+                  ))}
                 </motion.div>
               </AnimatePresence>
 
@@ -493,7 +493,11 @@ const getLangField = (review, field) => {
 
               {approvedReviews.length > 0 && (
                 <p className="text-center text-sm text-[#9AA5B1] mt-4">
-                  {t('review_more_text1')} {reviewStartIdx + 1}–{Math.min(reviewStartIdx + REVIEWS_PER_PAGE, approvedReviews.length)} {t('review_more_text2')} {approvedReviews.length} {t('review_more_text3')}{approvedReviews.length !== 1 ? 's' : ''}
+                  {t('review_pagination_text', {
+                    start: reviewStartIdx + 1,
+                    end: Math.min(reviewStartIdx + REVIEWS_PER_PAGE, approvedReviews.length),
+                    total: approvedReviews.length
+                  })}
                 </p>
               )}
             </>
