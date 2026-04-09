@@ -64,7 +64,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "postbuild": "react-snap"
+    "postbuild": "react-snap",
+    "build:vercel": "craco build"
   },
   "reactSnap": {
     "source": "build",
