@@ -1,7 +1,41 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { X, ZoomIn } from 'lucide-react';
+
+/* ─── Structured Data (JSON-LD) ──────────────────────────────────────────── */
+const GALLERY_STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.yashodatotalsolution.in/gallery/#webpage',
+      url: 'https://www.yashodatotalsolution.in/gallery/',
+      name: 'Gallery | Yashoda Total Solution – Our Team, Office & Work',
+      isPartOf: { '@id': 'https://www.yashodatotalsolution.in/#website' },
+      description:
+        'Explore the Yashoda Total Solution gallery — photos of our team, modern office space, client consultation sessions, document review work, and successful claim resolutions across India.',
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.yashodatotalsolution.in/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Gallery',
+            item: 'https://www.yashodatotalsolution.in/gallery/',
+          },
+        ],
+      },
+    },
+  ],
+};
 
 const GALLERY_IMAGES = [
   {
@@ -80,25 +114,102 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-[#F5F7F9]">
+
+      {/* ── React Helmet SEO ──────────────────────────────────────────────── */}
+      <Helmet prioritizeSeoTags>
+        {/* Primary */}
+        <title>Gallery | Yashoda Total Solution – Our Team, Office & Work</title>
+        <meta
+          name="description"
+          content="Explore the Yashoda Total Solution gallery. See photos of our team, modern office, client consultation sessions, document review work and successful insurance claim resolutions across India."
+        />
+        <meta
+          name="keywords"
+          content="Yashoda Total Solution gallery, insurance claim team India, legal support office Mumbai, Yashoda team photos, insurance consultation office India"
+        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Yashoda Total Solution" />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://www.yashodatotalsolution.in/gallery/" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.yashodatotalsolution.in/gallery/" />
+        <meta property="og:title" content="Gallery | Yashoda Total Solution – Our Team, Office & Work" />
+        <meta
+          property="og:description"
+          content="Explore the Yashoda Total Solution gallery — photos of our team, office, client consultations and successful insurance claim resolutions across India."
+        />
+        <meta property="og:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Yashoda Total Solution Gallery" />
+        <meta property="og:site_name" content="Yashoda Total Solution" />
+        <meta property="og:locale" content="en_IN" />
+
+        {/* Twitter / X Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Gallery | Yashoda Total Solution – Our Team, Office & Work" />
+        <meta
+          name="twitter:description"
+          content="Explore the Yashoda Total Solution gallery — photos of our team, office, client consultations and successful insurance claim resolutions across India."
+        />
+        <meta name="twitter:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Yashoda Total Solution Gallery" />
+
+        {/* Geo & Region */}
+        <meta name="geo.region" content="IN-MH" />
+        <meta name="geo.placename" content="Mumbai, Maharashtra, India" />
+        <meta name="geo.position" content="19.0722;72.8797" />
+        <meta name="ICBM" content="19.0722, 72.8797" />
+
+        {/* Structured Data JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify(GALLERY_STRUCTURED_DATA)}
+        </script>
+      </Helmet>
+
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32">
+      <section
+        className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32"
+        aria-labelledby="gallery-hero-heading"
+      >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="text-4xl md:text-6xl font-bold mb-4" data-testid="gallery-hero-title">{txt.title}</h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">{txt.subtitle}</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1
+              id="gallery-hero-heading"
+              className="text-4xl md:text-6xl font-bold mb-4"
+              data-testid="gallery-hero-title"
+            >
+              {txt.title}
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+              {txt.subtitle}
+            </p>
           </motion.div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }} />
+        <div
+          className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]"
+          style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}
+          aria-hidden="true"
+        />
       </section>
 
       {/* Filter Tabs */}
-      <section className="pt-10 pb-2">
+      <section className="pt-10 pb-2" aria-label="Gallery category filters">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3" role="group" aria-label="Filter gallery by category">
             {CATEGORIES.map(category => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
+                aria-pressed={activeCategory === category}
+                aria-label={`Show ${txt[category]} images`}
                 className={`relative px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
                   activeCategory === category
                     ? 'bg-[#0F7A4A] text-white shadow-lg shadow-[#0F7A4A]/30'
@@ -111,6 +222,7 @@ const Gallery = () => {
                     layoutId="activeTab"
                     className="absolute inset-0 bg-[#0F7A4A] rounded-full -z-10"
                     transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
+                    aria-hidden="true"
                   />
                 )}
                 {txt[category]}
@@ -121,7 +233,10 @@ const Gallery = () => {
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-10 md:py-16">
+      <section
+        className="py-10 md:py-16"
+        aria-label={`Gallery images — ${txt[activeCategory]}`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence mode="popLayout">
@@ -136,6 +251,15 @@ const Gallery = () => {
                   className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white hover:shadow-xl transition-shadow duration-300"
                   onClick={() => setLightboxImage(img)}
                   data-testid={`gallery-image-${index}`}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`View full size: ${img.caption[language]}`}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setLightboxImage(img);
+                    }
+                  }}
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
@@ -145,8 +269,10 @@ const Gallery = () => {
                       loading="lazy"
                     />
                   </div>
-                  {/* Zoom icon overlay on hover */}
-                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div
+                    className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                    aria-hidden="true"
+                  >
                     <ZoomIn className="h-12 w-12 text-white" />
                   </div>
                 </motion.div>
@@ -166,13 +292,17 @@ const Gallery = () => {
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
             onClick={() => setLightboxImage(null)}
             data-testid="gallery-lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Lightbox: ${lightboxImage.caption[language]}`}
           >
             <button
               onClick={() => setLightboxImage(null)}
-              className="absolute top-6 right-6 text-white/80 hover:text-white z-50"
+              className="absolute top-6 right-6 text-white/80 hover:text-white z-50 focus:outline-none focus:ring-2 focus:ring-white rounded"
               data-testid="gallery-lightbox-close"
+              aria-label="Close lightbox"
             >
-              <X className="h-8 w-8" />
+              <X className="h-8 w-8" aria-hidden="true" />
             </button>
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -190,7 +320,9 @@ const Gallery = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
     </div>
   );
 };
+
 export default Gallery;

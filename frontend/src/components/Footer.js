@@ -21,9 +21,12 @@ const Footer = () => {
             <p className="text-sm text-gray-300 leading-relaxed">
               {t('footer_desc')}
             </p>
+            <p className="text-xs text-gray-400 mt-2 font-medium">
+              UDYAM-MH-18-0509177
+            </p>
             <div className="flex space-x-4 mt-4">
               <a
-                href="https://www.instagram.com/YOUR_INSTAGRAM"
+                href="https://www.instagram.com/yashodatotalsolution/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-[#F39C12] transition-colors duration-200"
@@ -39,7 +42,7 @@ const Footer = () => {
                 <Facebook className="h-6 w-6" />
               </a>
               <a
-                href="https://www.youtube.com/@YOUR_YOUTUBE"
+                href="https://youtube.com/@yashodatotalsolution?si=5dKRJ0FqYQcegO_p"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-[#F39C12] transition-colors duration-200"

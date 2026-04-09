@@ -1,17 +1,191 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Shield, FileCheck, Banknote, Landmark, Users, CheckCircle, ArrowRight, Star, Award, Clock, Lock, HeartHandshake, Target, TrendingUp, Zap, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  Shield, FileCheck, Banknote, Landmark, Users, CheckCircle,
+  ArrowRight, Star, Award, Clock, Lock, HeartHandshake, Target,
+  TrendingUp, Zap, Eye, ChevronLeft, ChevronRight
+} from 'lucide-react';
 
-// ── Testimonial Card — flex-col layout, pinned footer, inline "see more" ──────
+/* ─── Structured Data (JSON-LD) ──────────────────────────────────────────── */
+const STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.yashodatotalsolution.in/#organization',
+      name: 'Yashoda Total Solution',
+      url: 'https://www.yashodatotalsolution.in/',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.yashodatotalsolution.in/logo.png',
+        width: 200,
+        height: 60,
+      },
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+91-9649647790',
+          contactType: 'customer support',
+          areaServed: 'IN',
+          availableLanguage: ['English', 'Hindi', 'Marathi'],
+        },
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress:
+          '2B 70, Phoenix Paragon Plaza, Lal Bahadur Shastri Marg, Kamani',
+        addressLocality: 'Kurla (West)',
+        addressRegion: 'Maharashtra',
+        postalCode: '400070',
+        addressCountry: 'IN',
+      },
+      sameAs: [
+        'https://www.facebook.com/yashodatotalsolution',
+        'https://www.instagram.com/yashodatotalsolution',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://www.yashodatotalsolution.in/#website',
+      url: 'https://www.yashodatotalsolution.in/',
+      name: 'Yashoda Total Solution',
+      description:
+        'Insurance claim assistance and legal dispute support services across India.',
+      inLanguage: 'en',
+      publisher: { '@id': 'https://www.yashodatotalsolution.in/#organization' },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate:
+            'https://www.yashodatotalsolution.in/search?q={search_term_string}',
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.yashodatotalsolution.in/#webpage',
+      url: 'https://www.yashodatotalsolution.in/',
+      name: 'Yashoda Total Solution – Insurance Claim & Legal Help India',
+      isPartOf: { '@id': 'https://www.yashodatotalsolution.in/#website' },
+      about: { '@id': 'https://www.yashodatotalsolution.in/#organization' },
+      description:
+        'Expert insurance claim assistance, mis-selling resolution, PMSBY/PMJJBY claim support, legal consultation, and consumer protection services across India.',
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.yashodatotalsolution.in/',
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': 'https://www.yashodatotalsolution.in/#localbusiness',
+      name: 'Yashoda Total Solution',
+      image: 'https://www.yashodatotalsolution.in/logo.png',
+      '@context': 'https://schema.org',
+      url: 'https://www.yashodatotalsolution.in/',
+      telephone: '+91-9649647790',
+      email: 'info@yashodatotalsolution.in',
+      priceRange: '₹',
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: [
+            'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
+          ],
+          opens: '09:00',
+          closes: '19:00',
+        },
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress:
+          '2B 70, Phoenix Paragon Plaza, Lal Bahadur Shastri Marg, Kamani',
+        addressLocality: 'Kurla (West)',
+        addressRegion: 'Maharashtra',
+        postalCode: '400070',
+        addressCountry: 'IN',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 19.0722,
+        longitude: 72.8797,
+      },
+      hasMap: 'https://maps.google.com/?q=Phoenix+Paragon+Plaza,+Kurla+West,+Mumbai',
+      areaServed: {
+        '@type': 'Country',
+        name: 'India',
+      },
+      serviceType: [
+        'Insurance Claim Assistance',
+        'Insurance Dispute Resolution',
+        'Legal Consultation',
+        'Consumer Protection',
+        'Cheque Bounce Case Support',
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What services does Yashoda Total Solution provide?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yashoda Total Solution provides insurance claim assistance, dispute resolution, mis-selling complaint support, PMSBY/PMJJBY claims, ATM card insurance claims, PF accidental insurance claims, legal consultation, consumer protection support, cheque bounce case support, and civil dispute assistance.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How can I get a free consultation?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'You can contact Yashoda Total Solution by calling +91-9649647790 or by filling out the contact form on our website to get a free consultation for your insurance or legal matter.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Does Yashoda Total Solution help with rejected insurance claims?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. We specialize in insurance claim rejection cases. We review your policy documents, understand the rejection reasons, help prepare a response, and if necessary escalate to the Insurance Ombudsman or IRDAI.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Can you help with PMSBY and PMJJBY government insurance claims?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. We assist beneficiaries with PMSBY (accidental insurance) and PMJJBY (life insurance) claim processes, including enrollment verification, document collection, and bank submission guidance.',
+          },
+        },
+      ],
+    },
+  ],
+};
+
+/* ─── Hero images ────────────────────────────────────────────────────────── */
+const heroImages = ['/home1.webp', '/home2.webp', '/home3.webp', '/home4.webp'];
+
+/* ─── Testimonial card ───────────────────────────────────────────────────── */
 const TestimonialCard = ({ review, index }) => {
   const [expanded, setExpanded] = useState(false);
   const CHAR_LIMIT = 160;
   const isLong = review.review_message.length > CHAR_LIMIT;
-  const displayText = isLong && !expanded
-    ? review.review_message.slice(0, CHAR_LIMIT).trimEnd() + '…'
-    : review.review_message;
+  const displayText =
+    isLong && !expanded
+      ? review.review_message.slice(0, CHAR_LIMIT).trimEnd() + '…'
+      : review.review_message;
 
   return (
     <motion.div
@@ -22,32 +196,46 @@ const TestimonialCard = ({ review, index }) => {
       whileHover={{ y: -6 }}
       data-testid={`testimonial-card-${index + 1}`}
       className="relative bg-white rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.07)] hover:shadow-[0_12px_36px_rgba(15,122,74,0.12)] transition-shadow duration-300 flex flex-col h-full"
+      itemScope
+      itemType="https://schema.org/Review"
     >
-      {/* Faint open-quote watermark */}
       <div className="absolute top-3 left-4 text-5xl text-gray-100 font-serif leading-none select-none pointer-events-none">
         &ldquo;
       </div>
 
       <div className="relative z-10 flex flex-col flex-1 px-7 pt-7 pb-6">
-
-        {/* Stars */}
-        <div className="flex justify-center mb-4">
+        <div
+          className="flex justify-center mb-4"
+          itemScope
+          itemType="https://schema.org/Rating"
+          itemProp="reviewRating"
+        >
+          <meta itemProp="ratingValue" content={review.rating} />
+          <meta itemProp="bestRating" content="5" />
           {[1, 2, 3, 4, 5].map((star) => (
             <Star
               key={star}
-              className={`h-5 w-5 ${star <= review.rating ? 'text-[#F39C12] fill-current' : 'text-gray-200 fill-current'}`}
+              className={`h-5 w-5 ${
+                star <= review.rating
+                  ? 'text-[#F39C12] fill-current'
+                  : 'text-gray-200 fill-current'
+              }`}
+              aria-hidden="true"
             />
           ))}
         </div>
 
-        {/* Review text */}
         <div className="flex-1 mb-5">
-          <p className="text-sm text-[#52606D] leading-relaxed italic">
+          <p
+            className="text-sm text-[#52606D] leading-relaxed italic"
+            itemProp="reviewBody"
+          >
             {displayText}
             {isLong && (
               <button
-                onClick={() => setExpanded(e => !e)}
+                onClick={() => setExpanded((e) => !e)}
                 className="ml-1 text-[#0F7A4A] font-semibold text-xs hover:underline focus:outline-none whitespace-nowrap"
+                aria-label={expanded ? 'Show less review text' : 'Show more review text'}
               >
                 {expanded ? 'see less' : 'see more'}
               </button>
@@ -55,31 +243,28 @@ const TestimonialCard = ({ review, index }) => {
           </p>
         </div>
 
-        {/* Orange divider */}
         <div className="border-t-2 border-[#F39C12] mb-4" />
 
-        {/* Name + city */}
-        <div className="text-center">
-          <p className="text-sm font-bold text-[#1F2933]">{review.customer_name}</p>
+        <div
+          className="text-center"
+          itemScope
+          itemType="https://schema.org/Person"
+          itemProp="author"
+        >
+          <p className="text-sm font-bold text-[#1F2933]" itemProp="name">
+            {review.customer_name}
+          </p>
           <p className="text-xs text-[#9AA5B1] flex items-center justify-center mt-1 gap-1.5">
-            <span className="w-2 h-2 bg-[#F39C12] rounded-full shrink-0" />
+            <span className="w-2 h-2 bg-[#F39C12] rounded-full shrink-0" aria-hidden="true" />
             {review.city}
           </p>
         </div>
-
       </div>
     </motion.div>
   );
 };
 
-const heroImages = [
-  "/home1.webp",
-  "/home2.webp",
-  "/home3.webp",
-  "/home4.webp"
-];
-
-// ── Home ──────────────────────────────────────────────────────────────────────
+/* ─── Home ───────────────────────────────────────────────────────────────── */
 const Home = () => {
   const { t, language } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -91,9 +276,7 @@ const Home = () => {
   const [reviewsLoading, setReviewsLoading] = useState(true);
   const [reviewPage, setReviewPage] = useState(0);
 
-
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  /* Preload hero images */
   useEffect(() => {
     heroImages.forEach((src) => {
       const img = new Image();
@@ -101,15 +284,15 @@ const Home = () => {
     });
   }, []);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  /* Auto-advance carousel */
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
     }, 4000);
-
     return () => clearInterval(interval);
   }, []);
 
+  /* Fetch reviews */
   useEffect(() => {
     const fetchApproved = async () => {
       try {
@@ -128,59 +311,141 @@ const Home = () => {
     fetchApproved();
   }, []);
 
-  // ← ADD THIS after your useState declarations
   const getLangField = (review, field) => {
     if (language === 'hi') return review[`${field}_hi`] || review[field];
     if (language === 'mr') return review[`${field}_mr`] || review[field];
-    return review[field];  // English: always use original text
+    return review[field];
   };
 
   const totalPages = Math.ceil(approvedReviews.length / REVIEWS_PER_PAGE);
   const reviewStartIdx = reviewPage * REVIEWS_PER_PAGE;
-  const visibleReviews = approvedReviews.slice(reviewStartIdx, reviewStartIdx + REVIEWS_PER_PAGE);
+  const visibleReviews = approvedReviews.slice(
+    reviewStartIdx,
+    reviewStartIdx + REVIEWS_PER_PAGE
+  );
   const canGoPrev = reviewPage > 0;
   const canGoNext = reviewPage < totalPages - 1;
 
   const fallbackTestimonials = [
-    { id: 'f1', customer_name: t('testimonial1_name'), city: t('testimonial1_location'), rating: 5, review_message: t('testimonial1_text') },
-    { id: 'f2', customer_name: t('testimonial2_name'), city: t('testimonial2_location'), rating: 5, review_message: t('testimonial2_text') },
-    { id: 'f3', customer_name: t('testimonial3_name'), city: t('testimonial3_location'), rating: 5, review_message: t('testimonial3_text') },
+    {
+      id: 'f1',
+      customer_name: t('testimonial1_name'),
+      city: t('testimonial1_location'),
+      rating: 5,
+      review_message: t('testimonial1_text'),
+    },
+    {
+      id: 'f2',
+      customer_name: t('testimonial2_name'),
+      city: t('testimonial2_location'),
+      rating: 5,
+      review_message: t('testimonial2_text'),
+    },
+    {
+      id: 'f3',
+      customer_name: t('testimonial3_name'),
+      city: t('testimonial3_location'),
+      rating: 5,
+      review_message: t('testimonial3_text'),
+    },
   ];
 
-  const displayReviews = approvedReviews.length > 0 ? visibleReviews : fallbackTestimonials;
+  const displayReviews =
+    approvedReviews.length > 0 ? visibleReviews : fallbackTestimonials;
 
+  /* Animation helpers */
   const fadeUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
+    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
   };
 
   const scaleIn = {
     initial: { opacity: 0, scale: 0.9 },
     whileInView: { opacity: 1, scale: 1 },
     viewport: { once: true },
-    transition: { duration: 0.5 }
+    transition: { duration: 0.5 },
   };
 
+  /* ─────────────────────────────────────────────────────────────────────── */
   return (
     <div className="min-h-screen bg-[#F5F7F9]">
 
+      {/* ── React Helmet SEO ──────────────────────────────────────────────── */}
+      <Helmet prioritizeSeoTags>
+        {/* Primary */}
+        <title>Yashoda Total Solution | Insurance Claim & Legal Dispute Help India</title>
+        <meta name="description" content="Yashoda Total Solution helps policyholders with insurance claim rejection, mis-selling, PMSBY, PMJJBY, ATM card insurance, PF accidental claims & legal support across India. Get free consultation today." />
+        <meta name="keywords" content="insurance claim help India, insurance dispute resolution, claim rejection assistance, mis-selling insurance, PMSBY claim, PMJJBY claim, ATM card insurance, PF accidental insurance, legal consultation Mumbai, consumer protection support, cheque bounce case, civil dispute support" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Yashoda Total Solution" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://www.yashodatotalsolution.in/" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.yashodatotalsolution.in/" />
+        <meta property="og:title" content="Yashoda Total Solution – Insurance Claim & Legal Help India" />
+        <meta property="og:description" content="Struggling with a rejected insurance claim or legal dispute? Yashoda Total Solution provides step-by-step expert guidance for policyholders across India." />
+        <meta property="og:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Yashoda Total Solution – Insurance Claim and Legal Help" />
+        <meta property="og:site_name" content="Yashoda Total Solution" />
+        <meta property="og:locale" content="en_IN" />
+
+        {/* Twitter / X Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Yashoda Total Solution – Insurance Claim & Legal Help India" />
+        <meta name="twitter:description" content="Struggling with a rejected insurance claim or legal dispute? Yashoda Total Solution provides step-by-step expert guidance for policyholders across India." />
+        <meta name="twitter:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Yashoda Total Solution – Insurance Claim and Legal Help" />
+
+        {/* Geo & Region */}
+        <meta name="geo.region" content="IN-MH" />
+        <meta name="geo.placename" content="Mumbai, Maharashtra, India" />
+        <meta name="geo.position" content="19.0722;72.8797" />
+        <meta name="ICBM" content="19.0722, 72.8797" />
+
+        {/* Structured Data JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify(STRUCTURED_DATA)}
+        </script>
+      </Helmet>
+
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
+      <section
+        className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white"
+        aria-label="Hero section"
+      >
+        <div className="absolute inset-0 opacity-10" aria-hidden="true">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\')',
+            }}
+          />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-32 pb-20 md:pb-24 lg:pb-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-            {/* ── Left: Text content ── */}
+            {/* Left: Text */}
             <motion.div {...fadeUp} className="text-left space-y-6 z-10">
-              <h1 className="text-3xl md:text-4xl font-bold leading-tight" data-testid="hero-headline">
+              <h1
+                className="text-3xl md:text-4xl font-bold leading-tight"
+                data-testid="hero-headline"
+              >
                 {t('hero_headline')}
               </h1>
-              <p className="text-lg md:text-xl text-white/90 leading-relaxed" data-testid="hero-subtext">
+              <p
+                className="text-lg md:text-xl text-white/90 leading-relaxed"
+                data-testid="hero-subtext"
+              >
                 {t('hero_subtext')}
               </p>
               <div className="pt-2">
@@ -188,10 +453,11 @@ const Home = () => {
                   <Link
                     to="/contact"
                     data-testid="hero-btn-contact"
+                    aria-label="Contact us for insurance claim or legal help"
                     className="group inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl"
                   >
                     {t('hero_btn_contact')}
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                   </Link>
                 </motion.div>
               </div>
@@ -202,22 +468,21 @@ const Home = () => {
                 className="flex flex-wrap gap-4 sm:gap-6 pt-4"
               >
                 <div className="flex items-center space-x-2 text-white/80">
-                  <CheckCircle className="h-5 w-5 text-[#F39C12]" />
+                  <CheckCircle className="h-5 w-5 text-[#F39C12]" aria-hidden="true" />
                   <span className="text-sm font-medium">{t('hero_small1')}</span>
                 </div>
                 <div className="flex items-center space-x-2 text-white/80">
-                  <Shield className="h-5 w-5 text-[#F39C12]" />
+                  <Shield className="h-5 w-5 text-[#F39C12]" aria-hidden="true" />
                   <span className="text-sm font-medium">{t('hero_small2')}</span>
                 </div>
                 <div className="flex items-center space-x-2 text-white/80">
-                  <Award className="h-5 w-5 text-[#F39C12]" />
+                  <Award className="h-5 w-5 text-[#F39C12]" aria-hidden="true" />
                   <span className="text-sm font-medium">{t('hero_small3')}</span>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* ── Right: Image carousel — VISIBLE ON ALL SCREEN SIZES ── */}
-            {/* FIX: Removed "hidden lg:block". Now uses block on all sizes. */}
+            {/* Right: Image carousel */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -225,36 +490,56 @@ const Home = () => {
               className="relative w-full"
             >
               <div className="relative">
-                <div className="absolute -top-6 -right-6 w-72 h-72 bg-[#F39C12] rounded-3xl opacity-20 blur-3xl"></div>
+                <div
+                  className="absolute -top-6 -right-6 w-72 h-72 bg-[#F39C12] rounded-3xl opacity-20 blur-3xl"
+                  aria-hidden="true"
+                />
                 <motion.div
                   whileHover={{ rotateY: 5, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                   className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-2 shadow-2xl overflow-hidden"
                   style={{ transformStyle: 'preserve-3d' }}
                 >
-                  {/* Height: 260px on mobile, 320px on md, 400px on lg */}
                   <div
                     className="relative overflow-hidden rounded-2xl"
                     style={{ height: 'clamp(260px, 45vw, 400px)' }}
+                    role="img"
+                    aria-label="Yashoda Total Solution – professional insurance and legal services"
                   >
                     <AnimatePresence initial={false} mode="popLayout">
                       <motion.img
                         key={currentImageIndex}
                         src={heroImages[currentImageIndex]}
-                        alt="Professional Service"
+                        alt={`Yashoda Total Solution professional service image ${currentImageIndex + 1}`}
+                        loading={currentImageIndex === 0 ? 'eager' : 'lazy'}
                         className="absolute top-0 left-0 w-full h-full object-cover rounded-2xl shadow-2xl"
                         initial={{ x: 300, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         exit={{ x: -300, opacity: 0 }}
-                        transition={{ x: { type: "spring", stiffness: 300, damping: 30 }, opacity: { duration: 0.2 } }}
+                        transition={{
+                          x: { type: 'spring', stiffness: 300, damping: 30 },
+                          opacity: { duration: 0.2 },
+                        }}
                       />
                     </AnimatePresence>
                     {/* Dot indicators */}
-                    <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                    <div
+                      className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10"
+                      role="tablist"
+                      aria-label="Hero image carousel"
+                    >
                       {heroImages.map((_, index) => (
-                        <div
+                        <button
                           key={index}
-                          className={`h-2 rounded-full transition-all duration-300 ${index === currentImageIndex ? 'bg-[#F39C12] w-6' : 'bg-white/50 w-2'}`}
+                          role="tab"
+                          aria-selected={index === currentImageIndex}
+                          aria-label={`Image ${index + 1}`}
+                          onClick={() => setCurrentImageIndex(index)}
+                          className={`h-2 rounded-full transition-all duration-300 ${
+                            index === currentImageIndex
+                              ? 'bg-[#F39C12] w-6'
+                              : 'bg-white/50 w-2'
+                          }`}
                         />
                       ))}
                     </div>
@@ -265,11 +550,19 @@ const Home = () => {
 
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
+        <div
+          className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]"
+          style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}
+          aria-hidden="true"
+        />
       </section>
 
       {/* ── Stats ────────────────────────────────────────────────────────────── */}
-      <motion.section {...fadeUp} className="relative mt-6 lg:-mt-16 z-10">
+      <motion.section
+        {...fadeUp}
+        className="relative mt-6 lg:-mt-16 z-10"
+        aria-label="Key statistics"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -286,8 +579,10 @@ const Home = () => {
                   transition={{ delay: index * 0.1 }}
                   className="text-center"
                 >
-                  <stat.icon className="h-8 w-8 text-[#0F7A4A] mx-auto mb-3" />
-                  <div className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-1">{stat.number}</div>
+                  <stat.icon className="h-8 w-8 text-[#0F7A4A] mx-auto mb-3" aria-hidden="true" />
+                  <div className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-1">
+                    {stat.number}
+                  </div>
                   <div className="text-sm text-[#52606D]">{stat.label}</div>
                 </motion.div>
               ))}
@@ -297,17 +592,46 @@ const Home = () => {
       </motion.section>
 
       {/* ── About ────────────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]" data-testid="about-section">
+      <section
+        className="py-16 md:py-24 bg-[#F5F7F9]"
+        data-testid="about-section"
+        aria-labelledby="about-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">{t('about_title')}</h2>
-            <p className="text-lg text-[#52606D] leading-relaxed max-w-3xl mx-auto">{t('about_desc')}</p>
+            <h2
+              id="about-heading"
+              className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4"
+            >
+              {t('about_title')}
+            </h2>
+            <p className="text-lg text-[#52606D] leading-relaxed max-w-3xl mx-auto">
+              {t('about_desc')}
+            </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Users, title: t('about_card1_title'), desc: t('about_card1_desc'), color: 'bg-blue-50', iconColor: 'text-blue-600' },
-              { icon: Target, title: t('about_card2_title'), desc: t('about_card2_desc'), color: 'bg-green-50', iconColor: 'text-green-600' },
-              { icon: Clock, title: t('about_card3_title'), desc: t('about_card3_desc'), color: 'bg-orange-50', iconColor: 'text-orange-600' },
+              {
+                icon: Users,
+                title: t('about_card1_title'),
+                desc: t('about_card1_desc'),
+                color: 'bg-blue-50',
+                iconColor: 'text-blue-600',
+              },
+              {
+                icon: Target,
+                title: t('about_card2_title'),
+                desc: t('about_card2_desc'),
+                color: 'bg-green-50',
+                iconColor: 'text-green-600',
+              },
+              {
+                icon: Clock,
+                title: t('about_card3_title'),
+                desc: t('about_card3_desc'),
+                color: 'bg-orange-50',
+                iconColor: 'text-orange-600',
+              },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -319,13 +643,17 @@ const Home = () => {
                 style={{ transformStyle: 'preserve-3d' }}
               >
                 <div className="p-8">
-                  <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <item.icon className={`h-8 w-8 ${item.iconColor}`} />
+                  <div
+                    className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                  >
+                    <item.icon className={`h-8 w-8 ${item.iconColor}`} aria-hidden="true" />
                   </div>
-                  <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
+                  <h3 className="text-xl font-semibold text-[#1F2933] mb-3">
+                    {item.title}
+                  </h3>
                   <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
                 </div>
-                <div className="h-2 bg-gradient-to-r from-[#0F7A4A] to-[#159F61] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="h-2 bg-gradient-to-r from-[#0F7A4A] to-[#159F61] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </motion.div>
             ))}
           </div>
@@ -333,18 +661,49 @@ const Home = () => {
       </section>
 
       {/* ── Problems ─────────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-white" data-testid="problems-section">
+      <section
+        className="py-16 md:py-24 bg-white"
+        data-testid="problems-section"
+        aria-labelledby="problems-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">{t('problems_title')}</h2>
-            <p className="text-lg text-[#F39C12] font-semibold">{t('problems_subtitle')}</p>
+            <h2
+              id="problems-heading"
+              className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4"
+            >
+              {t('problems_title')}
+            </h2>
+            <p className="text-lg text-[#F39C12] font-semibold">
+              {t('problems_subtitle')}
+            </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { title: t('problem1_title'), desc: t('problem1_desc'), icon: Shield, gradient: 'from-red-500 to-orange-500' },
-              { title: t('problem2_title'), desc: t('problem2_desc'), icon: FileCheck, gradient: 'from-blue-500 to-cyan-500' },
-              { title: t('problem3_title'), desc: t('problem3_desc'), icon: Banknote, gradient: 'from-green-500 to-emerald-500' },
-              { title: t('problem4_title'), desc: t('problem4_desc'), icon: Landmark, gradient: 'from-purple-500 to-pink-500' },
+              {
+                title: t('problem1_title'),
+                desc: t('problem1_desc'),
+                icon: Shield,
+                gradient: 'from-red-500 to-orange-500',
+              },
+              {
+                title: t('problem2_title'),
+                desc: t('problem2_desc'),
+                icon: FileCheck,
+                gradient: 'from-blue-500 to-cyan-500',
+              },
+              {
+                title: t('problem3_title'),
+                desc: t('problem3_desc'),
+                icon: Banknote,
+                gradient: 'from-green-500 to-emerald-500',
+              },
+              {
+                title: t('problem4_title'),
+                desc: t('problem4_desc'),
+                icon: Landmark,
+                gradient: 'from-purple-500 to-pink-500',
+              },
             ].map((problem, index) => (
               <motion.div
                 key={index}
@@ -356,13 +715,22 @@ const Home = () => {
                 data-testid={`problem-card-${index + 1}`}
                 className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 border-2 border-gray-100 hover:border-[#F39C12] transition-all duration-300 overflow-hidden"
               >
-                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${problem.gradient} opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity`}></div>
+                <div
+                  className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${problem.gradient} opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity`}
+                  aria-hidden="true"
+                />
                 <div className="relative z-10">
-                  <div className={`w-14 h-14 bg-gradient-to-br ${problem.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform duration-300`}>
-                    <problem.icon className="h-7 w-7 text-white" />
+                  <div
+                    className={`w-14 h-14 bg-gradient-to-br ${problem.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform duration-300`}
+                  >
+                    <problem.icon className="h-7 w-7 text-white" aria-hidden="true" />
                   </div>
-                  <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{problem.title}</h3>
-                  <p className="text-base text-[#52606D] leading-relaxed">{problem.desc}</p>
+                  <h3 className="text-xl font-semibold text-[#1F2933] mb-3">
+                    {problem.title}
+                  </h3>
+                  <p className="text-base text-[#52606D] leading-relaxed">
+                    {problem.desc}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -371,11 +739,22 @@ const Home = () => {
       </section>
 
       {/* ── Why Choose Us ────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-white" data-testid="why-choose-section">
+      <section
+        className="py-16 md:py-24 bg-white"
+        data-testid="why-choose-section"
+        aria-labelledby="why-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">{t('why_title')}</h2>
-            <p className="text-lg text-[#52606D] max-w-3xl mx-auto">{t('why_subtitle')}</p>
+            <h2
+              id="why-heading"
+              className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4"
+            >
+              {t('why_title')}
+            </h2>
+            <p className="text-lg text-[#52606D] max-w-3xl mx-auto">
+              {t('why_subtitle')}
+            </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -396,9 +775,11 @@ const Home = () => {
                 className="group text-center p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border-2 border-transparent hover:border-[#0F7A4A] transition-all duration-300 shadow-lg hover:shadow-2xl"
               >
                 <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] text-white rounded-2xl mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
-                  <item.icon className="h-10 w-10" />
+                  <item.icon className="h-10 w-10" aria-hidden="true" />
                 </div>
-                <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
+                <h3 className="text-xl font-semibold text-[#1F2933] mb-3">
+                  {item.title}
+                </h3>
                 <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
@@ -407,10 +788,20 @@ const Home = () => {
       </section>
 
       {/* ── Testimonials ─────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-[#F5F7F9] to-white" data-testid="testimonials-section">
+      <section
+        className="py-16 md:py-24 bg-gradient-to-b from-[#F5F7F9] to-white"
+        data-testid="testimonials-section"
+        aria-labelledby="testimonials-heading"
+        itemScope
+        itemType="https://schema.org/ItemList"
+      >
+        <meta itemProp="name" content="Customer Reviews – Yashoda Total Solution" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="testimonials-heading"
+              className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4"
+            >
               {t('testimonials_title')}
             </h2>
             <p className="text-lg text-[#52606D]">{t('testimonials_subtitle')}</p>
@@ -418,7 +809,11 @@ const Home = () => {
 
           {reviewsLoading ? (
             <div className="flex justify-center py-12">
-              <div className="w-8 h-8 border-4 border-[#0F7A4A] border-t-transparent rounded-full animate-spin" />
+              <div
+                className="w-8 h-8 border-4 border-[#0F7A4A] border-t-transparent rounded-full animate-spin"
+                role="status"
+                aria-label="Loading reviews"
+              />
             </div>
           ) : (
             <>
@@ -438,7 +833,7 @@ const Home = () => {
                         ...review,
                         customer_name: getLangField(review, 'customer_name'),
                         review_message: getLangField(review, 'review_message'),
-                        city: getLangField(review, 'city'),   // ← ADD
+                        city: getLangField(review, 'city'),
                       }}
                       index={index}
                     />
@@ -448,32 +843,37 @@ const Home = () => {
 
               {/* Pagination controls */}
               {approvedReviews.length > REVIEWS_PER_PAGE && (
-                <motion.div
+                <motion.nav
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   className="flex items-center justify-center gap-4 mt-10"
+                  aria-label="Reviews pagination"
                 >
                   <motion.button
                     whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.94 }}
-                    onClick={() => setReviewPage(p => p - 1)}
+                    onClick={() => setReviewPage((p) => p - 1)}
                     disabled={!canGoPrev}
+                    aria-label="Previous page of reviews"
                     className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#0F7A4A] text-[#0F7A4A] font-semibold text-sm transition-all hover:bg-[#0F7A4A] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
                   >
-                    <ChevronLeft className="h-4 w-4" />
+                    <ChevronLeft className="h-4 w-4" aria-hidden="true" />
                     {t('review_previous_button')}
                   </motion.button>
 
-                  <div className="flex gap-2 items-center">
+                  <div className="flex gap-2 items-center" role="group" aria-label="Page indicators">
                     {Array.from({ length: totalPages }).map((_, i) => (
                       <button
                         key={i}
                         onClick={() => setReviewPage(i)}
-                        className={`rounded-full transition-all duration-300 ${i === reviewPage
-                          ? 'bg-[#0F7A4A] w-6 h-3'
-                          : 'bg-gray-300 hover:bg-[#0F7A4A]/40 w-3 h-3'
-                          }`}
+                        aria-label={`Go to review page ${i + 1}`}
+                        aria-current={i === reviewPage ? 'page' : undefined}
+                        className={`rounded-full transition-all duration-300 ${
+                          i === reviewPage
+                            ? 'bg-[#0F7A4A] w-6 h-3'
+                            : 'bg-gray-300 hover:bg-[#0F7A4A]/40 w-3 h-3'
+                        }`}
                       />
                     ))}
                   </div>
@@ -481,22 +881,26 @@ const Home = () => {
                   <motion.button
                     whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.94 }}
-                    onClick={() => setReviewPage(p => p + 1)}
+                    onClick={() => setReviewPage((p) => p + 1)}
                     disabled={!canGoNext}
+                    aria-label="Next page of reviews"
                     className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#0F7A4A] to-[#159F61] text-white font-semibold text-sm transition-all shadow-lg hover:shadow-xl disabled:opacity-30 disabled:cursor-not-allowed"
                   >
                     {t('review_more_button')}
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-4 w-4" aria-hidden="true" />
                   </motion.button>
-                </motion.div>
+                </motion.nav>
               )}
 
               {approvedReviews.length > 0 && (
-                <p className="text-center text-sm text-[#9AA5B1] mt-4">
+                <p className="text-center text-sm text-[#9AA5B1] mt-4" aria-live="polite">
                   {t('review_pagination_text', {
                     start: reviewStartIdx + 1,
-                    end: Math.min(reviewStartIdx + REVIEWS_PER_PAGE, approvedReviews.length),
-                    total: approvedReviews.length
+                    end: Math.min(
+                      reviewStartIdx + REVIEWS_PER_PAGE,
+                      approvedReviews.length
+                    ),
+                    total: approvedReviews.length,
                   })}
                 </p>
               )}
@@ -510,9 +914,16 @@ const Home = () => {
         {...fadeUp}
         className="relative py-20 md:py-32 bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] overflow-hidden"
         data-testid="cta-section"
+        aria-labelledby="cta-heading"
       >
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
+        <div className="absolute inset-0 opacity-10" aria-hidden="true">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\')',
+            }}
+          />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
           <motion.div
@@ -521,16 +932,22 @@ const Home = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white">{t('cta_title')}</h2>
+            <h2
+              id="cta-heading"
+              className="text-3xl md:text-5xl font-bold text-white"
+            >
+              {t('cta_title')}
+            </h2>
             <p className="text-lg md:text-xl text-white/90">{t('cta_subtitle')}</p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 to="/contact"
                 data-testid="cta-contact-btn"
+                aria-label="Contact Yashoda Total Solution for free consultation"
                 className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
               >
                 {t('cta_btn')}
-                <ArrowRight className="ml-2 h-6 w-6" />
+                <ArrowRight className="ml-2 h-6 w-6" aria-hidden="true" />
               </Link>
             </motion.div>
           </motion.div>

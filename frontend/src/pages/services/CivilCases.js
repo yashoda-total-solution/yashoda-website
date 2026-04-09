@@ -1,11 +1,93 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   Landmark, FileText, Home, Users, Shield, CheckCircle, 
   ArrowRight, HelpCircle, Phone, Target, DollarSign, Scale 
 } from 'lucide-react';
+
+/* ─── Structured Data (JSON-LD) ──────────────────────────────────────────── */
+const CIVIL_CASES_STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.yashodatotalsolution.in/civil-cases/#webpage',
+      url: 'https://www.yashodatotalsolution.in/civil-cases/',
+      name: 'Civil Dispute Support Services India | Yashoda Total Solution',
+      isPartOf: { '@id': 'https://www.yashodatotalsolution.in/#website' },
+      description:
+        'Need help with a civil dispute? Yashoda Total Solution assists individuals and businesses with property disputes, financial recovery, contract breaches, landlord-tenant conflicts and other civil matters across India.',
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.yashodatotalsolution.in/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Civil Dispute Support',
+            item: 'https://www.yashodatotalsolution.in/civil-cases/',
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': 'https://www.yashodatotalsolution.in/civil-cases/#service',
+      name: 'Civil Dispute Support Services',
+      description:
+        'Expert civil dispute support for individuals and businesses. We help with property ownership disputes, financial recovery matters, contract breach cases, landlord-tenant conflicts, inheritance disputes and other civil legal matters across India.',
+      provider: { '@id': 'https://www.yashodatotalsolution.in/#organization' },
+      areaServed: { '@type': 'Country', name: 'India' },
+      serviceType: 'Civil Dispute Legal Support',
+      url: 'https://www.yashodatotalsolution.in/civil-cases/',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What is a civil dispute?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'A civil dispute is a legal disagreement between individuals or organizations related to rights, responsibilities, or obligations under civil law, as opposed to criminal law.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What types of issues fall under civil disputes?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Common civil disputes involve property matters, financial recovery, contract breaches, landlord-tenant issues, and family-related legal matters such as inheritance disputes.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Can civil disputes be resolved without going to court?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'In some cases, disputes may be resolved through communication, mediation, or settlement discussions before pursuing formal legal proceedings in court.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What documents are usually required in civil disputes?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Relevant agreements, property records, financial documents, communication history, and evidence related to the dispute are typically required to build a strong case.',
+          },
+        },
+      ],
+    },
+  ],
+};
 
 const CivilCases = () => {
   const { t } = useLanguage();
@@ -19,9 +101,68 @@ const CivilCases = () => {
 
   return (
     <div className="min-h-screen bg-[#F5F7F9]">
+
+      {/* ── React Helmet SEO ──────────────────────────────────────────────── */}
+      <Helmet prioritizeSeoTags>
+        {/* Primary */}
+        <title>Civil Dispute Support Services India | Yashoda Total Solution</title>
+        <meta
+          name="description"
+          content="Need help with a civil dispute? Yashoda Total Solution helps individuals and businesses with property disputes, financial recovery, contract breaches and landlord-tenant conflicts across India. Free consultation available."
+        />
+        <meta
+          name="keywords"
+          content="civil dispute support India, property dispute help India, financial recovery legal support, contract breach India, landlord tenant dispute Mumbai, inheritance dispute India, civil case assistance Mumbai, civil legal support Maharashtra"
+        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Yashoda Total Solution" />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://www.yashodatotalsolution.in/civil-cases/" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.yashodatotalsolution.in/civil-cases/" />
+        <meta property="og:title" content="Civil Dispute Support Services India | Yashoda Total Solution" />
+        <meta
+          property="og:description"
+          content="Need help with a civil dispute? We help individuals and businesses with property disputes, financial recovery, contract breaches and landlord-tenant conflicts across India."
+        />
+        <meta property="og:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Civil Dispute Support – Yashoda Total Solution" />
+        <meta property="og:site_name" content="Yashoda Total Solution" />
+        <meta property="og:locale" content="en_IN" />
+
+        {/* Twitter / X Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Civil Dispute Support Services India | Yashoda Total Solution" />
+        <meta
+          name="twitter:description"
+          content="Need help with a civil dispute? We help individuals and businesses with property disputes, financial recovery, contract breaches and landlord-tenant conflicts across India."
+        />
+        <meta name="twitter:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Civil Dispute Support – Yashoda Total Solution" />
+
+        {/* Geo & Region */}
+        <meta name="geo.region" content="IN-MH" />
+        <meta name="geo.placename" content="Mumbai, Maharashtra, India" />
+        <meta name="geo.position" content="19.0722;72.8797" />
+        <meta name="ICBM" content="19.0722, 72.8797" />
+
+        {/* Structured Data JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify(CIVIL_CASES_STRUCTURED_DATA)}
+        </script>
+      </Helmet>
+
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32">
-        <div className="absolute inset-0 opacity-10">
+      <section
+        className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32"
+        aria-labelledby="civil-cases-hero-heading"
+      >
+        <div className="absolute inset-0 opacity-10" aria-hidden="true">
           <div className="absolute inset-0"></div>
         </div>
 
@@ -32,38 +173,55 @@ const CivilCases = () => {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('civil_title_backlink1')}</Link>
-              <span className="text-white/60">/</span>
-              <span className="text-white text-sm">{t('civil_title_backlink2')}</span>
-            </div>
-            
+            <nav className="flex items-center space-x-2 mb-6" aria-label="Breadcrumb">
+              <Link to="/" className="text-white/80 hover:text-white text-sm">
+                {t('civil_title_backlink1')}
+              </Link>
+              <span className="text-white/60" aria-hidden="true">/</span>
+              <span className="text-white text-sm" aria-current="page">
+                {t('civil_title_backlink2')}
+              </span>
+            </nav>
+
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-16 h-16 bg-[#F39C12] rounded-2xl flex items-center justify-center">
-                <Landmark className="h-8 w-8 text-white" />
+              <div className="w-16 h-16 bg-[#F39C12] rounded-2xl flex items-center justify-center flex-shrink-0">
+                <Landmark className="h-8 w-8 text-white" aria-hidden="true" />
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+              <h1
+                id="civil-cases-hero-heading"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold"
+              >
                 {t('civil_title')}
               </h1>
             </div>
-            
+
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
               {t('civil_description')}
             </p>
           </motion.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
+        <div
+          className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]"
+          style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}
+          aria-hidden="true"
+        />
       </section>
 
       {/* Service Overview Section */}
-      <section className="relative -mt-16 z-10 py-16 md:py-24">
+      <section
+        className="relative -mt-16 z-10 py-16 md:py-24"
+        aria-labelledby="service-overview-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             {...fadeUp}
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
+            <h2
+              id="service-overview-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6"
+            >
               {t('what_civil_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
@@ -72,12 +230,13 @@ const CivilCases = () => {
               <p className="leading-relaxed mb-4">{t('what_civil_description2')}</p>
               <p className="leading-relaxed mb-4">{t('what_civil_description3')}</p>
               <p className="leading-relaxed mb-4">
-                <strong>{t('what_civil_description4')}</strong> {t('what_civil_description5')}
+                <strong>{t('what_civil_description4')}</strong>{' '}
+                {t('what_civil_description5')}
               </p>
               <p className="leading-relaxed mb-4">
                 <strong>{t('what_civil_key_features')}</strong>
               </p>
-              <ul className="space-y-3 ml-6">
+              <ul className="space-y-3 ml-6" role="list">
                 <li>{t('what_civil_key_feature1')}</li>
                 <li>{t('what_civil_key_feature2')}</li>
                 <li>{t('what_civil_key_feature3')}</li>
@@ -90,10 +249,16 @@ const CivilCases = () => {
       </section>
 
       {/* Common Types Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section
+        className="py-16 md:py-24 bg-white"
+        aria-labelledby="common-types-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="common-types-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('common_types_civil_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
@@ -148,7 +313,7 @@ const CivilCases = () => {
                 className={`${item.color} rounded-2xl p-8`}
               >
                 <div className={`w-16 h-16 ${item.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}>
-                  <item.icon className="h-8 w-8 text-white" />
+                  <item.icon className="h-8 w-8 text-white" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
                 <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
@@ -159,10 +324,16 @@ const CivilCases = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+      <section
+        className="py-16 md:py-24 bg-[#F5F7F9]"
+        aria-labelledby="why-choose-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="why-choose-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('why_choose_civil_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
@@ -203,7 +374,7 @@ const CivilCases = () => {
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-2xl flex items-center justify-center mb-6">
-                  <item.icon className="h-8 w-8 text-white" />
+                  <item.icon className="h-8 w-8 text-white" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
                 <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
@@ -214,10 +385,16 @@ const CivilCases = () => {
       </section>
 
       {/* Process Flow Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section
+        className="py-16 md:py-24 bg-white"
+        aria-labelledby="process-flow-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="process-flow-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('process_civil_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
@@ -226,7 +403,10 @@ const CivilCases = () => {
           </motion.div>
 
           <div className="relative">
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
+            <div
+              className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"
+              aria-hidden="true"
+            />
 
             <div className="space-y-12">
               {[
@@ -274,7 +454,10 @@ const CivilCases = () => {
                   <div className={index % 2 === 0 ? 'md:pr-12' : 'md:col-start-2 md:pl-12'}>
                     <div className="bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] text-white rounded-2xl p-8 shadow-xl">
                       <div className="flex items-center space-x-4 mb-4">
-                        <div className="w-12 h-12 bg-[#F39C12] rounded-full flex items-center justify-center font-bold text-xl">
+                        <div
+                          className="w-12 h-12 bg-[#F39C12] rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0"
+                          aria-label={`Step ${item.step}`}
+                        >
                           {item.step}
                         </div>
                         <h3 className="text-xl md:text-2xl font-bold flex-1">{item.title}</h3>
@@ -282,7 +465,10 @@ const CivilCases = () => {
                       <p className="text-base text-white/90 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
-                  <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#F39C12] rounded-full border-4 border-white shadow-lg z-10"></div>
+                  <div
+                    className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#F39C12] rounded-full border-4 border-white shadow-lg z-10"
+                    aria-hidden="true"
+                  />
                 </motion.div>
               ))}
             </div>
@@ -291,10 +477,16 @@ const CivilCases = () => {
       </section>
 
       {/* Example Scenarios Section */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+      <section
+        className="py-16 md:py-24 bg-[#F5F7F9]"
+        aria-labelledby="scenarios-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="scenarios-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('ex_scenario_civil_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
@@ -336,24 +528,38 @@ const CivilCases = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 shadow-lg"
+                itemScope
+                itemType="https://schema.org/Article"
               >
-                <h3 className="text-xl font-bold text-[#1F2933] mb-4 flex items-center">
-                  <span className="w-8 h-8 bg-[#F39C12] text-white rounded-full flex items-center justify-center mr-3 text-sm font-bold">
+                <h3
+                  className="text-xl font-bold text-[#1F2933] mb-4 flex items-center"
+                  itemProp="headline"
+                >
+                  <span
+                    className="w-8 h-8 bg-[#F39C12] text-white rounded-full flex items-center justify-center mr-3 text-sm font-bold flex-shrink-0"
+                    aria-hidden="true"
+                  >
                     {index + 1}
                   </span>
                   {scenario.title}
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-red-600 mb-2">{t('ex_scenario_civil_problem_label')}</h4>
+                    <h4 className="text-sm font-semibold text-red-600 mb-2">
+                      {t('ex_scenario_civil_problem_label')}
+                    </h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_civil_reality_label')}</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">
+                      {t('ex_scenario_civil_reality_label')}
+                    </h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_civil_solution_label')}</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">
+                      {t('ex_scenario_civil_solution_label')}
+                    </h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -364,10 +570,16 @@ const CivilCases = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section
+        className="py-16 md:py-24 bg-white"
+        aria-labelledby="faqs-heading"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="faqs-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('faq_civil_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
@@ -377,22 +589,10 @@ const CivilCases = () => {
 
           <div className="space-y-6">
             {[
-              {
-                question: t('faq_civil_q1'),
-                answer: t('faq_civil_a1'),
-              },
-              {
-                question: t('faq_civil_q2'),
-                answer: t('faq_civil_a2'),
-              },
-              {
-                question: t('faq_civil_q3'),
-                answer: t('faq_civil_a3'),
-              },
-              {
-                question: t('faq_civil_q4'),
-                answer: t('faq_civil_a4'),
-              },
+              { question: t('faq_civil_q1'), answer: t('faq_civil_a1') },
+              { question: t('faq_civil_q2'), answer: t('faq_civil_a2') },
+              { question: t('faq_civil_q3'), answer: t('faq_civil_a3') },
+              { question: t('faq_civil_q4'), answer: t('faq_civil_a4') },
             ].map((faq, index) => (
               <motion.div
                 key={index}
@@ -401,16 +601,30 @@ const CivilCases = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-[#F5F7F9] rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
+                itemScope
+                itemType="https://schema.org/Question"
               >
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
                     <div className="w-10 h-10 bg-[#0F7A4A] rounded-full flex items-center justify-center">
-                      <HelpCircle className="h-6 w-6 text-white" />
+                      <HelpCircle className="h-6 w-6 text-white" aria-hidden="true" />
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-[#1F2933] mb-2">{faq.question}</h3>
-                    <p className="text-base text-[#52606D] leading-relaxed">{faq.answer}</p>
+                    <h3
+                      className="text-lg font-semibold text-[#1F2933] mb-2"
+                      itemProp="name"
+                    >
+                      {faq.question}
+                    </h3>
+                    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+                      <p
+                        className="text-base text-[#52606D] leading-relaxed"
+                        itemProp="text"
+                      >
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -423,8 +637,9 @@ const CivilCases = () => {
       <motion.section
         {...fadeUp}
         className="relative py-20 md:py-32 bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] overflow-hidden"
+        aria-labelledby="cta-heading"
       >
-        <div className="absolute inset-0 opacity-10"></div>
+        <div className="absolute inset-0 opacity-10" aria-hidden="true" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
           <motion.div
@@ -434,9 +649,12 @@ const CivilCases = () => {
             className="space-y-8"
           >
             <div className="w-20 h-20 bg-[#F39C12] rounded-full flex items-center justify-center mx-auto mb-6">
-              <Phone className="h-10 w-10 text-white" />
+              <Phone className="h-10 w-10 text-white" aria-hidden="true" />
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white">
+            <h2
+              id="cta-heading"
+              className="text-3xl md:text-5xl font-bold text-white"
+            >
               {t('cta_civil_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
@@ -447,17 +665,19 @@ const CivilCases = () => {
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
+                  aria-label="Get free consultation for civil dispute support"
                 >
                   {t('cta_civil_button1')}
-                  <ArrowRight className="ml-2 h-6 w-6" />
+                  <ArrowRight className="ml-2 h-6 w-6" aria-hidden="true" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
                   href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
+                  aria-label="Call Yashoda Total Solution now"
                 >
-                  <Phone className="mr-2 h-6 w-6" />
+                  <Phone className="mr-2 h-6 w-6" aria-hidden="true" />
                   {t('cta_civil_button2')}
                 </a>
               </motion.div>
@@ -465,6 +685,7 @@ const CivilCases = () => {
           </motion.div>
         </div>
       </motion.section>
+
     </div>
   );
 };

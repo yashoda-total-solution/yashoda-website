@@ -2050,6 +2050,9 @@ export const translations = {
     contact_success_message: 'Thank you for contacting us. Our team will get back to you soon.',
     contact_another_btn: 'Send Another Message',
     contact_whatsapp_btn: 'CHAT WITH',
+    chat_prefix: 'Chat with',
+    yashify_name: 'YASHIFY',
+    chat_suffix: "",
 
     contact_map_title: 'Location On Google Map',
 
@@ -4565,6 +4568,9 @@ export const translations = {
 
     contact_another_btn: 'एक और संदेश भेजें',
     contact_whatsapp_btn: 'चैट करें',
+    chat_prefix: "",
+    yashify_name: "यशिफाय",
+    chat_suffix: "से चैट करें",
 
     contact_map_title: 'गूगल मैप पर स्थान',
 
@@ -7090,6 +7096,9 @@ export const translations = {
 
     contact_another_btn: 'आणखी एक संदेश पाठवा',
     contact_whatsapp_btn: 'चॅट करा',
+    chat_prefix: "",
+    yashify_name: "यशिफाय",
+    chat_suffix: "सोबत चॅट करा",
 
     contact_map_title: 'गूगल मॅपवरील स्थान',
 
@@ -7310,7 +7319,7 @@ export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState('en');
 
   const t = (key, variables = {}) => {
-    let text = translations[language]?.[key] || key;
+    let text = translations[language]?.[key] ?? key;
 
     Object.keys(variables).forEach((varKey) => {
       text = text.replace(

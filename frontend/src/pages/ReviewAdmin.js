@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Star, CheckCircle, Trash2, LogOut, Clock,
@@ -219,26 +220,40 @@ const Login = ({ onLogin }) => {
 
             <form onSubmit={submit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1.5">Username</label>
+                <label htmlFor="admin-username" className="block text-xs font-semibold text-gray-600 mb-1.5">
+                  Username
+                </label>
                 <input
-                  type="text" value={username}
+                  id="admin-username"
+                  type="text"
+                  value={username}
                   onChange={e => setUsername(e.target.value)}
-                  required placeholder="admin"
+                  required
+                  placeholder="admin"
+                  autoComplete="username"
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-sm focus:border-[#0F7A4A] focus:outline-none transition-colors"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1.5">Password</label>
+                <label htmlFor="admin-password" className="block text-xs font-semibold text-gray-600 mb-1.5">
+                  Password
+                </label>
                 <input
-                  type="password" value={password}
+                  id="admin-password"
+                  type="password"
+                  value={password}
                   onChange={e => setPassword(e.target.value)}
-                  required placeholder="••••••••"
+                  required
+                  placeholder="••••••••"
+                  autoComplete="current-password"
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-sm focus:border-[#0F7A4A] focus:outline-none transition-colors"
                 />
               </div>
               <motion.button
-                type="submit" disabled={loading}
-                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                type="submit"
+                disabled={loading}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className="w-full bg-gradient-to-r from-[#0F7A4A] to-[#159F61] text-white py-3.5 rounded-xl font-semibold text-sm shadow-lg disabled:opacity-60 flex items-center justify-center gap-2 mt-2"
               >
                 {loading ? <RefreshCw className="h-4 w-4 animate-spin" /> : 'Sign In'}
@@ -305,7 +320,6 @@ const Dashboard = ({ token, onLogout }) => {
     onLogout();
   };
 
-  // Stats
   const total    = reviews.length;
   const approved = reviews.filter(r => r.approved).length;
   const pending  = reviews.filter(r => !r.approved).length;
@@ -313,7 +327,6 @@ const Dashboard = ({ token, onLogout }) => {
     ? (reviews.filter(r => r.approved).reduce((s, r) => s + r.rating, 0) / approved).toFixed(1)
     : '—';
 
-  // Filter + search
   const visible = reviews.filter(r => {
     const matchF = filter === 'all'
       || (filter === 'approved' && r.approved)
@@ -331,20 +344,29 @@ const Dashboard = ({ token, onLogout }) => {
       <Toast toast={toast} />
 
       {/* Navbar */}
-      <nav className="bg-gradient-to-r from-[#0A5734] to-[#0F7A4A] sticky top-0 z-40 shadow-lg">
+      <nav className="bg-gradient-to-r from-[#0A5734] to-[#0F7A4A] sticky top-0 z-40 shadow-lg" aria-label="Admin navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-3.5">
           <div className="flex items-center gap-2.5">
             <div className="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center">
-              <Shield className="h-4 w-4 text-white" />
+              <Shield className="h-4 w-4 text-white" aria-hidden="true" />
             </div>
             <span className="text-white font-bold text-sm">Review Admin Portal</span>
           </div>
           <div className="flex items-center gap-2">
-            <button onClick={load} className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors" title="Refresh">
-              <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+            <button
+              onClick={load}
+              className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+              title="Refresh reviews"
+              aria-label="Refresh reviews"
+            >
+              <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
             </button>
-            <button onClick={handleLogout} className="flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
-              <LogOut className="h-3.5 w-3.5" /> Logout
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl text-xs font-semibold transition-colors"
+              aria-label="Logout from admin portal"
+            >
+              <LogOut className="h-3.5 w-3.5" aria-hidden="true" /> Logout
             </button>
           </div>
         </div>
@@ -353,7 +375,7 @@ const Dashboard = ({ token, onLogout }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8" role="region" aria-label="Review statistics">
           <StatPill icon={BarChart2} label="Total Reviews"  value={total}     accent="bg-blue-500"    delay={0}    />
           <StatPill icon={Clock}     label="Pending"        value={pending}   accent="bg-amber-500"   delay={0.05} />
           <StatPill icon={ThumbsUp}  label="Published"      value={approved}  accent="bg-[#0F7A4A]"   delay={0.1}  />
@@ -362,7 +384,7 @@ const Dashboard = ({ token, onLogout }) => {
 
         {/* Filter + Search */}
         <div className="bg-white rounded-2xl shadow-[0_4px_18px_rgba(0,0,0,0.06)] px-5 py-4 mb-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-          <div className="flex gap-2">
+          <div className="flex gap-2" role="group" aria-label="Filter reviews">
             {[
               { key: 'all',      label: 'All',       count: total    },
               { key: 'pending',  label: 'Pending',   count: pending  },
@@ -371,6 +393,7 @@ const Dashboard = ({ token, onLogout }) => {
               <button
                 key={f.key}
                 onClick={() => setFilter(f.key)}
+                aria-pressed={filter === f.key}
                 className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
                   filter === f.key ? 'bg-[#0F7A4A] text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
@@ -383,10 +406,12 @@ const Dashboard = ({ token, onLogout }) => {
             ))}
           </div>
           <div className="relative w-full sm:w-56">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
             <input
-              value={search} onChange={e => setSearch(e.target.value)}
+              value={search}
+              onChange={e => setSearch(e.target.value)}
               placeholder="Search reviews…"
+              aria-label="Search reviews by name, city or message"
               className="pl-9 pr-4 py-2.5 border-2 border-gray-200 rounded-xl text-xs focus:border-[#0F7A4A] focus:outline-none transition-colors w-full"
             />
           </div>
@@ -394,22 +419,25 @@ const Dashboard = ({ token, onLogout }) => {
 
         {/* Review Grid */}
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-24 gap-3">
-            <RefreshCw className="h-8 w-8 text-[#0F7A4A] animate-spin" />
+          <div className="flex flex-col items-center justify-center py-24 gap-3" role="status" aria-live="polite">
+            <RefreshCw className="h-8 w-8 text-[#0F7A4A] animate-spin" aria-hidden="true" />
             <p className="text-sm text-gray-400">Loading reviews…</p>
           </div>
         ) : visible.length === 0 ? (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             className="bg-white rounded-2xl shadow-[0_4px_18px_rgba(0,0,0,0.06)] p-16 text-center"
+            role="status"
           >
-            <Eye className="h-10 w-10 text-gray-200 mx-auto mb-3" />
+            <Eye className="h-10 w-10 text-gray-200 mx-auto mb-3" aria-hidden="true" />
             <p className="text-gray-400 font-medium text-sm">No reviews found</p>
             <p className="text-gray-300 text-xs mt-1">
               {filter !== 'all' ? `No ${filter} reviews yet.` : 'No reviews submitted yet.'}
             </p>
           </motion.div>
         ) : (
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5" role="list" aria-label="Reviews list">
             <AnimatePresence>
               {visible.map(r => (
                 <ReviewCard
@@ -433,7 +461,19 @@ const ReviewAdmin = () => {
   const [token, setToken] = useState(() => sessionStorage.getItem('ra_token'));
   const login  = (t) => { sessionStorage.setItem('ra_token', t); setToken(t); };
   const logout = ()  => { sessionStorage.removeItem('ra_token');  setToken(null); };
-  return token ? <Dashboard token={token} onLogout={logout} /> : <Login onLogin={login} />;
+
+  return (
+    <>
+      {/* ── noindex: tells Google to never index this private admin page ── */}
+      <Helmet>
+        <title>Admin Portal | Yashoda Total Solution</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <meta name="googlebot" content="noindex, nofollow" />
+      </Helmet>
+
+      {token ? <Dashboard token={token} onLogout={logout} /> : <Login onLogin={login} />}
+    </>
+  );
 };
 
 export default ReviewAdmin;

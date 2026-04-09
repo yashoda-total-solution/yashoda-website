@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { 
@@ -13,7 +13,74 @@ const TEAM_IMAGES = {
   legal: 'https://static.prod-images.emergentagent.com/jobs/bd5b376d-ca14-453c-bb4f-06833e2e2741/images/a75fe35cf9732eed2e87f9cab7303f4159c6a291444cd1c3688266fe8ac59960.png',
 };
 
-
+/* ─── Structured Data (JSON-LD) ──────────────────────────────────────────── */
+const ABOUT_STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.yashodatotalsolution.in/about/#webpage',
+      url: 'https://www.yashodatotalsolution.in/about/',
+      name: 'About Yashoda Total Solution – Insurance Claim & Legal Support Services India',
+      isPartOf: { '@id': 'https://www.yashodatotalsolution.in/#website' },
+      about: { '@id': 'https://www.yashodatotalsolution.in/#organization' },
+      description:
+        'Learn about Yashoda Total Solution – a professional insurance claim assistance and legal support organization helping individuals, families, and businesses across India with structured, transparent dispute resolution services.',
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.yashodatotalsolution.in/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'About Us',
+            item: 'https://www.yashodatotalsolution.in/about/',
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'AboutPage',
+      '@id': 'https://www.yashodatotalsolution.in/about/#aboutpage',
+      url: 'https://www.yashodatotalsolution.in/about/',
+      name: 'About Yashoda Total Solution',
+      description:
+        'Yashoda Total Solution is a professional insurance claim assistance and legal support service organization established in 2025, dedicated to helping individuals, families, and businesses resolve insurance and legal disputes.',
+      publisher: { '@id': 'https://www.yashodatotalsolution.in/#organization' },
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.yashodatotalsolution.in/#organization',
+      name: 'Yashoda Total Solution',
+      url: 'https://www.yashodatotalsolution.in/',
+      foundingDate: '2025',
+      description:
+        'Professional insurance claim assistance and legal support services across India, specializing in claim dispute resolution, mis-selling complaints, and legal documentation.',
+      areaServed: { '@type': 'Country', name: 'India' },
+      serviceType: [
+        'Insurance Claim Assistance',
+        'Insurance Dispute Resolution',
+        'Legal Consultation',
+        'Consumer Protection',
+        'Cheque Bounce Case Support',
+      ],
+      employee: [
+        {
+          '@type': 'Person',
+          name: 'Rajesh Verma',
+          jobTitle: 'Managing Director',
+          description:
+            'Seasoned professional with over 14 years of experience in insurance claim settlements.',
+        },
+      ],
+    },
+  ],
+};
 
 const About = () => {
   const { t } = useLanguage();
@@ -72,9 +139,68 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-[#F5F7F9]">
+
+      {/* ── React Helmet SEO ──────────────────────────────────────────────── */}
+      <Helmet prioritizeSeoTags>
+        {/* Primary */}
+        <title>About Us | Yashoda Total Solution – Insurance Claim & Legal Support India</title>
+        <meta
+          name="description"
+          content="Learn about Yashoda Total Solution – a trusted insurance claim assistance and legal support organization established in 2025. Expert team helping policyholders across India resolve disputes, mis-selling complaints, and legal matters."
+        />
+        <meta
+          name="keywords"
+          content="about Yashoda Total Solution, insurance claim assistance India, legal support organization Mumbai, insurance dispute resolution company, professional insurance consultancy, Rajesh Verma insurance expert, claim settlement specialists India"
+        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Yashoda Total Solution" />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://www.yashodatotalsolution.in/about/" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.yashodatotalsolution.in/about/" />
+        <meta property="og:title" content="About Yashoda Total Solution – Insurance Claim & Legal Support India" />
+        <meta
+          property="og:description"
+          content="Yashoda Total Solution is a professional insurance claim assistance and legal support organization helping individuals, families, and businesses across India with transparent and result-oriented services."
+        />
+        <meta property="og:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Yashoda Total Solution Team – Insurance and Legal Experts" />
+        <meta property="og:site_name" content="Yashoda Total Solution" />
+        <meta property="og:locale" content="en_IN" />
+
+        {/* Twitter / X Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Yashoda Total Solution – Insurance Claim & Legal Support India" />
+        <meta
+          name="twitter:description"
+          content="Yashoda Total Solution is a professional insurance claim assistance and legal support organization helping individuals, families, and businesses across India."
+        />
+        <meta name="twitter:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Yashoda Total Solution Team – Insurance and Legal Experts" />
+
+        {/* Geo & Region */}
+        <meta name="geo.region" content="IN-MH" />
+        <meta name="geo.placename" content="Mumbai, Maharashtra, India" />
+        <meta name="geo.position" content="19.0722;72.8797" />
+        <meta name="ICBM" content="19.0722, 72.8797" />
+
+        {/* Structured Data JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify(ABOUT_STRUCTURED_DATA)}
+        </script>
+      </Helmet>
+
       {/* Hero Section with 3D Effect */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32">
-        <div className="absolute inset-0 opacity-10">
+      <section
+        className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32"
+        aria-labelledby="about-hero-heading"
+      >
+        <div className="absolute inset-0 opacity-10" aria-hidden="true">
           <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
         </div>
 
@@ -84,17 +210,30 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">{t('title')}</h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">{t('hero_subtitle')}</p>
+            <h1
+              id="about-hero-heading"
+              className="text-4xl md:text-6xl font-bold mb-4"
+            >
+              {t('title')}
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+              {t('hero_subtitle')}
+            </p>
           </motion.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
+        <div
+          className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]"
+          style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}
+          aria-hidden="true"
+        />
       </section>
 
       {/* About Us Section with Image */}
-      {/* FIX: changed -mt-16 to mt-6 lg:-mt-16 to prevent overlap on mobile */}
-      <section className="relative mt-6 lg:-mt-16 z-10 py-16 md:py-24">
+      <section
+        className="relative mt-6 lg:-mt-16 z-10 py-16 md:py-24"
+        aria-labelledby="about-section-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             {...fadeUp}
@@ -104,9 +243,14 @@ const About = () => {
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-14 h-14 bg-[#0F7A4A]/10 rounded-2xl flex items-center justify-center">
-                    <Shield className="h-7 w-7 text-[#0F7A4A]" />
+                    <Shield className="h-7 w-7 text-[#0F7A4A]" aria-hidden="true" />
                   </div>
-                  <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933]">{t('about_title')}</h2>
+                  <h2
+                    id="about-section-heading"
+                    className="text-3xl md:text-5xl font-bold text-[#1F2933]"
+                  >
+                    {t('about_title')}
+                  </h2>
                 </div>
                 <div className="space-y-4 text-base text-[#52606D] leading-relaxed">
                   <p>{t('about_intro')}</p>
@@ -114,7 +258,6 @@ const About = () => {
                 </div>
               </div>
 
-              {/* FIX: removed "hidden lg:block" — image now visible on all screen sizes */}
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -122,8 +265,9 @@ const About = () => {
               >
                 <img
                   src="about_asset1.png"
-                  alt="Insurance Services"
+                  alt="Yashoda Total Solution – Professional Insurance Claim Assistance Services"
                   className="w-full h-auto rounded-2xl"
+                  loading="lazy"
                 />
               </motion.div>
             </div>
@@ -136,10 +280,18 @@ const About = () => {
       </section>
 
       {/* What We Do Section with 3D Cards */}
-      <section className="py-16 md:py-24 bg-white">
+      <section
+        className="py-16 md:py-24 bg-white"
+        aria-labelledby="whatwedo-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">{t('whatwedo_title')}</h2>
+            <h2
+              id="whatwedo-heading"
+              className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4"
+            >
+              {t('whatwedo_title')}
+            </h2>
             <p className="text-lg text-[#52606D] max-w-3xl mx-auto">{t('whatwedo_intro')}</p>
           </motion.div>
 
@@ -156,7 +308,7 @@ const About = () => {
               >
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-[#0F7A4A] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
-                    <CheckCircle className="h-6 w-6 text-white" />
+                    <CheckCircle className="h-6 w-6 text-white" aria-hidden="true" />
                   </div>
                   <p className="text-base text-[#52606D] leading-relaxed pt-2">{item}</p>
                 </div>
@@ -173,10 +325,18 @@ const About = () => {
       </section>
 
       {/* Features Section with Vector Image */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+      <section
+        className="py-16 md:py-24 bg-[#F5F7F9]"
+        aria-labelledby="features-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">{t('features_title')}</h2>
+            <h2
+              id="features-heading"
+              className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4"
+            >
+              {t('features_title')}
+            </h2>
             <p className="text-lg text-[#52606D] max-w-3xl mx-auto">{t('features_intro')}</p>
             <p className="text-lg font-semibold text-[#1F2933] mt-4">{t('features_subtitle')}</p>
           </motion.div>
@@ -195,7 +355,7 @@ const About = () => {
                 >
                   <div className="flex items-start gap-3">
                     <div className="w-8 h-8 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-lg flex items-center justify-center flex-shrink-0 shadow-md">
-                      <span className="text-white text-sm font-bold">{i + 1}</span>
+                      <span className="text-white text-sm font-bold" aria-hidden="true">{i + 1}</span>
                     </div>
                     <p className="text-base text-[#52606D] leading-relaxed">{feature}</p>
                   </div>
@@ -203,7 +363,6 @@ const About = () => {
               ))}
             </div>
 
-            {/* FIX: removed "hidden lg:block" — image now visible on all screen sizes */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -211,8 +370,9 @@ const About = () => {
             >
               <img
                 src="about_asset2.png"
-                alt="Our Features"
+                alt="Yashoda Total Solution – Key Features and Service Model"
                 className="w-full h-auto rounded-2xl"
+                loading="lazy"
               />
             </motion.div>
           </div>
@@ -220,10 +380,18 @@ const About = () => {
       </section>
 
       {/* Strategy Section with 3D Cards */}
-      <section className="py-16 md:py-24 bg-white">
+      <section
+        className="py-16 md:py-24 bg-white"
+        aria-labelledby="strategy-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4">{t('strategy_title')}</h2>
+            <h2
+              id="strategy-heading"
+              className="text-3xl md:text-5xl font-bold text-[#1F2933] mb-4"
+            >
+              {t('strategy_title')}
+            </h2>
             <p className="text-lg text-[#52606D] max-w-3xl mx-auto">{t('strategy_intro')}</p>
           </motion.div>
 
@@ -238,11 +406,11 @@ const About = () => {
                 whileHover={{ y: -8, scale: 1.02 }}
                 className="relative bg-white rounded-2xl p-6 border-2 border-[#0F7A4A]/20 hover:border-[#0F7A4A] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_32px_rgba(15,122,74,0.15)]"
               >
-                <div className="absolute top-4 right-4 w-12 h-12 bg-[#0F7A4A]/10 rounded-full flex items-center justify-center">
+                <div className="absolute top-4 right-4 w-12 h-12 bg-[#0F7A4A]/10 rounded-full flex items-center justify-center" aria-hidden="true">
                   <span className="text-xl font-bold text-[#0F7A4A]">{i + 1}</span>
                 </div>
                 <div className="pr-12">
-                  <TrendingUp className="h-8 w-8 text-[#0F7A4A] mb-4" />
+                  <TrendingUp className="h-8 w-8 text-[#0F7A4A] mb-4" aria-hidden="true" />
                   <p className="text-base text-[#52606D] leading-relaxed">{item}</p>
                 </div>
               </motion.div>
@@ -251,7 +419,7 @@ const About = () => {
 
           <motion.div {...fadeUp} className="mt-12">
             <div className="bg-gradient-to-br from-[#fa7f05] to-[#e08931] text-white p-8 rounded-2xl shadow-xl text-center">
-              <Clock className="h-12 w-12 mx-auto mb-4" />
+              <Clock className="h-12 w-12 mx-auto mb-4" aria-hidden="true" />
               <p className="text-lg leading-relaxed">{t('strategy_outro')}</p>
             </div>
           </motion.div>
@@ -259,10 +427,18 @@ const About = () => {
       </section>
 
       {/* Approach Section with 3D Cards */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+      <section
+        className="py-16 md:py-24 bg-[#F5F7F9]"
+        aria-labelledby="approach-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933]">{t('approach_title')}</h2>
+            <h2
+              id="approach-heading"
+              className="text-3xl md:text-5xl font-bold text-[#1F2933]"
+            >
+              {t('approach_title')}
+            </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -279,9 +455,9 @@ const About = () => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-                    <CheckCircle className="h-6 w-6" />
+                    <CheckCircle className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <span className="text-2xl font-bold opacity-40">{i + 1}</span>
+                  <span className="text-2xl font-bold opacity-40" aria-hidden="true">{i + 1}</span>
                 </div>
                 <p className="text-base leading-relaxed">{item}</p>
               </motion.div>
@@ -291,18 +467,26 @@ const About = () => {
       </section>
 
       {/* Commitment Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section
+        className="py-16 md:py-24 bg-white"
+        aria-labelledby="commitment-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             {...fadeUp}
             className="relative bg-gradient-to-br from-[#fa7f05] via-[#e89848] to-[#e08931] rounded-3xl overflow-hidden shadow-2xl"
           >
-            <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 opacity-10" aria-hidden="true">
               <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
             </div>
             <div className="relative z-10 p-12 text-center text-white">
-              <Award className="h-16 w-16 mx-auto mb-6" />
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">{t('commitment_title')}</h2>
+              <Award className="h-16 w-16 mx-auto mb-6" aria-hidden="true" />
+              <h2
+                id="commitment-heading"
+                className="text-3xl md:text-5xl font-bold mb-6"
+              >
+                {t('commitment_title')}
+              </h2>
               <p className="text-lg leading-relaxed max-w-4xl mx-auto">{t('commitment_text')}</p>
             </div>
           </motion.div>
@@ -310,10 +494,18 @@ const About = () => {
       </section>
 
       {/* Team Section with 3D Cards */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+      <section
+        className="py-16 md:py-24 bg-[#F5F7F9]"
+        aria-labelledby="team-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2933]">{t('team_title')}</h2>
+            <h2
+              id="team-heading"
+              className="text-3xl md:text-5xl font-bold text-[#1F2933]"
+            >
+              {t('team_title')}
+            </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -332,6 +524,8 @@ const About = () => {
                   whileHover={{ y: -10, scale: 1.02 }}
                   className="group bg-white rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(15,122,74,0.15)] transition-all duration-500 flex flex-col"
                   style={{ transformStyle: 'preserve-3d' }}
+                  itemScope
+                  itemType="https://schema.org/Person"
                 >
                   <div className="relative overflow-hidden">
                     <motion.img
@@ -340,17 +534,31 @@ const About = () => {
                       src={member.image}
                       alt={member.name || member.title}
                       className="w-full h-64 object-cover"
+                      loading="lazy"
+                      itemProp="image"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="flex flex-col items-center text-center mb-4">
-                      <div className="w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-4" style={{ backgroundColor: `${member.color}20` }}>
+                      <div
+                        className="w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-4"
+                        style={{ backgroundColor: `${member.color}20` }}
+                        aria-hidden="true"
+                      >
                         <Icon className="h-8 w-8" style={{ color: member.color }} />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#1F2933] mb-2">{displayTitle}</h3>
+                      <h3
+                        className="text-2xl font-bold text-[#1F2933] mb-2"
+                        itemProp="name"
+                      >
+                        {displayTitle}
+                      </h3>
                       {displaySubtitle && (
-                        <p className="text-lg font-medium text-[#52606D]">
+                        <p
+                          className="text-lg font-medium text-[#52606D]"
+                          itemProp="jobTitle"
+                        >
                           {displaySubtitle}
                         </p>
                       )}
@@ -362,8 +570,9 @@ const About = () => {
                         onClick={() => setActiveProfile(member)}
                         className="w-full py-3 px-4 rounded-xl font-semibold text-base text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                         style={{ backgroundColor: member.color }}
+                        aria-label={`View profile of ${displayTitle}`}
                       >
-                        <Eye className="h-5 w-5" />
+                        <Eye className="h-5 w-5" aria-hidden="true" />
                         {t('view_profile')}
                       </motion.button>
                     </div>
@@ -384,6 +593,9 @@ const About = () => {
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             onClick={() => setActiveProfile(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Profile of ${activeProfile.title}`}
           >
             <motion.div
               initial={{ scale: 0.9, y: 20 }}
@@ -395,22 +607,35 @@ const About = () => {
               <div className="p-8">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${activeProfile.color}20` }}>
-                      {React.createElement(activeProfile.icon, { className: 'h-6 w-6', style: { color: activeProfile.color } })}
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center"
+                      style={{ backgroundColor: `${activeProfile.color}20` }}
+                      aria-hidden="true"
+                    >
+                      {React.createElement(activeProfile.icon, {
+                        className: 'h-6 w-6',
+                        style: { color: activeProfile.color }
+                      })}
                     </div>
-                    <h3 className="text-2xl font-bold text-[#1F2933]">{activeProfile.title}</h3>
+                    <h3 className="text-2xl font-bold text-[#1F2933]">
+                      {activeProfile.title}
+                    </h3>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.1, rotate: 90 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setActiveProfile(null)}
                     className="text-gray-400 hover:text-gray-600 transition-colors"
+                    aria-label="Close profile"
                   >
                     <X className="h-6 w-6" />
                   </motion.button>
                 </div>
                 {(activeProfile.popupName !== undefined ? activeProfile.popupName : activeProfile.name) && (
-                  <p className="text-lg font-semibold mb-6" style={{ color: activeProfile.color }}>
+                  <p
+                    className="text-lg font-semibold mb-6"
+                    style={{ color: activeProfile.color }}
+                  >
                     {activeProfile.popupName !== undefined ? activeProfile.popupName : activeProfile.name}
                   </p>
                 )}
@@ -424,7 +649,10 @@ const About = () => {
                     "{activeProfile.highlight}"
                   </blockquote>
                 ) : (
-                  <p className="text-base font-semibold mt-6 p-4 rounded-xl" style={{ color: activeProfile.color, backgroundColor: `${activeProfile.color}10` }}>
+                  <p
+                    className="text-base font-semibold mt-6 p-4 rounded-xl"
+                    style={{ color: activeProfile.color, backgroundColor: `${activeProfile.color}10` }}
+                  >
                     {activeProfile.highlight}
                   </p>
                 )}

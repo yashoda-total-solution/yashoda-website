@@ -29,44 +29,49 @@ import CivilCases from './pages/services/CivilCases';
 import ChequeBounceCases from './pages/services/ChequeBounceCases';
 import './App.css';
 import ReviewAdmin from './pages/ReviewAdmin';
+import { HelmetProvider } from 'react-helmet-async';
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <LanguageProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <div className="App">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/mis-selling" element={<MisSelling />} />
-            <Route path="/claim-rejection" element={<ClaimRejection />} />
-            <Route path="/claim-delay" element={<ClaimDelay />} />
-            <Route path="/claim-short-settled" element={<ClaimShortSettled />} />
-            <Route path="/health-reimbursement" element={<HealthReimbursement />} />
-            <Route path="/pmsby" element={<PMSBY />} />
-            <Route path="/pmjjby" element={<PMJJBY />} />
-            <Route path="/state-cm-scheme" element={<StateCMScheme />} />
-            <Route path="/banking-atm-insurance" element={<BankingAtmInsurance />} />
-            <Route path="/pf-accidental-insurance" element={<PFAccidentalInsurance />} />
-            <Route path="/legal-consultation" element={<LegalConsultation />} />
-            <Route path="/legal-drafting" element={<LegalDrafting />} />
-            <Route path="/consumer-cases" element={<ConsumerCases />} />
-            <Route path="/civil-cases" element={<CivilCases />} />
-            <Route path="/cheque-bounce-cases" element={<ChequeBounceCases />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/faqs" element={<FAQs />} />
-            <Route path="/partner" element={<Partner />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/reviews" element={<Reviews />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/review-admin" element={<ReviewAdmin />} />
-          </Routes>
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </LanguageProvider>
+    <HelmetProvider>
+      <LanguageProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <div className="App">
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/mis-selling" element={<MisSelling />} />
+              <Route path="/claim-rejection" element={<ClaimRejection />} />
+              <Route path="/claim-delay" element={<ClaimDelay />} />
+              <Route path="/claim-short-settled" element={<ClaimShortSettled />} />
+              <Route path="/health-reimbursement" element={<HealthReimbursement />} />
+              <Route path="/pmsby" element={<PMSBY />} />
+              <Route path="/pmjjby" element={<PMJJBY />} />
+              <Route path="/state-cm-scheme" element={<StateCMScheme />} />
+              <Route path="/banking-atm-insurance" element={<BankingAtmInsurance />} />
+              <Route path="/pf-accidental-insurance" element={<PFAccidentalInsurance />} />
+              <Route path="/legal-consultation" element={<LegalConsultation />} />
+              <Route path="/legal-drafting" element={<LegalDrafting />} />
+              <Route path="/consumer-cases" element={<ConsumerCases />} />
+              <Route path="/civil-cases" element={<CivilCases />} />
+              <Route path="/cheque-bounce-cases" element={<ChequeBounceCases />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/faqs" element={<FAQs />} />
+              <Route path="/partner" element={<Partner />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/reviews" element={<Reviews />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/review-admin" element={<ReviewAdmin />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Footer />
+          </div>
+        </BrowserRouter>
+      </LanguageProvider>
+    </HelmetProvider>
   );
 }
 

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block private/admin pages
+Disallow: /login
+Disallow: /review-admin
+
+# Sitemap location
+Sitemap: https://www.yashodatotalsolution.in/sitemap.xml

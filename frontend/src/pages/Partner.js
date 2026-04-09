@@ -1,8 +1,52 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Handshake, Users, TrendingUp, Award, Send, MapPin, Phone, Mail, Briefcase, FileText } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
+/* ─── Structured Data (JSON-LD) ──────────────────────────────────────────── */
+const PARTNER_STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.yashodatotalsolution.in/partner/#webpage',
+      url: 'https://www.yashodatotalsolution.in/partner/',
+      name: 'Partner With Us | Yashoda Total Solution – Franchise & Freelancer Opportunities India',
+      isPartOf: { '@id': 'https://www.yashodatotalsolution.in/#website' },
+      description:
+        'Join Yashoda Total Solution as a freelancer, franchise partner, or advocate. Help people resolve insurance claims and legal disputes across India while growing your own income.',
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.yashodatotalsolution.in/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Partner With Us',
+            item: 'https://www.yashodatotalsolution.in/partner/',
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': 'https://www.yashodatotalsolution.in/partner/#service',
+      name: 'Partnership & Franchise Opportunities',
+      description:
+        'Yashoda Total Solution offers partnership opportunities for freelancers, franchise owners, and advocates who want to help people resolve insurance claims and legal disputes across India.',
+      provider: { '@id': 'https://www.yashodatotalsolution.in/#organization' },
+      areaServed: { '@type': 'Country', name: 'India' },
+      serviceType: 'Business Partnership and Franchise',
+      url: 'https://www.yashodatotalsolution.in/partner/',
+    },
+  ],
+};
 
 const Partner = () => {
   const { t } = useLanguage();
@@ -19,62 +63,110 @@ const Partner = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-
-  try {
-    const backendUrl = process.env.REACT_APP_BACKEND_URL;
-
-    const res = await fetch(`${backendUrl}/api/partner`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (res.ok) {
-      setSubmitStatus('success');
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      const res = await fetch(`${backendUrl}/api/partner`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) setSubmitStatus('success');
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
     }
-
-  } catch (error) {
-    console.error(error);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
   return (
     <div className="min-h-screen bg-[#F5F7F9]">
+
+      {/* ── React Helmet SEO ──────────────────────────────────────────────── */}
+      <Helmet prioritizeSeoTags>
+        <title>Partner With Us | Yashoda Total Solution – Franchise & Freelancer Opportunities India</title>
+        <meta
+          name="description"
+          content="Join Yashoda Total Solution as a freelancer, franchise partner or advocate. Help people resolve insurance claims and legal disputes across India while building your own income. Apply now."
+        />
+        <meta
+          name="keywords"
+          content="partner with Yashoda Total Solution, insurance franchise India, freelancer insurance claim India, advocate partnership India, insurance business opportunity India, franchise opportunity Mumbai, insurance claim franchise India"
+        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Yashoda Total Solution" />
+
+        <link rel="canonical" href="https://www.yashodatotalsolution.in/partner/" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.yashodatotalsolution.in/partner/" />
+        <meta property="og:title" content="Partner With Us | Yashoda Total Solution – Franchise & Freelancer Opportunities India" />
+        <meta
+          property="og:description"
+          content="Join Yashoda Total Solution as a freelancer, franchise partner or advocate. Help people resolve insurance claims and legal disputes across India while building your own income."
+        />
+        <meta property="og:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Partner With Yashoda Total Solution" />
+        <meta property="og:site_name" content="Yashoda Total Solution" />
+        <meta property="og:locale" content="en_IN" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Partner With Us | Yashoda Total Solution – Franchise & Freelancer Opportunities India" />
+        <meta
+          name="twitter:description"
+          content="Join Yashoda Total Solution as a freelancer, franchise partner or advocate across India. Apply now."
+        />
+        <meta name="twitter:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Partner With Yashoda Total Solution" />
+
+        <meta name="geo.region" content="IN-MH" />
+        <meta name="geo.placename" content="Mumbai, Maharashtra, India" />
+        <meta name="geo.position" content="19.0722;72.8797" />
+        <meta name="ICBM" content="19.0722, 72.8797" />
+
+        <script type="application/ld+json">
+          {JSON.stringify(PARTNER_STRUCTURED_DATA)}
+        </script>
+      </Helmet>
+
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32">
-        <div className="absolute inset-0 opacity-10">
+      <section
+        className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32"
+        aria-labelledby="partner-hero-heading"
+      >
+        <div className="absolute inset-0 opacity-10" aria-hidden="true">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
             backgroundSize: '40px 40px'
-          }}></div>
+          }} />
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center">
+            className="text-center"
+          >
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
               className="inline-flex items-center justify-center w-20 h-20 bg-[#F39C12] rounded-full mb-6"
             >
-              <Handshake className="h-10 w-10 text-white" />
+              <Handshake className="h-10 w-10 text-white" aria-hidden="true" />
             </motion.div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <h1
+              id="partner-hero-heading"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            >
               {t('partner_title')}
             </h1>
             <p className="text-xl md:text-2xl font-semibold text-[#F39C12]">
@@ -83,11 +175,15 @@ const Partner = () => {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
+        <div
+          className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]"
+          style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}
+          aria-hidden="true"
+        />
       </section>
 
       {/* About Partnership Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white" aria-labelledby="about-partner-heading">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -97,7 +193,9 @@ const Partner = () => {
             className="space-y-6 text-center"
           >
             <p className="text-lg md:text-xl text-[#1F2933] leading-relaxed">
-              {t('about_partner_desc1')} <span className="font-bold text-[#0F7A4A]">{t('about_partner_desc2')}</span> {t('about_partner_desc3')}
+              {t('about_partner_desc1')}{' '}
+              <span className="font-bold text-[#0F7A4A]">{t('about_partner_desc2')}</span>{' '}
+              {t('about_partner_desc3')}
             </p>
             <p className="text-lg md:text-xl text-[#52606D] leading-relaxed">
               {t('about_partner_desc4')}
@@ -110,7 +208,7 @@ const Partner = () => {
       </section>
 
       {/* Why Partner With Us */}
-      <section className="py-16">
+      <section className="py-16" aria-labelledby="why-partner-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -119,7 +217,10 @@ const Partner = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="why-partner-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('why_partner_title')}
             </h2>
             <p className="text-lg text-[#52606D] max-w-2xl mx-auto">
@@ -158,7 +259,7 @@ const Partner = () => {
                 className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300"
               >
                 <div className={`w-16 h-16 bg-gradient-to-br ${benefit.color} rounded-xl flex items-center justify-center mb-6 mx-auto`}>
-                  <benefit.icon className="h-8 w-8 text-white" />
+                  <benefit.icon className="h-8 w-8 text-white" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-bold text-[#1F2933] mb-3 text-center">
                   {benefit.title}
@@ -173,7 +274,7 @@ const Partner = () => {
       </section>
 
       {/* Partnership Form */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white" aria-labelledby="partner-form-heading">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -182,7 +283,10 @@ const Partner = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="partner-form-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('partner_form_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
@@ -197,21 +301,18 @@ const Partner = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             onSubmit={handleSubmit}
             className="bg-[#F5F7F9] rounded-2xl shadow-xl p-8 md:p-12"
+            noValidate
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {/* Name */}
               <div>
                 <label htmlFor="name" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
-                  <Briefcase className="h-4 w-4 mr-2 text-[#0F7A4A]" />
+                  <Briefcase className="h-4 w-4 mr-2 text-[#0F7A4A]" aria-hidden="true" />
                   {t('partner_name_label')}
                 </label>
                 <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
+                  type="text" id="name" name="name" value={formData.name}
+                  onChange={handleChange} required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200"
                   placeholder={t('partner_name_label_placeholder')}
                 />
@@ -220,17 +321,12 @@ const Partner = () => {
               {/* Mobile */}
               <div>
                 <label htmlFor="mobile" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
-                  <Phone className="h-4 w-4 mr-2 text-[#0F7A4A]" />
+                  <Phone className="h-4 w-4 mr-2 text-[#0F7A4A]" aria-hidden="true" />
                   {t('partner_mobile_label')}
                 </label>
                 <input
-                  type="tel"
-                  id="mobile"
-                  name="mobile"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  required
-                  pattern="[0-9]{10}"
+                  type="tel" id="mobile" name="mobile" value={formData.mobile}
+                  onChange={handleChange} required pattern="[0-9]{10}"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200"
                   placeholder={t('partner_mobile_label_placeholder')}
                 />
@@ -239,16 +335,12 @@ const Partner = () => {
               {/* Location */}
               <div>
                 <label htmlFor="location" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
-                  <MapPin className="h-4 w-4 mr-2 text-[#0F7A4A]" />
+                  <MapPin className="h-4 w-4 mr-2 text-[#0F7A4A]" aria-hidden="true" />
                   {t('partner_location_label')}
                 </label>
                 <input
-                  type="text"
-                  id="location"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                  required
+                  type="text" id="location" name="location" value={formData.location}
+                  onChange={handleChange} required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200"
                   placeholder={t('partner_location_label_placeholder')}
                 />
@@ -257,16 +349,12 @@ const Partner = () => {
               {/* Email */}
               <div>
                 <label htmlFor="email" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
-                  <Mail className="h-4 w-4 mr-2 text-[#0F7A4A]" />
+                  <Mail className="h-4 w-4 mr-2 text-[#0F7A4A]" aria-hidden="true" />
                   {t('partner_email_label')}
                 </label>
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
+                  type="email" id="email" name="email" value={formData.email}
+                  onChange={handleChange} required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200"
                   placeholder={t('partner_email_label_placeholder')}
                 />
@@ -276,15 +364,12 @@ const Partner = () => {
             {/* Partner Type */}
             <div className="mb-6">
               <label htmlFor="partnerType" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
-                <Users className="h-4 w-4 mr-2 text-[#0F7A4A]" />
+                <Users className="h-4 w-4 mr-2 text-[#0F7A4A]" aria-hidden="true" />
                 {t('partner_type_label')}
               </label>
               <select
-                id="partnerType"
-                name="partnerType"
-                value={formData.partnerType}
-                onChange={handleChange}
-                required
+                id="partnerType" name="partnerType" value={formData.partnerType}
+                onChange={handleChange} required
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200"
               >
                 <option value="">{t('partner_type_label_placeholder')}</option>
@@ -297,18 +382,15 @@ const Partner = () => {
             {/* Additional Information */}
             <div className="mb-8">
               <label htmlFor="additionalInfo" className="flex items-center text-sm font-semibold text-[#1F2933] mb-2">
-                <FileText className="h-4 w-4 mr-2 text-[#0F7A4A]" />
+                <FileText className="h-4 w-4 mr-2 text-[#0F7A4A]" aria-hidden="true" />
                 {t('partner_additional_info_label')}
               </label>
               <textarea
-                id="additionalInfo"
-                name="additionalInfo"
-                value={formData.additionalInfo}
-                onChange={handleChange}
-                rows="5"
+                id="additionalInfo" name="additionalInfo" value={formData.additionalInfo}
+                onChange={handleChange} rows="5"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0F7A4A] focus:border-transparent transition-all duration-200 resize-none"
                 placeholder={t('partner_additional_info_label_placeholder')}
-              ></textarea>
+              />
             </div>
 
             {/* Submit Button */}
@@ -317,26 +399,27 @@ const Partner = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className="inline-flex items-center space-x-3 bg-gradient-to-r from-[#0F7A4A] to-[#159F61] text-white font-semibold px-10 py-4 rounded-full hover:from-[#0A5734] hover:to-[#0F7A4A] transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Submit partner application"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" aria-hidden="true" />
                     <span>{t('partner_submitting')}</span>
                   </>
                 ) : (
                   <>
-                    <Send className="h-5 w-5" />
+                    <Send className="h-5 w-5" aria-hidden="true" />
                     <span>{t('partner_submit_button')}</span>
                   </>
                 )}
               </button>
 
-              {/* Success Message */}
               {submitStatus === 'success' && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg"
+                  role="alert"
                 >
                   <p className="font-semibold">{t('partner_submit_success')}</p>
                   <p className="text-sm mt-1">{t('partner_submit_success_desc')}</p>
@@ -346,6 +429,7 @@ const Partner = () => {
           </motion.form>
         </div>
       </section>
+
     </div>
   );
 };

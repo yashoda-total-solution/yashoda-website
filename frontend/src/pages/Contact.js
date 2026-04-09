@@ -1,10 +1,71 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useNavigate } from 'react-router-dom';
 import { Phone, Mail, MapPin, Send, CheckCircle, User, MessageSquare, MessageCircle, Globe, Building2, Users, Network } from 'lucide-react';
 
-
+/* ─── Structured Data (JSON-LD) ──────────────────────────────────────────── */
+const CONTACT_STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.yashodatotalsolution.in/contact/#webpage',
+      url: 'https://www.yashodatotalsolution.in/contact/',
+      name: 'Contact Yashoda Total Solution | Insurance & Legal Help India',
+      isPartOf: { '@id': 'https://www.yashodatotalsolution.in/#website' },
+      description:
+        'Contact Yashoda Total Solution for insurance claim assistance, legal consultation and consumer protection support. Offices across Maharashtra, Gujarat, Delhi, Rajasthan, Madhya Pradesh and Uttar Pradesh.',
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.yashodatotalsolution.in/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Contact Us',
+            item: 'https://www.yashodatotalsolution.in/contact/',
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.yashodatotalsolution.in/#organization',
+      name: 'Yashoda Total Solution',
+      url: 'https://www.yashodatotalsolution.in/',
+      telephone: '+919649647790',
+      email: 'info@yashodatotalsolution.in',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Mumbai',
+        addressRegion: 'Maharashtra',
+        addressCountry: 'IN',
+      },
+      areaServed: [
+        'Maharashtra',
+        'Gujarat',
+        'Delhi',
+        'Rajasthan',
+        'Madhya Pradesh',
+        'Uttar Pradesh',
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+919649647790',
+        contactType: 'customer service',
+        availableLanguage: ['English', 'Hindi', 'Marathi'],
+        areaServed: 'IN',
+      },
+    },
+  ],
+};
 
 const ACTIVE_STATES = ['Maharashtra', 'Gujarat', 'Madhya Pradesh', 'Uttar Pradesh', 'Rajasthan', 'Delhi'];
 
@@ -29,7 +90,7 @@ const STATE_KEYS = {
 /* ─── India Map Component ─── */
 const IndiaMap = ({ branches, t }) => {
   const svgRef = useRef(null);
-  const [popup, setPopup] = useState(null); // { stateName }
+  const [popup, setPopup] = useState(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapError, setMapError] = useState(false);
 
@@ -37,7 +98,6 @@ const IndiaMap = ({ branches, t }) => {
     let cancelled = false;
 
     const loadScripts = async () => {
-      // Load D3 if not already loaded
       if (!window.d3) {
         await new Promise((resolve, reject) => {
           const s = document.createElement('script');
@@ -47,7 +107,6 @@ const IndiaMap = ({ branches, t }) => {
           document.head.appendChild(s);
         });
       }
-      // Load topojson if not already loaded
       if (!window.topojson) {
         await new Promise((resolve, reject) => {
           const s = document.createElement('script');
@@ -81,7 +140,6 @@ const IndiaMap = ({ branches, t }) => {
 
       const pathGen = d3.geoPath().projection(projection);
 
-      /* Draw states */
       svg
         .selectAll('.state-path')
         .data(geoData.features)
@@ -150,17 +208,14 @@ const IndiaMap = ({ branches, t }) => {
           if (ACTIVE_STATES.includes(name)) setPopup(name);
         });
 
-      /* Draw pins */
       Object.entries(PIN_COORDS).forEach(([stateName, coords], idx) => {
         const [px, py] = projection(coords);
-        const delay = idx * 0.8;
 
         const g = svg
           .append('g')
           .style('cursor', 'pointer')
           .on('click', () => setPopup(stateName));
 
-        /* Image Pin */
         g.append('image')
           .attr('href', '/location.png')
           .attr('width', 40)
@@ -175,7 +230,6 @@ const IndiaMap = ({ branches, t }) => {
             d3.select(this).attr('transform', 'scale(1)');
           });
 
-        /* Pin label */
         g.append('text')
           .attr('x', px)
           .attr('y', py)
@@ -197,7 +251,7 @@ const IndiaMap = ({ branches, t }) => {
         await loadScripts();
         if (cancelled) return;
 
-        const res = await fetch('/in.json'); // ✅ LOCAL FILE
+        const res = await fetch('/in.json');
         if (!res.ok) throw new Error('HTTP ' + res.status);
 
         const data = await res.json();
@@ -214,7 +268,6 @@ const IndiaMap = ({ branches, t }) => {
 
   return (
     <>
-      {/* Pulse animation keyframes injected once */}
       <style>{`
         @keyframes mapPulse {
           0%   { r: 14; opacity: 0.9; }
@@ -234,14 +287,16 @@ const IndiaMap = ({ branches, t }) => {
         <p className="text-center text-white/80 font-bold mb-2">
           {t('map_heading')}
         </p>
-        <svg ref={svgRef} style={{ width: '100%', height: 'auto', display: 'block' }} />
+        <svg ref={svgRef} style={{ width: '100%', height: 'auto', display: 'block' }} aria-label="India map showing Yashoda Total Solution office locations" role="img" />
       </div>
 
-      {/* Branch Popup */}
       {popup && (
         <div
           className="fixed inset-0 bg-black/55 z-[9999] flex items-center justify-center p-5"
           onClick={() => setPopup(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Branch offices in ${popup}`}
         >
           <div
             className="bg-white rounded-2xl w-full max-w-sm overflow-hidden shadow-2xl"
@@ -265,6 +320,7 @@ const IndiaMap = ({ branches, t }) => {
               <button
                 onClick={() => setPopup(null)}
                 className="bg-white/25 hover:bg-white/40 rounded-full w-7 h-7 flex items-center justify-center text-white text-base transition-colors"
+                aria-label="Close branch popup"
               >
                 ✕
               </button>
@@ -304,7 +360,6 @@ const Contact = () => {
     transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
   };
 
-  /* ─── Branch Data ─── */
   const BRANCHES = {
     Maharashtra: {
       offices: [
@@ -329,20 +384,17 @@ const Contact = () => {
         { name: t('map_indore_branch'), addr: t('map_indore_branch_addr') },
       ],
     },
-
-    Rajasthan: { // ✅ NEW STATE
+    Rajasthan: {
       offices: [
         { name: t('map_jaipur_branch'), addr: t('map_jaipur_branch_addr') },
         { name: t('map_kota_branch'), addr: t('map_kota_branch_addr') },
       ],
     },
-
-    Delhi: { // ✅ NEW STATE
+    Delhi: {
       offices: [
         { name: t('map_delhi_branch'), addr: t('map_delhi_branch_addr') },
       ],
     },
-
     'Uttar Pradesh': {
       offices: [
         { name: t('map_lucknow_branch'), addr: t('map_lucknow_branch_addr') },
@@ -387,12 +439,75 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-[#F5F7F9]">
+
+      {/* ── React Helmet SEO ──────────────────────────────────────────────── */}
+      <Helmet prioritizeSeoTags>
+        {/* Primary */}
+        <title>Contact Yashoda Total Solution | Insurance & Legal Help India</title>
+        <meta
+          name="description"
+          content="Contact Yashoda Total Solution for expert insurance claim assistance, legal consultation and consumer protection support. Offices across Maharashtra, Gujarat, Delhi, Rajasthan, MP and UP. Call +91 9649647790 or fill the form."
+        />
+        <meta
+          name="keywords"
+          content="contact Yashoda Total Solution, insurance claim help contact India, legal consultation contact Mumbai, insurance dispute help contact, consumer complaint contact India, Yashoda Total Solution phone number, insurance claim office India"
+        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Yashoda Total Solution" />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://www.yashodatotalsolution.in/contact/" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.yashodatotalsolution.in/contact/" />
+        <meta property="og:title" content="Contact Yashoda Total Solution | Insurance & Legal Help India" />
+        <meta
+          property="og:description"
+          content="Get in touch with Yashoda Total Solution for insurance claim assistance, legal consultation and consumer protection support. Offices across 6 states in India."
+        />
+        <meta property="og:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Contact Yashoda Total Solution – Insurance & Legal Help India" />
+        <meta property="og:site_name" content="Yashoda Total Solution" />
+        <meta property="og:locale" content="en_IN" />
+
+        {/* Twitter / X Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Yashoda Total Solution | Insurance & Legal Help India" />
+        <meta
+          name="twitter:description"
+          content="Get in touch for insurance claim assistance, legal consultation and consumer protection support. Offices across 6 states in India."
+        />
+        <meta name="twitter:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Contact Yashoda Total Solution – Insurance & Legal Help India" />
+
+        {/* Geo & Region */}
+        <meta name="geo.region" content="IN-MH" />
+        <meta name="geo.placename" content="Mumbai, Maharashtra, India" />
+        <meta name="geo.position" content="19.0722;72.8797" />
+        <meta name="ICBM" content="19.0722, 72.8797" />
+
+        {/* Structured Data JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify(CONTACT_STRUCTURED_DATA)}
+        </script>
+      </Helmet>
+
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32">
-        <div className="absolute inset-0 opacity-10"></div>
+      <section
+        className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32"
+        aria-labelledby="contact-hero-heading"
+      >
+        <div className="absolute inset-0 opacity-10" aria-hidden="true"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="text-4xl md:text-6xl font-bold mb-4" data-testid="contact-hero-title">
+            <h1
+              id="contact-hero-heading"
+              className="text-4xl md:text-6xl font-bold mb-4"
+              data-testid="contact-hero-title"
+            >
               {t('contact_page_title')}
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
@@ -400,18 +515,23 @@ const Contact = () => {
             </p>
           </motion.div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
+        <div
+          className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]"
+          style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}
+          aria-hidden="true"
+        />
       </section>
 
       {/* Contact Information Cards */}
-      <section className="py-16 bg-[#F5F7F9]">
+      <section className="py-16 bg-[#F5F7F9]" aria-labelledby="contact-info-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 id="contact-info-heading" className="sr-only">Contact Information</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             {/* Left Column - Office Details */}
             <motion.div {...fadeUp} className="bg-white rounded-xl shadow-lg p-6">
               <div className="flex items-start space-x-4 mb-4 pb-4 border-b border-gray-100">
                 <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-500 to-red-500 rounded-lg flex items-center justify-center">
-                  <MapPin className="h-6 w-6 text-white" />
+                  <MapPin className="h-6 w-6 text-white" aria-hidden="true" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-bold text-[#1F2933] mb-2">{t('contact_address_title')}</h3>
@@ -422,22 +542,30 @@ const Contact = () => {
               </div>
               <div className="flex items-center space-x-4 mb-4 pb-4 border-b border-gray-100">
                 <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-lg flex items-center justify-center">
-                  <Phone className="h-6 w-6 text-white" />
+                  <Phone className="h-6 w-6 text-white" aria-hidden="true" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-bold text-[#1F2933] mb-1">{t('contact_phone_title')}</h3>
-                  <a href="tel:+919649647790" className="text-base text-[#0F7A4A] font-semibold hover:underline">
+                  <a
+                    href="tel:+919649647790"
+                    className="text-base text-[#0F7A4A] font-semibold hover:underline"
+                    aria-label="Call Yashoda Total Solution"
+                  >
                     {t('contact_phone_number')}
                   </a>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#F39C12] to-[#f7b547] rounded-lg flex items-center justify-center">
-                  <Mail className="h-6 w-6 text-white" />
+                  <Mail className="h-6 w-6 text-white" aria-hidden="true" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-bold text-[#1F2933] mb-1">{t('contact_email_title')}</h3>
-                  <a href="mailto:info@yashodatotalsolution.com" className="text-sm text-[#0F7A4A] font-semibold hover:underline break-all">
+                  <a
+                    href="mailto:info@yashodatotalsolution.in"
+                    className="text-sm text-[#0F7A4A] font-semibold hover:underline break-all"
+                    aria-label="Email Yashoda Total Solution"
+                  >
                     {t('contact_email_address')}
                   </a>
                 </div>
@@ -448,18 +576,20 @@ const Contact = () => {
             <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="bg-white rounded-xl shadow-lg p-6">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg flex items-center justify-center">
-                  <MapPin className="h-6 w-6 text-white" />
+                  <MapPin className="h-6 w-6 text-white" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-bold text-[#1F2933]">{t('contact_map_title')}</h3>
               </div>
               <div className="relative w-full h-64 rounded-lg overflow-hidden">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.2259879430785!2d72.8879158!3d19.0851996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c78cf532c1ad%3A0x7f3adcca8ee3e06f!2sPhoenix%20Paragon%20Plaza!5e1!3m2!1sen!2sin!4v1774610376877!5m2!1sen!2sin"
-                  width="100%" height="100%"
+                  width="100%"
+                  height="100%"
                   style={{ border: 0 }}
-                  allowFullScreen="" loading="lazy"
+                  allowFullScreen=""
+                  loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Office Location"
+                  title="Yashoda Total Solution Office Location – Phoenix Paragon Plaza, Mumbai"
                   className="rounded-lg"
                 ></iframe>
               </div>
@@ -469,9 +599,11 @@ const Contact = () => {
       </section>
 
       {/* OUR NETWORK Section */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] relative overflow-hidden">
-        {/* Animated Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
+      <section
+        className="py-20 md:py-28 bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] relative overflow-hidden"
+        aria-labelledby="network-heading"
+      >
+        <div className="absolute inset-0 opacity-10" aria-hidden="true">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
             backgroundSize: '40px 40px',
@@ -479,7 +611,6 @@ const Contact = () => {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
           <motion.div {...fadeUp} className="text-center mb-8">
             <motion.div
               initial={{ scale: 0 }}
@@ -488,13 +619,19 @@ const Contact = () => {
               transition={{ type: 'spring', stiffness: 100 }}
               className="inline-flex items-center justify-center w-20 h-20 bg-[#F39C12] rounded-full mb-6"
             >
-              <Globe className="h-10 w-10 text-white" />
+              <Globe className="h-10 w-10 text-white" aria-hidden="true" />
             </motion.div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{t('our_network_title')}</h2>
+            <h2
+              id="network-heading"
+              className="text-4xl md:text-5xl font-bold text-white mb-6"
+            >
+              {t('our_network_title')}
+            </h2>
             <div className="max-w-3xl mx-auto">
               <p className="text-lg md:text-xl text-white/95 leading-relaxed mb-4">
                 {t('our_network_desc1')}
-                <span className="font-bold text-[#F39C12]">{t('our_network_desc2')}</span> {t('our_network_desc3')}
+                <span className="font-bold text-[#F39C12]">{t('our_network_desc2')}</span>{' '}
+                {t('our_network_desc3')}
               </p>
               <p className="text-base md:text-lg text-white/90 leading-relaxed">
                 {t('our_network_desc4')}
@@ -502,7 +639,6 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* ── India Map ── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -512,7 +648,6 @@ const Contact = () => {
             <IndiaMap branches={BRANCHES} t={t} />
           </motion.div>
 
-          {/* Network Stats */}
           <motion.div
             {...fadeUp}
             className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 md:p-12"
@@ -532,7 +667,7 @@ const Contact = () => {
                   className="flex flex-col items-center"
                 >
                   <div className="w-16 h-16 bg-[#F39C12] rounded-full flex items-center justify-center mb-4">
-                    <stat.icon className="h-8 w-8 text-white" />
+                    <stat.icon className="h-8 w-8 text-white" aria-hidden="true" />
                   </div>
                   <div className="text-3xl md:text-3xl font-bold text-white mb-2">{stat.number}</div>
                   <div className="text-base md:text-lg text-white/90 font-medium">{stat.label}</div>
@@ -541,13 +676,13 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* CTA Button */}
           <motion.div {...fadeUp} className="mt-12 text-center">
             <button
               onClick={() => navigate('/partner')}
               className="inline-flex items-center space-x-3 bg-[#F39C12] px-8 py-4 rounded-full hover:bg-[#e08e0b] transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
+              aria-label="Become a partner with Yashoda Total Solution"
             >
-              <Network className="h-6 w-6 text-white" />
+              <Network className="h-6 w-6 text-white" aria-hidden="true" />
               <span className="text-lg font-semibold text-white">
                 {t('network_cta_button')}
               </span>
@@ -555,13 +690,12 @@ const Contact = () => {
           </motion.div>
         </div>
 
-        {/* Decorative blobs */}
-        <div className="absolute top-10 left-10 w-32 h-32 bg-[#F39C12] rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full opacity-5 blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-32 h-32 bg-[#F39C12] rounded-full opacity-10 blur-3xl" aria-hidden="true"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full opacity-5 blur-3xl" aria-hidden="true"></div>
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-white" aria-labelledby="contact-form-heading">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {!submitted ? (
             <motion.div
@@ -569,41 +703,66 @@ const Contact = () => {
               className="bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12 border-2 border-gray-100"
             >
               <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+                <h2
+                  id="contact-form-heading"
+                  className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+                >
                   {t('contact_form_title')}
                 </h2>
                 <p className="text-lg text-[#52606D]">{t('contact_form_subtitle')}</p>
               </div>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div className="relative">
-                  <label className="block text-sm font-semibold text-[#1F2933] mb-2">
-                    <User className="inline h-5 w-5 mr-2 text-[#0F7A4A]" />
+                  <label
+                    htmlFor="contact-name"
+                    className="block text-sm font-semibold text-[#1F2933] mb-2"
+                  >
+                    <User className="inline h-5 w-5 mr-2 text-[#0F7A4A]" aria-hidden="true" />
                     {t('contact_name_label')} *
                   </label>
                   <input
-                    type="text" name="name" value={formData.name} onChange={handleChange} required
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     data-testid="contact-name-input"
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-[#0F7A4A] focus:outline-none transition-colors text-base"
                     placeholder={t('contact_name_placeholder')}
+                    autoComplete="name"
                   />
                 </div>
                 <div className="relative">
-                  <label className="block text-sm font-semibold text-[#1F2933] mb-2">
-                    <Phone className="inline h-5 w-5 mr-2 text-[#0F7A4A]" />
+                  <label
+                    htmlFor="contact-phone"
+                    className="block text-sm font-semibold text-[#1F2933] mb-2"
+                  >
+                    <Phone className="inline h-5 w-5 mr-2 text-[#0F7A4A]" aria-hidden="true" />
                     {t('contact_phone_label')} *
                   </label>
                   <input
-                    type="tel" name="phone" value={formData.phone} onChange={handleChange} required
+                    id="contact-phone"
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
                     data-testid="contact-phone-input"
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-[#0F7A4A] focus:outline-none transition-colors text-base"
                     placeholder={t('contact_phone_placeholder')}
+                    autoComplete="tel"
                   />
                 </div>
                 <div className="relative">
-                  <label className="block text-sm font-semibold text-[#1F2933] mb-2">
+                  <label
+                    htmlFor="contact-location"
+                    className="block text-sm font-semibold text-[#1F2933] mb-2"
+                  >
                     📍 {t('contact_location_label')} *
                   </label>
                   <input
+                    id="contact-location"
                     type="text"
                     name="location"
                     value={formData.location}
@@ -611,13 +770,18 @@ const Contact = () => {
                     required
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-[#0F7A4A] focus:outline-none transition-colors text-base"
                     placeholder={t('contact_location_placeholder')}
+                    autoComplete="address-level2"
                   />
                 </div>
                 <div className="relative">
-                  <label className="block text-sm font-semibold text-[#1F2933] mb-2">
+                  <label
+                    htmlFor="contact-service"
+                    className="block text-sm font-semibold text-[#1F2933] mb-2"
+                  >
                     🛠 {t('contact_service_label')} *
                   </label>
                   <select
+                    id="contact-service"
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
@@ -644,12 +808,20 @@ const Contact = () => {
                   </select>
                 </div>
                 <div className="relative">
-                  <label className="block text-sm font-semibold text-[#1F2933] mb-2">
-                    <MessageSquare className="inline h-5 w-5 mr-2 text-[#0F7A4A]" />
+                  <label
+                    htmlFor="contact-message"
+                    className="block text-sm font-semibold text-[#1F2933] mb-2"
+                  >
+                    <MessageSquare className="inline h-5 w-5 mr-2 text-[#0F7A4A]" aria-hidden="true" />
                     {t('contact_message_label')} *
                   </label>
                   <textarea
-                    name="message" value={formData.message} onChange={handleChange} required rows="6"
+                    id="contact-message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows="6"
                     data-testid="contact-message-input"
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-[#0F7A4A] focus:outline-none transition-colors text-base resize-none"
                     placeholder={t('contact_message_placeholder')}
@@ -659,15 +831,17 @@ const Contact = () => {
                 <motion.button
                   type="submit"
                   disabled={loading || !formData.name || !formData.phone || !formData.location || !formData.service || !formData.message}
-                  whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   data-testid="contact-submit-btn"
                   className="w-full bg-gradient-to-r from-[#0F7A4A] to-[#159F61] hover:from-[#0A5734] hover:to-[#0F7A4A] text-white px-8 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  aria-label="Submit contact form"
                 >
                   {loading ? (
                     <span>{t('contact_submitting')}</span>
                   ) : (
                     <>
-                      <Send className="h-6 w-6 mr-2" />
+                      <Send className="h-6 w-6 mr-2" aria-hidden="true" />
                       {t('contact_submit_btn')}
                     </>
                   )}
@@ -676,23 +850,27 @@ const Contact = () => {
             </motion.div>
           ) : (
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
               className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12 text-center"
               data-testid="contact-success-message"
             >
               <motion.div
-                initial={{ scale: 0 }} animate={{ scale: 1 }}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
                 className="w-24 h-24 bg-gradient-to-br from-[#0F7A4A] to-[#159F61] rounded-full flex items-center justify-center mx-auto mb-6"
               >
-                <CheckCircle className="h-12 w-12 text-white" />
+                <CheckCircle className="h-12 w-12 text-white" aria-hidden="true" />
               </motion.div>
               <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
                 {t('contact_success_title')}
               </h2>
               <p className="text-lg text-[#52606D] mb-8">{t('contact_success_message')}</p>
               <motion.button
-                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setSubmitted(false)}
                 className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg"
               >
@@ -706,26 +884,32 @@ const Contact = () => {
       {/* WhatsApp Floating Button */}
       <motion.button
         onClick={handleWhatsAppClick}
-        whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         data-testid="whatsapp-button"
         className="fixed bottom-8 right-8 w-16 h-16 bg-[#25D366] hover:bg-[#1da851] text-white rounded-full shadow-2xl flex items-center justify-center z-50 transition-colors duration-300"
-        initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        aria-label="Chat with Yashoda Total Solution on WhatsApp"
       >
-        <MessageCircle className="h-8 w-8" />
+        <MessageCircle className="h-8 w-8" aria-hidden="true" />
       </motion.button>
 
-{/* WhatsApp Tooltip */}
-<motion.div
-  initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1 }}
-  className="fixed bottom-8 right-20 md:right-28 bg-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg shadow-lg z-[9999] flex items-center gap-2"
->
-  <span className="text-xs md:text-sm font-semibold text-[#1F2933]">{t('contact_whatsapp_btn')}</span>
-  <img
-    src="/yashify1.png"
-    alt="Yashify"
-    className="h-4 md:h-5 object-contain"
-  />
-</motion.div>
+      {/* WhatsApp Tooltip */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1 }}
+        className="fixed bottom-8 right-20 md:right-28 bg-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg shadow-lg border-4 border-purple-500 z-[9999] flex items-center gap-2"
+      >
+        <span className="text-xs md:text-sm text-[#1F2933]">
+          {t('chat_prefix')}{" "}
+          <span className="yashify-brand">{t('yashify_name')}</span>{" "}
+          {t('chat_suffix')}
+        </span>
+      </motion.div>
+
     </div>
   );
 };

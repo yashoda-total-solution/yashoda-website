@@ -1,11 +1,93 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { 
   XCircle, FileText, AlertCircle, CheckCircle, Shield, 
   ArrowRight, HelpCircle, Users, Phone, Scale, Search
 } from 'lucide-react';
+
+/* ─── Structured Data (JSON-LD) ──────────────────────────────────────────── */
+const CLAIM_REJECTION_STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.yashodatotalsolution.in/claim-rejection/#webpage',
+      url: 'https://www.yashodatotalsolution.in/claim-rejection/',
+      name: 'Insurance Claim Rejection Help India | Yashoda Total Solution',
+      isPartOf: { '@id': 'https://www.yashodatotalsolution.in/#website' },
+      description:
+        'Has your insurance claim been rejected? Yashoda Total Solution helps policyholders understand rejection reasons, challenge decisions, and escalate to Insurance Ombudsman or IRDAI. Free consultation available.',
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.yashodatotalsolution.in/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Insurance Claim Rejection',
+            item: 'https://www.yashodatotalsolution.in/claim-rejection/',
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': 'https://www.yashodatotalsolution.in/claim-rejection/#service',
+      name: 'Insurance Claim Rejection Assistance',
+      description:
+        'Expert assistance for policyholders whose insurance claims have been rejected. We review rejection reasons, prepare appeals, and escalate to the Insurance Ombudsman or IRDAI when necessary.',
+      provider: { '@id': 'https://www.yashodatotalsolution.in/#organization' },
+      areaServed: { '@type': 'Country', name: 'India' },
+      serviceType: 'Insurance Claim Rejection Support',
+      url: 'https://www.yashodatotalsolution.in/claim-rejection/',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What does insurance claim rejection mean?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Insurance claim rejection means that the insurance company has declined the claim request based on policy conditions, incomplete documentation, or other stated reasons.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Can a rejected insurance claim be reviewed or challenged?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. In many cases, policyholders can review the rejection reasons and file a formal appeal or complaint with the insurer\'s grievance cell, and if unresolved, escalate to the Insurance Ombudsman or IRDAI.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What documents are required for an insurance claim?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Required documents vary depending on the type of insurance policy and claim situation. Common documents include the policy document, completed claim form, medical reports, hospital bills, and identity proof.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Why do insurance claims get rejected?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Claims may be rejected due to incomplete or incorrect documentation, delay in submission, policy exclusions, non-disclosure of information at the time of purchase, or disagreements over policy interpretation.',
+          },
+        },
+      ],
+    },
+  ],
+};
 
 const ClaimRejection = () => {
   const { t } = useLanguage();
@@ -18,9 +100,68 @@ const ClaimRejection = () => {
 
   return (
     <div className="min-h-screen bg-[#F5F7F9]">
+
+      {/* ── React Helmet SEO ──────────────────────────────────────────────── */}
+      <Helmet prioritizeSeoTags>
+        {/* Primary */}
+        <title>Insurance Claim Rejection Help India | Yashoda Total Solution</title>
+        <meta
+          name="description"
+          content="Has your insurance claim been rejected? Yashoda Total Solution helps policyholders challenge rejections due to incomplete documents, policy exclusions, or missed deadlines. Escalate to IRDAI & Insurance Ombudsman. Free consultation."
+        />
+        <meta
+          name="keywords"
+          content="insurance claim rejection India, rejected insurance claim help, insurance claim denial assistance, challenge insurance rejection, insurance ombudsman complaint India, IRDAI complaint claim rejection, insurance claim appeal India, claim rejection Mumbai"
+        />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Yashoda Total Solution" />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://www.yashodatotalsolution.in/claim-rejection/" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.yashodatotalsolution.in/claim-rejection/" />
+        <meta property="og:title" content="Insurance Claim Rejection Help India | Yashoda Total Solution" />
+        <meta
+          property="og:description"
+          content="Has your insurance claim been rejected? We help policyholders understand rejection reasons, prepare appeals, and escalate to the Insurance Ombudsman or IRDAI. Expert team with high success rate."
+        />
+        <meta property="og:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Insurance Claim Rejection Help – Yashoda Total Solution" />
+        <meta property="og:site_name" content="Yashoda Total Solution" />
+        <meta property="og:locale" content="en_IN" />
+
+        {/* Twitter / X Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Insurance Claim Rejection Help India | Yashoda Total Solution" />
+        <meta
+          name="twitter:description"
+          content="Has your insurance claim been rejected? We help policyholders challenge rejections and escalate to IRDAI and Insurance Ombudsman."
+        />
+        <meta name="twitter:image" content="https://www.yashodatotalsolution.in/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Insurance Claim Rejection Help – Yashoda Total Solution" />
+
+        {/* Geo & Region */}
+        <meta name="geo.region" content="IN-MH" />
+        <meta name="geo.placename" content="Mumbai, Maharashtra, India" />
+        <meta name="geo.position" content="19.0722;72.8797" />
+        <meta name="ICBM" content="19.0722, 72.8797" />
+
+        {/* Structured Data JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify(CLAIM_REJECTION_STRUCTURED_DATA)}
+        </script>
+      </Helmet>
+
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32">
-        <div className="absolute inset-0 opacity-10">
+      <section
+        className="relative overflow-hidden bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] text-white py-20 md:py-32"
+        aria-labelledby="claim-rejection-hero-heading"
+      >
+        <div className="absolute inset-0 opacity-10" aria-hidden="true">
           <div className="absolute inset-0"></div>
         </div>
 
@@ -31,38 +172,55 @@ const ClaimRejection = () => {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            <div className="flex items-center space-x-2 mb-6">
-              <Link to="/" className="text-white/80 hover:text-white text-sm">{t('claim_rej_title_backlink2')}</Link>
-              <span className="text-white/60">/</span>
-              <span className="text-white text-sm">{t('claim_rej_title_backlink1')}</span>
-            </div>
-            
+            <nav className="flex items-center space-x-2 mb-6" aria-label="Breadcrumb">
+              <Link to="/" className="text-white/80 hover:text-white text-sm">
+                {t('claim_rej_title_backlink2')}
+              </Link>
+              <span className="text-white/60" aria-hidden="true">/</span>
+              <span className="text-white text-sm" aria-current="page">
+                {t('claim_rej_title_backlink1')}
+              </span>
+            </nav>
+
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-16 h-16 bg-[#F39C12] rounded-2xl flex items-center justify-center">
-                <XCircle className="h-8 w-8 text-white" />
+              <div className="w-16 h-16 bg-[#F39C12] rounded-2xl flex items-center justify-center flex-shrink-0">
+                <XCircle className="h-8 w-8 text-white" aria-hidden="true" />
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+              <h1
+                id="claim-rejection-hero-heading"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold"
+              >
                 {t('claim_rej_title')}
               </h1>
             </div>
-            
+
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
               {t('claim_rej_description')}
             </p>
           </motion.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]" style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}></div>
+        <div
+          className="absolute bottom-0 left-0 right-0 h-16 bg-[#F5F7F9]"
+          style={{ clipPath: 'ellipse(75% 100% at 50% 100%)' }}
+          aria-hidden="true"
+        />
       </section>
 
       {/* What is Claim Rejection Section */}
-      <section className="relative -mt-16 z-10 py-16 md:py-24">
+      <section
+        className="relative -mt-16 z-10 py-16 md:py-24"
+        aria-labelledby="what-is-claim-rejection-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             {...fadeUp}
             className="bg-white rounded-3xl shadow-[0_20px_40px_rgba(15,122,74,0.15)] p-8 md:p-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6">
+            <h2
+              id="what-is-claim-rejection-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-6"
+            >
               {t('what_claim_rej_title')}
             </h2>
             <div className="prose prose-lg max-w-none text-[#52606D]">
@@ -70,7 +228,8 @@ const ClaimRejection = () => {
                 {t('what_claim_rej_description')}
               </p>
               <p className="leading-relaxed mb-4">
-                {t('what_claim_rej_description1')} <strong>{t('what_claim_rej_description2')}</strong>
+                {t('what_claim_rej_description1')}{' '}
+                <strong>{t('what_claim_rej_description2')}</strong>
               </p>
               <p className="leading-relaxed mb-4">
                 {t('what_claim_rej_description3')}
@@ -78,7 +237,7 @@ const ClaimRejection = () => {
               <p className="leading-relaxed mb-4">
                 {t('what_claim_rej_common_reasons')}
               </p>
-              <ul className="space-y-3 ml-6">
+              <ul className="space-y-3 ml-6" role="list">
                 <li>{t('what_claim_rej_common_reasons1')}</li>
                 <li>{t('what_claim_rej_common_reasons2')}</li>
                 <li>{t('what_claim_rej_common_reasons3')}</li>
@@ -92,10 +251,16 @@ const ClaimRejection = () => {
       </section>
 
       {/* What Happens Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section
+        className="py-16 md:py-24 bg-white"
+        aria-labelledby="what-happens-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="what-happens-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('what_happens_after_claim_rej_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
@@ -136,7 +301,7 @@ const ClaimRejection = () => {
                 className={`${item.color} rounded-2xl p-8`}
               >
                 <div className={`w-16 h-16 ${item.iconBg} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}>
-                  <item.icon className="h-8 w-8 text-white" />
+                  <item.icon className="h-8 w-8 text-white" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
                 <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
@@ -147,14 +312,20 @@ const ClaimRejection = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+      <section
+        className="py-16 md:py-24 bg-[#F5F7F9]"
+        aria-labelledby="why-choose-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="why-choose-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('why_choose_claim_rej_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
-                {t('why_choose_claim_rej_description')}
+              {t('why_choose_claim_rej_description')}
             </p>
           </motion.div>
 
@@ -191,7 +362,7 @@ const ClaimRejection = () => {
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] rounded-2xl flex items-center justify-center mb-6">
-                  <item.icon className="h-8 w-8 text-white" />
+                  <item.icon className="h-8 w-8 text-white" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-semibold text-[#1F2933] mb-3">{item.title}</h3>
                 <p className="text-base text-[#52606D] leading-relaxed">{item.desc}</p>
@@ -202,10 +373,16 @@ const ClaimRejection = () => {
       </section>
 
       {/* Process Flow Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section
+        className="py-16 md:py-24 bg-white"
+        aria-labelledby="process-flow-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="process-flow-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('process_flow_claim_rej_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
@@ -214,7 +391,10 @@ const ClaimRejection = () => {
           </motion.div>
 
           <div className="relative">
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"></div>
+            <div
+              className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0F7A4A] to-[#F39C12]"
+              aria-hidden="true"
+            />
 
             <div className="space-y-12">
               {[
@@ -257,7 +437,10 @@ const ClaimRejection = () => {
                   <div className={index % 2 === 0 ? 'md:pr-12' : 'md:col-start-2 md:pl-12'}>
                     <div className="bg-gradient-to-br from-[#0F7A4A] to-[#0A5734] text-white rounded-2xl p-8 shadow-xl">
                       <div className="flex items-center space-x-4 mb-4">
-                        <div className="w-12 h-12 bg-[#F39C12] rounded-full flex items-center justify-center font-bold text-xl">
+                        <div
+                          className="w-12 h-12 bg-[#F39C12] rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0"
+                          aria-label={`Step ${item.step}`}
+                        >
                           {item.step}
                         </div>
                         <h3 className="text-xl md:text-2xl font-bold flex-1">{item.title}</h3>
@@ -266,7 +449,10 @@ const ClaimRejection = () => {
                     </div>
                   </div>
 
-                  <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#F39C12] rounded-full border-4 border-white shadow-lg z-10"></div>
+                  <div
+                    className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#F39C12] rounded-full border-4 border-white shadow-lg z-10"
+                    aria-hidden="true"
+                  />
                 </motion.div>
               ))}
             </div>
@@ -275,10 +461,16 @@ const ClaimRejection = () => {
       </section>
 
       {/* Example Scenarios Section */}
-      <section className="py-16 md:py-24 bg-[#F5F7F9]">
+      <section
+        className="py-16 md:py-24 bg-[#F5F7F9]"
+        aria-labelledby="scenarios-heading"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="scenarios-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('ex_scenario_claim_rej_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
@@ -320,24 +512,38 @@ const ClaimRejection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 shadow-lg"
+                itemScope
+                itemType="https://schema.org/Article"
               >
-                <h3 className="text-xl font-bold text-[#1F2933] mb-4 flex items-center">
-                  <span className="w-8 h-8 bg-[#F39C12] text-white rounded-full flex items-center justify-center mr-3 text-sm font-bold">
+                <h3
+                  className="text-xl font-bold text-[#1F2933] mb-4 flex items-center"
+                  itemProp="headline"
+                >
+                  <span
+                    className="w-8 h-8 bg-[#F39C12] text-white rounded-full flex items-center justify-center mr-3 text-sm font-bold flex-shrink-0"
+                    aria-hidden="true"
+                  >
                     {index + 1}
                   </span>
                   {scenario.title}
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-red-600 mb-2">{t('ex_scenario_claim_rej_example_head1')}</h4>
+                    <h4 className="text-sm font-semibold text-red-600 mb-2">
+                      {t('ex_scenario_claim_rej_example_head1')}
+                    </h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-orange-600 mb-2">{t('ex_scenario_claim_rej_example_head2')}</h4>
+                    <h4 className="text-sm font-semibold text-orange-600 mb-2">
+                      {t('ex_scenario_claim_rej_example_head2')}
+                    </h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.reality}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-green-600 mb-2">{t('ex_scenario_claim_rej_example_head3')}</h4>
+                    <h4 className="text-sm font-semibold text-green-600 mb-2">
+                      {t('ex_scenario_claim_rej_example_head3')}
+                    </h4>
                     <p className="text-sm text-[#52606D] leading-relaxed">{scenario.solution}</p>
                   </div>
                 </div>
@@ -348,10 +554,16 @@ const ClaimRejection = () => {
       </section>
 
       {/* FAQs Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section
+        className="py-16 md:py-24 bg-white"
+        aria-labelledby="faqs-heading"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4">
+            <h2
+              id="faqs-heading"
+              className="text-3xl md:text-4xl font-bold text-[#1F2933] mb-4"
+            >
               {t('faq_claim_rej_title')}
             </h2>
             <p className="text-lg text-[#52606D]">
@@ -361,22 +573,10 @@ const ClaimRejection = () => {
 
           <div className="space-y-6">
             {[
-              {
-                q: t('faq_claim_rej_q1'),
-                a: t('faq_claim_rej_a1')
-              },
-              {
-                q: t('faq_claim_rej_q2'),
-                a: t('faq_claim_rej_a2')
-              },
-              {
-                q: t('faq_claim_rej_q3'),
-                a: t('faq_claim_rej_a3')
-              },
-              {
-                q: t('faq_claim_rej_q4'),
-                a: t('faq_claim_rej_a4')
-              },
+              { q: t('faq_claim_rej_q1'), a: t('faq_claim_rej_a1') },
+              { q: t('faq_claim_rej_q2'), a: t('faq_claim_rej_a2') },
+              { q: t('faq_claim_rej_q3'), a: t('faq_claim_rej_a3') },
+              { q: t('faq_claim_rej_q4'), a: t('faq_claim_rej_a4') },
             ].map((faq, index) => (
               <motion.div
                 key={index}
@@ -385,16 +585,30 @@ const ClaimRejection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-[#F5F7F9] rounded-2xl p-6 hover:shadow-lg transition-all duration-300"
+                itemScope
+                itemType="https://schema.org/Question"
               >
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
                     <div className="w-10 h-10 bg-[#0F7A4A] rounded-full flex items-center justify-center">
-                      <HelpCircle className="h-6 w-6 text-white" />
+                      <HelpCircle className="h-6 w-6 text-white" aria-hidden="true" />
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-[#1F2933] mb-2">{faq.q}</h3>
-                    <p className="text-base text-[#52606D] leading-relaxed">{faq.a}</p>
+                    <h3
+                      className="text-lg font-semibold text-[#1F2933] mb-2"
+                      itemProp="name"
+                    >
+                      {faq.q}
+                    </h3>
+                    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+                      <p
+                        className="text-base text-[#52606D] leading-relaxed"
+                        itemProp="text"
+                      >
+                        {faq.a}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -407,8 +621,9 @@ const ClaimRejection = () => {
       <motion.section
         {...fadeUp}
         className="relative py-20 md:py-32 bg-gradient-to-br from-[#0F7A4A] via-[#0A5734] to-[#0F7A4A] overflow-hidden"
+        aria-labelledby="cta-heading"
       >
-        <div className="absolute inset-0 opacity-10"></div>
+        <div className="absolute inset-0 opacity-10" aria-hidden="true" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
           <motion.div
@@ -418,9 +633,12 @@ const ClaimRejection = () => {
             className="space-y-8"
           >
             <div className="w-20 h-20 bg-[#F39C12] rounded-full flex items-center justify-center mx-auto mb-6">
-              <Phone className="h-10 w-10 text-white" />
+              <Phone className="h-10 w-10 text-white" aria-hidden="true" />
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white">
+            <h2
+              id="cta-heading"
+              className="text-3xl md:text-5xl font-bold text-white"
+            >
               {t('cta_claim_rej_title')}
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
@@ -431,17 +649,19 @@ const ClaimRejection = () => {
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center bg-[#F39C12] hover:bg-[#d68910] text-white px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(243,156,18,0.5)]"
+                  aria-label="Get free consultation for insurance claim rejection"
                 >
                   {t('cta_claim_rej_description2')}
-                  <ArrowRight className="ml-2 h-6 w-6" />
+                  <ArrowRight className="ml-2 h-6 w-6" aria-hidden="true" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <a
                   href="tel:+919649647790"
                   className="inline-flex items-center justify-center bg-white text-[#0F7A4A] px-12 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-[0_20px_50px_rgba(255,255,255,0.3)]"
+                  aria-label="Call Yashoda Total Solution now"
                 >
-                  <Phone className="mr-2 h-6 w-6" />
+                  <Phone className="mr-2 h-6 w-6" aria-hidden="true" />
                   {t('cta_claim_rej_button')}
                 </a>
               </motion.div>
@@ -449,6 +669,7 @@ const ClaimRejection = () => {
           </motion.div>
         </div>
       </motion.section>
+
     </div>
   );
 };
