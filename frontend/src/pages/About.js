@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 
 const TEAM_IMAGES = {
-  md: 'director.PNG',
+  md: '/director.PNG',
   sales: 'https://static.prod-images.emergentagent.com/jobs/bd5b376d-ca14-453c-bb4f-06833e2e2741/images/87447e00c2f040c5a6f2bfadb1ae27a431d8b28a7e9a40f86d3b3d5a785b21c4.png',
   legal: 'https://static.prod-images.emergentagent.com/jobs/bd5b376d-ca14-453c-bb4f-06833e2e2741/images/a75fe35cf9732eed2e87f9cab7303f4159c6a291444cd1c3688266fe8ac59960.png',
 };
@@ -264,7 +264,7 @@ const About = () => {
                 className="w-full"
               >
                 <img
-                  src="about_asset1.png"
+                  src="/about_asset1.png"
                   alt="Yashoda Total Solution – Professional Insurance Claim Assistance Services"
                   className="w-full h-auto rounded-2xl"
                   loading="lazy"
@@ -369,7 +369,7 @@ const About = () => {
               className="w-full"
             >
               <img
-                src="about_asset2.png"
+                src="/about_asset2.png"
                 alt="Yashoda Total Solution – Key Features and Service Model"
                 className="w-full h-auto rounded-2xl"
                 loading="lazy"

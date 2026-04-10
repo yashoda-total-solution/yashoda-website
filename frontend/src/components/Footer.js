@@ -14,7 +14,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <img
-              src="logo.png"
+              src="/logo.png"
               alt="Yashoda Total Solution"
               className="h-16 w-auto mb-4 object-contain"
             />

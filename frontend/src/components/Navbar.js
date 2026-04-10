@@ -62,7 +62,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3" data-testid="navbar-logo">
             <img 
-              src="logo.png" 
+              src="/logo.png" 
               alt="Yashoda Total Solution" 
               className="h-16 w-auto"
             />
