@@ -199,6 +199,15 @@ const TestimonialCard = ({ review, index }) => {
       itemScope
       itemType="https://schema.org/Review"
     >
+      {/* itemReviewed — required by Google for review rich results */}
+      <div
+        itemProp="itemReviewed"
+        itemScope
+        itemType="https://schema.org/Organization"
+      >
+        <meta itemProp="name" content="Yashoda Total Solution" />
+        <meta itemProp="url" content="https://www.yashodatotalsolution.in/" />
+      </div>
       <div className="absolute top-3 left-4 text-5xl text-gray-100 font-serif leading-none select-none pointer-events-none">
         &ldquo;
       </div>
